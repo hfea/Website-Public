@@ -1,0 +1,35 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+
+@{ 
+    var selection = CurrentPage.recentlyViewedPages.Split(',');
+    bool hasData = selection != null && selection.Length > 0 && !string.IsNullOrEmpty(selection[0]);
+}
+
+@if (hasData)
+{
+<div class="related-articles">
+
+    <div class="container">
+        <h2 class="heading">@Umbraco.Field("recentlyViewedTitle")</h2>
+        <div class="row  mt-50 mb-50 ">
+            @foreach (var id in selection)
+            {
+                var item = Umbraco.Content(id);
+
+                <div class="col">
+                    <div class="article">
+                        <a class="thickline" href="@item.Url">
+                            @item.pageTitle
+                        </a>
+                    </div>
+                </div>
+             }
+        </div>
+        <div class="text-center col-lg-4 col-lg-offset-4">
+            <a href="#" class="hfea-btn bg_teal">SHOW MORE</a>
+        </div>
+    </div>
+</div>
+
+    }

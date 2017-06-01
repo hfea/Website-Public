@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+	@{
+        var _helper = new UmbracoHelper(UmbracoContext.Current);
+        var CurrentPage = _helper.Content(UmbracoContext.Current.PageId);
+
+        string title = string.IsNullOrWhiteSpace(CurrentPage.pageMetaTitle)
+        ? CurrentPage.pageTitle.Trim()
+        : CurrentPage.pageMetaTitle.Trim();
+
+        if (string.IsNullOrWhiteSpace(title))
+        {
+            title = CurrentPage.Name;
+        }
+
+        if (CurrentPage.DocumentTypeAlias == "CafcClinicProfile")
+        {
+            title = TempData["ClinicPageMetaTitle"] != null ? TempData["ClinicPageMetaTitle"].ToString() : string.Empty;
+        }
+
+	}
+	
+<title>@title | Human Fertilisation and Embryology Authority</title>

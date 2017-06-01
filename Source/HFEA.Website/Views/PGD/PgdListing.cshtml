@@ -1,0 +1,69 @@
+﻿@using HFEA.Web.ViewModel.Constants;
+@using HFEA.Web.ViewModel.PGD;
+@inherits UmbracoViewPage<PgdListingViewModel>
+
+@if (Model != null && Model.SearchFilters != null)
+{
+    @Html.Partial("~/Views/PGD/PgdSearchForm.cshtml", Model.SearchFilters)
+
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Condition name
+                </td>
+                <td>
+                    Status
+                </td>
+                <td>
+                    OMOIMM number
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ItemList != null && Model.ItemList.Any())
+            {
+                foreach (var item in Model.ItemList)
+                {
+                    <tr>
+                        <td>
+                        @if (string.IsNullOrEmpty(item.DetailsUrl))
+                        {
+                            @item.Name
+                        }
+                        else
+                        {
+                            <a href="@item.DetailsUrl">@item.Name</a>
+                        }
+                        </td>
+                        <td>                             
+                            @{
+                                string status = "";
+                                if (item.Status == PgdConstants.Status.Approved)
+                                {
+                                    status = "approved";
+                                }
+                                else if (item.Status == PgdConstants.Status.AwaitingApproval)
+                                {
+                                    status = "awaiting approval";
+                                }
+                            }
+
+                            @status                                
+                         </td>
+                        <td>@item.OMOIMM</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">No data to display</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @Html.Partial("Pagination", Model.ItemList)
+}
+

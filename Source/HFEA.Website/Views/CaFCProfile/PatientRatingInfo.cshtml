@@ -1,0 +1,125 @@
+﻿@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<PatientRatingInfo>
+
+@if (Model != null)
+{
+<div class="panel-hfea panel-default" id="patient-ratings">
+    <div class="panel-heading" role="tab" id="collapse-patient-heading">
+        <h4 class="panel-title parent-panel-title">
+            <a role="button" class="accordion-toggle open" data-parent="#accordion" href="#collapse-patient" aria-expanded="true" aria-controls="collapse-patient">
+                @Umbraco.Field("patientRatingTitle")
+                <span class="chevron"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapse-patient" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-patient-heading">
+        <div class="panel-body">
+            <div class="panel-intro row bg_light_blue">
+                <p class="intro-text float-left">
+                    @Umbraco.Field("patientRatingDescription")
+                </p>
+                <div class="rating-container float-left">
+                    <span class="patient-rating float-left">
+                        <span class="number">
+                            @if (Model.IsValid)
+                            {
+                            @Model.OverallScore
+                            }
+                            else
+                            {
+                                @Html.Raw("n/a");
+                            }
+                        </span>
+                    </span>
+                    <div class="stars float-left">
+                        <div class="star-container star-container-blue">
+                            @Html.Partial("StarRatingView", Model.OverallScore)
+                        </div>
+                        <p>
+                            @{ string ratingLabel = Model.IsValid
+                                ? string.Format("Based on {0} ratings", Model.NumberOfReviews)
+                                : Umbraco.AssignedContentItem.GetPropertyValue<string>("noPatientDataLabel");
+                             }                            
+                            @ratingLabel</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row patient-rating-questions row-no-m panel-main-body">
+                @if (Model.ShortRatingsList != null)
+                {
+                    foreach (UserRating rating in Model.ShortRatingsList)
+                    {
+                            <div class="col-lg-6 question">
+                                <p class="q-text">
+                                    @rating.Question
+                                </p>
+                                <p class="sr-only">@rating.OverallScore stars</p>
+                                <div class="star-container star-container-white">
+                                    @Html.Partial("StarRatingView", rating.OverallScore)
+                                </div>
+                                <p>
+                                    Based on @rating.NumberOfReviews ratings
+                                </p>
+                            </div>
+                    }
+
+                    if (Model.AccuracyOfCostEstimate != null)
+                    {
+                            @renderFullRating(Model.AccuracyOfCostEstimate)
+                    }
+                }
+
+            </div>
+        </div>
+        <a class="hfea-btn btn btn-primary btn-lg bg_bright_green float-left mt-30" href="@Model.FeedBackLink">Rate this clinic</a>
+    </div>
+</div>
+}
+
+@helper renderFullRating(UserRating rating)
+{
+<div class="col-lg-6 question">
+    <p class="q-text">
+        @rating.Question
+    </p>
+    @if (rating != null)
+    {
+    <p>
+        Based on @rating.NumberOfReviews ratings
+    </p>
+
+    <div class="rating-percentage">
+        @renderRatingRow(rating.ScoreValue1Text, rating.ScoreValue1, rating.NumberOfReviews)
+        @renderRatingRow(rating.ScoreValue2Text, rating.ScoreValue2, rating.NumberOfReviews)
+        @renderRatingRow(rating.ScoreValue3Text, rating.ScoreValue3, rating.NumberOfReviews)
+        @renderRatingRow(rating.ScoreValue4Text, rating.ScoreValue4, rating.NumberOfReviews)
+        @renderRatingRow(rating.ScoreValue5Text, rating.ScoreValue5, rating.NumberOfReviews)
+    </div>
+    }
+</div>
+}
+
+@helper renderRatingRow(string label, int votes, int numberOfReviews)
+{
+            <div>
+                <div class="review-bar">
+                    <div class="score" style="width:
+            @PercentOf(votes, numberOfReviews)%"></div>
+                </div>
+                <h5>
+                    @label
+                    <span class="pull-right">
+                        @votes
+                    </span>
+                </h5>
+            </div>
+}
+
+@functions
+{
+    public double PercentOf(int value, int ofValue)
+    {
+        return ofValue != 0 ? Math.Round((double)((100 * value) / (double)ofValue), 2) : 0f;
+    }
+}

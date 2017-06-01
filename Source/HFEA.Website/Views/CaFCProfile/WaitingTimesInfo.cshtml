@@ -1,0 +1,165 @@
+﻿@using HFEA.Web.Controllers;
+@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<WaitingTimesInfo>
+
+
+<div class="panel-hfea panel-default">
+    <div class="panel-heading" role="tab" id="heading-waiting">
+        <h4 class="panel-title panel-title parent-panel-title">
+            <a class="accordion-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-waiting" aria-expanded="false" aria-controls="collapse-waiting">
+                @Umbraco.Field("waitingTimesTitle")
+                <span class="chevron"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapse-waiting" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-waiting">
+        <noscript>
+            <table class="waiting-times-table">
+                <thead>
+                    <tr>
+                        <th class="medium-heading"></th>
+                        <th class="medium-heading" colspan="3">@Umbraco.Field("waitingTimesIntro")</th>
+                    </tr>
+                    @if (Model.DonorSource != null && Model.DonorSource.Any())
+                    {
+                    <tr>
+                        <th class="medium-heading" colspan="4">Donor source: @String.Join(", ", Model.DonorSource)</th>
+                    </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <th class="medium-heading" colspan="4">Donor source: no data</th>
+                        </tr>
+                    }
+                    <tr>
+                        <th class="medium-heading">Ethnicity</th>
+                        <th class="medium-heading">@Umbraco.Field("eggDonorsLabel")</th>
+                        <th class="medium-heading">@Umbraco.Field("embryoDonorLabel")</th>
+                        <th class="medium-heading">@Umbraco.Field("spermDonorsLabel")</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @RenderWaitingTimesTable(null, false)
+            </tbody>
+        </table>
+    </noscript>
+
+        <div class="panel-body">
+            <div class="panel-intro row bg_light_blue">
+                <h5 class="medium-heading">@Umbraco.Field("waitingTimesIntro")</h5>
+                @if (Model.DonorSource != null && Model.DonorSource.Any())
+                {
+                <h5 class="medium-heading">Donor source: @String.Join(", ", Model.DonorSource)</h5>
+                }
+                else
+                {
+                    <h5 class="medium-heading">Donor source: no data</h5>
+                }
+                <div class="waiting-times-control hide-if-no-js">
+                    <ul class="list-inline list-unstyled stat-control">
+                        <li>
+                            <label>
+                                <input type="radio" name="terms" class="egg-donors" checked="checked" />
+                                @Umbraco.Field("eggDonorsLabel")
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="terms" class="sperm-donors" />
+                                @Umbraco.Field("spermDonorsLabel")
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="terms" class="embryo-donors" />
+                                @Umbraco.Field("embryoDonorLabel")
+                            </label>
+                        </li>                      
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-main-body waiting-times">
+                <div class="egg-donors stats">
+                    @RenderWaitingTimesTable(Model.EggDonors, true)
+                </div>
+                <div class="sperm-donors stats">
+                    @RenderWaitingTimesTable(Model.SpermDonors, true)
+                </div>
+                <div class="embryo-donors stats">
+                    @RenderWaitingTimesTable(Model.EmbryoDonors, true)
+                </div>             
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@helper RenderWaitingTimesTable(WaitingTimes wt, bool JSEnabled)
+{
+if (JSEnabled)
+{
+        <table class="waiting-times-table">
+            <thead>
+            <th class="medium-heading">Ethnicity</th>
+            <th class="medium-heading">Waiting times</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>White</td>
+                    <td>@wt.White</td>
+                </tr>
+                <tr>
+                    <td>Black</td>
+                    <td>@wt.Black</td>
+                </tr>
+                <tr>
+                    <td>Asian</td>
+                    <td>@wt.Asian</td>
+                </tr>
+                <tr>
+                    <td>Mixed</td>
+                    <td>@wt.Mixed</td>
+                </tr>
+                <tr>
+                    <td>Other ethnic groups</td>
+                    <td>@wt.Other</td>
+                </tr>
+            </tbody>
+        </table>
+}
+else
+{
+        <tr>
+            <td >White</td>
+            <td >@Model.EggDonors.White</td>
+            <td >@Model.EmbryoDonors.White</td>
+            <td >@Model.SpermDonors.White</td>
+        </tr>
+        <tr>
+            <td >Black</td>
+            <td >@Model.EggDonors.Black</td>
+            <td >@Model.EmbryoDonors.Black</td>
+            <td >@Model.SpermDonors.Black</td>
+        </tr>
+        <tr>
+            <td >Asian</td>
+            <td >@Model.EggDonors.Asian</td>
+            <td >@Model.EmbryoDonors.Asian</td>
+            <td >@Model.SpermDonors.Asian</td>
+        </tr>
+        <tr>
+            <td >Mixed</td>
+            <td >@Model.EggDonors.Mixed</td>
+            <td >@Model.EmbryoDonors.Mixed</td>
+            <td >@Model.SpermDonors.Mixed</td>
+        </tr>
+        <tr>
+            <td >Other ethnic groups</td>
+            <td >@Model.EggDonors.Other</td>
+            <td >@Model.EmbryoDonors.Other</td>
+            <td >@Model.SpermDonors.Other</td>
+        </tr>
+}
+}

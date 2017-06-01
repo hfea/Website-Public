@@ -1,0 +1,5 @@
+<div ng-controller="HFEA.TagsController">
+    <label ng-repeat="tag in tags">
+        <input type="checkbox" ng-click="toggleCheck(tag)" ng-checked="isChecked(tag)" checklist-value="tag.id"> {{tag.val}}
+    </label>
+</div>

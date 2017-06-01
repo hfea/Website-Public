@@ -1,0 +1,29 @@
+{
+    "clinics": [
+		{
+			"title": "Barts Health Centre for Reproduction Medicine",
+			"lat": "51.5172648",
+			"lng":"-0.102373"
+		},
+		{
+			"title": "Barts Health Centre for Reproduction Medicine",
+			"lat": "51.6172648",
+			"lng":"-0.702373"
+		},
+		{
+			"title": "Barts Health Centre for Reproduction Medicine",
+			"lat": "51.9172648",
+			"lng":"-0.502373"
+		},
+		{
+			"title": "Barts Health Centre for Reproduction Medicine",
+			"lat": "51.8172648",
+			"lng":"-0.602373"
+		},
+		{
+			"title": "Barts Health Centre for Reproduction Medicine",
+			"lat": "51.7172648",
+			"lng":"-0.202373"
+		}
+	]
+}

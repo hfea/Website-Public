@@ -1,0 +1,4 @@
+[submodule "Source/HFEA.API.Connector"]
+	path = Source/HFEA.API.Connector
+	url = https://hfea.visualstudio.com/DefaultCollection/IFQ/_git/Web-Shared
+	branch = master

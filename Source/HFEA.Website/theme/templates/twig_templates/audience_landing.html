@@ -1,0 +1,209 @@
+
+	{{ 
+		include ('partials/page-header-bg.html', {
+	    	title: 'Audience landing page',
+		}) 
+	}}
+	{{ include ('partials/intro-block.html', {
+	    title: 'Lorem Ipsum Landing',
+	    text: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum. Quisque elementum libero vel lorem rutrum efficitur. Aenean vitae justo sed justo tincidunt fringilla sed quis nunc. Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id tortor gravida congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin at laoreet sapien, id scelerisque metus.'
+	}) }}
+	<section>
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'Lorem Ipsum Page heading',
+			})
+		}}
+		{{ include('partials/text-panels.html', {
+			cols: '3',
+			header: 'new header',
+			panels: [
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+					link: 'link text',
+					linkclass: '',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.',
+					link: 'link text',
+					linkclass: '',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 		pretium. Maecenas finibus interdum rutrum.',
+					link: 'link text',
+					linkclass: '',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+					link: 'link text',
+					linkclass: '',
+				}
+			]
+			})
+		}}
+	</section>
+</div>
+
+{{
+	include('partials/blockquote.html', {
+		width: '12',
+		class: 'teal-bg',
+		img: 'mother-and-baby.jpg',
+		bodytext: 'My advice to other women getting fertility treatment is to not underestimate the amount of time it takes. My husband and I had been trying for 18 months when we were referred to a specialist and at that point we were feeling pretty desperate! In the end we had to have three cycles of IVF and happily gave birth to our wonderful boy last year but in total it took over four years from when we were ready to have children to having our son.',
+		linktext: 'Read Mary\’s story',
+	})
+}}
+<div class="container">
+	<section>
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'A typical patient journey',
+			})
+		}}
+		<p>
+			Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.
+		</p>
+		{{ 
+			include('partials/timeline.html', {
+				blocks: [
+					{
+						title: 'Lorem Ipsum Page heading 1',
+						copy: '1 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+					},
+					{
+						title: 'Lorem Ipsum Page heading 2',
+						copy: '2 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+					},
+					{
+						title: 'Lorem Ipsum Page heading 3',
+						copy: '3 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+					},
+					{
+						title: 'Lorem Ipsum Page heading 4',
+						copy: '4 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+					}
+					,{
+						title: 'Lorem Ipsum Page heading 5',
+						copy: '5 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+					},{
+						title: 'Lorem Ipsum Page heading 6',
+						copy: '6 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+		<div class="row">
+			<div class="col-md-6">
+				{{ 
+					include('partials/section-heading.html', {
+						title: 'Lorem Ipsum Page heading',
+					})
+				}}
+				<p>
+					Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.
+				</p>
+			</div>
+			<div class="col-md-6">
+				{{ 
+					include('partials/section-heading.html', {
+						title: 'Lorem Ipsum Page heading',
+					})
+				}}
+				<p>
+					Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.
+				</p>
+			</div>
+		</div>
+
+	</section>
+</div>
+<section class="teal-bg">
+	<div class="container">
+		{{ include('partials/text-panels.html', {
+			header: 'text panel heading',
+			cols: '4',
+			panels: [
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+					link: 'link text',
+					linkclass: 'text-right',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.',
+					link: 'link text',
+					linkclass: 'text-right',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.',
+					link: 'link text',
+					linkclass: 'text-right',
+				}
+			]
+		})
+		}}
+	</div>
+</section>
+<div class="container">
+	<section>
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'Related articles',
+			})
+		}}
+		{{ include('partials/tags.html', {
+			tags: [
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				}
+			]
+		})
+		}}
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'Lorem Ipsum Page heading',
+			})
+		}}
+		{{ include('partials/recently-viewed.html', {
+			cols: '3',
+			panels: [
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 		pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+				}
+			]
+			})
+		}}
+	</section>
+</div>
+

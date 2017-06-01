@@ -1,0 +1,231 @@
+﻿@using HFEA.Web.Controllers;
+@using HFEA.Web.ViewModel.Constants;
+@using HFEA.Web.Extensions;
+
+
+@model HFEA.Web.ViewModel.CaFC.CaFCSearchViewModel
+
+@{ string geoParams = string.Empty; }
+
+<div style="position:fixed; right:2em; top:2em;">
+    @Html.Action("GetCartView", "CaFCCartSurface")
+</div>
+@Html.HfeaNotificationMessageIfAny(CaFCCartSurfaceController.ErrorKey, NotificationMessageType.Error)
+@if (Model != null)
+{        <div class="results-section bg-light-grey-panel pb-50" id="results">
+        <div class="container">
+           
+            @if (Model.IsFullListOfClinics)
+            {
+                <p>You searched for:</p>
+                @Html.Raw("all UK clinics")
+            }
+            else
+            {
+                <p>You searched for clinics:</p>
+                if (!string.IsNullOrEmpty(Model.Location))
+                {
+                    <span class="search-terms-label">
+                        @if (Model.Distance == 0d)
+                        {
+                            @Html.Raw("in ")
+                        }
+                        else
+                        {
+                            @Html.Raw(string.Format("within {0} mile{1} from the centre of ", Model.Distance, Model.Distance == 1f ? "" : "s"))
+                        }
+                        @Model.Location
+                    </span>
+                }
+
+                if (Model.FilterTreatmentList != null && Model.FilterTreatmentList.Any())
+                {
+                    int listCount = Model.FilterTreatmentList.Count;
+                    string firstTerms = listCount <= 2 ? Model.FilterTreatmentList[0] : string.Join(", ", Model.FilterTreatmentList.ToArray(), 0, listCount - 1);
+                    string lastTerm = listCount > 1 ? " and " + Model.FilterTreatmentList[listCount - 1] : string.Empty;
+
+                    <span class="search-terms-label">
+                        treating @Html.Raw(firstTerms + lastTerm)
+                    </span>
+                }
+            }
+        </div>
+    </div>
+    <div class="results-section container">
+        <div class="row mt-50 mb-50">
+            <div class="col-lg-4 futura">
+                @if (Model.TotalRecords > 0)
+                {
+                    <p>
+                        @string.Format(
+                           "Your search returned {0} clinic{1}",
+                           Model.TotalRecords > 0 ? Model.TotalRecords.ToString() : "no",
+                           Model.TotalRecords == 1 ? string.Empty : "s")
+
+                    </p>
+                }
+                else
+                {
+                    <p>Please update your search parameters</p>
+                }
+                <h3>
+                    <a href="@Model.SearchPageUrl" title="Go back to search page">Update search criteria</a>
+                </h3>
+
+            </div>
+            @*<div class="col-lg-12">
+                    @Html.Action("SearchResultFilters", "CaFCSearchSurface")
+                </div>*@
+            @if (Model.TotalRecords > 0)
+            {
+                <div class="col-md-8">
+                    <ul class="nav switch-view">
+                        <li role="presentation" class="map">
+                            <a id="map-tab" href="#map-pane" aria-controls="map-pane" role="tab">
+                                <span class="circle-border">
+                                    <span class="hfea-icon-MapView"></span>
+                                </span>
+                                <span class="text">
+                                    View as map
+                                </span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="active grid">
+                            <a href="#grid" aria-controls="grid" role="tab">
+                                <span class="circle-border">
+                                    <span class="hfea-icon-ListView"></span>
+                                </span>
+                                <span class="text">
+                                    View as list
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            }
+        </div>
+        @if (Model.TotalRecords > 0)
+        {
+        <!-- Tab panes -->
+            <div class="tab-content row">
+                <div role="tabpanel" class="tab-pane active col-sm-12" id="grid">
+                    <!-- Sort radio buttons -->
+                    @using (Html.BeginUmbracoForm<CaFCSearchResultsController>("SubmitSortingOptions", FormMethod.Post))
+                    {
+                        <div class="bg-panel bg-panel-grey mb-50">
+                            <fieldset>
+                                <legend>Sort by:</legend>
+                                <div class="row">
+                                    <select class="hfea-select hfea-select-small" name="sortBy">
+                                        @renderSortOptionDropdown("Distance", 0, Model.SortingParameter)
+                                        @renderSortOptionDropdown("From A - Z", 1, Model.SortingParameter)
+                                        @renderSortOptionDropdown("From Z - A", 2, Model.SortingParameter)
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <div class="submit-btn-wrapper">
+                                <input type="submit" value="Update" class="submit-btn btn btn-primary btn-lg" />
+                            </div>
+                        </div>
+                    }
+
+                    <ul class="list-group clinic-list">
+                        @foreach (var clinic in Model.ClinicList)
+                    {
+                            <li class="clinic">
+                                @*@Html.Raw(geoParams)>*@
+                                <div class="row pb-20">
+                                    <div class="col-md-4">
+                                        <a href="@clinic.ProfilePageUrl">
+                                            <img class="img-responsive clinic-image" src="@clinic.ImageUrl" alt="@clinic.CentreName">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3 class="clinic-name">
+                                            <a href="@clinic.ProfilePageUrl">
+                                                @clinic.CentreName
+                                            </a>
+                                        </h3>
+
+                                        <p class="clinic-desc">@clinic.CentreTypeDescription</p>
+
+                                        @if (clinic.DistanceFromSource > 0)
+                                        {
+                                            <p class="distance">
+                                                <span class="glyphicon glyphicon-map-marker"></span>
+                                                @clinic.DistanceFromSource @if (@clinic.DistanceFromSource == 1f)
+                                                { @Html.Raw("mile");
+                                                }
+                                                else
+                                                { @Html.Raw("miles");
+                                                }
+                                            </p>
+                                        }
+
+                                        @if (clinic.HasLinkedLinks)
+                                        {
+                                            foreach (var link in clinic.LinkItemList)
+                                            {
+                                                if (link.Type == CaFCConstants.ClinicType.Satellite)
+                                                {
+                                                    <p class="clinic-desc">Satellite clinic to <a href="@link.Url" title="view profile of @link.ClinicName">@link.ClinicName</a></p>
+                                                }
+                                                if (link.Type == CaFCConstants.ClinicType.Transport)
+                                                {
+                                                    <p class="clinic-desc">Transport clinic to <a href="@link.Url" title="view profile of @link.ClinicName">@link.ClinicName</a></p>
+                                                }
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+
+                                @Html.Partial("ClinicSpecialitiesView", clinic)
+
+                                @if (!clinic.IsSatelliteOrTransportClinic)
+                                {
+                                    <div class="row bg-panel-grey mt-50 clinic-rating">
+                                        @Html.Partial("ClinicRatingsView", clinic)
+                                    </div>
+                                }
+
+                                <div class="compare-add-button">
+                                      @Html.Action("GetAddButton", "CaFCCartSurface", new { id = clinic.Id, name = clinic.CentreName })  
+                                </div>                                
+                            </li>
+                        }
+                    </ul>
+                    @Html.Partial("Pagination", Model.PaginationData)
+                </div>
+                <div role="tabpanel" class="tab-pane" id="map-pane">
+                    <div class="embed-responsive embed-responsive-16by9 ">
+                        Map View
+
+                        <div id="map" class="embed-responsive-item"></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<script>
+    var mapDataList = @Html.Raw(Model.MapDataJSON)
+</script>
+
+@helper renderSortOptionRadio(string title, int id, int selectedId)
+{
+    string elementId = "radio" + id.ToString();
+    <div class="col-md-2">
+        <label for="@elementId">
+            <input type="radio" id="@elementId" name="sortBy" value="@id" @if (id == selectedId) { @Html.Raw("checked")   } />
+            @title
+        </label>
+    </div>
+}
+
+@helper renderSortOptionDropdown(string title, int id, int selectedId)
+{
+    string elementId = "option" + id.ToString();
+    <option value="@id" id="@elementId" @if (id == selectedId) { @Html.Raw("selected") }>@title</option>
+}

@@ -1,0 +1,16 @@
+{
+  "id": "6a27c363-c972-4d32-b0f9-d9901719e43f",
+  "name": "Send email back to user",
+  "form": "c72035aa-ca5c-4377-af12-5a2bd4b7bb3a",
+  "active": true,
+  "workflowTypeId": "e96badd7-05be-4978-b8d9-b3d733de70a5",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "{email}",
+    "SenderEmail": "",
+    "Subject": "thanks for completing the form",
+    "Message": "thanks for completing the form",
+    "Attachment": ""
+  },
+  "sortOrder": 1
+}

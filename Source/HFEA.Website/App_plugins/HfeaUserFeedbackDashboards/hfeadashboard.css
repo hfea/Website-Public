@@ -1,0 +1,8 @@
+﻿.data-page { padding:0 5px; border-left: 1px solid #808080;  }
+.data-page span { text-decoration:underline; }
+.data-page span.active { font-weight:bold;text-decoration:none; }
+.data-page:first-child { padding-left:0; border-left:none;  }
+.notApproved, .notApproved textarea {color: #570606;}
+form .search-filter { width:100%; border:1px solid #b2a8a8; background-color:#ebebeb; padding:10px; }
+.error.inline-error {color: #a70808;}
+.dashboard-results textarea { width:100%; box-sizing:border-box; border:none; }

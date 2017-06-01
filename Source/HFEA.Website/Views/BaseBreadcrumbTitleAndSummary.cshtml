@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Base.cshtml";
+}
+
+<div class="background-page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                @*Umbraco.RenderMacro("Breadcrumb")*@  
+                <h1>@Umbraco.Field("pageTitle")</h1>
+                <div class="lead">
+                    @Umbraco.Field("bodyText")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@RenderBody()

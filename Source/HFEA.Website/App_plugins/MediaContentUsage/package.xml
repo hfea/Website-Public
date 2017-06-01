@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>mediacontentusage.controller.js</guid>
+      <orgPath>/App_Plugins/MediaContentUsage</orgPath>
+      <orgName>mediacontentusage.controller.js</orgName>
+    </file>
+    <file>
+      <guid>mediacontentusage.html</guid>
+      <orgPath>/App_Plugins/MediaContentUsage</orgPath>
+      <orgName>mediacontentusage.html</orgName>
+    </file>
+    <file>
+      <guid>mediacontentusage.resource.js</guid>
+      <orgPath>/App_Plugins/MediaContentUsage</orgPath>
+      <orgName>mediacontentusage.resource.js</orgName>
+    </file>
+    <file>
+      <guid>package.manifest</guid>
+      <orgPath>/App_Plugins/MediaContentUsage</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>Chalmers.MediaContentUsage.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>Chalmers.MediaContentUsage.dll</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>Media Content Usage</name>
+      <version>1.0.1</version>
+      <license url="http://opensource.org/licenses/MIT">MIT License</license>
+      <url>https://github.com/rolfis/MediaContentUsage</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Rolf Johansson</name>
+      <website>https://github.com/rolfis</website>
+    </author>
+    <readme><![CDATA[Event Handler and Property Editor for Media items in Umbraco 7.1.4, to find which Content references different Media. 
+
+Creates a new RelationType called "Relate Media and Content". Listens to the Published event for Content and adds relations between Media and Content that can be found in different Properties for relevant DataTypes.
+
+The relations can be read in Umbraco Backoffice in the Developer section, or with the provided Property Editor called "Media Content Usage". When a property of this type is placed on Media Items, it gives the editor information and links to referenced Content.
+
+1.0.1 adds the feature to view the whole path to the Content, plus handling unpublished and trashed Content in a better way.]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes>
+    <DataType Name="Media Content Usage" Id="Chalmers.MediaContentUsage" Definition="7ee43f89-64d4-4437-879f-dd56dbe49131" DatabaseType="Nvarchar">
+      <PreValues>
+        <PreValue Id="85" Value="1" Alias="showPath" />
+      </PreValues>
+    </DataType>
+  </DataTypes>
+</umbPackage>

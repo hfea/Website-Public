@@ -1,0 +1,324 @@
+﻿@using HFEA;
+@using HFEA.Core.Extensions;
+@using HFEA.Web.Controllers;
+@using HFEA.Web.ViewModel.API;
+@using HFEA.Web.ViewModel.CaFC;
+@using HFEA.Web.ViewModel.CaFC.Model;
+@using HFEA.Web.ViewModel.CaFC.Model.Comparison;
+@using HFEA.Web.Extensions;
+
+@inherits UmbracoViewPage<ComparisonViewModel>
+
+@Html.HfeaNotificationMessageIfAny(CaFCComparisonSurfaceController.ErrorKey, HFEA.Web.ViewModel.Constants.NotificationMessageType.Error)
+@if (Model != null)
+{
+    @Html.Partial("~/Views/CaFCCompare/CompareForm.cshtml", Model.ClinicIds);
+
+    if (Model.ClinicList != null)
+    {
+        //render generic clinic information
+        <table class="compare-generic">
+            <tbody>
+                @renderComparisonRow("", renderGenericInfoItem)
+                @renderComparisonRow("", renderImage)
+            </tbody>
+        </table>
+
+        <h2>Overall ratings</h2>
+        <table class="compare-ratings">
+            <tbody>
+                @renderComparisonRow("Inspection rating", renderInspectionRating)
+                @renderComparisonRow("Patient rating", renderPatientRating)
+                @renderComparisonRow("IVF birth rate", (x) => x.Ratings != null ? renderStatsItem(x.Ratings.IVF) : renderEmptyValue())
+                @renderComparisonRow("Multiple birth rate", (x) => x.Ratings != null ? renderStatsItem(x.Ratings.MultipleRate) : renderEmptyValue())
+                @renderComparisonRow("IUI birth rate", (x) => x.Ratings != null ? renderStatsItem(x.Ratings.IUI) : renderEmptyValue())
+                @renderComparisonRow("DI birth rate", (x) => x.Ratings != null ? renderStatsItem(x.Ratings.DI) : renderEmptyValue())
+            </tbody>
+        </table>
+
+        @renderComparisonBlock("Eligibility requirements", Model.EligibilityItems, ((x) => x.Eligibility))
+        @renderComparisonBlock("Treatments", Model.TreatmentItems, ((x) => x.Treatments))
+        @renderComparisonBlock("Donor services", Model.DonorServiceItems, ((x) => x.DonorServices))
+
+        <h2>Donor Gamete Availability</h2>
+        <table class="compare-gamete-availability">
+            <tbody>
+                @renderComparisonRow("White", (x) => x.GameteAvailability != null ? renderGameteAvailability(x.GameteAvailability.White) : renderEmptyValue())
+                @renderComparisonRow("Black", (x) => x.GameteAvailability != null ? renderGameteAvailability(x.GameteAvailability.Black) : renderEmptyValue())
+                @renderComparisonRow("Asian", (x) => x.GameteAvailability != null ? renderGameteAvailability(x.GameteAvailability.Asian) : renderEmptyValue())
+                @renderComparisonRow("Mixed", (x) => x.GameteAvailability != null ? renderGameteAvailability(x.GameteAvailability.Mixed) : renderEmptyValue())
+                @renderComparisonRow("Other ethnic groups", (x) => x.GameteAvailability != null ? renderGameteAvailability(x.GameteAvailability.Other) : renderEmptyValue())
+            </tbody>
+        </table>
+
+        @renderComparisonBlock("Counselling and support", Model.CounsellingItems, ((x) => x.CounsellingAndSupport))
+        @renderComparisonBlock("Staffing", Model.StaffingItems, ((x) => x.Staffing))
+        @renderComparisonBlock("Facilities", Model.FacilitiesItems, ((x) => x.Facilities))
+
+        <h2>Clinic operating details</h2>
+        <table class="compare-operating-details">
+            <tbody>
+                @renderComparisonRow("Opening hours", renderOpeningTimes)
+                @renderComparisonRow("Address", renderClinicAddress)
+            </tbody>
+        </table>
+
+        if (Model.AssociatedClinicsExist)
+        {
+            <h2>Associated clinics</h2>
+            <table class="compare-more-clinics">
+                <tbody>
+                    @renderComparisonRow("Satellite clinics", (x) => renderAssociatedClinics(x.SatelliteClinicList))
+                    @renderComparisonRow("Transport clinics", (x) => renderAssociatedClinics(x.TransportClinicList))
+                </tbody>
+            </table>
+        }
+    }
+}
+
+@helper renderBooleanValue(bool? value)
+{
+string css;
+string val;
+if (value != null)
+{
+    if (value.Value)
+    {
+        css = "data-check";
+        val = "available";
+    }
+    else
+    {
+        css = "data-cross";
+        val = "not available";
+    }
+}
+else
+{
+    css = "data-na";
+    val = "No data available";
+}
+
+    <span class="@css">@val</span>
+}
+
+@helper renderEmptyValue()
+{
+    <span>@Model.NotAvailableString</span>
+}
+
+@helper renderComparisonRow(string title, Func<ComparisonClinic, HelperResult> renderItem)
+{
+    <tr>
+        <td>@title</td>
+        @foreach (var clinic in Model.ClinicList)
+        {
+            <td>@renderItem(clinic)</td>
+        }
+
+    </tr>
+}
+
+@helper renderComparisonBlock(
+    string title,
+    List<IdValuePairInt> rowsData,
+    Func<ComparisonClinic, List<ComparisonDataItem>> propertySelector)
+{
+
+if (!rowsData.IsNullOrEmpty())
+{
+        <h2>@title</h2>
+        <table class="compare-boolean">
+            <tbody>
+                @foreach (IdValuePairInt rowInfo in rowsData)
+                {
+                    <tr>
+                        <td>@rowInfo.Value</td>
+                        @foreach (ComparisonClinic clinic in Model.ClinicList)
+                        {
+                            bool? value = clinic.GetPropertyValueById(rowInfo.Id, propertySelector);
+                            <td>
+                                @renderBooleanValue(value)
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+}
+}
+
+@helper renderGenericInfoItem(ComparisonClinic clinic)
+{
+    <a href="@GetRemoveLinkUrl(clinic.ClinicId)" class="remove-link">Remove</a>
+    <h3>@clinic.ClinicName</h3>
+    <span>@clinic.ClinicType</span>
+}
+
+@helper renderImage(ComparisonClinic clinic)
+{
+if (!string.IsNullOrEmpty(clinic.ProfileImage))
+{
+        <img src="@clinic.ProfileImage" alt="clinic image" />
+}
+}
+
+@helper renderInspectionRating(ComparisonClinic clinic)
+{
+if (clinic.Ratings != null)
+{
+    int score = clinic.Ratings.InspectionRating;
+        <span class="rating-number">
+            @if (score > 0)
+        {
+                @score
+            }
+            else
+            {
+                @renderEmptyValue()
+            }
+        </span>
+        @Html.Partial("DotRatingView", score)
+        <span class="rating-info">Licenced until: @clinic.Ratings.InspectionRatingLicensedUntil.ToHFEADisplayShortDateStringOrDefault(Model.NotAvailableString)</span>
+}
+}
+
+@helper renderPatientRating(ComparisonClinic clinic)
+{
+if (clinic.Ratings != null)
+{
+    double score = clinic.Ratings.PatientRating;
+        <span class="rating-number">
+            @if (score > 0)
+        {
+                @score
+            }
+            else
+            {
+                @renderEmptyValue()
+            }
+        </span>
+        @Html.Partial("StarRatingView", score)
+    if (clinic.Ratings.PatientRatingCount > 0)
+    {
+            <span class="rating-info">Based on: @clinic.Ratings.PatientRatingCount ratings</span>
+    }
+
+}
+}
+
+@helper renderStatsItem(StatisticsItem data)
+{
+if (data != null)
+{
+    string totalCount = data.Count > 0 ? data.Count.ToString() : Model.NotAvailableString;
+
+        <span class="stat-large mb-20">@data.ClinicRate%</span>
+        <p class="mt-20 detailedStats-averageLegend">
+            <span class="@data.CompareToAverage.ToString().ToLower()">@data.CompareToAverageString</span> national average
+        </p>
+
+        <span class="rating-info">Based on: <span class="number">@totalCount</span></span>
+}
+else
+{
+    @renderEmptyValue()
+}
+
+}
+
+@helper renderGameteAvailability(GameteAvailabilityStats group)
+{
+if (group != null)
+{
+        <div class="donation-stats">
+            @renderBooleanValue(group.Egg.IsAvailable)
+            <span class="info">Egg donors: @group.Egg.GameteAvailablityText</span>
+        </div>
+        <div class="donation-stats">
+            @renderBooleanValue(group.Sperm.IsAvailable)
+            <span class="info">Sperm donors: @group.Egg.GameteAvailablityText</span>
+        </div>
+        <div class="donation-stats">
+            @renderBooleanValue(group.Embryo.IsAvailable)
+            <span class="info">Embryo donors: @group.Egg.GameteAvailablityText</span>
+        </div>
+}
+}
+
+@helper renderOpeningTimes(ComparisonClinic clinic)
+{
+    <div class="times-data">
+        @if (!clinic.OpeningTimesList.IsNullOrEmpty())
+        {
+            @Html.Partial("~/Views/CaFCShared/ClinicOpeningTimes.cshtml", clinic.OpeningTimesList)
+        }
+        else
+        {
+            @renderEmptyValue()
+        }
+    </div>
+
+    if(!string.IsNullOrEmpty(clinic.OpeningTimesCaveat))
+    {
+        <span class="caveat-text">@clinic.OpeningTimesCaveat</span>
+    }
+}
+
+@helper renderClinicAddress(ComparisonClinic clinic)
+{
+    if (!clinic.AddressLines.IsNullOrEmpty())
+    {
+        @renderList(clinic.AddressLines)
+    }
+    else
+    {
+        @renderEmptyValue()
+}
+}
+
+@helper renderList(List<string> list)
+{
+if (!list.IsNullOrEmpty())
+{
+    <ul class="list-unstyled">
+        @foreach (var line in list)
+        {
+            <li>@line</li>
+        }
+    </ul>
+}
+}
+
+@helper renderAssociatedClinics(List<SatelliteClinicInfo> data)
+{
+if (!data.IsNullOrEmpty())
+{
+        foreach (var clinic in data)
+        {
+            <ul class="list-unstyled associated-clinic">
+                <li>
+                    <h3 class="small-header">@clinic.CentreName</h3>
+                    @renderList(clinic.AddressLinesList)
+                </li>
+            </ul>
+    }
+}
+else
+{
+    <span>None</span>
+}
+}
+
+@functions {
+    public string GetRemoveLinkUrl(int clinicId)
+    {
+        string url = Request.Url.ToString()
+            .Replace("," + clinicId.ToString(), "")
+            .Replace("=" + clinicId.ToString() + ",", "=");
+
+        return url;
+    }
+}
+
+

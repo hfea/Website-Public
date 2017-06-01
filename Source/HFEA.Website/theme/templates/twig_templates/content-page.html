@@ -1,0 +1,130 @@
+{{ 
+	include ('partials/page-header-bg.html', {
+    	title: 'How to choose a clinic',
+    	desc: 'Choosing a fertility clinic is a very personal decision and the criteria that matter to you will depend on your circumstances. This section gives you a list of things to consider when choosing the best clinic for your needs.'
+	}) 
+}}
+<div class="container">
+	{{ include ('partials/intro-block.html', {
+	    title: 'Services offered',
+	    text: 'Does the clinic offer the treatment that is best for you? What about other services you may want such as a support group or free counselling? Use the Choose a Fertility Clinic tool on our website to find clinics which offer the treatments and services you require'
+	}) }}
+	<section>
+
+		<div class="row">
+			<div class="col-md-6">
+				{{ 
+					include('partials/section-heading.html', {
+						title: 'Eligibility for treatment',
+					})
+				}}
+				<p>
+					Some clinics have age and body mass index (BMI) criteria for treatments. Others only treat private patients. Contact your shortlist of possible clinics to find out if you are eligible for treatment there. Eligibility and funding information is also included on each clinic’s page on Choose a Fertility Clinic.
+				</p>
+				{{ 
+					include('partials/section-heading.html', {
+						title: 'Cost',
+					})
+				}}
+				<p>
+					If you are paying for fertility treatment, your clinic should give you a costed treatment plan detailing the specific procedures you need. This can help you understand how these costs are calculated. Some clinics may offer you extra services, such as new technologies, which will carry an additional cost. We recommend that you conduct thorough research into any of these treatments to ensure you are fully informed about whether you require these optional services you can <a href="#">check here</a>.
+				</p>
+				<p>
+					Your clinic should give you regular cost updates as your treatment progresses or changes. If you don’t understand what a particular charge is for, or how it is calculated, ask your clinic to explain. Some clinics offer IVF cycles at a reduced cost if you donate some of your eggs for others to use (egg sharing) or for research. Some clinics also offer IVF cycles at a reduced cost if a man donates his sperm for others to use (sperm sharing) or for research.
+				</p>
+			</div>
+			<div class="col-md-6">
+				{{ 
+					include('partials/spotlight-bg.html', {
+						title: 'CCG Eligibility',
+						class: 'spotlight-bg',
+						bgimage: '/theme/assets/images/design/spotlight-bg.png',
+						body: 'Eligibility for funding is based on specific criteria set by your CCG (Clinical Commission Group). The criteria often take into account issues such as your age, weight previous children as well as other criterion. It is important to remember that each CCG sets its own funding criteria and that it can vary widely from one to another. If you do not meet their requirements for funding, you will be unable to get NHS funding for fertility treatment.'
+					})
+				}}
+			</div>
+		</div>
+		
+	</section>
+</div>
+
+{{ include('partials/text-panels-bg.html', {
+	cols: '6',
+	panels: [
+		{
+			title: 'We show a clinic’s success rates in three different ways:',
+			body: '<ul><li>whether the success rate is above, below or consistent with the national average</li>
+					<li>the number of treatment cycles a clinic carried out and how many resulted in a birth</li>
+					<li>the predicted chance of a woman giving birth if she was treated at that clinic.</li></ul>
+
+					<p>The success of an IVF or intracytoplasmic sperm injection (ICSI) treatment can be measured by looking at how likely it is that a birth will result from a treatment cycle or from each embryo transferred. We show both in our figures.</p>'
+		},
+		{
+			title: 'Directly comparing the success rates of clinics is not useful because:',
+			body: '<ul><li>clinics treat patients with different diagnoses, which affects the average success rates</li> 
+					<li>most clinics carry out too few cycles each year to reliably predict a patient’s mfuture chance of success</li> 
+					<li>the live birth success rates relate to a period of treatment from about two years mago and may not be a good indication of success rates at the same clinic today.</li></ul>
+
+					<p>The majority of clinics’ success rates are around the national average.</p>'
+		}
+	]
+	})
+}}
+
+<div class="container">
+	<section>
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'Related content',
+			})
+		}}
+		{{ include('partials/tags.html', {
+			tags: [
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				}
+			]
+		})
+		}}
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'Lorem Ipsum Page heading',
+			})
+		}}
+		{{ include('partials/recently-viewed.html', {
+			cols: '3',
+			panels: [
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 		pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+				}
+			]
+			})
+		}}
+	</section>
+</div>
+

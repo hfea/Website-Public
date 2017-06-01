@@ -1,0 +1,87 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<header class="site-header">
+    <div class="container">
+        <div class="col-lg-4 col-lhs">
+            <a class="logo" href="/">
+                <img src="/theme/assets/images/logos/Logo.png" alt="logo">
+            </a>
+            <a href="/" class="mobile-menu"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+        </div>
+        <div class="col-lg-8 col-rhs">
+            <div class="">
+                <div class="col masthead-links">
+                    <a href="/">Home</a>
+                    <a href="/contact-us">Contact us</a>
+                </div>
+                <div class="col rhs">
+                    @Html.Partial("~/Views/SearchPage/SimpleSearchForm.cshtml",
+                        new HFEA.Web.ViewModel.Search.SearchBoxViewModel()
+                        {
+                            SearchBoxLabel = "Search for a treatment",
+                            SearchButtonLabel = "Search"
+                        })
+                </div>
+            </div>
+            <nav class="primary-nav clearfix">
+                <ul class="list-unstyled list-inline">
+                    @foreach (var page in Umbraco.TypedContentAtRoot().First().Children.Where("visible"))
+                    {
+                        <li class="auto_height primary-li">
+                            <a href="@page.UrlAbsolute()">
+                                @if (page.HasValue("navTitle"))
+                                {
+                                    @page.GetPropertyValue("navTitle")
+                                }
+                                else if (page.HasValue("pageTitle"))
+                                {
+                                    @page.GetPropertyValue("pageTitle")
+                                }
+                                else
+                                {
+                                    @page.Name
+                                }
+                            </a>
+                            @if (page.Children.Count() > 0)
+                            {
+                                <div class="subnav">
+                                    <div class="container">
+                                        <ul class="list-unstyled row">
+                                            @foreach (var subpage in page.Children.Where("visible"))
+                                            {
+                                                <li class="col-lg-4 column col">
+                                                    <a href="@subpage.UrlAbsolute()">
+                                                        @if (subpage.HasValue("navTitle"))
+                                                        {
+                                                            @subpage.GetPropertyValue("navTitle")
+                                                        }
+                                                        else if (subpage.HasValue("pageTitle"))
+                                                        {
+                                                            @subpage.GetPropertyValue("pageTitle")
+                                                        }
+                                                        else
+                                                        {
+                                                            @subpage.Name
+                                                        }
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        </li>
+                    }
+                    @*
+                        first look for navigationTitle, then pageTitle then pageName
+                    *@
+                    @*<li><a href="/i-am">I am...</a></li>
+                        <li><a href="/treatments">Treatments</a></li>
+                        <li><a href="/donation">Donation</a></li>
+                        <li><a href="/choose-a-clinic">Choose a clinic</a></li>
+                        <li><a href="/about-us">About us</a></li>*@
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

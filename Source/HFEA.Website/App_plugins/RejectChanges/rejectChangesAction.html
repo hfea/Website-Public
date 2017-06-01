@@ -1,0 +1,24 @@
+﻿<div ng-controller="Umbraco.Editors.Content.RejectChangesController">
+    <div class="umb-dialog-body form-horizontal">
+        <div class="umb-pane">
+            <p style="font-weight:bold">Comment:</p>
+
+            <textarea rows="10" id="comment" ng-model="commentModel" style="width:400px;">
+            </textarea>
+           
+        </div>
+
+        <div class="umb-pane">
+            <p style="font-weight:bold">Users:</p>
+            <select ng-options="option.name for option in userList" ng-model="selectedUser" required>
+            </select>
+        </div>
+    </div>
+    <div class="umb-dialog-footer btn-toolbar umb-btn-toolbar">
+        <a class="btn btn-link" ng-click="nav.hideDialog()">
+            <localize key="general_cancel">Cancel</localize>
+        </a>
+
+        <button class="btn btn-primary btn" ng-click="sendRejectEmail();nav.hideDialog()" ng-disabled="checkUserListCount()">Send Email</button>     
+    </div>
+</div>

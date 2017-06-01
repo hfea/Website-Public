@@ -1,0 +1,206 @@
+{{ 
+	include ('partials/page-header-bg.html', {
+    	title: 'IVF treatment'
+	}) 
+}}
+<div class="container">
+	<section>
+		<div class="row">
+			<div class="col-md-6">
+				<h2>What is in vitro fertilisation (IVF)? </h2>
+				<p>IVF stands for in vitro fertilisation. It’s a type of fertility treatment which involves fertilising a woman’s eggs with a man’s sperm outside the body. The hope is to create an embryo which can be transferred to a woman’s womb and then develop into a baby.</p>
+			</div>
+			<div class="col-md-6">
+				<div class="embed-responsive embed-responsive-16by9">
+				  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dvnoETuNZBA" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>			
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				{{ 
+					include('partials/spotlight.html', {
+						title: 'IVF History',
+						body: '<h4>Introduction</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium pretium tempor. Ut eget imperdiet neque. In volutpat ante semper diam molestie, et aliquam erat laoreet. Sed sit amet arcu aliquet, molestie justo at, auctor nunc.</p>
+								<h4>Some title</h4>
+								<p>Phasellus ligula ipsum, volutpat eget semper id, viverra eget nibh. Suspendisse luctus mattis cursus. Nam consectetur ante at nisl hendrerit gravida. Donec vehicula rhoncus mattis. Mauris dignissim semper mattis.</p>
+								<h4>More in here</h4>
+								<p>Nam consectetur ante at nisl hendrerit gravida. Donec vehicula rhoncus mattis. Mauris dignissim semper mattis. </p>',
+						linktext: "Read more"
+					})
+				}}
+			</div>
+			<div class="col-md-6">
+				{{ 
+					include('partials/section-heading.html', {
+						title: 'Is IVF for me?',
+					})
+				}}
+				<p>IVF may be recommended for:</p>
+				<ul>
+					<li>People with unexplained fertility problems, or who have tried other mtreatments that were unsuccessful</li>
+					<li>Men with fertility problems, such as those who produce less sperm or  mwho have sperm with an unusual shape or movement</li>
+					<li>Women with blocked fallopian tubes </li>
+					<li>People using donated or frozen eggs in their treatment </li>
+					<li>People using frozen sperm in their treatment</li>
+					<li>Women up to the age of 42</li>
+				</ul>
+			</div>
+		</div>
+
+	</section>
+</div>
+
+{{
+	include('partials/blockquote.html', {
+		width: '12',
+		img: 'mother-and-baby.jpg',
+		bodytext: 'I had IVF treatment with my partner Paul after failing to conceive for 3 years. I was diagnosed with Polycystic Ovary Syndrome PCOS.  ',
+		linktext: 'Read Karen and Pauls story',
+	})
+}}
+
+<div class="container">
+	<section>
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'IVF treatment options',
+			})
+		}}
+		<p>If you’re having IVF there are a number of different options you might like to consider and discuss with your doctor.</p>
+
+		{{ include('partials/spotlight-group.html', {
+			cols: '4',
+			panels: [
+				{
+					title: 'ICSI',
+					body: 'This option may be suitable for men with fertility problems, such as those who produce less sperm, don’t ejaculate or whose sperm is of an unusual shape or movement.'
+				},
+				{
+					title: 'Natural cycle IVF',
+					body: 'This type of treatment involves no fertility drugs so it may be suitable for women who are unable to take them (due to health reasons for example) or who choose not to. '
+				},
+				{
+					title: 'Mild stimulation IVF',
+					body: 'This type of treatment involves taking fewer fertility drugs than normal, so may be suitable for women who are particularly at risk from having a bad reaction to fertility drugs. Talk to your doctor about whether this applies to you.'
+				}
+			]
+			})
+		}}
+
+		{{ include('partials/spotlight-group.html', {
+			cols: '4',
+			panels: [
+				{
+					title: 'Blastocyst transfer',
+					body: 'This is suitable for younger women with a good chance of getting pregnant through IVF and for women who have produced good quality embryos in a previous cycle, which didn’t implant in the womb.
+'
+				},
+				{
+					title: 'Assisted hatching',
+					body: 'This may be suitable for older women undergoing IVF however the lack of evidence means it is not currently a recommended treatment.'
+				}
+			]
+			})
+		}}
+	</section>
+</div>
+
+<div class="container">
+	<section>
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'IVF - the risks',
+			})
+		}}
+
+		{{ include('partials/text-panels.html', {
+			cols: '3',
+			panels: [
+				{
+					title: 'Drug reaction',
+					body: 'A mild reaction to fertility drugs may involve hot flushes, feeling down or irritable, headaches and restlessness. Symptoms usually disappear after a short time but if they do not, you should see a doctor as soon as possible.',
+					link: 'Find out more'
+				},
+				{
+					title: 'Ovarian hyper-stimulation syndrome (OHSS)',
+					body: 'OHSS can be a dangerous over-reaction to fertility drugs used to stimulate egg production. It can cause symptoms such as a swollen stomach, stomach pains, nausea and vomiting.
+					If you start to experience any of these symptoms you must contact your doctor immediately.',
+					link: 'Find out more'
+				},
+				{
+					title: 'Miscarriage',
+					body: 'Although the risk of a miscarriage after IVF is no higher than after a natural conception, nor is the risk lower.
+					Your clinic will arrange an early pregnancy ultrasound scan if you conceive after IVF. This is to check that the pregnancy is not likely to miscarry. The scan is usually done about two weeks after the positive pregnancy test.',
+					link: 'Find out more'
+				},
+				{
+					title: 'Ectopic pregnancy',
+					body: 'It’s not easy to hear, but sadly fertility treatment doesn’t work for most people. Managing your expectations now will make it much easier if you do have a disappointing result and you’ll be better prepared for taking next steps.',
+					link: 'Find out more'
+				}
+			]
+		})
+		}}
+	</section>
+</div>
+
+<div class="container">
+	<section>
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'Related content',
+			})
+		}}
+		{{ include('partials/tags.html', {
+			tags: [
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				}
+			]
+		})
+		}}
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'Lorem Ipsum Page heading',
+			})
+		}}
+		{{ include('partials/recently-viewed.html', {
+			cols: '3',
+			panels: [
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 		pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+				}
+			]
+			})
+		}}
+	</section>
+</div>
+

@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Newtonsoft.Json.Linq.JObject>
+@{
+    dynamic node = null;
+
+    var val = Model["value"]["node"]["id"];
+    int id;
+
+    if (val != null && int.TryParse(val.ToString(), out id))
+    {
+        node = Umbraco.Content(id);
+    }
+}
+
+@if (node != null && node.HasProperty("pageTitle"))
+{
+    <article class="bg_bright_blue">
+        <div class="padding">
+            <p class="cat">Events</p>
+            <h3 class="header"><a href="@node.Url">@Model["header"]</a></h3>
+            <p class="location"><span class="hfea-icon-MapView"></span>@Model["eventLocation"]</p>
+            <p class="date">@Model["eventDate"]</p>
+        </div>
+    </article>
+}

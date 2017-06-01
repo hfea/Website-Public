@@ -1,0 +1,10 @@
+@using Umbraco.Web.Templates;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+
+@{
+    var text = Model.value != null ? Model.value.ToString() : "";
+}
+<aside class="rhs-list">
+	<h3>@Model.header</h3>
+	<div>@Html.Raw(TemplateUtilities.ParseInternalLinks(text))</div>
+</aside>

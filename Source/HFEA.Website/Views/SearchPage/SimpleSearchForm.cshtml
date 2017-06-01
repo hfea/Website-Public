@@ -1,0 +1,16 @@
+﻿@using HFEA.Web.Controllers;
+@model HFEA.Web.ViewModel.Search.SearchBoxViewModel
+
+@using (Html.BeginUmbracoForm<SearchPageController>("SearchSubmit", null, new { id = "search-form simple-search", @class = "search" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="large-search">
+        <label class="sr-only">@Model.SearchBoxLabel</label>
+        <div class="inputs">
+            @Html.TextBoxFor(x => x.SearchParams.SearchKeywords, new { id = "SearchKeywords", autocomplete = "off", @class = "ui-autocomplete-input" })
+            <button class="search-button" type="submit">@Model.SearchButtonLabel</button>
+        </div>
+    </div>
+}
+
+

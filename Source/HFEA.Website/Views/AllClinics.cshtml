@@ -1,0 +1,65 @@
+﻿@using HFEA.Web.Helpers;
+@using HFEA.Web.Utilities;
+@using HFEA.Web.ViewModel.Constants;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{    
+    Layout = "BaseBreadcrumbTitleAndSummary.cshtml";
+    var viewModel = ((RenderModelAdapter<List<HFEA.Web.ViewModel.CaFC.Model.ClinicItem>>)Model).ViewModel;
+}
+
+<div class="row text-center">
+    @Html.Partial("_CaFCAlphabeticList")
+</div>
+<div class="results-section container" id="results">
+    <div>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="grid">
+                @TextHelpers.GetSingularOrPluralLabel(viewModel.Count(),
+                "No centres found",
+                "{0} centre found",
+                "{0} centres found")
+                <ul class="list-group clinic-list">
+                    @foreach (var clinic in viewModel)
+                    {
+                        <li>
+                            <ul class="list-inline fill-full">
+                                <li>
+                                    @if (clinic.HasLinkedLinks)
+                                    {
+                                        <p>@clinic.CentreName</p>
+
+                                        <p>Tel: @clinic.MainPhoneNumber</p>
+                                        foreach (var link in clinic.LinkItemList)
+                                        {
+                                            if (link.Type == CaFCConstants.ClinicType.Satellite)
+                                            {
+                                                <p class="clinic-desc">Satellite clinic to <a href="@link.Url" title="view profile of @link.ClinicName">@link.ClinicName</a></p>
+                                            }
+                                            if (link.Type == CaFCConstants.ClinicType.Transport)
+                                            {
+                                                <p class="clinic-desc">Transport clinic to <a href="@link.Url" title="view profile of @link.ClinicName">@link.ClinicName</a></p>
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <a href="@clinic.ProfilePageUrl">@clinic.CentreName</a>
+                                        <p>Tel: @clinic.MainPhoneNumber</p>
+                                    }
+                                   
+                                </li>
+                                <li>
+                                    @clinic.CentreTypeDescription
+                                </li>
+                                <li class="clinic-town">
+                                    @clinic.Town
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

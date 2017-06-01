@@ -1,0 +1,24 @@
+<div ng-controller="hfea.eventItemPicker">
+    <p>
+        <textarea class="textstring input-block-level" ng-model="control.header" 
+                  ng-attr-style="{{control.editor.config.style}}" 
+                  localize="placeholder" placeholder="add header..."></textarea>
+    </p>
+    <p>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.eventLocation"
+                  ng-attr-style="{{control.editor.config.style}}"
+                  localize="placeholder" placeholder="add location..."></textarea>
+    </p>
+    <p>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.eventDate"
+                  ng-attr-style="{{control.editor.config.style}}"
+                  localize="placeholder" placeholder="add event date..."></textarea>
+    </p>
+    <div class="usky-editor-placeholder" ng-click="setContentPicker()" ng-if="!(control.value && control.value.node)">
+        <i class="icon icon-umb-developer color-orange"></i>
+        <div class="help-text">Click to select event page</div>
+    </div>
+    <div class="usky-editor-placeholder" ng-click="setContentPicker()" ng-if="control.value && control.value.node">
+        <p><i class="icon {{control.value.node.icon}}"></i>{{control.value.node.name}}</p>
+    </div>
+</div>

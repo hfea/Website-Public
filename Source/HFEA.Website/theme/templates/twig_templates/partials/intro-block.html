@@ -1,0 +1,13 @@
+<div class="{{class}} mb-30 p-30">
+	<div class="intro-block row">
+	  	<h2 class="text-center">{{title}}</h2>
+	  	<p class="lead">
+	  		{{text | raw}}
+	  	</p>
+	  	{% if link %}
+	  	<p class="text-center ">
+	  		<a href="#" class="btn btn-default btn-teal">{{link}}</a>
+	  	</p>
+	  	{% endif %}
+	</div>
+</div>

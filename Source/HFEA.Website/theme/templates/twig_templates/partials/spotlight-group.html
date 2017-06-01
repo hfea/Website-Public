@@ -1,0 +1,9 @@
+<div class="row ">
+	{% for panel in panels %}
+		<div class="col-md-{{cols}}">
+			<h3 class="black-text">{{panel.title}}</h3>
+			<p>{{panel.body}}</p>
+			<a class="standard-link" href="{{panel.href}}" role="button">Find out more</a>
+		</div>
+	{% endfor %}
+</div>

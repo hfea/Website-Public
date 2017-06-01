@@ -1,0 +1,6 @@
+﻿<ul class="list-inline">
+    @for (Char alp = 'a'; alp <= 'z'; alp++)
+        {
+            <li><a href="@(HFEA.Web.Helpers.CmsHelper.GetUrlById(HFEA.Core.Config.Settings.KeyPages.AllCentres, true) + alp.ToString())">@alp.ToString().ToUpper()</a></li>
+        }
+</ul>

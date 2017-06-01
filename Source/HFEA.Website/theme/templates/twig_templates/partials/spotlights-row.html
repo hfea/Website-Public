@@ -1,0 +1,53 @@
+<div class="spotlights p-30 {{class}}">
+		<div class="row">
+			{% for spotlight in spotlights %}
+				<div class="col-md-{{cols}}">
+					<div class="spotlight">
+						{% if links == 'true' %}
+							<h2 class="section-heading">{{spotlight.title}}</h2>
+							<ul class="list-unstyled">
+							{% for item in spotlight.links %}
+								<li class="">
+									<a href="{{spotlight.href}}">{{item.a}}</a>
+								</li>
+							{% endfor %}
+							</ul>
+						{% elseif links == 'false' %}
+							{% if heading == 'border' %}
+								<h2 class="section-heading">{{spotlight.title}}</h2>
+							{% elseif heading == 'small' %}
+								<h2>{{spotlight.title}}</h2>
+							{% else %}
+								<h3>{{spotlight.title}}</h3>
+							{% endif %}
+								<p>{{spotlight.text | raw}}</p>
+
+						{% else %}
+
+							{% if spotlight.image == 'example' %}
+								<a href="{{spotlight.href}}">
+									<img class="img-responsive" src="http://placehold.it/400x240" alt="text">
+								</a>
+							{% else %}
+								<a href="{{spotlight.href}}">
+									<img class="img-responsive" src="/theme/assets/images/content/{{spotlight.image}}" alt="text">
+								</a>
+							{% endif %}
+							
+							{% if heading == 'border' %}
+								<h2 class="section-heading">{{spotlight.title}}</h2>
+							{% elseif heading == 'small' %}
+								<h2>{{spotlight.title}}</h2>
+							{% else %}
+								<h3>{{spotlight.title}}</h3>
+							{% endif %}
+
+							<a class="" href="{{spotlight.href}}">
+								<p>{{spotlight.text}}</p>
+							</a>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+</div>

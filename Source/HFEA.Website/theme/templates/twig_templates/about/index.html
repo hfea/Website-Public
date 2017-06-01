@@ -1,0 +1,154 @@
+
+{{ 
+	include ('partials/page-header-bg.html', {
+    	title: 'Welcome to the HFEA',
+	}) 
+}}
+
+
+	{{ include ('partials/intro-block.html', {
+	    text: 'We are the UK’s independent regulator of fertility treatment, including IVF and human embryo research. A world-class expert in the fertility sector, we’re affiliated with the Department of Health and have responsibilities that are set out in law.'
+	}) }}
+	
+	<div class="bg-lightgrey mb-50">
+			<h3 class="black-text">Why we’re here</h3>
+			<p>
+				Our job is to ensure that everyone treated at a fertility clinic, and everyone conceived as a result of treatment, receives high quality care. We do this by:
+			</p>
+				<ul>
+					<li>
+						licensing fertility clinics and human embryo research centres and ensuring they meet minimum standards. If they don’t, we have the power to shut them down if necessary. 
+					</li>
+					<li>
+						collecting information from clinics which allows us to:
+						<ul>
+							<li>
+								publish performance data for individual clinics and information on national trends
+							</li>
+							<li>
+								provide individuals with information about their donor and genetic siblings
+							</li>
+						</ul>
+					</li>
+					<li>
+						providing guidance to clinics and making decisions on policies related to the fertility sector
+					</li>
+					<li>
+						considering the legal, ethical and scientific implications of new fertility techniques and research, advising the Government where appropriate.
+					</li>
+				</ul>
+			</div>
+			
+
+		<div class="row mb-50">
+			<div class="col-md-6">
+				<div class="spotlight">
+					{{ 
+						include('partials/statistic.html', {
+							title: 'Did you know? ',
+							stat: '1985',
+							text: 'Set up in 1985, we were the first statutory body of our type in the world. More on our history. '
+						})
+					}}
+				</div>
+			</div>
+			<div class="col-md-6 pt-30">
+				<div class="embed-responsive embed-responsive-16by9">
+				  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dvnoETuNZBA" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'white',
+				heading: 'v-small',
+				spotlights: [
+					{
+						image: 'About_OurPeople.jpg',
+						title: 'Our people',
+						text: 'Meet the experts overseeing our work',
+						href: '/about-us/who-we-are'
+					},
+					{
+						image: 'About_HowWeRegulate.jpg',
+						title: 'How we regulate',
+						text: 'Get to grips with our role as a regulator'
+					},
+					{
+						image: 'About_OurHistory.jpg',
+						title: 'Our history',
+						text: 'Find out where it all started'
+					}
+				]
+			})
+		}}
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'white',
+				heading: 'v-small',
+				spotlights: [
+					{
+						image: 'About_Publications.jpg',
+						title: 'Publications and reports',
+						text: 'Discover a world of fertility knowledge '
+					},
+					{
+						image: 'About_PolicyReview.jpg',
+						title: 'Policy consultations & reviews',
+						text: 'Keep up to date with policy changes'
+					},
+					{
+						image: 'About_AccessData.jpg',
+						title: 'Our data',
+						text: 'Access our data for research purposes'
+					}
+				]
+			})
+		}}
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'white',
+				heading: 'border',
+				links: 'true',
+				spotlights: [
+					{
+						title: 'Give feedback about a clinic',
+						links: [
+							{
+								a: 'Make a complaint' 
+							},
+							{
+								a: 'Rate a clinic'
+							}
+						]
+					},
+					{
+						title: 'Information for clinics',
+						links: [
+							{
+								a: 'Register a new clinic' 
+							},
+							{
+								a: 'Go to Clinic Portal (existing clinics)'
+							}
+						]
+					},
+					{
+						title: 'Freedom of information requests',
+						links: [
+							{
+								a: 'Make a new FOI request' 
+							},
+							{
+								a: 'View our answers to previous FOI requests'
+							}
+						]
+					}
+				]
+			})
+		}}
+</div>
+

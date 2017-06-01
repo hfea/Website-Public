@@ -1,0 +1,27 @@
+﻿@model int
+
+<div class='rating-dot'>
+    @for (int i = 1; i <= 5; i++)
+    {
+        if (i <= Model)
+        {
+            <span class="rating rating-full"></span>
+        }
+        else
+        {
+            <span class="rating"></span>
+        }
+    }
+    @if (Model < 1)
+    {
+        <div class="dot-rating-overlay"><span>New clinic</span></div>
+    }
+</div>
+@if (Model > 0)
+{
+    <p>@Model / 5</p>
+}
+else
+{
+    <p>This is a new clinic and doesn't currently have a inspection rating</p>
+}

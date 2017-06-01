@@ -1,0 +1,36 @@
+<div ng-controller="HFEACommentingAndRating">
+    <div ng-hide="!hideOptions">
+        <div class="row">
+            <label>
+                <input type="checkbox" disabled ng-model="model.value.pageRating" id="pageRating">Enable page rating
+            </label>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" disabled ng-model="model.value.showCommenting" id="showCommenting" class="ng-pristine ng-valid">Show Commenting
+            </label>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" disabled ng-model="model.value.commentSubmissions" id="commentSubmissions" class="ng-pristine ng-valid">Enable comment submissions
+            </label>
+        </div>
+    </div>
+    <div ng-hide="hideOptions">
+        <div class="row">
+            <label>
+                <input type="checkbox" ng-model="model.value.pageRating" id="pageRating">Enable page rating
+            </label>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" ng-model="model.value.showCommenting" id="showCommenting" class="ng-pristine ng-valid">Show Commenting
+            </label>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" ng-model="model.value.commentSubmissions" id="commentSubmissions" class="ng-pristine ng-valid">Enable comment submissions
+            </label>
+        </div>
+    </div>
+</div>

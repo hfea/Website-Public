@@ -1,0 +1,51 @@
+﻿@using HFEA.Web.Controllers;
+@model HFEA.Web.ViewModel.Search.SearchBoxViewModel
+
+@using (Html.BeginUmbracoForm<SearchPageController>("SearchSubmit", null, new { id = "search-form advanced-search", @class = "bg-panel website-search" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-8">
+            <a href="#" class="refine-search-link reveal-link"><span class="glyphicon glyphicon-play"></span> @Model.SearchBoxLabel</a>
+
+            <div class="refine-search">
+                <div class="mb-50 mt-20">
+                    @Html.TextBoxFor(x => x.SearchParams.SearchKeywords, new { id = "SearchKeywords", autocomplete = "on", @class = "autocomplete" })
+                    @Html.HiddenFor(x => x.SearchParams.ContentTagsValue, new { id = "tags-hidden" })
+                </div>
+                <ul id="selected-tags">
+                    @if (Model.SearchParams.ContentTags != null && Model.SearchParams.ContentTags.Any())
+                {
+                    foreach (var tag in Model.SearchParams.ContentTags)
+                    {
+                            <li class="selected-tag">@tag.Value <button type="button" data-id="@tag.Id">×</button></li>
+                        }
+                    }
+                </ul>
+
+                <div class="row mb-30 mt-30">
+                    @for (int i = 0; i < Model.SearchParams.ProductFilters.Count; i++)
+                {
+                        <div class="col-md-4 mb-20">
+                            <div class="hfea-checkbox-wrapper">
+                                @Html.HiddenFor(x => x.SearchParams.ProductFilters[i].Id)
+                                @Html.CheckBoxFor(x => Model.SearchParams.ProductFilters[i].IsChecked)
+                                <label for="SearchParams_ProductFilters_@Html.Raw(i)__IsChecked" class="hfea-checkbox"></label>
+                                <span>@Model.SearchParams.ProductFilters[i].Value</span>
+                            </div>
+                        </div>
+
+                        if ((i + 1) % 3 == 0)
+                        {
+                            <div class="clear"></div>
+                        }
+
+                    }
+                </div>
+
+                <button class="hfea-btn btn btn-primary btn-lg bg_bright_green" type="submit">@Model.SearchButtonLabel</button>
+            </div>
+        </div>
+    </div>
+}

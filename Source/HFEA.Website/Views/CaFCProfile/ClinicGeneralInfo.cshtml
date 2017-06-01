@@ -1,0 +1,25 @@
+﻿@using HFEA.Web.Controllers;
+@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<ClinicGeneralInfo>
+<h1>@Model.CentreName</h1>
+<p class="lead">
+    @Html.Raw(Model.CentreDescription)
+</p>
+<div class="row pb-20">
+    <div class="col-md-3">
+        <img class="img-responsive" src="@Model.ImageUrl" alt="@Model.CentreName">
+    </div>
+
+    <div class="col-md-9">
+        <div class="row ratings">
+            @Html.Partial("ClinicRatingsView", Model,
+                new ViewDataDictionary {
+                    { "ShowInspectionRatingLink", Model.HasInspectorRatingInfo.ToString() },
+                    { "ShowPatientRatingLink", Model.HasUserRatingInfo.ToString() },
+                    { "ShowBirthRateLink", Model.HasSuccessRateInfo.ToString() },
+                }
+           )
+        </div>
+    </div>
+</div>

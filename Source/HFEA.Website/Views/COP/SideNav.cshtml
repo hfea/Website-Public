@@ -1,0 +1,42 @@
+﻿@using HFEA.Web.ViewModel;
+@using HFEA.Web.ViewModel.COP;
+
+@inherits UmbracoViewPage<COPNavigation>
+
+@if (Model != null)
+{
+<nav>
+    
+    <ul class="cop-nav list-unstyled">
+        @if (Model.GroupList != null)
+        {
+            foreach (var group in Model.GroupList)
+            {
+                <li class="@Umbraco.If(group.IsActive, "open active")">
+                    <h2><a href="@GetSectionLink(group.FirstSectionUrl)" class="cop-nav-toggle">@group.GroupName<span class="glyphicon glyphicon-menu-down"></span></a></h2>
+                    <ul class="list-unstyled" @Umbraco.If(!group.IsActive, " style=\"display: none;\"")>
+                        @if (group.SectionItemList != null)
+                        {
+                            foreach (var s in group.SectionItemList)
+                            {
+                                <li class="@Umbraco.If(s.SectionId == Model.ActiveSectionId, "active")"><a href="@GetSectionLink(s.SectionUrl)"><span></span>@s.SectionName</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+            }
+        }
+    </ul>
+    
+</nav>
+}
+
+@functions
+{
+    public string GetSectionLink(string sectionUrl)
+    {
+        string result = sectionUrl + "#section-header";
+        return result;
+    }
+}
+

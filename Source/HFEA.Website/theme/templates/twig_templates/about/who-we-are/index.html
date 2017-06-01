@@ -1,0 +1,106 @@
+
+{{ 
+	include ('partials/page-header-bg.html', {
+    	title: 'Our people and structure',
+	}) 
+}}
+
+	{{ include ('partials/intro-block.html', {
+	    text: 'Our 200-strong staff have a wealth of experience in everything from genetics to data. They’re deeply committed to helping people get the best possible care from the fertility sector and work closely with clinics and partners across the UK to help make that happen.  Their work is overseen by our expert board, committees and panels. '
+	}) }}
+
+
+		<h1 class="section-heading">
+			The Authority 
+		</h1>
+		
+		<div class="row mb-50">
+				<div class="col-md-6">
+					<p>
+						The Authority is our board. Its membership includes our senior management team and external professionals with relevant expertise. The full board has experience spanning the medical sciences, philosophy, the law and public service, as well as lay members with personal experience of fertility treatment
+					</p>
+					<p>
+						Members meet six times a year and have responsibility for our overall strategic direction. They also decide policy on a wide range of issues from licensing and inspection to fertility treatments and human embryo research. These decisions are central to the way fertility clinics and research centres work and matter to the thousands of people who have fertility treatment in the UK every year.
+					</p>
+				</div>
+				<div class="col-md-6">
+					{{ 
+						include('partials/spotlight-bg.html', {
+							title: 'Pop into our next meeting',
+							background: '',
+							body: 'Curious about our work? Our Authority meetings are open to everyone and are a brilliant opportunity to see what we do first-hand. Just <a href="#">drop us an email</a> letting us know which meeting you want to attend and we’ll save you a seat. <a href="#">View upcoming dates and agendas.</a>'
+						})
+					}}
+				</div>
+			</div>
+		{{
+				include('partials/blockquote.html', {
+					width: '12',
+					class: 'teal-bg',
+					img: 'SuePrice.jpg',
+					bodytext: 'Working with the Authority gives you an opportunity to make a real difference to peoples’ lives. For example, our recent decision to license a ground breaking mitochondrial donation technique – the first country in the world to do so - means that hundreds of children could be spared from developing this highly serious, incurable disease. Being able to have that kind of influence is an incredible privilege.',
+					linktext: 'Read Dr Sue Price\’s blog',
+					
+				})
+			}}
+		{{ include ('partials/full-width-text.html', {
+		    title: 'Committees and panels',
+		    text: 'We make decisions about some pretty serious and complex issues. In order to do that we invite experts who really know their stuff to sit on our committees and panels alongside HFEA staff. Making sure we have input from people with practical experience of the issues we govern – whether that’s lived experience of infertility or time spent working in clinical practice – ensures our decision-making processes are transparent and informed.'
+		}) }}
+
+			{{ 
+			include('partials/spotlights-row.html', {
+				cols: '3',
+				class: 'white',
+				heading: 'v-small',
+				links: 'false',
+				spotlights: [
+					{
+						title: 'Appeals ',
+						text: 'If a clinic disagrees with a decision made at our <a href="#">Licence Committee or Executive Licensing Panel</a>, it has the right to appeal through the independent Appeals Committee.'
+					},
+					{
+						title: 'Appointments ',
+						text: 'Our committees need external members and advisers to help them with their work. This committee makes decisions about who to appoint to these roles.'
+					},
+					{
+						title: 'Governance',
+						text: 'Our audit and governance committee ensures we have practices in place to make us accountable, fair and transparent and oversees our financial affairs.'
+					},
+					{
+						title: 'Horizon Scanning',
+						text: 'This panel highlights breakthroughs in fertility treatment and human embryo research, allowing us to monitor developments throughout the year.'
+					},
+				]
+			})
+		}}
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '3',
+				class: 'white',
+				heading: 'v-small',
+				links: 'false',
+				spotlights: [
+					
+					{
+						title: 'Licencing ',
+						text: 'Our Licence Committee and Executive Licensing Panel (ELP) make decisions about licensing fertility treatments or human embryo research projects in line with <a href="#">the law</a>. Routine decisions are taken by ELP whilst more complex matters are referred to the Licence Committee.'
+					},
+					{
+						title: 'Research ',
+						text: 'Researchers can apply to our Register Research Panel to use data we hold to study trends and investigate theories. The Panel has the power to grant or refuse requests, or to place conditions on how the data can be used.'
+					},
+					{
+						title: 'Statutory Approvals',
+						text: 'This committee decides which conditions can be tested for using a type of embryo screening called <a href="#">pre implantation genetic diagnosis (PGD)</a>.  It also gives <a href="#">Special Directions</a> to clinics who want to import or export sperm or eggs, or provide a new fertility treatment. '
+					},
+					{
+						title: 'Scientific and Clinical Advances ',
+						text: 'Our Scientific and Clinical Advances Advisory Committee (SCAAC) continues the work of our Horizon Scanning Panel, identifying significant new research and techniques which may require licensing in the future.  '
+					},
+				]
+			})
+		}}
+</div>
+
+

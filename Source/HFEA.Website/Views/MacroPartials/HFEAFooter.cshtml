@@ -1,0 +1,30 @@
+﻿@using Umbraco.Web.Templates;
+@using HFEA.Core;
+@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+<footer class="p-20 teal-bg footer">
+    @{ 
+        var footerNode = Umbraco.Content(Config.Settings.KeyPages.FooterSettings);
+    }
+
+    <div class="container">
+        @if (footerNode != null)
+        {
+        <div class="row social-links">
+            <div class="col-md-6">
+                <a href="@footerNode.twitterLink" target="_blank"><span class="hfea-icon-twitter"></span>
+                @footerNode.twitterLinkLabel</a>
+            </div>
+            <div class="col-md-6">
+                <a href="@footerNode.newsletterLink" >
+                    <span class="hfea-icon-mail"></span>
+                         @footerNode.newsletterLinkLabel</a>
+            </div>
+        </div>
+        <div class="row footer-links">
+            @Html.Raw(TemplateUtilities.ParseInternalLinks(footerNode.GetGridHtml("footerGrid").ToString()))
+        </div>
+        }
+    </div>
+</footer>
+

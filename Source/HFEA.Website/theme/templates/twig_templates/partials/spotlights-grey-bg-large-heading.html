@@ -1,0 +1,11 @@
+<div class="{{class}}">
+		<div class="row">
+			{% for spotlight in spotlights %}
+				<div class="col-md-{{cols}}">
+
+					<h2>{{spotlight.title}}</h2>
+					<p>{{spotlight.text}}</p>
+				</div>
+			{% endfor %}
+		</div>
+</div>

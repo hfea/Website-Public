@@ -1,0 +1,27 @@
+{
+    propertyEditors: [
+        {
+            alias: "HFEA.Tags",
+            name: "HFEA content tags",
+            icon: "icon-code",
+            group: "Rich Content",
+            editor: {
+                view: "~/App_Plugins/HfeaTags/hfeatags.html"
+            }
+        },
+		{
+            alias: "HFEA.ProductTags",
+            name: "HFEA product tags",
+            icon: "icon-code",
+            group: "Rich Content",
+            editor: {
+                view: "~/App_Plugins/HfeaTags/hfeaproducttags.html"
+            }
+        }
+    ]
+    ,
+    javascript: [
+		'~/App_Plugins/HfeaTags/tags.resource.js',
+        '~/App_Plugins/HfeaTags/hfeatags.controller.js'		
+    ]
+}

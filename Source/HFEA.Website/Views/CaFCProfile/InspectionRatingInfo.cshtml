@@ -1,0 +1,81 @@
+﻿@using HFEA;
+@using HFEA.Web.Controllers;
+@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<InspectionRatingInfo>
+
+@if (Model != null)
+{
+    string inspectDate = Model.LastInspectionDate.ToHFEADisplayShortDateStringOrEmpty();
+    string licenceDate = Model.LicensedUntil.ToHFEADisplayShortDateStringOrEmpty();
+
+    <div class="panel-hfea panel-default" id="inspection-rating">
+        <div class="panel-heading" role="tab" id="collapse-inspection-heading">
+            <h4 class="panel-title panel-title parent-panel-title">
+                <a role="button"  class="accordion-toggle open" data-parent="#accordion" href="#collapse-inspection" aria-expanded="true" aria-controls="collapse-inspection">
+                    @string.Format(@Umbraco.Field("inspectorRatingTitle").ToHtmlString(), Model.Year)
+                <span class="chevron"></span>
+                </a>
+            </h4>
+        </div>
+
+        <div id="collapse-inspection" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-inspection-heading">
+        <div class="panel-body ">
+            <div class="panel-intro row bg_light_blue">
+                <p class="intro-text float-left">
+                    @string.Format(@Umbraco.Field("inspectorRatingIntro").ToHtmlString(), Model.Year)
+                </p>
+                <div class="rating-container float-right">
+                    <span class="patient-rating @if (Model.OverallScore <= 0)
+                    { @Html.Raw("patient-rating-empty") } float-left">
+                        <span class="number">
+                           @if (Model.OverallScore > 0)
+                           {
+                            @Model.OverallScore
+                           }
+                           else
+                           {
+                               @Html.Raw("n/a")
+                           }
+                        </span>
+                    </span>
+                    <div class="float-left">
+                            @Html.Partial("DotRatingView", Model.OverallScore)
+                        
+                    </div>
+                 </div>
+            </div>
+            <div class="row row-no-m panel-main-body">
+                <div class="col-md-7">
+                    @Model.InspectorSummary
+                </div>
+                <div class="col-md-5">
+                    <div class="inspection-details">
+                        @if (!string.IsNullOrEmpty(inspectDate))
+                        {
+                        <p class="orange-border">@Umbraco.Field("hfeaInspectionLabel") @inspectDate</p>
+                        }
+                        @if (!string.IsNullOrEmpty(licenceDate))
+                        {
+                        <p>@Umbraco.Field("licenceDateLabel") @licenceDate</p>
+                        }                        
+                    </div>
+                </div>
+                @{
+                    int inspectionPageId = Umbraco.AssignedContentItem.GetPropertyValue<int>("inspectionReportPage");
+                    if (inspectionPageId > 0)
+                    {
+                        <div class="col-sm-12">
+                            @Html.Partial("UmbracoPageLinkById", inspectionPageId,
+                            new ViewDataDictionary {
+                                { "CustomTitle", Umbraco.AssignedContentItem.GetPropertyValue<string>("inspectionReportButtonLabel") },
+                                { "Css", "hfea-btn btn btn-primary btn-lg bg_bright_green hfea-btn-inline" }
+                            })
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    </div>
+}

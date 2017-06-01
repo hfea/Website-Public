@@ -1,0 +1,417 @@
+﻿@using HFEA;
+@using HFEA.Web.Controllers;
+@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<BirthStatisticsInfo>
+
+@if (Model != null && Model.HasValidData)
+{
+    <div class="panel-hfea panel-default" id="birth-statistics">
+        <div class="panel-heading" role="tab" id="collapse-stats-header">
+            <h4 class="panel-title parent-panel-title">
+                <a role="button" class="accordion-toggle open" data-parent="#accordion" href="#collapse-stats" aria-expanded="true" aria-controls="collapse-stats">
+                    @Umbraco.Field("birthStatisticsTitle")
+                    <span class="chevron"></span>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-stats" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-stats-header">
+            <div class="panel-intro no-bg">
+                <p class="intro-text">@Umbraco.Field("birthStatisticsIntro")</p>
+            </div>
+            <!-- stats accordions-->
+            <!-- Accordian for statistics -->
+            <div class="panel-group accordion child-accordion statistics" id="childaccordion" role="tablist">
+                @if (Model.HasIvfData)
+                {
+            <!-- IVF BIRTHS-->
+                    <div class="panel-hfea panel-default">
+                        <div class="panel-heading" role="tab" id="subheadingOne">
+                            <h5 class="panel-title">
+                                <a role="button" class="accordion-toggle open" data-parent="#childaccordion" href="#subcollapseOne" aria-expanded="true" aria-controls="subcollapseOne">
+                                    <span class="title-text">
+                                        @string.Format(@Umbraco.Field("ivfRateTitle").ToHtmlString(), Model.Year)
+                                    </span>
+                                    <span class="chevron"></span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="subcollapseOne" class="panel-collapse collapse@(!Model.GenericTreatmentTitle.ToLower().Contains("iui") ? Html.Raw(" in") : Html.Raw(""))" role="tabpanel" aria-labelledby="subheadingOne">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        @Html.Raw(Umbraco.Field("ivfRateIntro"))
+                                    </div>
+                                </div>
+                                <h3>@Umbraco.Field("ivfRateStats1Title")</h3>
+                                <p>@Umbraco.Field("birthStatisticsPeriodTitle") <span class="period dateperiod">@String.Concat(Model.Ivfemb_ivfmultb_dicyc_DataDateRangeStart, " to ", Model.Ivfemb_ivfmultb_dicyc_DataDateRangeEnd)</span></p>
+                                <div class="caveat-text">
+                                    @Html.Raw(Model.CaveatText)
+                                </div>
+                                <!-- RANGE CHARTS -->
+                                <noscript>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Category</th>
+                                                <th>All</th>
+                                                <th>Under 38</th>
+                                                <th>38 and over</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>@Umbraco.Field("ivfRateStats1Title")</td>
+                                                <td>@Model.BirthsPerEmbryo.All.ClinicRate</td>
+                                                <td>@Model.BirthsPerEmbryo.Under38.ClinicRate</td>
+                                                <td>@Model.BirthsPerEmbryo.Over38.ClinicRate</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>@Umbraco.Field("ivfRateStats2Title")</td>
+                                                <td>@Model.BirthsPerEggCollection.All.ClinicRate</td>
+                                                <td>@Model.BirthsPerEggCollection.Under38.ClinicRate</td>
+                                                <td>@Model.BirthsPerEggCollection.Over38.ClinicRate</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>@Umbraco.Field("ivfRateStats3Title")</td>
+                                                <td>@Model.MultipleBirthsPerCycle.All.ClinicRate</td>
+                                                <td>@Model.MultipleBirthsPerCycle.Under38.ClinicRate</td>
+                                                <td>@Model.MultipleBirthsPerCycle.Over38.ClinicRate</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </noscript>
+                                <div class='dynamic-range-charts row'>
+                                    <div class="col-lg-8">
+                                        @RenderChartInitBlock(Model.BirthsPerEmbryo)
+                                    </div>
+                                    <div class="panel-group statistics-chart-control float-left" id="chartAccordion" role="tablist">
+                                        <!--only display accordion when there are age groups data available-->
+                                        @if (!Model.BirthsPerEmbryo.HideStatDataSet)
+                                        {
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="chartheading1">
+                                                    <h6 class="panel-title">
+                                                        <a role="button" class="reveal-link " data-toggle="collapse" data-period="@String.Concat(Model.Ivfemb_ivfmultb_dicyc_DataDateRangeStart, " to ", Model.Ivfemb_ivfmultb_dicyc_DataDateRangeEnd)" data-parent="#chartAccordion" href="#chartAccordion1" aria-expanded="true" aria-controls="chartAccordion1">
+                                                            <span class="glyphicon glyphicon-play"></span>@Umbraco.Field("ivfRateStats1Title")
+                                                        </a>
+                                                    </h6>
+                                                </div>
+                                                <div id="chartAccordion1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="chartheading1">
+                                                    <div class="panel-content">
+                                                        @RenderStatisticsDataSet(Model.BirthsPerEmbryo, "ivfembryo", "embryos transferred", Umbraco.Field("ivfRateStats1Title").ToString(), "clinic", @String.Concat(Model.Ivfemb_ivfmultb_dicyc_DataDateRangeStart, " to ", Model.Ivfemb_ivfmultb_dicyc_DataDateRangeEnd))
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        @if (!Model.BirthsPerEggCollection.HideStatDataSet)
+                                        {
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="chartheading2">
+                                                    <h6 class="panel-title">
+                                                        <a class="reveal-link collapsed" role="button" data-period="@String.Concat(Model.IvfeggcollCBR_DataDateRangeStart, " to ", Model.IvfeggcollCBR_DataDateRangeEnd)" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion2" aria-expanded="true" aria-controls="chartAccordion1">
+                                                            <span class="glyphicon glyphicon-play"></span>@Umbraco.Field("ivfRateStats2Title")
+                                                        </a>
+                                                    </h6>
+                                                </div>
+                                                <div id="chartAccordion2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="chartheading2">
+                                                    <div class="panel-content">
+                                                        @RenderStatisticsDataSet(Model.BirthsPerEggCollection, "ivfegg", "egg collections", Umbraco.Field("ivfRateStats2Title").ToString(), "clinic", @String.Concat(Model.IvfeggcollCBR_DataDateRangeStart, " to ", Model.IvfeggcollCBR_DataDateRangeEnd))
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        @if (!Model.MultipleBirthsPerCycle.HideStatDataSet)
+                                        {
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="chartheading3">
+                                                    <h6 class="panel-title">
+                                                        <a class="reveal-link collapsed" role="button" data-period="@String.Concat(Model.Ivfemb_ivfmultb_dicyc_DataDateRangeStart, " to ", Model.Ivfemb_ivfmultb_dicyc_DataDateRangeEnd)" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion3" aria-expanded="true" aria-controls="chartAccordion3">
+                                                            <span class="glyphicon glyphicon-play"></span>@Umbraco.Field("ivfRateStats3Title")
+                                                        </a>
+                                                    </h6>
+                                                </div>
+                                                <div id="chartAccordion3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="chartheading3">
+                                                    <div class="panel-content">
+                                                        @RenderStatisticsDataSet(Model.MultipleBirthsPerCycle, "ivfmult", "births", Umbraco.Field("ivfRateStats3Title").ToString(), "multiple", @String.Concat(Model.Ivfemb_ivfmultb_dicyc_DataDateRangeStart, " to ", Model.Ivfemb_ivfmultb_dicyc_DataDateRangeEnd))
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <!-- END OF RANGE CHARTS -->
+                            </div>
+                        @RenderStatsPageUrl()
+                        </div> <!-- END OF SUB ACCORDION -->
+                    </div>
+                }
+                <!-- / IVF-->
+                @if (Model.HasIuiData)
+                {
+            <!-- IUI -->
+                    <div class="panel-hfea panel-default">
+                        <div class="panel-heading" role="tab" id="subheadingTwo">
+                            <h5 class="panel-title">
+                                <a role="button" class="accordion-toggle" data-parent="#childaccordion" href="#subcollapseTwo" aria-expanded="false" aria-controls="subcollapseTwo">
+                                    <span class="title-text">
+                                        @string.Format(@Umbraco.Field("iuiRateTitle").ToHtmlString(), Model.Year)
+                                    </span>
+                                    <span class="chevron"></span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="subcollapseTwo" class="panel-collapse collapse@(Model.GenericTreatmentTitle.ToLower().Contains("iui") ? Html.Raw(" in") : Html.Raw(""))" role="tabpanel" aria-labelledby="subheadingTwo">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        @Html.Raw(Umbraco.Field("iuiRateIntro"))
+                                    </div>
+                                </div>
+                                <h3>@Umbraco.Field("iuiStats1Title")</h3>
+                                <p>@Umbraco.Field("birthStatisticsPeriodTitle") <span class="period">@String.Concat(Model.Iui_DataDateRangeStart, " to ", Model.Iui_DataDateRangeEnd)</span></p>
+
+                                <!-- RANGE CHARTS -->
+                                <noscript>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Category</th>
+                                                <th>All</th>
+                                                <th>Under 38</th>
+                                                <th>38 and over</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>@Umbraco.Field("iuiStats1Title")</td>
+                                                <td>@Model.IUIBirths.All.ClinicRate</td>
+                                                <td>@Model.IUIBirths.Under38.ClinicRate</td>
+                                                <td>@Model.IUIBirths.Over38.ClinicRate</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </noscript>
+
+                                <div class='dynamic-range-charts row'>
+                                    <div class="col-lg-8">
+                                        @RenderChartInitBlock(Model.IUIBirths)
+                                    </div>
+                                    <div class="panel-group statistics-chart-control" id="chartAccordion" role="tablist">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="chartheading4">
+                                                <h6 class="panel-title">
+                                                    <a role="button" class="reveal-link " data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion4" aria-expanded="true" aria-controls="chartAccordion4">
+                                                        <span class="glyphicon glyphicon-play"></span>@Umbraco.Field("iuiStats1Title")
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="chartAccordion4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="chartheading4">
+                                                <div class="panel-content">
+                                                    @RenderStatisticsDataSet(Model.IUIBirths, "iuibirths", "cycles", Umbraco.Field("iuiStats1Title").ToString(), "clinic", String.Concat(Model.Iui_DataDateRangeStart, " to ", Model.Iui_DataDateRangeEnd))
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- END OF RANGE CHARTS -->
+                            </div>
+                            @RenderStatsPageUrl()
+                        </div>
+                    </div>
+                }
+                <!--/ IUI-->
+                <!-- DI -->
+                @if (Model.HasDiData)
+                {
+                    <div class="panel-hfea panel-default">
+                        <div class="panel-heading" role="tab" id="subheadingThree">
+                            <h5 class="panel-title">
+                                <a role="button" class="accordion-toggle" data-parent="#childaccordion" href="#subcollapseThree" aria-expanded="false" aria-controls="subcollapseThree">
+                                    <span class="title-text">
+                                        @string.Format(@Umbraco.Field("diRateTitle").ToHtmlString(), Model.Year)
+                                    </span>
+                                    <span class="chevron"></span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="subcollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="subheadingThree">
+                            <div class="panel-body">
+                                @Html.Raw(Umbraco.Field("diRateIntro"))
+                                <h3>@Umbraco.Field("diStats1Title")</h3>
+                                <p>@Umbraco.Field("birthStatisticsPeriodTitle") <span class="period">@String.Concat(Model.Ivfemb_ivfmultb_dicyc_DataDateRangeStart, " to ", Model.Ivfemb_ivfmultb_dicyc_DataDateRangeEnd)</span></p>
+
+                                <!-- RANGE CHARTS -->
+                                <noscript>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Category</th>
+                                                <th>All</th>
+                                                <th>Under 38</th>
+                                                <th>38 and over</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>@Umbraco.Field("diStats1Title")</td>
+                                                <td>@Model.DIBirths.All.ClinicRate</td>
+                                                <td>@Model.DIBirths.Under38.ClinicRate</td>
+                                                <td>@Model.DIBirths.Over38.ClinicRate</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </noscript>
+
+                                <div class='dynamic-range-charts row'>
+                                    <div class="col-lg-8">
+                                        @RenderChartInitBlock(Model.DIBirths)
+                                    </div>
+                                    <div class="panel-group statistics-chart-control" id="chartAccordion" role="tablist">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="chartheading5">
+                                                <h6 class="panel-title">
+                                                    <a role="button" class="reveal-link " data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion5" aria-expanded="true" aria-controls="chartAccordion5">
+                                                        <span class="glyphicon glyphicon-play"></span>@Umbraco.Field("diStats1Title")
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="chartAccordion5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="chartheading5">
+                                                <div class="panel-content">
+                                                    @RenderStatisticsDataSet(Model.DIBirths, "dibirths", "cycles", Umbraco.Field("diStats1Title").ToString(), "clinic", String.Concat(Model.Ivfemb_ivfmultb_dicyc_DataDateRangeStart, " to ", Model.Ivfemb_ivfmultb_dicyc_DataDateRangeEnd))
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--END RANGE CHARTS-->
+                            </div>
+                            @RenderStatsPageUrl()
+                        </div>
+                    </div>
+                }
+                <!-- /DI-->
+            </div>
+            <!-- / stats accordions-->
+        </div>
+    </div>
+}
+
+@helper RenderStatsPageUrl()
+{
+if (!string.IsNullOrEmpty(Model.StatsPageUrl))
+{
+    <a class="hfea-btn btn btn-primary btn-lg bg_bright_green hfea-btn-inline" href="@Model.StatsPageUrl">@Umbraco.Field("statisticPageLabel")</a>
+}
+}
+
+@helper RenderStatisticsDataSet(StatisticsDataSet ds, string group, string statsTypeLabel, string statTitle, string statName, string period)
+{
+if (ds != null)
+{
+        <div class="chart-set">
+            <ul class="list-unstyled list-inline">
+                @RenderStatisticsItem(ds.All, "All", group, statsTypeLabel, true, statTitle, period, statName)
+                @RenderStatisticsItem(ds.Under38, "Under 38", group, statsTypeLabel, false, statTitle, period, statName)
+                @RenderStatisticsItem(ds.Over38, "38 and over", group, statsTypeLabel, false, statTitle, period, statName)
+            </ul>
+        </div>
+}
+}
+
+@helper RenderStatisticsItem(StatisticsItem item, string title, string group, string statsTypeLabel, bool isChecked, string statTitle, string statYear, string statName)
+{
+if (item != null && !item.HideStatItem)
+{
+    string check = isChecked ? "checked" : "";
+        <li>
+            <label data-min-range="@item.ReliabilityRangeMin" data-max-range="@item.ReliabilityRangeMax"
+                   data-nat-ave="@item.NationalAverage" data-mean="@item.ClinicRate" data-count="@item.Count" data-compare="@item.CompareToAverage.GetDescriptionOrStringValue()">
+                <input type="radio" name="@group" checked="@check" data-caveat="@item.CaveatText" data-statsTypeLabel="@statsTypeLabel" data-content="@statTitle" data-period="@statYear" data-name="@statName" />
+                @title
+            </label>
+        </li>
+}
+}
+
+@helper RenderChartInitBlock(StatisticsDataSet dataSet)
+{
+int rows = 20;
+    <div class="statistics-chart pb-20">
+        <div class="statistics-container">
+            <div class="grid">
+                <table>
+                    <tr class="label-row">
+                        @for (int i = 1; i <= rows; i++)
+                        {
+                            <td>@Html.Raw(i * 5)</td>
+                        }
+                    </tr>
+                    <tr class="first-row">
+                        @for (int i = 1; i <= rows; i++)
+                        {
+                            <td></td>
+                        }
+                    </tr>
+                    <tr class="second-row">
+                        @for (int i = 1; i <= rows; i++)
+                        {
+                            <td></td>
+                        }
+                    </tr>
+                </table>
+            </div>
+            <div class="rangeChart">
+                <div class="range">
+                </div>
+                <div class="mean">
+                    <span>
+                    </span>
+                </div>
+                <div class="nat-ave">
+                    <span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <ul class="chart-key list-inline">
+            <li class="mean">
+                <span></span>
+                @Umbraco.Field("statLegendClinicBR")
+            </li>
+            <li class="nat_ave">
+                <span></span>
+                @Umbraco.Field("statLegendAverageBR")
+            </li>
+            <li class="range">
+                <span></span>
+                @Umbraco.Field("statLegendReliabilityRange")
+            </li>
+        </ul>
+        <p class="stats-caveat"></p>
+
+        <p class="consistent consistentStatus @(dataSet.All.ClinicRate > dataSet.All.NationalAverage ? "above-average" : dataSet.All.ClinicRate < dataSet.All.NationalAverage ? "below-average" : "")">
+            <span class="icon"></span>
+            @if (dataSet.All.ClinicRate == dataSet.All.NationalAverage)
+            {
+                @: <span class="consistent_text">Consistent with</span> national average
+        }
+            else if (dataSet.All.ClinicRate > dataSet.All.NationalAverage)
+            {
+                @: <span class="consistent_text">Above</span> national average
+        }
+            else if (dataSet.All.ClinicRate < dataSet.All.NationalAverage)
+            {
+                @: <span class="consistent_text">Below</span> national average
+        }
+        </p>
+        <p class="blue-text">
+            <b>
+                The <span class="stat-name"></span> birth rate is based on <span class="stat-counter"></span> <span class="stat-type"></span>
+            </b>
+        </p>
+        @Umbraco.Field("ivfRateText")
+    </div>
+}

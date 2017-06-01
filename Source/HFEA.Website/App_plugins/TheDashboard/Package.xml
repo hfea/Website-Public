@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <info>
+    <package>
+      <name>The Dashboard</name>
+      <version>1.1</version>
+      <license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+      <url>http://our.umbraco.org/projects/</url>
+      <requirements>
+        <major>7</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Markus Johansson</name>
+      <website>http://twitter.com/markusjoha</website>
+    </author>
+    <readme><![CDATA[]]></readme>
+  </info>
+
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+
+    <Action runat="install" undo="true" alias="TheDasboard"></Action>
+    <Action runat="install" alias="RemoveOldInstallation"></Action>
+
+  </Actions>
+  <control />
+
+  <files>
+    <file>
+      <guid>a6116a03-4302-4e7e-b636-9d234356de1e.manifest</guid>
+      <orgPath>/App_Plugin/TheDashboard</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>082dbbd0-f924-44fc-b67b-66a92232c657.js</guid>
+      <orgPath>/App_Plugin/TheDashboard</orgPath>
+      <orgName>TheDashboard.controller.js</orgName>
+    </file>
+    <file>
+      <guid>54cc0060-5613-49dd-b946-511635173a56.css</guid>
+      <orgPath>/App_Plugin/TheDashboard</orgPath>
+      <orgName>TheDashboard.css</orgName>
+    </file>
+    <file>
+      <guid>1382693d-442f-46e6-87fa-0d22dbe2b86a.html</guid>
+      <orgPath>/App_Plugin/TheDashboard</orgPath>
+      <orgName>TheDashboard.html</orgName>
+    </file>
+    <file>
+      <guid>37803cab-b06d-49c2-a954-91995e906e31.js</guid>
+      <orgPath>/App_Plugin/TheDashboard</orgPath>
+      <orgName>TheDevDashboard.controller.js</orgName>
+    </file>
+    <file>
+      <guid>85f9ee2b-4e5f-4ca7-a2c0-c735a379fe1a.html</guid>
+      <orgPath>/App_Plugin/TheDashboard</orgPath>
+      <orgName>TheDevDashboard.html</orgName>
+    </file>
+    <file>
+      <guid>d6cf4a7f-9c88-4029-91b3-1681cdccfe08.png</guid>
+      <orgPath>/App_Plugin/TheDashboard</orgPath>
+      <orgName>umbraco-guy.png</orgName>
+    </file>
+    <file>
+      <guid>597aee17-c00f-4de2-bc0c-23de8b7c30ff.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>TheDashboard.dll</orgName>
+    </file>
+  </files>
+
+</umbPackage>

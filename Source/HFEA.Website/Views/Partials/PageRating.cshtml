@@ -1,0 +1,19 @@
+﻿@using HFEA.Web.Helpers;
+@inherits UmbracoViewPage<HFEA.Web.ViewModel.UserFeedback.PageRatingModel>
+
+@if (Model != null)
+{
+<div class="page-rating">
+    <h2>Was this article helpful?</h2>
+    <p>We'd like to make sure you are receiving information you are looking for. Please click on star to indicate how useful this article was to you.</p>
+    <div class="star-container star-rating-form mb-100">
+        @Html.Partial("FeedbackStarRatingView", Model.Score) 
+        <span class="review_tally">@TextHelpers.GetSingularOrPluralLabel(Model.TotalRecords,
+                                                    "this page hasn't been rated yet",
+                                                    "of {0} review", "of {0} reviews")</span>
+    </div>
+    <input type="hidden" id="pageId" value="@Umbraco.AssignedContentItem.Id" />
+    <input type="hidden" id="sessionId" value="@Session.SessionID" />
+    <input type="hidden" id="tempId" value="@HFEA.Web.Helpers.SecurityHelper.GetHashedString(Session.SessionID, Umbraco.AssignedContentItem.Id.ToString())" />
+</div>
+}

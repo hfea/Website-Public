@@ -1,0 +1,66 @@
+﻿@model HFEA.Web.ViewModel.CaFC.Model.ClinicItem
+
+<div class="clinic-specialty row">
+    @if (Model.HasTreatsInfo)
+            {
+        <div class="col-md-4 list">
+            <h2>Treats</h2>
+            <ul>
+                @if (Model.IsNhsClinic)
+                {
+                    <li>
+                        <span class="hfea-icon-tick"></span>
+                        NHS
+                    </li>
+                }
+                @if (Model.IsPrivateClinic)
+                {
+                    <li>
+                        <span class="hfea-icon-tick"></span>
+                        Private
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    @if (Model.TreatmentDictionary.Any())
+            {
+        <div class="col-md-4 list">
+            <h2>Treatments offered</h2>
+            <ul>
+                @foreach (string treatment in Model.TreatmentDictionary.Values)
+                {
+                    <li>
+                        <span class="hfea-icon-tick"></span>
+                        @treatment
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    @if (Model.HasStaffingInfo)
+            {
+        <div class="col-md-4 list">
+            <h2>Staffing</h2>
+            <ul>
+                <li>
+
+                </li>
+                @if (Model.IsFemaleDoctorAvailable)
+                {
+                    <li>
+                        <span class="hfea-icon-tick"></span>
+                        Female doctors available
+                    </li>
+                }
+                @if (Model.HasNamedNurseSystem)
+                {
+                    <li>
+                        <span class="hfea-icon-tick"></span>
+                        Has named nurse system
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>

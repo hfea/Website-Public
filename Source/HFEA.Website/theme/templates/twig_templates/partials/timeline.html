@@ -1,0 +1,30 @@
+<div class="timeline mb-100 pb-30 {{class}}">
+	
+	<div class="">
+
+		<ul class="list-unstyled">
+			{% for block in blocks %}
+				<li>
+					<div class="bubble-left">
+						<a class="bubble-button {% if loop.first %} active {% endif %}" href="#">
+							<span class="bubble">
+								{{loop.index}}
+							</span>
+							<p class="bubble-label">
+								{{block.title | raw}}
+							</p>
+						</a>
+						<span class="triangle"></span>
+					</div>
+					{% if half != 'true' %}
+						<div class="bubble-right {% if loop.first %} active {% endif %}">
+							<p>
+								{{block.copy}}
+							</p>
+						</div>
+					{% endif %}
+				</li>	
+			{% endfor %}
+		</ul>
+	</div>
+</div>

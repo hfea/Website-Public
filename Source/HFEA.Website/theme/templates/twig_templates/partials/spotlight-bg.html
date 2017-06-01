@@ -1,0 +1,7 @@
+<div class="spotlight {{class}} bg-lightgrey" style="background-image: url({{bgimage}});">
+	<h3>{{title}}</h3>
+	<p>{{body | raw}}</p>
+	{% if link %}
+  		<a href="#" class="btn btn-default btn-teal">{{link}}</a>
+  	{% endif %}
+</div>

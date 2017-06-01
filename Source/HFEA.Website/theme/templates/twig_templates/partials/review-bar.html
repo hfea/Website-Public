@@ -1,0 +1,13 @@
+{% for review in reviews %}
+	<div>
+		<h2>
+			{{review.title}} 
+			<span class="pull-right">
+				{{review.total}}
+			</span>
+		</h2>
+		<div class="review-bar">
+			<div class="score" style="width: {{review.percentage}}%"></div>
+		</div>
+	</div>
+{% endfor %}

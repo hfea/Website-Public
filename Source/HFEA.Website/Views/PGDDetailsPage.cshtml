@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Base.cshtml";
+
+    string contactLabel = Umbraco.AssignedContentItem.GetPropertyValue<string>("contactLabel");
+    if (string.IsNullOrEmpty(contactLabel))
+    {
+        contactLabel = "Share information with the HFEA";
+    }
+}
+
+<div class="background-page-header">
+    <div class="container">
+        <h1>@Umbraco.Field("pageTitle")</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="condition-row">
+        <span class="condition-title">@CurrentPage.pageTitle</span>
+        <span class="condition-id">@CurrentPage.oMOIMMNumber</span>
+    </div>
+    <div class="condition-row">
+        @CurrentPage.bodyText
+    </div>
+    <div class="condition-row">
+        <a href="mailto:hfea@hfea.org.uk">@contactLabel</a>
+    </div>
+</div>

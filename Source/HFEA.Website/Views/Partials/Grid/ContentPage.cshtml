@@ -1,0 +1,110 @@
+﻿@inherits UmbracoViewPage<dynamic>
+@using Umbraco.Web.Templates
+@using Newtonsoft.Json.Linq
+@using System.Linq;
+
+@* 
+    Razor helpers located at the bottom of this file
+This is a modification of Bootstrap2 razor made specifically
+for collapsable rows of content page
+*@
+
+@if (Model != null && Model.sections != null)
+{    
+    <div class="umb-grid container">
+        @foreach (var section in Model.sections) {
+        <div class="grid-section">
+            @foreach (var row in section.rows)
+            {
+                @renderRow(row);
+            }
+        </div>
+        }  
+    </div>
+}
+
+@helper renderRow(dynamic row) {
+List<string> collapsableRows = new List<string>()
+    {
+        "three column row"
+    };
+
+bool isCollapsable = collapsableRows.Any(x => string.Equals(row.name.ToString(), x, StringComparison.InvariantCultureIgnoreCase));
+var attributes = isCollapsable ? RenderElementAttributes(row) : null;
+
+        <div class="row main-body-section" @attributes>
+            @foreach (var area in row.areas)
+            {
+                string centralColStyle = IsCentralColumn(row, area) ? "central-col" : "";
+                string sideColStyle = area.grid == 3 ? "side-col" : "";
+
+            <div class="col-lg-@area.grid col @centralColStyle">
+            
+                <div @RenderElementAttributes(area)>
+                    <div class="toggle">
+                        @foreach (var control in area.controls)
+                        {
+                            if (control != null && control.editor != null && control.editor.view != null)
+                            {
+                                <text>@Html.Partial("grid/editors/base", (object)control)</text>
+                            }
+                        } 
+                    </div>
+                </div>
+            </div>
+            }
+        @if (isCollapsable)
+        {
+            <div class="toggle-section col-lg-6 col-lg-offset-3">
+                <a href="#" class="open">
+                    <span class="symbol"></span>
+                    <span class="text"></span>
+                </a>
+            </div>
+        }
+        </div>
+}
+
+@functions {
+    public static MvcHtmlString RenderElementAttributes(dynamic contentItem)
+    {
+        var attrs = new List<string>();
+        JObject cfg = contentItem.config;
+
+        if (cfg != null)
+            foreach (JProperty property in cfg.Properties()) {
+                attrs.Add(property.Name + "=\"" + property.Value.ToString() + "\"");
+            }
+
+        JObject style = contentItem.styles;
+
+        if (style != null) {
+            var cssVals = new List<string>();
+            foreach (JProperty property in style.Properties())
+                cssVals.Add(property.Name + ":" + property.Value.ToString() + ";");
+
+            if (cssVals.Any())
+                attrs.Add("style=\"" + string.Join(" ", cssVals) + "\"");
+        }
+
+        return new MvcHtmlString(string.Join(" ", attrs));
+    }
+
+    public static bool IsCentralColumn(dynamic row, dynamic testArea)
+    {
+        bool result = false;
+
+        if (row != null && testArea != null && testArea.grid == 6 && row.areas.Count == 3)
+        {
+            int totalWidth = 0;
+            foreach (var area in row.areas)
+            {
+                totalWidth += int.Parse(area.grid.ToString());
+
+                result = totalWidth == 12;
+            }
+        }
+
+        return result;
+    }
+}

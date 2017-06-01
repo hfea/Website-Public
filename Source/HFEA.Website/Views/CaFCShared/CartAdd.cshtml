@@ -1,0 +1,22 @@
+﻿@using HFEA.Web.ViewModel.API;
+@using HFEA.Web.Controllers;
+
+@model IdValuePairInt
+
+@if (Model != null && Model.Id > 0 && !string.IsNullOrEmpty(Model.Value))
+{
+    <div class="compare-add">
+        <h3>Add to comparison</h3>
+        @using (Html.BeginUmbracoForm<CaFCCartSurfaceController>("AddClinic", Model, FormMethod.Post))
+        {
+            <button type="submit" class="submit-btn btn btn-primary btn-lg">+</button>
+        }        
+    </div>
+}
+
+@functions{
+    string getId(string prefix, int recordId)
+    {
+        return string.Format("{0}.[{1}]", prefix, recordId);
+    }
+}

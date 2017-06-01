@@ -1,0 +1,45 @@
+<div ng-controller="hfea.contentSpotlight">
+    <p>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.value.header" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add header..."></textarea>
+    </p>
+    <div style="border:4px dashed #f8f8f8;">
+        <div unique-id="control.$uniqueId"
+             value="control.value.summary"
+             grid-rte configuration="control.config.rte">
+        </div>
+    </div>
+    <p><strong>CTA link</strong></p>
+    <p>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.value.linkLabel" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="optional link label..."></textarea>
+    </p>
+    <div style="min-height:70px; border:4px dashed #f8f8f8" ng-click="setContentPicker()" ng-if="!(control.value && control.value.node)">
+        <p class="help-text">Click to select page</p>
+    </div>
+    <div style="min-height:70px" ng-click="setContentPicker()" ng-if="control.value && control.value.node">
+        <p>{{control.value.node.name}}</p>
+    </div>  
+    <p>
+        <label>
+            <strong>External URL (optional)</strong>
+            <textarea rows="1" class="textstring input-block-level" ng-model="control.value.externalLink" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="external link..."></textarea>
+        </label>
+    </p>
+    <p>
+        <label>
+            <input type="checkbox" value="_blank" ng-model="control.value.target" ng-attr-style="{{control.editor.config.style}}" />Open in new tab/window
+        </label>
+    </p>
+    <p><strong>Styling options</strong></p>
+    <p>
+        Background color:<br />
+        <select ng-options="item as item.label for item in control.value.styleItems track by item.id" ng-model="control.value.styleBgColor"></select>
+    </p>
+    <p>
+        Header styling:<br />
+        <select ng-options="item as item.label for item in control.value.headerStyleItems track by item.id" ng-model="control.value.styleHeader"></select>
+    </p>
+    <p>
+        Link styling:<br />
+        <select ng-options="item as item.label for item in control.value.linkStyleItems track by item.id" ng-model="control.value.styleLink"></select>
+    </p>  
+</div>

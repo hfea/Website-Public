@@ -1,0 +1,15 @@
+<section class="bg-lightgrey">
+		<div class="row">
+			{% for panel in panels %}
+				<div class="col-md-{{cols}}">
+					<h2 class="">{{panel.title}}</h2>
+					{{panel.body|raw}}
+					<div class="{{panel.linkclass}}">
+						<a href="#" class="">
+							{{panel.link}}
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+</section>

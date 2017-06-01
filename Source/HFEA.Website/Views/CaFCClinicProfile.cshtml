@@ -1,0 +1,68 @@
+﻿@using HFEA.Web.Utilities;
+@using HFEA.Web.Controllers;
+@using HFEA.Web.ViewModel.CaFC;
+@using HFEA.Web.ViewModel.Constants;
+@using HFEA.Web.Extensions;
+
+@inherits UmbracoTemplatePage
+@{
+    Layout = "Base.cshtml";
+    var viewModel = ((RenderModelAdapter<CaFCProfileViewModel>)Model).ViewModel;
+    if (TempData["ClinicPageMetaTitle"] == null)
+    {
+        TempData.Add("ClinicPageMetaTitle", viewModel.GeneralInfo.CentreName);
+    }
+}
+
+@Html.HfeaNotificationMessageIfAny(CaFCCartSurfaceController.ErrorKey, NotificationMessageType.Error)
+<div style="position:fixed; right:2em; top:2em;">
+    @Html.Action("GetCartView", "CaFCCartSurface")
+</div>
+@if (viewModel.IsValidModel)
+{
+<div style="position:fixed; right:2em; top:20em;">
+    @Html.Action("GetAddButton", "CaFCCartSurface", new { id = viewModel.GeneralInfo.Id, name = viewModel.GeneralInfo.CentreName })
+</div>
+}
+
+<div class="background-page-header bg_light_buff">
+    <div class="container">
+        @Html.Partial("~/Views/CaFCProfile/ClinicGeneralInfo.cshtml", viewModel.GeneralInfo)
+    </div>
+</div>
+    
+<div class="container">
+    <div class="panel-group accordion clinic-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+        <!-- INSPECTOR RATING PANEL -->
+        <!-- Hidden inspector ratings -->
+        @if (viewModel.InspectionRatings != null)
+        {
+            <a name="inspection"></a>
+            @Html.Partial("~/Views/CaFCProfile/InspectionRatingInfo.cshtml", viewModel.InspectionRatings)
+        }
+        <!-- PATIENT RATING PANEL -->
+        @if (viewModel.PatientExperiences != null)
+        {
+            <a name="rating"></a>
+            @Html.Partial("~/Views/CaFCProfile/PatientRatingInfo.cshtml", viewModel.PatientExperiences)
+        }
+
+        <!-- CLINIC BIRTH STATISTICS PANEL -->
+        @if (viewModel.BirthStatsInfo != null)
+        {
+            <a name="statistics"></a>
+            @Html.Partial("~/Views/CaFCProfile/BirthStatistics.cshtml", viewModel.BirthStatsInfo)
+        }
+        <!-- WAITING TIMES PANEL-->
+        @if (viewModel.WaitingTimesInfo != null && viewModel.WaitingTimesInfo.HasData)
+        {
+            @Html.Partial("~/Views/CaFCProfile/WaitingTimesInfo.cshtml", viewModel.WaitingTimesInfo)
+        }
+
+        <!-- DETAILS PANEL -->
+        @if (viewModel.ClinicDetailsInfo != null)
+        {
+            @Html.Partial("~/Views/CaFCProfile/ClinicDetailsInfo.cshtml", viewModel.ClinicDetailsInfo)
+        }
+    </div>
+</div>

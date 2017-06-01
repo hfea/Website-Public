@@ -1,0 +1,58 @@
+﻿@using HFEA.Web.Controllers;
+@model HFEA.Web.ViewModel.CaFC.CaFCFiltersViewModel
+
+<div class="clinic-search mb-50" id="collapseExample" aria-expanded="true">
+    @if (Model != null)
+    {
+        using (Html.BeginUmbracoForm<CaFCSearchSurfaceController>("SearchFiltersSubmit", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="mb-50 col-lg-6">
+                    <div class="form-group search-criteria-label">
+                        <label class="hfea-form-label" for="exampleInputName2">Please enter your location (optional)</label>
+                        <p class="hint-text">
+                            Enter your postcode or region
+                        </p>
+                   </div>
+
+                        <div class="hfea-form-inline form-group">
+                            @Html.TextBoxFor(x => x.Location, new { placeholder = "Postcode / region", @class = "form-control", id = "postcode" })
+                            <div>
+                                <a id="hidden-text-1-button" class="helper-text reveal-link collapsed" role="button" data-toggle="collapse" href="#hidden-text-1" aria-expanded="false" aria-controls="hidden-text-1">
+                                    <span class="glyphicon glyphicon-play"></span>
+                                    Why should I search by location?
+
+                                </a>
+                                <div id="hidden-text-1" aria-expanded="false" class="collapse helper-text-main">
+                                    <div class="helper-text-main-inner">
+                                        <p>
+                                            Choosing a fertility clinic that is nearby can be crucial due to the number a visits that may be required through a course of treatment.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="mb-50 col-lg-6" id="postcode-distance">
+                    <div class="form-group search-criteria-label">
+                        <label class="hfea-form-label" for="postcode-distance-input">Distance from postcode</label>
+                        <p class="hint-text">
+                            Select a distance from your location that you would be willing to travel
+                        </p>
+                    </div>
+                    <div class="hfea-form-inline form-group">
+                        @Html.DropDownListFor(x => x.Distance, Model.DistanceOptionsList, new { @class = "form-control hfea-select hfea-select-large" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="submit-btn-wrapper">
+                        <input type="submit" value="Search" class="submit-btn btn btn-primary btn-lg" />
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

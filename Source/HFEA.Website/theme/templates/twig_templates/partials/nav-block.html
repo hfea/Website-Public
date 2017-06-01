@@ -1,0 +1,14 @@
+<div class="{{class}} mb-50">
+	<section>
+		<div class=" nav-block">
+			<h2>{{header}}</h2>
+			<ul class="list-unstyled row">
+			{% for item in nav %}
+				<li class="col-md-6	">
+					<a href="{{item.href}}"><span class="lime-arrow glyphicon glyphicon-play"></span>{{item.link}}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</section>
+</div>

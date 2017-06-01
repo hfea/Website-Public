@@ -1,0 +1,174 @@
+﻿@using HFEA.Web.Helpers;
+@inherits UmbracoViewPage<HFEA.Web.ViewModel.UserFeedback.CommentsViewModel>
+
+@{ 
+    dynamic commentsRatings = Newtonsoft.Json.JsonConvert.DeserializeObject(new UmbracoHelper(UmbracoContext.Current).TypedContent(UmbracoContext.Current.PageId).GetPropertyValue("commentingAndRating").ToString());
+    bool isCommentingEnabled = commentsRatings.commentSubmissions == null ? false : (Boolean.Parse(commentsRatings.commentSubmissions.ToString())); //Umbraco.AssignedContentItem.GetPropertyValue<bool>("enableCommentSubmissions");
+
+    string sortNewestStyle = "";
+    string sortOldestStyle = "";
+    if (Model != null)
+    {
+        string activeClass = " class=\"active\"";
+        if (Model.ShowOldestCommentsFirst)
+        {
+            sortOldestStyle = activeClass;
+        }
+        else
+        {
+            sortNewestStyle = activeClass;
+        }
+    }
+}
+
+@if (Model != null)
+{  
+    <section class="pageComments mb-100">
+        <div class="commenting-header bg_light_buff ">
+            <h1 class="medium-heading pull-left">@TextHelpers.GetSingularOrPluralLabel(Model.TotalComments,
+                 "This page doesn't have any comments yet",
+                 String.Concat("There",(Model.TotalComments > 0 ? " are " : " is "), "{0}", (Model.TotalComments > 0 ? " comments" : " comment")),
+                 "There are {0} comments")</h1>
+            <ul class="sorting-controls pull-right list-inline"><b>View:</b><li><a class="thickline" href="@Model.SortOldestFirstUrl"@sortOldestStyle>Oldest</a></li><li><a class="thickline" href="@Model.SortNewestFirstUrl"@sortNewestStyle>Newest</a></li></ul>
+        </div>
+            <div>
+                @if (Model.HasComments)
+                {
+                    if (isCommentingEnabled)
+                    {
+                    <a class="pull-right show_more_comments leave_comment plus_sign_button" href="@Html.Raw(Umbraco.AssignedContentItem.Url + "#leave_comment")">
+                        <span class="plus">+</span>
+                        <span class="thickline">Leave a comment</span>
+                    </a>
+                    }
+                    <ul class="comments-listing list-unstyled mb-100">
+                        @foreach (var comment in Model.CommentList)
+                    {
+                            <li>
+                                <div class="parent_comment">
+                                    @renderComment(comment, isCommentingEnabled)
+                                </div>
+
+                                    @if (comment.ReplyList != null && comment.ReplyList.Any())
+                                    {
+                                        <ul class="reply-listing list-unstyled">
+                                            @for (int i = 0; i < comment.ReplyList.Count; i++)
+                                            {
+                                                string hiddenClass = i > 0 ? "class=\"hidden\"" : "";
+                                                <li @Html.Raw(hiddenClass)>
+                                                    @renderComment(comment.ReplyList[i], isCommentingEnabled)
+                                                </li>
+                                            }
+
+                                            @if (comment.ReplyList.Count > 1)
+                                            {
+                                                <li class="show-more-replies-button">
+
+                                                    <a class="show_more_comments plus_sign_button" href="#">
+                                                        <span class="plus">+</span>
+                                                        <span class="thickline">
+                                                            Show @TextHelpers.GetSingularOrPluralLabel(comment.ReplyList.Count - 1, "{0} more comment", "{0} more comments")
+                                                        </span>
+                                                    </a> 
+                                               </li>
+                                            }
+                                        </ul>
+                                    }
+                            </li>
+                        }
+                        @if (Model.TotalComments > Model.CommentList.Count)
+                        {
+                            <li class="load-more-comments-button"><a class="show_more_comments plus_sign_button" href="@Model.NextCommentsPageUrl">
+                                                                      <span class="plus">+</span>
+                                                                      <span class="thickline">Load more comments</span></a></li>
+                        }
+                    </ul>
+                }
+            </div>
+        @if (isCommentingEnabled)
+        {
+            if (!this.ViewData.ModelState.IsValid)
+            {
+                var writeError = this.ViewData.ModelState[HFEA.Web.Controllers.UserFeedbackController.DataWriterError];
+                if (writeError != null && writeError.Errors != null && writeError.Errors.Any())
+                {
+                    <div class="error"><span>Your comment couldn't be submitted. Please try again</span></div>
+                }
+            }
+
+            <a name="commentform"></a>
+          @Html.Partial("~/Views/UserFeedback/CommentsForm.cshtml", new HFEA.Web.ViewModel.UserFeedback.CommentFormModel() { ParentCommentId = HFEA.Web.Constants.QueryString.QueryParams.replyOn.GetQryParamValueOrDefault<int>(0) })
+        }
+    </section>
+    
+}
+
+@helper renderComment(HFEA.Web.ViewModel.UserFeedback.UserComment comment, bool commentingEnabled)
+{
+if (comment != null)
+{
+        <div class="comment-header">
+            <div class="comment-headline overflow">
+                @renderNameCircle(comment.Name, comment.Surname)
+                <span class="user-name">@Html.Raw(comment.FullName)</span> <span class="comment-date">@comment.FormattedDate</span> <span class="comment-time">@comment.FormattedTime</span>
+                <p class="user-comment">@Html.Raw((HttpUtility.HtmlDecode(HttpUtility.HtmlDecode(comment.CommentText))))</p>
+            </div>
+                            @if (commentingEnabled)
+                            {
+                                <ul class="comment-controls list-unstyled list-inline">
+                                    <li>
+                                        <span class="reply-arrow hfea-icon-arrow-left"></span><a class="thickline" href="@GetReplyUrl(comment.ReplyId)">Reply</a>
+                                    </li>
+                                    <li style="display:none;">
+                                        <a class="thickline" href="/page-doesnt-exist">Report</a>
+                                    </li>
+                                </ul>
+                            }
+            </div>
+}
+}
+
+@helper renderNameCircle(string firstName, string lastName)
+{
+string initials = string.Empty;
+
+if (!string.IsNullOrWhiteSpace(firstName))
+{
+    initials = firstName.Trim().Substring(0,1).ToUpper();
+}
+
+if (!string.IsNullOrWhiteSpace(lastName))
+{
+    initials += lastName.Substring(0, 1).ToUpper();
+}
+
+if (string.IsNullOrEmpty(initials))
+{
+    initials = "U";
+}
+
+char[] groups = new char[] { 'A', 'E', 'I', 'M', 'Q', 'U', 'Z' };
+char searchLetter = initials.Length == 2 ? initials[1] : initials[0];
+char group = char.MinValue;
+
+for (int i = 1; i < groups.Length; i++)
+{
+    if (searchLetter <= groups[i])
+    {
+            group = groups[i - 1];
+            break;
+    }
+}
+
+<div class="circle group-@group">@initials</div>
+
+}
+
+@functions
+{
+    public string GetReplyUrl(int parentCommentId)
+    {
+        return string.Format(this.Model.ReplyCommentBaseUrl, parentCommentId) + "#leave_comment";
+    }
+   
+}

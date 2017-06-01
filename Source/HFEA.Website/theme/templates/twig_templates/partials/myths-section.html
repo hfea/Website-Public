@@ -1,0 +1,19 @@
+<div>
+	<h1 class="section-heading">
+		{{header}}
+	</h1>
+	<p>
+		{{body}}
+	</p>
+	<ul class="list-unstyled myths-section row">
+		{% for myth in myths %}
+			<li class="col-md-6">
+				<p class="lead">
+					&ldquo;
+					{{myth.text}}
+					&rdquo;
+				</p>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

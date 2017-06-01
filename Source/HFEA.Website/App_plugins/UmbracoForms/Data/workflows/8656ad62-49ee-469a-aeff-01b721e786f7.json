@@ -1,0 +1,16 @@
+{
+  "id": "8656ad62-49ee-469a-aeff-01b721e786f7",
+  "name": "Send email to Alex",
+  "form": "86372e28-2eea-448c-af40-8d7216571ef1",
+  "active": true,
+  "workflowTypeId": "e96badd7-05be-4978-b8d9-b3d733de70a5",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "aleksej.kotiasvili@readingroom.com",
+    "SenderEmail": "",
+    "Subject": "The Form '{form_name}' was submitted",
+    "Message": "The Form '{form_name} was submitted, this is the list of values it contained. You can turn this email off under workflows in Umbraco Forms.",
+    "Attachment": ""
+  },
+  "sortOrder": 1
+}

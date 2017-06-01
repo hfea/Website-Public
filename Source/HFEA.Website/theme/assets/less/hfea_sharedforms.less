@@ -1,0 +1,121 @@
+.numberCircle {
+  display:inline-block;
+  line-height:0px;
+
+  border-radius:50%;
+  background-color: @teal;
+  color: white;
+  .small-heading;
+  .futura;
+  margin-right: 1.4em;
+  float: left;
+}
+
+.numberCircle span {
+  display:inline-block;
+
+  padding-top:53%;
+  padding-bottom:50%;
+
+  margin-left:24px;
+  margin-right:24px;
+}
+
+.form_item{
+  .question{
+    .futura;
+    .small-heading;
+    line-height: 1.4em;
+    margin: 0.5em 0 24px;
+  }
+  margin-bottom: 1.4em;
+  &:first-child{
+      .radio_input{
+        border:0;
+      }
+  }
+  .radio_input{
+    padding-top: 1.4em;
+    border-top: 1px @taupe solid;
+    @media ( min-width: @screen-md-max) {
+      padding-right:23em;
+    }
+  }
+  &.addtional_info{
+    border:0;
+  }
+  legend{
+    border-bottom: 0;
+  }
+
+  &.patient_feedback {
+    padding: 1.4em 0;
+    margin-bottom: 0;
+    border-top: 1px #bcb4ab solid;
+    textarea {
+      @media ( min-width: @screen-md-max) {
+        width: 66%;
+      }
+    }
+  }
+}
+textarea{
+  width: 100%;
+  height: 8em;
+  padding: 1em;
+  border: 1px @taupe solid;
+}
+.radio_group{
+  @media ( min-width: @screen-md) {
+    margin-left: 5em;
+  }
+  @media ( min-width: @screen-md-max) {
+    //margin-left: 7em;
+  }
+  .helper-text-main{
+      margin-left: 1.8em;
+  }
+  .helper-text{
+    margin-top: 21px;
+  }
+  label{
+    display: block;
+    font-weight: normal;
+    margin-bottom: 0.7em;
+  }
+}
+.input_helper_text{
+  color: @grey-subtitle;
+}
+.additional_info{}
+
+.form_area{
+  padding: 2.6em 1.6em;
+  @media ( min-width: @screen-md-max) {
+    padding: 2.6em 23em 2.6em 1.6em;
+  }
+  textarea{
+    border: 1px @taupe solid;
+  }
+  label{
+    display: block;
+    font-weight: normal;
+    .em(22px, 19px);
+    color: #333333;
+    //margin-bottom: 0.7em;
+    //.futura;
+  }
+  input[type="text"]{
+    border: 1px @taupe solid;
+    margin-bottom: 1em;
+    padding: 0.4em;
+  }
+  .form_title{
+    .futura;
+    .medium-heading;
+    border:0;
+  }
+}
+legend{
+  font-size: 1em;
+}

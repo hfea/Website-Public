@@ -1,0 +1,23 @@
+﻿@using HFEA.BL;
+@using Newtonsoft.Json.Linq;
+@using Umbraco.Web.Templates;
+
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Newtonsoft.Json.Linq.JObject>
+@{
+    JToken values = Model["value"];
+
+    var header = values.GetStringValueOrEmpty("header");
+    var summary = values.GetStringValueOrEmpty("summary");
+    var headerStyle = values.GetStringValueOrEmpty("styleHeader", "id");
+    var background = values.GetStringValueOrEmpty("styleBgColor", "id");
+
+    bool isSingleColumn = ViewData["isSingleColumn"] != null && ViewData["isSingleColumn"].ToString() == bool.TrueString;
+    string addStyle = isSingleColumn ? "some-style" : "";
+}
+
+<article class="bg spotlight-landing-page @background @headerStyle @addStyle">
+    @Umbraco.If(isSingleColumn, "<div class='container'><div class='row'><div class='col-lg-12'>")
+        <h2 class="header">@header</h2>
+        @Html.Raw(TemplateUtilities.ParseInternalLinks(@summary))
+    @Umbraco.If(isSingleColumn, "</div></div></div>")
+</article>

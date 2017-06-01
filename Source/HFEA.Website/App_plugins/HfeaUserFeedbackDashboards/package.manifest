@@ -1,0 +1,10 @@
+﻿{
+    "javascript" : [
+      "/app_plugins/HfeaUserFeedbackDashboards/hfeaPageRating.controller.js",
+      "/app_plugins/HfeaUserFeedbackDashboards/hfeaPageComments.controller.js"        
+    ],
+    "css" : [ 
+        "/app_plugins/HfeaUserFeedbackDashboards/hfeadashboard.css"
+    ]
+
+}

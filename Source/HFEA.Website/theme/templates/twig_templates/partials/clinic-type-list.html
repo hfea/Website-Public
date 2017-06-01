@@ -1,0 +1,17 @@
+{% for clinic in clinics %}
+	<div class="row">
+		<div class="col-md-8">
+			<h2>
+				{{clinic.title}} clinics
+			</h2>
+			<p>
+				{{clinic.intro}}
+			</p>
+				
+		</div>
+		<div class="col-md-4">
+			<a class="btn btn-default btn-block" href="/choose-a-fertility-clinic/clinic-search#all">All {{clinic.title}} clinics </a>
+			<a class="btn btn-default btn-block" href="/choose-a-fertility-clinic/clinic-search#advanced">{{clinic.title}} clinics search </a>
+		</div>
+	</div>
+{% endfor %}

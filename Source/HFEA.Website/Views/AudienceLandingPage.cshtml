@@ -1,0 +1,95 @@
+﻿@using HFEA.BL;
+@using Newtonsoft.Json.Linq;
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "BaseBreadcrumbTitleAndSummary.cshtml";
+
+    IPublishedContent timeLineContainer = Model.Content.Children
+        .FirstOrDefault(x => x.DocumentTypeAlias.Equals("Timeline") && !x.GetPropertyValue<bool>("umbracoNaviHide"));
+
+    List<IPublishedContent> timeLineItems = timeLineContainer != null
+        ? timeLineContainer.Children.Where(x => x.DocumentTypeAlias.Equals("TimelineItem") && !x.GetPropertyValue<bool>("umbracoNaviHide")).ToList()
+        : null;
+}
+
+<div class="container">
+    @if (timeLineItems != null && timeLineItems.Any())
+    {
+        <h2 class="text-center section-header">@CurrentPage.GetPropertyValue("fullWidthLabel")</h2>
+    <div class="timeline">
+        @if (!string.IsNullOrEmpty(timeLineContainer.GetPropertyValue<string>("title")))
+        {
+            <h2 class="header">@timeLineContainer.GetPropertyValue("title")</h2>
+        }
+        @for (int i = 0; i < timeLineItems.Count; i++)
+        {
+            @RenderTimelineTitle(timeLineItems[i], i)
+        }
+        <div class="content">
+            <div id="contentDefault">@timeLineContainer.GetPropertyValue("text")</div>
+            @for (int i = 0; i < timeLineItems.Count; i++)
+            {
+            <div id="@Html.Raw("content" + i.ToString())")>                
+                @RenderTimelineTitle(timeLineItems[i], i)
+                @timeLineItems[i].GetPropertyValue("text")                            
+            </div>
+            }
+        </div>
+    </div>
+    }
+</div>
+
+@if (!IsGridEmpty(CurrentPage.contentSpotlightsGrid))
+{
+<div class="mb-70">
+    @CurrentPage.GetGridHtml("contentSpotlightsGrid")
+</div>
+}
+
+<div class="bg_light_buff mb-50">@*middlegrid full-width-aside*@
+    <div class="container">
+        <section class="row mt-50 spotlight-grid">
+            <div class="col-lg-12">
+                <h1 class="text-center section-header">@CurrentPage.fullWidthLabel</h1>
+            </div>
+        </section>
+    </div>
+    <div class="spotlight-grid">
+       @CurrentPage.GetGridHtml("fullWidthGrid", "FullWidthBootstrap3")
+    </div>
+</div>
+<div class="">
+        @CurrentPage.GetGridHtml("bottomGrid")
+</div>
+<div class="container social-sharing-container">
+    @Html.Partial("StandardPageCta")
+</div>
+@Html.Partial("RelatedLinks")
+
+@helper RenderTimelineTitle(IPublishedContent content, int index)
+{
+    <h3 id="@Html.Raw("tab" + index.ToString())" class="header" tabindex="@index">
+        <span>@content.GetPropertyValue("title")</span>
+        <span class="bullet">&nbsp;</span>
+    </h3>
+}
+
+@functions
+{
+    public bool IsGridEmpty(JObject grid)
+    {
+        bool result = true;
+
+        var val = grid.GetStringValueOrEmpty("sections");
+        if (!string.IsNullOrEmpty(val))
+        {
+            var pattern = "\"value\"";
+            result = !System.Text.RegularExpressions.Regex.IsMatch(val, pattern);
+        }
+
+        return result;
+    }
+}
+
+

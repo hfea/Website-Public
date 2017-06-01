@@ -1,0 +1,34 @@
+﻿@model HFEA.Core.IPaginationModel
+
+@if (Model != null && Model.IsValid && Model.TotalPages > 1)
+{
+    <nav class="pagination">
+        @if (Model.Page > 1)
+        {
+            <a class="page" href="@HFEA.Web.Helpers.UrlQueryHelper.SetPageParameter(Request.RawUrl, Model.Page - 1)">
+                @Html.Raw("Previous")
+            </a>
+        }
+        <ul>
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li style="list-style:none; display:inline; margin-right: 10px;" @if (i == Model.Page) { @Html.Raw("class=\"current\"") }>
+                    @if (i == Model.Page)
+                    {
+                        <span>@i</span>
+                    }
+                    else
+                    {
+                        <a href="@HFEA.Web.Helpers.UrlQueryHelper.SetPageParameter(Request.RawUrl, i)" title="Page @i">@i</a>
+                    }
+                </li>
+            }
+        </ul>
+        @if (Model.Page < Model.TotalPages )
+        {
+            <a class="page" href="@HFEA.Web.Helpers.UrlQueryHelper.SetPageParameter(Request.RawUrl, Model.Page + 1)">
+                @Html.Raw("Next")
+            </a>
+        }
+    </nav>
+}

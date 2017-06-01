@@ -1,0 +1,187 @@
+
+		{{ 
+			include ('partials/page-header-bg.html', {
+		    	title: 'Problems conceiving',
+			}) 
+		}}
+		{{ include ('partials/intro-block.html', {
+		    text: 'There are many reasons why some people struggle, or are unable, to get pregnant. Just like any other part of the human body, your fertility can be affected by factors including long-term health conditions, illnesses and lifestyle factors. If you’re currently struggling to get pregnant or you know your fertility is affected in some way, it may help to know that one in seven couples have difficulty getting pregnant, so you’re not alone.'
+		}) }}
+		<h2 class="section-heading black-text">Why might I be struggling to get pregnant?</h2>
+	<h3 class="black-text">Medical conditions</h3>
+	<p class="mb-20">
+		Common reasons why couples have problems getting pregnant range from gynaecological problems to low sperm count. 
+	</p>
+	<div class="row mb-50">
+		<div class="col-md-6">
+			<h4 class="black-text">
+				Female
+			</h4>
+			<img class="img-responsive mb-20" src="/theme/assets/images/content/Conceiving_Female.jpg" alt="text">
+			<p>
+				Cancer, polycystic ovary syndrome (PCOS), endometriosis, chlamydia, diabetes, epilepsy and thyroid and bowel diseases; conditions affecting the uterus; gynaecological problems such as previous ectopic pregnancy or having had more than one miscarriage; other problems with ovulation (the monthly release of the egg), sexually transmitted diseases
+			</p>
+		</div>
+		<div class="col-md-6">
+			<h4 class="black-text">
+				Male
+			</h4>
+			<img class="img-responsive mb-20" src="/theme/assets/images/content/Conceiving_Male.jpg" alt="text">
+			<p>
+				A lower sperm count, or sperm with an unusual shape or movement; diabetes; a past bacterial infection; problems with the tubes carrying sperm; difficulty getting an erection or ejaculating; having had inflamed testes (orchitis); having received medical treatment such as drug treatment, radiotherapy or surgery – for example to correct a hernia, undescended testes or twisted testicles; sexually transmitted diseases
+			</p>
+		</div>
+	</div>
+	<div class="row mb-50">
+		<div class="col-md-6">
+			<h4 class="black-text">
+				Age
+			</h4>
+			<p>
+				The age of the woman has a major impact on your chances of getting pregnant. Of women aged 35 and under who have regular unprotected sexual intercourse, 95% will get pregnant within three years, while by the age of 38 only 75% of women will do so. 
+			</p>
+		</div>
+		<div class="col-md-6">
+			<h4 class="black-text">
+				Lifestyle factors
+			</h4>
+			<p>
+				Lifestyle factors such as being overweight or underweight, smoking, drinking, stress or having a job that involves contact with chemicals or radiation can all lessen your chances of getting pregnant. Visit NHS Choices for more information on preparing your body for pregnancy. 
+			</p>
+			<img class="img-responsive non-full" src="/theme/assets/images/design/nhs.png" alt="text">
+		</div>
+	</div>
+	<h3 class="black-text">Genetics</h3>
+	<p class="mb-20">In some cases fertility problems are genetic – talk to your doctor about whether this might apply to you. 
+	</p>
+	<div class="row mb-50">
+		<div class="col-md-6">
+			<h4 class="black-text">
+				Unexplained infertility
+			</h4>
+			{{ 
+				include('partials/statistic.html', {
+					stat: '25%',
+					text: 'In 25% of cases, despite investigations, a clear cause of infertility is never established.'
+				})
+			}}
+		</div>
+		<div class="col-md-6">
+			{{ 
+				include('partials/spotlight-bg.html', {
+  				title: 'Getting started',
+  				class: '',
+ 				body: 'Download our Getting Started guide for clear, impartial advice on every stage of your journey.'
+    			})
+ 			}}
+		</div>
+	</div>
+	{{
+		include('partials/blockquote.html', {
+			width: '12',
+			class: 'teal-bg',
+			img: 'mother-and-baby.jpg',
+			bodytext: 'Finding out I had problems ovulating my immediate reaction was ‘oh my god, I’m never going to have children.’ It’s terrifying really, when you’ve invested so much time planning for family life to then find out it might not be an option. Since then I’ve started a course of fertility drugs and have been meeting lots of other women who have a similar condition to me, some of whom have gotten pregnant and some who haven’t. Realistically I know I might never be able to have children, but just feeling back in control and supported by people who ‘get it’ is a massive help.',
+			linktext: 'Read Rebecca\'s story',
+		})
+	}}
+
+			<h1 class="section-heading black-text">
+				Where next? 
+			</h1>
+			{{ 
+				include('partials/spotlights-row.html', {
+					cols: '4',
+					class: 'white',
+					heading: 'v-small',
+					spotlights: [
+						{
+							image: 'Conceiving_SpeakDoctor.jpg',
+							title: 'Speaking to your doctor',
+							text: 'When you should seek medical help',
+							href: 'problems-conceiving/when-to-seek-medical-advice'
+						},
+						{
+							image: 'Conceiving_FertilityProblems.jpg',
+							title: 'Fertility problems ',
+							text: 'Find out what can affect your fertility'
+						},
+						{
+							image: 'Conceiving_FertilityTreatments.jpg',
+							title: 'Fertility treatments',
+							text: 'Get all the info on treatments and their success rates',
+							href: '/treatments'
+						}
+					]
+				})
+			}}
+			{{ 
+				include('partials/spotlights-row.html', {
+					cols: '4',
+					class: 'white',
+					heading: 'v-small',
+					spotlights: [
+						{
+							image: 'Conceiving_PreservingFertility.jpg',
+							title: 'Preserving fertility',
+							text: 'What to do if you’re not ready for children'
+						},
+						{
+							image: 'Conceiving_FindDonor.jpg',
+							title: 'Using a donor',
+							text: 'Finding the right donor to have a family'
+						},
+						{
+							image: 'Conceiving_EmbryoTesting.jpg',
+							title: 'Embryo testing',
+							text: 'Protecting your children from serious inheritable diseases'
+						}
+					]
+				})
+			}}
+			{{ 
+				include('partials/spotlights-row.html', {
+					cols: '4',
+					class: 'white',
+					heading: 'border',
+					links: 'true',
+					spotlights: [
+						{
+							title: 'Feed back on your clinic',
+							links: [
+								{
+									a: 'Make a complaint' 
+								},
+								{
+									a: 'Rate a clinic'
+								}
+							]
+						},
+						{
+							title: 'Consent to treatment',
+							links: [
+								{
+									a: 'Why is consent important?' 
+								},
+								{
+									a: 'Getting consent right'
+								}
+							]
+						},
+						{
+							title: 'Find a clinic',
+							links: [
+								{
+									a: 'How to find your perfect clinic' 
+								},
+								{
+									a: 'Search and compare UK clinics'
+								}
+							]
+						}
+					]
+				})
+			}}
+	</section>
+</div>
+		

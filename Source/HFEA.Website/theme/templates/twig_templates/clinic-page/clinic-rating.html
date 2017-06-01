@@ -1,0 +1,85 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		<!-- PATIENT RATING PANEL -->
+	  	<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading1">
+		      	<h4 class="panel-title">
+			        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+			        	How do existing patients rate the clinic?
+			        </a>
+		      	</h4>
+		    </div>
+		    <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+		      	<div class="panel-body">
+					<p>
+						We ask current and former patients to rate the clinic based on their experience. This clinic’s patient rating is:		      
+					</p>
+					<div>
+						{% for i in 1..5 %}
+							{% if i <= stars %}
+								<span class="glyphicon glyphicon-star"></span>
+							{% else %}
+								<span class="glyphicon glyphicon-star-empty"></span>
+							{% endif %}
+						{% endfor %}
+						Based on {{reviews}} reviews
+					</div>
+						<!-- Nav tabs -->
+					  	<ul class="nav nav-tabs" role="tablist">
+					  		{% for tab in tabs %}
+						    <li role="presentation" class="{{% if loop.first %}} active {{% endif %}}">
+						    	<a href="#{{tab.id}}" aria-controls="{{tab.id}}" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-play"></span> {{tab.title}}
+						    	</a>
+						    	<div>
+									{% for i in 1..5 %}
+										{% if i <= tab.stars %}
+											<span class="glyphicon glyphicon-star"></span>
+										{% else %}
+											<span class="glyphicon glyphicon-star-empty"></span>
+										{% endif %}
+									{% endfor %}
+								</div>
+						    </li>
+						    {% endfor %}
+					  	</ul>
+					  	<!-- Tab panes -->
+						<div class="tab-content">
+						    <div role="tabpanel" class="tab-pane" id="care">
+								<p>
+									Based on 211 reviews
+								</p>
+								{{ include ('partials/review-bar.html', {
+									reviews: [
+										{
+										    title: 'Excellent',
+										    percentage: '60',
+										    total: '125'
+										},
+										{
+										    title: 'Very good',
+										    percentage: '35',
+										    total: '75'
+										},
+										{
+										    title: 'Good',
+										    percentage: '3',
+										    total: '8'
+										},
+										{
+										    title: 'OK',
+										    percentage: '1',
+										    total: '3'
+										},
+										{
+										    title: 'Poor',
+										    percentage: '0',
+										    total: '0'
+										}
+									]
+								}) }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	

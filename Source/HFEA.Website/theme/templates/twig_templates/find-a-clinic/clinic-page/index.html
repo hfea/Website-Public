@@ -1,0 +1,744 @@
+ 
+	{{ include ('partials/page-header.html', {
+	    title: 'Bart\'s Health Centre for Reproduction Medicine',
+	    tagline: 'About 2.5 million people in east London and beyond rely on the services provided by Barts Health, and our committed and dedicated staff do the very best they can for our patients every single day. Together we are on an exciting and ambitious journey to further improve the care that patients receive across all our services.',
+	}) }}
+	<div class="row mb-50">
+		<div class="col-md-4">
+			<img class="img-responsive" src="/theme/assets/images/content/barts.jpeg" alt="text" />
+		</div>
+		<div class="col-md-8">
+			<div class="col-md-4">
+				<h4>User rating</h4>
+				<div class='stars'>
+					<span class="glyphicon glyphicon-star"></span>
+					<span class="glyphicon glyphicon-star"></span>
+					<span class="glyphicon glyphicon-star"></span>
+					<span class="glyphicon glyphicon-star-empty"></span>
+					<span class="glyphicon glyphicon-star-empty"></span>
+				</div>
+				Based on 211 reviews
+			</div>
+			<div class="col-md-4">
+				<h4>Inspection rating</h4>
+				<div>
+					<p>	
+						<span class="rating-icon green"></span>
+						Protection of patients
+					</p>
+					<p>	
+						<span class="rating-icon amber"></span>
+						Protection of embryos
+					</p>
+					<p>	
+						<span class="rating-icon amber"></span>
+						Information management
+					</p>
+					<p>	
+						<span class="rating-icon amber"></span>
+						Patient experience
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h4>Indicative success rate</h4>
+				{{ include ('partials/donut.html', {
+					id: 'clinic-page',
+				    percentage: '25',
+				    nat_ave: '30'
+				  })
+				}}
+			</div>
+		</div>
+	</div>
+	<!-- PANEL GROUP STARTS -->
+	<div class="panel-group accordion clinic-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+		{{ include ('partials/patient-rating.html', {
+		    reviews: '211',
+		    stars: '4',
+		    tabs: [
+		    	{
+		    		title: 'Quality of care',
+		    		id: 'care',
+		    		stars: '4',
+		    		reviews: [
+						{
+						    title: 'Excellent',
+						    percentage: '60',
+						    total: '125'
+						},
+						{
+						    title: 'Very good',
+						    percentage: '35',
+						    total: '75'
+						},
+						{
+						    title: 'Good',
+						    percentage: '3',
+						    total: '8'
+						},
+						{
+						    title: 'OK',
+						    percentage: '1',
+						    total: '3'
+						},
+						{
+						    title: 'Poor',
+						    percentage: '0',
+						    total: '0'
+						}
+					]
+		    	},
+		    	{
+		    		title: 'Pre-treatment consultation',
+		    		stars: '4',
+		    		id: 'consultation',
+		    		reviews: [
+						{
+						    title: 'Excellent',
+						    percentage: '50',
+						    total: '125'
+						},
+						{
+						    title: 'Very good',
+						    percentage: '35',
+						    total: '75'
+						},
+						{
+						    title: 'Good',
+						    percentage: '3',
+						    total: '8'
+						},
+						{
+						    title: 'OK',
+						    percentage: '1',
+						    total: '3'
+						},
+						{
+						    title: 'Poor',
+						    percentage: '0',
+						    total: '0'
+						}
+					]
+		    	},
+		    	{
+		    		title: 'Quality of information',
+		    		stars: '4',
+		    		id: 'information',
+		    		reviews: [
+						{
+						    title: 'Excellent',
+						    percentage: '90',
+						    total: '125'
+						},
+						{
+						    title: 'Very good',
+						    percentage: '35',
+						    total: '75'
+						},
+						{
+						    title: 'Good',
+						    percentage: '3',
+						    total: '8'
+						},
+						{
+						    title: 'OK',
+						    percentage: '1',
+						    total: '3'
+						},
+						{
+						    title: 'Poor',
+						    percentage: '0',
+						    total: '0'
+						}
+					]
+		    	},
+		    	{
+		    		title: 'Accuracy of cost-estimates',
+		    		stars: '4',
+		    		id: 'cost',
+		    		reviews: [
+						{
+						    title: 'Excellent',
+						    percentage: '30',
+						    total: '125'
+						},
+						{
+						    title: 'Very good',
+						    percentage: '35',
+						    total: '75'
+						},
+						{
+						    title: 'Good',
+						    percentage: '3',
+						    total: '8'
+						},
+						{
+						    title: 'OK',
+						    percentage: '1',
+						    total: '3'
+						},
+						{
+						    title: 'Poor',
+						    percentage: '0',
+						    total: '0'
+						}
+					]
+		    	}
+		    ]
+		}) }}
+	
+		<!-- INSPECTOR RATING PANEL -->
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading2">
+		      	<h4 class="panel-title">
+		        	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+		        	How do our inspectors rate the clinic?
+		        	<span></span>
+		        	</a>
+		      	</h4>
+		    </div>
+		    <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+		      	<div class="panel-body">
+		      		<div>
+						<!-- Nav tabs -->
+					    <ul class="nav nav-tabs row" role="tablist">
+						    <li role="presentation" class="active col-md-3"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+						    	<span class="rating-icon green"></span> Protection of patients</a>
+						    </li>
+						    <li role="presentation" class='col-md-3'><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+						    	<span class="rating-icon amber"></span> Protection of embryos</a>
+						    </li>
+						    <li role="presentation" class='col-md-3'>
+						    	<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+						    		<span class="rating-icon red"></span> Information management
+						    	</a>
+						    </li>
+						    <li role="presentation" class='col-md-3'><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+						    	<span class="rating-icon green"></span> Patient experience</a>
+						    </li>
+				     	</ul>
+
+						  <!-- Tab panes -->
+						<div class="tab-content">
+						    <div role="tabpanel" class="tab-pane active" id="home">
+						    	<p>
+						    		Protection of patients
+						    		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet neque vestibulum, commodo lacus ornare, tincidunt elit. Maecenas id lorem eget quam pretium blandit. Aenean urna lectus, fermentum eget suscipit a, condimentum a nisi. Nulla ultricies erat lectus, ac bibendum leo posuere nec.
+						    	</p>
+						    </div>
+						    <div role="tabpanel" class="tab-pane" id="profile">
+						    	<p>
+						    		Protection of embryos
+						    		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet neque vestibulum, commodo lacus ornare, tincidunt elit. Maecenas id lorem eget quam pretium blandit. Aenean urna lectus, fermentum eget suscipit a, condimentum a nisi. Nulla ultricies erat lectus, ac bibendum leo posuere nec.
+						    	</p>
+						    </div>
+						    <div role="tabpanel" class="tab-pane" id="messages">
+						    	<p>
+						    		Information management
+						    		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet neque vestibulum, commodo lacus ornare, tincidunt elit. Maecenas id lorem eget quam pretium blandit. Aenean urna lectus, fermentum eget suscipit a, condimentum a nisi. Nulla ultricies erat lectus, ac bibendum leo posuere nec.
+						    	</p>
+						    </div>
+						    <div role="tabpanel" class="tab-pane" id="settings">
+						    	<p>
+						    		Patient experience
+						    		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet neque vestibulum, commodo lacus ornare, tincidunt elit. Maecenas id lorem eget quam pretium blandit. Aenean urna lectus, fermentum eget suscipit a, condimentum a nisi. Nulla ultricies erat lectus, ac bibendum leo posuere nec.
+						    	</p>
+						    </div>
+						</div>
+					</div>
+				    <a href="#"><span class="glyphicon glyphicon-menu-down"></span>
+						See inspection ratings in more detail
+					</a>
+		      	</div>
+		    </div>
+		</div>
+		<!-- CLINIC BIRTH STATISTICS PANEL -->
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading3">
+		      <h4 class="panel-title">
+		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+		        	What are the clinic's birth statistics?
+		        	<span></span>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapse3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
+		      	<div class="panel-body">
+			      	<p>
+			      		We collect data about the treatments clinics carry out. A high quality service has a high birth rate and a low multiple birth rate. This clinic’s latest
+						statistics are:
+			      	</p>
+			      	<!-- Accordian for statistics -->
+			      	<div class="panel-group accordion" id="childaccordion" role="tablist">
+						<div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="subheadingOne">
+						      	<h5>
+						        	<a role="button" data-toggle="collapse" data-parent="#childaccordion" href="#subcollapseOne" aria-expanded="true" aria-controls="subcollapseOne">
+						          		What was the clinic's IVF birth rate in 2013?
+						          		<span></span>
+						        	</a>
+						      	</h5>
+						    </div>
+						    <div id="subcollapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="subheadingOne">
+						      	<div class="panel-body">
+							        <p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<!-- RANGE CHARTS -->
+									<div class='dynamic-range-charts row'>
+										<div class="col-md-8">
+												{{ include ('partials/range-chart.html', {
+												    min_range: '55',
+												    max_range: '64',
+												    nat_ave: '56',
+												    mean: '63'
+												}) }}
+										</div>
+										<div class="col-md-4">
+											<div class="panel-group" id="chartAccordion" role="tablist">
+												<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading1">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion1" aria-expanded="true" aria-controls="chartAccordion1">
+												          		Births per embryo transferred
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="chartheading1">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" data-mean="60" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" data-mean="62">Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" data-mean="63">Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      					<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading2">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion2" aria-expanded="true" aria-controls="chartAccordion1">
+												          		Births per egg collection
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="chartheading2">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" >Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" >Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      					<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading3">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion3" aria-expanded="true" aria-controls="chartAccordion3">
+												          		Multiple births per cycle started
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="chartheading3">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" >Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" >Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      				</div>
+										</div>
+									</div>
+									<!-- END OF RANGE CHARTS -->
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<h4>Mulitple birth rates</h4>
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<h4>Percentage</h4>
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. 
+									</p> 
+									<p>	
+										<span class="rating-icon teal"></span>
+										Pregnancy rate
+										<span class="rating-icon lime"></span>
+										Multiple pregnancy rate
+									</p>
+									<div>
+										<canvas class="line-chart" id='line-chart' height='300' width='500' data-pregnancy='19,21,22,23,23,25,36,33,34,35,35,37' data-multiple='14,13,15,13,12,10,14,11,10,8,7,7'></canvas>
+									</div>
+							    </div>
+						    </div>
+						</div>
+						<div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="subheadingTwo">
+						      	<h5>
+						        	<a role="button" data-toggle="collapse" data-parent="#childaccordion" href="#subcollapseTwo" aria-expanded="false" aria-controls="subcollapseTwo">
+						          		What was the clinic's IUI birth rate in 2013?
+						        	</a>
+						      	</h5>
+						    </div>
+						    <div id="subcollapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						      	<div class="panel-body">
+							        <p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<!-- RANGE CHARTS -->
+									<div class='dynamic-range-charts row'>
+										<div class="col-md-8">
+												{{ include ('partials/range-chart.html', {
+												    min_range: '55',
+												    max_range: '64',
+												    nat_ave: '56',
+												    mean: '63'
+												}) }}
+										</div>
+										<div class="col-md-4">
+											<div class="panel-group" id="chartAccordion" role="tablist">
+												<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading1">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion1" aria-expanded="true" aria-controls="chartAccordion1">
+												          		Births per embryo transferred
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="chartheading1">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" >Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" >Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      					<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading2">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion2" aria-expanded="true" aria-controls="chartAccordion1">
+												          		Births per egg collection
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="chartheading2">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" >Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" >Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      					<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading3">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion3" aria-expanded="true" aria-controls="chartAccordion3">
+												          		Multiple births per cycle started
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="chartheading3">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" >Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" >Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      				</div>
+										</div>
+									</div>
+									<!-- END OF RANGE CHARTS -->
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<h4>Mulitple birth rates</h4>
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<h4>Percentage</h4>
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. 
+									</p> 
+									<p>	
+										<span class="rating-icon teal"></span>
+										Pregnancy rate
+										<span class="rating-icon lime"></span>
+										Multiple pregnancy rate
+									</p>
+									<div>
+										<canvas class="line-chart" id='line-chart2' height='300' width='500' data-pregnancy='19,21,22,23,23,25,36,33,34,35,35,37' data-multiple='14,13,15,13,12,10,14,11,10,8,7,7'></canvas>
+									</div>
+							    </div>
+						    </div>
+						</div>
+						<div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="subheadingThree">
+						      	<h5>
+						        	<a role="button" data-toggle="collapse" data-parent="#childaccordion" href="#subcollapseThree" aria-expanded="false" aria-controls="subcollapseThree">
+						          		What was the clinic's DI birth rate in 2013?
+						        	</a>
+						      	</h5>
+						    </div>
+						    <div id="subcollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						      	<div class="panel-body">
+							        <p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<!-- RANGE CHARTS -->
+									<div class='dynamic-range-charts row'>
+										<div class="col-md-8">
+												{{ include ('partials/range-chart.html', {
+												    min_range: '55',
+												    max_range: '64',
+												    nat_ave: '56',
+												    mean: '63'
+												}) }}
+										</div>
+										<div class="col-md-4">
+											<div class="panel-group" id="chartAccordion" role="tablist">
+												<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading1">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion1" aria-expanded="true" aria-controls="chartAccordion1">
+												          		Births per embryo transferred
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="chartheading1">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" >Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" >Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      					<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading2">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion2" aria-expanded="true" aria-controls="chartAccordion1">
+												          		Births per egg collection
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="chartheading2">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" >Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" >Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      					<div class="panel panel-default">
+													<div class="panel-heading" role="tab" id="chartheading3">
+												      	<h6 class="panel-title">
+												        	<a role="button" data-toggle="collapse" data-parent="#chartAccordion" href="#chartAccordion3" aria-expanded="true" aria-controls="chartAccordion3">
+												          		Multiple births per cycle started
+												        	</a>
+												      	</h6>
+												    </div>
+												    <div id="chartAccordion3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="chartheading3">
+						      							<div class="panel-body chart-set">
+						      								<ul>
+						      									<li>
+						      										<a href="#" data-min-range="50" data-max-range="80" data-nat-ave="56" >All</a>
+						      									</li>
+						      									<li>
+						      										<a href="#" data-min-range="40" data-max-range="71" data-nat-ave="46" >Under 38</a>
+						      									</li>
+						      									<li>						   	
+						      										<a href="#" data-min-range="58" data-max-range="64" data-nat-ave="60" >Over 38</a>
+						      									</li>
+						      								</ul>
+						      							</div>
+						      						</div>
+						      					</div>
+						      				</div>
+										</div>
+									</div>
+									<!-- END OF RANGE CHARTS -->
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<h4>Mulitple birth rates</h4>
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. In other words, how
+									many embryos created in an IVF cycle, resulted in a baby? This is the best measure of the quality of a clinic’s clinical service
+									</p>
+									<h4>Percentage</h4>
+									<p>We calculate the IVF birth rate by the number of births (twins or triplets counts for one birth) that follow from all embryos transferred. 
+									</p> 
+									<p>	
+										<span class="rating-icon teal"></span>
+										Pregnancy rate
+										<span class="rating-icon lime"></span>
+										Multiple pregnancy rate
+									</p>
+									<div>
+										<canvas class="line-chart" id='line-chart3' height='300' width='500' data-pregnancy='19,21,22,23,23,25,36,33,34,35,35,37' data-multiple='14,13,15,13,12,10,14,11,10,8,7,7'></canvas>
+									</div>
+							    
+							    </div>
+						    </div>
+						</div>
+					</div>
+					<!-- / Accordian for statstics-->
+
+		      	</div>
+		    </div>
+		</div>
+		<!-- DETAILS PANEL -->
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading4">
+		      <h4 class="panel-title">
+		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+		        	Clinic details
+		        	<span></span>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+		      	<div class="panel-body clinic-details">
+			      	<div class="row">
+			      		<div class="col-md-6">
+			      			<h5>Address</h5>
+			      			<p>113 - 115 Harley Street</p>
+			      			<p>London W1G 6AP</p>
+			      			<p>United Kingdom</p>
+			      			<h5>Contact</h5>
+			      			<p><span class="green">P: </span>0207 563 4309</p>
+			      			<p><span class="green">F: </span>0207 563 5983</p>
+			      			<p><span class="green">E: </span><a href='#'>info@londonclinic.com</a>
+			      			</p>
+			      			<h5>Opening hours</h5>
+			      			<p><span class='green'>08.30 - 17.30</span> Monday to Friday</p>
+			      			<p><span class='green'>08.30 - 16.00</span> Saturday</p>
+			      			<p><span class='green'>08.30 - 16.00</span> Public Holidays</p>
+			      			<h5>Facilities</h5>
+			      			<p>Disabled access</p>
+			      			<p>Parking - 50 spaces</p>
+			      		</div>
+			      		<div class="col-md-6 map p-20 ">
+			      			<div class="embed-responsive embed-responsive-4by3">	
+			      				<div id='clinic-map' class="embed-responsive-item" data-lat='51.5205597' data-lng='-0.1498741'></div>
+			      			</div>
+			      		</div>	
+			      	</div>
+			      	<div class="row">
+			      		<div class="col-md-6">
+			      			<h5>HFEA Inspection</h5>
+			      			<p><span class="green">Licensed since: </span>May 1992</p>
+			      			<h5>Staffing</h5>
+			      			<p>Female doctor available</p>
+			      			<h5>Survey</h5>
+			      			<a href="#">Have you been a patient at this clinic?</a>
+			      		</div>
+			      		<div class="col-md-6">
+			      			<!--
+			      			<div id="carousel-example-generic" class="carousel slide">
+							
+							  <ol class="carousel-indicators">
+							    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+							    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+							    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+							  </ol>
+
+							 
+							  <div class="carousel-inner" role="listbox">
+							    <div class="item active">
+							      <img src="http://placehold.it/400x240" alt="...">
+							    </div>
+							    <div class="item">
+							      <img src="http://placehold.it/400x240" alt="...">
+							    </div>
+							    <div class="item">
+							      <img src="http://placehold.it/400x240" alt="...">
+							    </div>
+							  </div>
+
+							
+							  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+							    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							    <span class="sr-only">Previous</span>
+							  </a>
+							  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+							    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							    <span class="sr-only">Next</span>
+							  </a>
+							</div>
+							-->
+			      		</div>	
+			      	</div>
+			      	<p>
+			      		Bart’s Fertility Clinic has been licensed by us since 1991. It is an IVF clinic offering a wide range of services including donor conception treatment and IUI.
+						It is a medium-sized clinic, carrying out 500 – 1000 treatment each year for NHS and private patients.
+			      	</p>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+

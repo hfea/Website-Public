@@ -1,0 +1,51 @@
+﻿@using HFEA.BL;
+@using Newtonsoft.Json.Linq;
+@using Umbraco.Web.Templates;
+
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Newtonsoft.Json.Linq.JObject>
+@{
+    dynamic node = null;
+
+    JToken values = Model["value"];
+
+    var header = values.GetStringValueOrEmpty("header");
+    var summary = values.GetStringValueOrEmpty("summary");
+    var headerStyle = values.GetStringValueOrEmpty("styleHeader", "id");
+
+    string linkLabel = values.GetStringValueOrEmpty("linkLabel");
+    var linkStyle = values.GetStringValueOrEmpty("styleLink", "id");
+    var background = values.GetStringValueOrEmpty("styleBgColor", "id");
+
+    var val = values.GetStringValueOrEmpty("node", "id");
+
+    // IR
+    var externalLink = values.GetStringValueOrEmpty("externalLink");
+    var target = values.GetStringValueOrEmpty("target");
+    Boolean boolTarget = false;
+    bool.TryParse(target, out boolTarget);
+    int id = 0;
+    string url = "#";
+    if (val != null && int.TryParse(val.ToString(), out id))
+    {
+        node = Umbraco.Content(id);
+        url = node.Url;
+
+            if (!string.IsNullOrEmpty(externalLink))
+            {
+                url = "//" + externalLink.ToString();
+            }
+        if (string.IsNullOrEmpty(linkLabel) && node != null && node.HasProperty("pageTitle"))
+        {
+            linkLabel = node.pageTitle.ToString();
+        }
+    }
+}
+
+<article class="spotlight-landing-page bg @background @headerStyle">
+    <h2 class="header">@header</h2>
+    @Html.Raw(TemplateUtilities.ParseInternalLinks(summary))
+    @if (node != null)
+    {
+       <a href="@url" class="hfea-btn float-left @linkStyle" target="@boolTarget">@linkLabel</a>
+    }    
+</article>

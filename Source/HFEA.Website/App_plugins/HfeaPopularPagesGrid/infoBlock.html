@@ -1,0 +1,15 @@
+<div ng-controller="hfea.infoBlock">
+    <p>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.value.header" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add header..."></textarea>
+    </p>
+    <p>
+        <textarea class="textstring input-block-level" ng-model="control.value.summary" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add summary..."></textarea>
+    </p>
+    <div class="usky-editor-placeholder" ng-click="setContentPicker()" ng-if="!(control.value && control.value.node)">
+        <i class="icon icon-umb-developer color-orange"></i>
+        <div class="help-text">Click to select page</div>
+    </div>
+    <div class="usky-editor-placeholder" ng-click="setContentPicker()" ng-if="control.value && control.value.node">
+        <p><i class="icon {{control.value.node.icon}}"></i>{{control.value.node.name}}</p>
+    </div>
+</div>

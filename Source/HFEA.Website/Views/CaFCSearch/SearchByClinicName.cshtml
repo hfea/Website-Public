@@ -1,0 +1,22 @@
+﻿@using HFEA.Web.Controllers;
+@model string
+<div class="mb-50 bg-panel bg-panel-grey">
+    <div class="form-group clinic-name-search">
+        <label class="hfea-form-label" for="exampleInputName2">
+            Do you know the name of the clinic you are searching for?
+        </label>
+        <div class="clinic-name-search">
+            <p class="hint-text">Enter the name of the clinic</p>
+            <input type="text" class="typeahead form-control" name="search" id="typeahead" autocomplete="off">
+            <p class="loading">Loading...</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="text-center">
+            <h2 class="no-js hfea-form-label">Do you know the name of the clinic you're searching for?</h2>
+            <ul class="list-inline">
+                @Html.Partial("_CaFCAlphabeticList")
+            </ul>
+        </div>
+    </div>
+</div>

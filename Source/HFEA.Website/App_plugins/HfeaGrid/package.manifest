@@ -1,0 +1,74 @@
+{
+  "gridEditors": [
+    {
+      "name": "Header and Text spotlight",
+      "alias": "headerAndTextSpotlight",
+      "view": "/app_plugins/HfeaGrid/editor.html",
+      "render": "/app_plugins/HfeaGrid/render.cshtml",
+      "icon": "icon-code",
+      "config": {
+        "color": "red",
+        "text-align": "right"
+      }
+    },
+    {
+      "name": "Full row Header and Text spotlight",
+      "alias": "fullRowSpotlight",
+      "view": "/app_plugins/HfeaGrid/fullRowEditor.html",
+      "render": "/app_plugins/HfeaGrid/fullRowEditor.cshtml",
+      "icon": "icon-code",
+      "config": {
+        "color": "red",
+        "text-align": "right"
+      }
+    },
+    {
+      "name": "Themed Block Column",
+      "alias": "themedBlockColumn",
+      "view": "/app_plugins/HfeaGrid/themedBlockColumn.html",
+      "render": "/app_plugins/HfeaGrid/themedBlockColumn.cshtml",
+      "icon": "icon-code",
+      "config": {
+        "color": "red",
+        "text-align": "right"
+      }
+    },
+    {
+      "name": "Themed Block Column Central",
+      "alias": "themedBlockColumnCentral",
+      "view": "/app_plugins/HfeaGrid/themedBlockColumnCentral.html",
+      "render": "/app_plugins/HfeaGrid/themedBlockColumnCentral.cshtml",
+      "icon": "icon-code",
+      "config": {
+        "color": "red",
+        "text-align": "right"
+      }
+    },
+    {
+      "name": "Header and listing",
+      "alias": "headerAndListingSpotlight",
+      "view": "/app_plugins/HfeaGrid/listing-editor.html",
+      "render": "/app_plugins/HfeaGrid/listing-render.cshtml",
+      "icon": "icon-code",
+      "config": {
+        "color": "red",
+        "text-align": "right"
+      }
+    },
+    {
+      "name": "Footer block",
+      "alias": "footerBlock",
+      "view": "/app_plugins/HfeaGrid/footerBlock-editor.html",
+      "render": "/app_plugins/HfeaGrid/footerBlock-render.cshtml",
+      "icon": "icon-code",
+      "config": {
+        "size":  {"height": 50, "width": 100},
+        "color": "red",
+        "text-align": "left"
+      }
+    }
+  ],	
+    javascript:[
+        '/app_plugins/HfeaGrid/editor.controller.js'
+    ]
+}

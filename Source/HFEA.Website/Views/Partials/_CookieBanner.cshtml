@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@if (Model != null && Model.Content.HasValue("footerContents"))
+{
+    <div class="cookie">
+        <div class="container">
+            <a class="cookie-close" role="button">×</a>
+            <span class="cookie-info">i</span>
+            @Html.Raw(Model.Content.GetPropertyValue("footerContents"))
+        </div>
+    </div>
+}
+

@@ -1,0 +1,102 @@
+<ul class="list-group">
+  	{% for clinic in clinics %}
+	<li class="list-group-item clinic">
+		<div class="row pb-20">
+			<div class="col-md-4">
+				<a href="/choose-a-fertility-clinic/clinic-search/clinic-page">
+					<img class="img-responsive" src="/theme/assets/images/content/{{clinic.image}}" alt="text" />
+				</a>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<h3 class="col-md-8"><a href="/find-a-clinic/clinic-page">{{clinic.title}}</a></h3>
+					<p class="distance col-md-4"><span class="glyphicon glyphicon-map-marker"></span> 2.5 miles</p>
+				</div>
+				<p>{{clinic.type}}</p>
+				<p><a href="/find-a-clinic/clinic-page"><span class="glyphicon glyphicon-play"></span>See our overiew summary</a></p>
+				<div class="row clinic-specialty">
+					<div class="col-md-4">
+						<h4>Treats</h4>
+						<ul>
+							<li>
+								<span class='glyphicon glyphicon-plus-sign'></span>
+								NHS
+							</li>
+							<li>
+								<span class='glyphicon glyphicon-heart-empty'></span>
+								Private
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<h4>Treatments offered</h4>
+						<ul>
+						{% for treatment in clinic.treatments %}
+							<li>
+							 	<img class='treatment' src='/theme/assets/images/design/icons/treatment.png' />
+								{{treatment.tag}}
+							</li>
+		    			{% endfor %} 
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<h4>Staffing</h4>
+						<ul>
+							<li>
+								<img class='treatment' src='/theme/assets/images/design/icons/female.png' />
+								Female doctors available
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg-lightgrey p-20 mb-20">
+			<div class="row ">
+					<div class="col-md-3 col-md-offset-3">
+						<h4>User rating</h4>
+						<div class='stars'>
+							{% for i in 1..5 %}
+								{% if i <= clinic.review_rating %}
+									<span class="glyphicon glyphicon-star"></span>
+								{% else %}
+									<span class="glyphicon glyphicon-star-empty"></span>
+								{% endif %}
+							{% endfor %}
+						</div>
+						Based on {{clinic.reviewers}} reviews
+					</div>
+					<div class="col-md-3">
+						<h4>Inspection rating</h4>
+						<p>	
+							<span class="rating-icon {{clinic.patient_rating}}"></span>
+							Protection of patients
+						</p>
+						<p>	
+							<span class="rating-icon {{clinic.embryo_rating}}"></span>
+							Protection of embryos
+						</p>
+						<p>	
+							<span class="rating-icon {{clinic.it_rating}}"></span>
+							Information management
+						</p>
+						<p>	
+							<span class="rating-icon {{clinic.experience_rating}}"></span>
+							Patient experience
+						</p>
+					</div>
+					<div class="col-md-3">
+						<h4>Indicative success rate</h4>
+						{{ include ('partials/donut.html', {
+							id: loop.index,
+						    percentage: clinic.success_rate,
+						    nat_ave: '30'
+						  })
+						}}
+					</div>
+			</div>
+		</div>
+	</li>
+    {% endfor %} 
+</ul>

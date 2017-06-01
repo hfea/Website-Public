@@ -1,0 +1,118 @@
+{{ 
+	include ('partials/page-header-bg.html', {
+    	title: 'Standard landing page',
+	}) 
+}}
+<div class="container">
+	{{ include ('partials/intro-block.html', {
+	    text: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum. Quisque elementum libero vel lorem rutrum efficitur. Aenean vitae justo sed justo tincidunt fringilla sed quis nunc. Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id tortor gravida congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin at laoreet sapien, id scelerisque metus.'
+	}) }}
+	<section>
+		<div class="row mb-20">
+			<div class="col-md-6">
+				{{ 
+					include('partials/section-heading.html', {
+						title: 'Lorem Ipsum Page heading ?',
+					})
+				}}
+				<p>
+					Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id tortor gravida congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin at laoreet sapien, id scelerisque metus.
+				</p>
+				<div class="">
+					<a href="#">Link text</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="bg-lightgrey">
+					{{ 
+						include('partials/statistic.html', {
+							title: 'Chances of pregnancy',
+							stat: '32%',
+							text: 'Couples experience fertility problems',
+							other: '<a class="btn-block" href="#">Other Link</a><a class="btn-block" href="#">Other Link</a>'
+						})
+					}}
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+{{ include('partials/nav-block.html', {
+		nav: [
+			{
+				link: "link-1"
+			},
+			{
+				link: "link-2"
+			},
+			{
+				link: "link-3"
+			},
+			{
+				link: "link-4"
+			},
+			{
+				link: "link-5"
+			},
+			{
+				link: "link-6"
+			}
+		]
+	})
+}}
+<div class="container">
+	<section>
+		{{ include('partials/myths-section.html', {
+				header: 'Myths',
+				body: 'Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id tortor gravida congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin at laoreet sapien, id scelerisque metus.',
+				myths: [
+					{
+						text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+					},
+					{
+						text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+					},
+					{
+						text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+					},
+					{
+						text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+					},
+					{
+						text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+					},
+					{
+						text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+					}
+				]
+			})
+		}}
+		{{ 
+			include('partials/section-heading.html', {
+				title: 'Related articles',
+			})
+		}}
+		{{ include('partials/tags.html', {
+			tags: [
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				},
+				{
+					tagTitle: 'Lorem ipsum',
+				}
+			]
+		})
+		}}
+	</section>
+</div>
+
+	

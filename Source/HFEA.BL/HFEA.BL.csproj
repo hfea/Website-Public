@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{362184D6-561F-4147-B039-CBBB51C13527}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HFEA.BL</RootNamespace>
+    <AssemblyName>HFEA.BL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Examine">
+      <HintPath>..\..\..\packages\Examine.0.1.68.0\lib\Examine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperInit.cs" />
+    <Compile Include="CaFC\ClinicFeedbackWriter.cs" />
+    <Compile Include="CaFC\ClinicFeedbackReader.cs" />
+    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="DataWriters\PageCommentsSubmitter.cs" />
+    <Compile Include="Emailer\EmailSender.cs" />
+    <Compile Include="Extensions\GenericExtensions.cs" />
+    <Compile Include="Extensions\Json.cs" />
+    <Compile Include="ModelCreators\API\PageCommentsUtility.cs" />
+    <Compile Include="ModelCreators\BaseCaFCModelCreator.cs" />
+    <Compile Include="ModelCreators\BaseCOPModelCreator.cs" />
+    <Compile Include="ModelCreators\CaFCComparisonModelCreator.cs" />
+    <Compile Include="ModelCreators\CaFCProfileModelCreator.cs" />
+    <Compile Include="ModelCreators\CaFCStatsModelCreator.cs" />
+    <Compile Include="ModelCreators\COPModelCreator.cs" />
+    <Compile Include="DataWriters\PageRatingApiSubmitter.cs" />
+    <Compile Include="ModelCreators\PgdListingModelCreator.cs" />
+    <Compile Include="ModelCreators\SearchModelCreator.cs" />
+    <Compile Include="ModelCreators\TagsApiModelCreator.cs" />
+    <Compile Include="ModelCreators\API\PageRatingUtility.cs" />
+    <Compile Include="ModelCreators\UserFeedbackModelCreator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModelCreators\CaFCSearchModelCreator.cs" />
+    <Compile Include="SearchProvider\Constants.cs" />
+    <Compile Include="SearchProvider\DataSources\BaseSearchDataSource.cs" />
+    <Compile Include="SearchProvider\DataSources\CaFCProfileSource.cs" />
+    <Compile Include="SearchProvider\DataSources\CopSource.cs" />
+    <Compile Include="SearchProvider\DataSources\FullSearchDataSourceProvider.cs" />
+    <Compile Include="SearchProvider\DataSources\UmbracoSource.cs" />
+    <Compile Include="SearchProvider\FullSearchDataService.cs" />
+    <Compile Include="SearchProvider\Mapper.cs" />
+    <Compile Include="SearchProvider\Searcher.cs" />
+    <Compile Include="SearchProvider\SearchResultItem.cs" />
+    <Compile Include="Serialization\JsonSerializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HFEA.API.Connector\Source\HFEA.Connector.Contracts\HFEA.Connector.Contracts.csproj">
+      <Project>{f163633f-49fc-43d1-ad23-f982a3d9fdfe}</Project>
+      <Name>HFEA.Connector.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.API.Connector\Source\HFEA.Connector.Global\HFEA.Connector.Global.csproj">
+      <Project>{8571d543-7523-4c13-995b-cdd9e84ddce9}</Project>
+      <Name>HFEA.Connector.Global</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.BL.Contracts\HFEA.BL.Contracts.csproj">
+      <Project>{2a93828b-532b-4746-ba12-5a69a00741ae}</Project>
+      <Name>HFEA.BL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.Core\HFEA.Core.csproj">
+      <Project>{03a16df2-4c8d-4367-8f55-4dcb7000553e}</Project>
+      <Name>HFEA.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.Data.Contracts\HFEA.Data.Contracts.csproj">
+      <Project>{2a00d092-d238-4ca3-b755-e0439a43450a}</Project>
+      <Name>HFEA.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.Web.ViewModel\HFEA.Web.ViewModel.csproj">
+      <Project>{c100a333-a984-405c-b01b-a3298919703e}</Project>
+      <Name>HFEA.Web.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

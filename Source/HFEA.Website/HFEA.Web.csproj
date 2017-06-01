@@ -1,0 +1,1606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\UmbracoCms.7.4.3\build\UmbracoCms.props" Condition="Exists('..\..\..\packages\UmbracoCms.7.4.3\build\UmbracoCms.props')" />
+  <Import Project="..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{08C7371F-F416-4C68-AD47-D4EA19E865D0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HFEA.Web</RootNamespace>
+    <AssemblyName>HFEA.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>8304</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/1cac5d86-fdab-4f20-83c8-b24f2ce741c3/resourcegroups/IFQ-Env-Testing/providers/microsoft.insights/components/ifqwebsitetesting</ApplicationInsightsResourceId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Extras.CommonServiceLocator, Version=3.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Autofac.Extras.CommonServiceLocator.3.2.0\lib\net40\Autofac.Extras.CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="businesslogic, Version=1.0.5948.18144, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\businesslogic.dll</HintPath>
+    </Reference>
+    <Reference Include="Chalmers.MediaContentUsage">
+      <HintPath>App_plugins\MediaContentUsage\Chalmers.MediaContentUsage.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientDependency.Core, Version=1.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ClientDependency.1.8.4\lib\net45\ClientDependency.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ClientDependency-Mvc5.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="cms, Version=1.0.5948.18144, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\cms.dll</HintPath>
+    </Reference>
+    <Reference Include="controls, Version=1.0.5948.18145, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\controls.dll</HintPath>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoForms.Core.4.4.2\lib\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Examine, Version=0.1.68.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Examine.0.1.68.0\lib\Examine.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="idseefeld.de.UmbracoAzure, Version=1.0.10.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoAzureBlobStorageProvider.1.0.10.5\lib\net45\idseefeld.de.UmbracoAzure.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageProcessor, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ImageProcessor.2.3.3.0\lib\net45\ImageProcessor.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageProcessor.Web, Version=4.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ImageProcessor.Web.4.5.3.0\lib\net45\ImageProcessor.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="interfaces, Version=1.0.5948.18141, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Jumoo.uSync.BackOffice, Version=3.0.5751.25624, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\uSync.BackOffice.3.0.2\lib\net45\Jumoo.uSync.BackOffice.dll</HintPath>
+    </Reference>
+    <Reference Include="Jumoo.uSync.BackOffice.UI, Version=3.0.5750.30839, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\uSync.BackOffice.3.0.2\lib\net45\Jumoo.uSync.BackOffice.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Jumoo.uSync.Core, Version=5.3.5.740, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\uSync.Core.5.3.5.740\lib\net45\Jumoo.uSync.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Markdown.1.14.4\lib\net45\MarkdownSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.0.0.4220, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.1.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Extensibility.DependencyCollector, Version=1.0.0.4227, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.0.0\lib\net45\Microsoft.ApplicationInsights.Extensibility.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector, Version=1.0.0.4231, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.0.0\lib\net45\Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Extensibility.Web, Version=1.0.0.4227, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.Web.1.0.0\lib\net45\Microsoft.ApplicationInsights.Extensibility.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Web.TelemetryChannel, Version=1.0.0.4227, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.Web.TelemetryChannel.1.0.0\lib\net45\Microsoft.ApplicationInsights.Web.TelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.CodeAnalysis.Common.1.0.0\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Instrumentation.Extensions.Intercept, Version=0.17.0.194, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\lib\net45\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocol.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.0\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OpenIdConnect, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Security.OpenIdConnect.3.0.1\lib\net45\Microsoft.Owin.Security.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebHelpers.3.2.3\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Our.Umbraco.Ditto, Version=0.8.5820.30428, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Our.Umbraco.Ditto.0.8.4\lib\net45\Our.Umbraco.Ditto.dll</HintPath>
+    </Reference>
+    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=0.5.0.64, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoFileSystemProviders.Azure.0.5.0-beta\lib\net45\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RouteDebugger, Version=2.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\routedebugger.2.1.4.0\lib\net40\RouteDebugger.dll</HintPath>
+    </Reference>
+    <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLCE4Umbraco, Version=1.0.5948.18145, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\SQLCE4Umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.IdentityModel.Tokens.Jwt.4.0.0\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Reflection.Metadata, Version=1.0.21.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Reflection.Metadata.1.0.21\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="TheDashboard, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Our.Umbraco.TheDashboard.1.2\lib\TheDashboard.dll</HintPath>
+    </Reference>
+    <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\TidyNet.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco, Version=1.0.5948.18146, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Core, Version=1.0.5948.18141, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\Umbraco.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.DataLayer, Version=1.0.5948.18143, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\umbraco.DataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.editorControls, Version=1.0.5948.18148, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\umbraco.editorControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Core, Version=4.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoForms.Core.4.4.2\lib\Umbraco.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Core.Providers, Version=4.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoForms.Core.4.4.2\lib\Umbraco.Forms.Core.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web, Version=4.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoForms.Core.4.4.2\lib\Umbraco.Forms.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web.XmlSerializers, Version=4.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoForms.Core.4.4.2\lib\Umbraco.Forms.Web.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.IdentityExtensions, Version=1.0.5779.34109, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.IdentityExtensions.1.0.0\lib\net45\Umbraco.IdentityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Licensing, Version=2.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoForms.Core.4.4.2\lib\Umbraco.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.MacroEngines, Version=1.0.5948.18149, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\umbraco.MacroEngines.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.ModelsBuilder, Version=3.0.2.93, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Umbraco.ModelsBuilder.3.0.2\lib\Umbraco.ModelsBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.providers, Version=1.0.5948.18146, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\umbraco.providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Web.UI, Version=1.0.5948.18150, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\Umbraco.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UmbracoExamine, Version=0.7.0.18144, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UmbracoCms.Core.7.4.3\lib\UmbracoExamine.dll</HintPath>
+    </Reference>
+    <Reference Include="UrlRewritingNet.UrlRewriter, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\UrlRewritingNet.2.0.7\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_plugins\HfeaCommentsRatings\editorcontroller.js" />
+    <Content Include="App_plugins\HfeaCommentsRatings\editor.html" />
+    <Content Include="App_plugins\HfeaGrid\themedBlockColumnCentral.html" />
+    <Content Include="App_plugins\HfeaGrid\themedBlockColumn.html" />
+    <Content Include="App_plugins\HfeaGrid\fullRowEditor.html" />
+    <Content Include="App_plugins\HfeaGrid\editor.controller.js" />
+    <Content Include="App_plugins\HfeaGrid\editor.html" />
+    <Content Include="App_plugins\HfeaGrid\footerBlock-editor.html" />
+    <Content Include="App_plugins\HfeaGrid\listing-editor.html" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\contentListing.html" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\framedHeaderAndTextSpotlight.html" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\twoColumnRichTextSpotlight.html" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\headerAndEditorSpotlight.html" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\listingPagesController.js" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\textAndImageSpotlight.html" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\contentSpotlight.html" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\contentPickerController.js" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\eventItemPicker.html" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\genericImageItemPicker.html" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\infoBlock.html" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\genericItemPicker.html" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\newsItemPicker.html" />
+    <Content Include="App_plugins\HfeaTags\hfeaproducttags.html" />
+    <Content Include="App_plugins\HfeaTags\hfeatags.controller.js" />
+    <Content Include="App_plugins\HfeaTags\hfeatags.html" />
+    <Content Include="App_plugins\HfeaUserFeedbackDashboards\hfeadashboard.css" />
+    <Content Include="App_plugins\HfeaUserFeedbackDashboards\hfeaPageComments.controller.js" />
+    <Content Include="App_plugins\HfeaUserFeedbackDashboards\hfeaPageRating.controller.js" />
+    <Content Include="App_plugins\HfeaUserFeedbackDashboards\PageCommentsDashboard.html" />
+    <Content Include="App_plugins\HfeaUserFeedbackDashboards\PageRatingDashboard.html" />
+    <Content Include="App_plugins\MediaContentUsage\mediacontentusage.controller.js" />
+    <Content Include="App_plugins\MediaContentUsage\mediacontentusage.html" />
+    <Content Include="App_plugins\MediaContentUsage\mediacontentusage.resource.js" />
+    <Content Include="App_plugins\ModelsBuilder\modelsbuilder.controller.js" />
+    <Content Include="App_plugins\ModelsBuilder\modelsbuilder.htm" />
+    <Content Include="App_plugins\ModelsBuilder\modelsbuilder.resource.js" />
+    <Content Include="App_plugins\RejectChanges\rejectchanges.controller.js" />
+    <Content Include="App_plugins\RejectChanges\rejectChangesAction.html" />
+    <Content Include="App_plugins\TheDashboard\Lang\da-DK.xml" />
+    <Content Include="App_plugins\TheDashboard\Lang\en-GB.xml" />
+    <Content Include="App_plugins\TheDashboard\Lang\en-US.xml" />
+    <Content Include="App_plugins\TheDashboard\Lang\es-ES.xml" />
+    <Content Include="App_plugins\TheDashboard\Lang\sv-SE.xml" />
+    <Content Include="App_plugins\TheDashboard\Package.xml" />
+    <Content Include="App_plugins\TheDashboard\TheDashboard.controller.js" />
+    <Content Include="App_plugins\TheDashboard\TheDashboard.css" />
+    <Content Include="App_plugins\TheDashboard\TheDashboard.html" />
+    <Content Include="App_plugins\TheDashboard\TheDevDashboard.controller.js" />
+    <Content Include="App_plugins\TheDashboard\TheDevDashboard.html" />
+    <Content Include="App_plugins\TheDashboard\umbraco-guy.png" />
+    <Content Include="App_plugins\UmbracoForms\Assets\BaremetricsCalendar\public\css\application.css" />
+    <Content Include="App_plugins\UmbracoForms\Assets\BaremetricsCalendar\public\js\Calendar.js" />
+    <Content Include="App_plugins\UmbracoForms\Assets\daterangepicker\daterangepicker.css" />
+    <Content Include="App_plugins\UmbracoForms\Assets\daterangepicker\daterangepicker.js" />
+    <Content Include="App_plugins\UmbracoForms\Assets\defaultform.css" />
+    <Content Include="App_plugins\UmbracoForms\Assets\jquery-1.5.1.js" />
+    <Content Include="App_plugins\UmbracoForms\Assets\jquery-ui-1.8.18.custom.css" />
+    <Content Include="App_plugins\UmbracoForms\Assets\moment\min\moment-with-locales.min.js" />
+    <Content Include="App_plugins\UmbracoForms\Assets\moment\moment.min.js" />
+    <Content Include="App_plugins\UmbracoForms\Assets\pikaday\pikaday.css" />
+    <Content Include="App_plugins\UmbracoForms\Assets\pikaday\pikaday.js" />
+    <Content Include="App_plugins\UmbracoForms\Assets\umbracoforms-conditions.js" />
+    <Content Include="App_plugins\UmbracoForms\Assets\umbracoforms-dependencies.js" />
+    <Content Include="App_plugins\UmbracoForms\Assets\umbracoforms.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\checkbox.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\checkboxlist.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\datepicker.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\dropdownlist.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\fileupload.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\hiddenfield.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\password.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\radiobuttonlist.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\recaptcha.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\text.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\textarea.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\FieldTypes\textfield.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\RenderTypes\Controllers\file.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\RenderTypes\date.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\RenderTypes\file.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\RenderTypes\member.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\RenderTypes\text.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\checkbox.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\documentmapper.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\documentmapper.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\dropdownlist.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\fieldmapper.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\fieldmapper.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\file.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\file.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\password.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.connectionstring.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.connectionstring.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.content.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.content.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.contentwithxpath.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.contentwithxpath.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.datatype.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.datatype.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.documenttype.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\pickers.documenttype.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\textarea.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\textfield.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Common\SettingTypes\textstring.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Dashboards\Activity.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Dashboards\Controllers\activity.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Dashboards\Controllers\licensing.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Dashboards\Controllers\yourforms.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Dashboards\Licensing.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Dashboards\YourForms.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\DataSource\controllers\delete.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\DataSource\controllers\edit.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\DataSource\controllers\wizard.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\DataSource\delete.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\DataSource\dialogs\wizard.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\DataSource\edit.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\FormSecurity\controllers\edit.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\FormSecurity\edit.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\FormsSecurity\controllers\edit.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\FormsSecurity\edit.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\copy.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\create.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\delete.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\edit.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\editlegacy.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\entries.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\entriessettings.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\fieldsetsettings.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\fieldsettings.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\workflows.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\controllers\workflows.dialog.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\copy.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\create.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\delete.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\dialogs\additem.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\dialogs\entriesdetail.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\dialogs\entriessettings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\dialogs\fieldsetsettings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\dialogs\fieldsettings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\dialogs\formsettings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\dialogs\workflow.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\edit-legacy.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\edit.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\entries-legacy.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\entries.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\legacy-designer.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\fieldsetsettings\fieldset-settings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\fieldsetsettings\fieldsetsettings.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\fieldsettings\field-settings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\fieldsettings\fieldsettings.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\fieldtypepicker\field-type-picker.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\fieldtypepicker\fieldtypepicker.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\workflows\submit-message-workflow-settings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\workflows\workflow-settings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\workflows\workflow-types.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\workflows\workflows-overview.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\workflows\workflowsettings.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\workflows\workflowsoverview.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\overlays\workflows\workflowtypes.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\views\design\design.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\views\design\design.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\views\settings\settings.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\Form\workflows.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\PreValueSource\controllers\delete.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\PreValueSource\controllers\edit.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\PreValueSource\delete.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\PreValueSource\edit.html" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\PropertyEditors\formpicker.controller.js" />
+    <Content Include="App_plugins\UmbracoForms\Backoffice\PropertyEditors\formpicker.html" />
+    <Content Include="App_plugins\UmbracoForms\css\umbraco.forms.css" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-content-picker.html" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-designer-new.html" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-designer.html" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-entry-detail.html" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-inline-prevalue-editor.html" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-legacy-content-picker.html" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-prevalue-editor.html" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-regexpicker.html" />
+    <Content Include="App_plugins\UmbracoForms\Directives\umb-forms-render-type.html" />
+    <Content Include="App_plugins\UmbracoForms\Fonts\icomoon.svg" />
+    <Content Include="App_plugins\UmbracoForms\Images\close.png" />
+    <Content Include="App_plugins\UmbracoForms\Images\recaptcha.png" />
+    <Content Include="App_plugins\UmbracoForms\Images\succes-green.png" />
+    <Content Include="App_plugins\UmbracoForms\Images\workflows\slack\icon.svg" />
+    <Content Include="App_plugins\UmbracoForms\js\umbraco.forms.js" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\DataTables_json.xslt" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\DataTables_json_medtrust.xslt" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\excel.xslt" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\Html.xslt" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\postAsXmlSample.xslt" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\sendXsltEmailSample.xslt" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\Templates\Schema2\UmbracoContourListComments.xslt" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\Templates\UmbracoContourListComments.xslt" />
+    <Content Include="App_plugins\UmbracoForms\Xslt\xml.xslt" />
+    <Content Include="App_plugins\uSync\BackOffice\uSyncBackOfficeDashboard.ascx" />
+    <Content Include="App_plugins\uSync\uSyncDashboard.css" />
+    <Content Include="App_plugins\uSync\uSyncDashboard.html" />
+    <Content Include="App_plugins\uSync\uSyncDashboardController.js" />
+    <Content Include="App_plugins\uSync\uSyncDashboardService.js" />
+    <Content Include="Config\grid.editors.config.js" />
+    <Content Include="Config\Lang\cs-CZ.user.xml" />
+    <Content Include="Config\Lang\da-DK.user.xml" />
+    <Content Include="Config\Lang\de-DE.user.xml" />
+    <Content Include="Config\Lang\en-GB.user.xml" />
+    <Content Include="Config\Lang\en-US.user.xml" />
+    <Content Include="Config\Lang\es-ES.user.xml" />
+    <Content Include="Config\Lang\fr-FR.user.xml" />
+    <Content Include="Config\Lang\he-IL.user.xml" />
+    <Content Include="Config\Lang\it-IT.user.xml" />
+    <Content Include="Config\Lang\ja-JP.user.xml" />
+    <Content Include="Config\Lang\ko-KR.user.xml" />
+    <Content Include="Config\Lang\nb-NO.user.xml" />
+    <Content Include="Config\Lang\nl-NL.user.xml" />
+    <Content Include="Config\Lang\pl-PL.user.xml" />
+    <Content Include="Config\Lang\pt-BR.user.xml" />
+    <Content Include="Config\Lang\ru-RU.user.xml" />
+    <Content Include="Config\Lang\sv-SE.user.xml" />
+    <Content Include="Config\Lang\zh-CN.user.xml" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="default.aspx" />
+    <Content Include="error500.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="robots.txt" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Config\ExamineSettings.config" />
+    <Content Include="Config\ExamineIndex.config" />
+    <Content Include="App_plugins\TheDashboard\package.manifest" />
+    <Content Include="App_plugins\MediaContentUsage\package.manifest" />
+    <Content Include="App_plugins\RejectChanges\package.manifest" />
+    <Content Include="App_plugins\HfeaGrid\listing-render.cshtml" />
+    <Content Include="App_plugins\HfeaGrid\package.manifest" />
+    <Content Include="App_plugins\HfeaGrid\render.cshtml" />
+    <Content Include="App_plugins\HfeaGrid\footerBlock-render.cshtml" />
+    <Content Include="App_plugins\HfeaTags\package.manifest" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\package.manifest" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\newsItemPicker.cshtml" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\genericItemPicker.cshtml" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\genericImageItemPicker.cshtml" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\eventItemPicker.cshtml" />
+    <Content Include="App_plugins\HfeaPopularPagesGrid\infoBlock.cshtml" />
+    <Content Include="App_plugins\HfeaTags\tags.resource.js" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\textAndImageSpotlight.cshtml" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\contentSpotlight.cshtml" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\package.manifest" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\headerAndEditorSpotlight.cshtml" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\twoColumnRichTextSpotlight.cshtml" />
+    <Content Include="App_plugins\HfeaListingPagesGrid\framedHeaderAndTextSpotlight.cshtml" />
+    <Content Include="App_plugins\HfeaUserFeedbackDashboards\package.manifest" />
+    <Content Include="App_plugins\HfeaGrid\fullRowEditor.cshtml" />
+    <Content Include="App_plugins\HfeaGrid\themedBlockColumn.cshtml" />
+    <Content Include="App_plugins\HfeaGrid\themedBlockColumnCentral.cshtml" />
+    <Content Include="App_plugins\HfeaCommentsRatings\package.manifest" />
+    <Content Include="ApplicationInsights.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="ApplicationInsights.Debug.config">
+      <DependentUpon>ApplicationInsights.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ApplicationInsights.Development.config">
+      <DependentUpon>ApplicationInsights.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ApplicationInsights.Local_DEV.config">
+      <DependentUpon>ApplicationInsights.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ApplicationInsights.Local_Frontender.config">
+      <DependentUpon>ApplicationInsights.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ApplicationInsights.Release.config">
+      <DependentUpon>ApplicationInsights.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ApplicationInsights.UAT.config">
+      <DependentUpon>ApplicationInsights.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="App_plugins\HfeaListingPagesGrid\contentListing.cshtml" />
+    <Content Include="App_plugins\UmbracoForms\Data\forms\c72035aa-ca5c-4377-af12-5a2bd4b7bb3a.json" />
+    <Content Include="App_plugins\UmbracoForms\Data\Templates\commentform.json" />
+    <Content Include="App_plugins\UmbracoForms\Data\Templates\contactform.json" />
+    <Content Include="App_plugins\UmbracoForms\Data\workflows\a76444cd-d6bb-4264-8b8b-1a9fe565aba3.json" />
+    <Content Include="App_plugins\UmbracoForms\Fonts\icomoon.eot" />
+    <Content Include="App_plugins\UmbracoForms\Fonts\icomoon.ttf" />
+    <Content Include="App_plugins\UmbracoForms\Fonts\icomoon.woff" />
+    <Content Include="App_plugins\UmbracoForms\installed" />
+    <Content Include="App_plugins\UmbracoForms\package.manifest" />
+    <Content Include="App_plugins\UmbracoForms\RazorTemplates\HtmlTable.cshtml" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-buttons.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-conditions.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-dashboard.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-empty.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-entries.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-fonts.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-form.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-gridview.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-mappings.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-savenode.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-workflow.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umb-forms-workflows.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umbraco.forms.dashboards.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umbraco.forms.entries.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umbraco.forms.fonts.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umbraco.forms.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umbraco.forms.workflows.less" />
+    <Content Include="App_plugins\UmbracoForms\Styles\umbraco.gridview.less" />
+    <Content Include="App_plugins\UmbracoForms\UmbracoForms.config" />
+    <Content Include="App_plugins\UmbracoForms\version" />
+    <Content Include="App_plugins\ModelsBuilder\package.manifest" />
+    <Content Include="Config\feedProxy.config" />
+    <Content Include="Config\EmbeddedMedia.config" />
+    <Content Include="Config\BaseRestExtensions.config" />
+    <Content Include="Config\applications.config" />
+    <Content Include="Config\404handlers.config" />
+    <Content Include="App_plugins\uSync\package.manifest" />
+    <None Include="Config\FileSystemProviders.Debug.config">
+      <DependentUpon>FileSystemProviders.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\FileSystemProviders.Development.config">
+      <DependentUpon>FileSystemProviders.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\FileSystemProviders.Local_DEV.config">
+      <DependentUpon>FileSystemProviders.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\FileSystemProviders.Local_FrontEnder.config">
+      <DependentUpon>FileSystemProviders.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\FileSystemProviders.Release.config">
+      <DependentUpon>FileSystemProviders.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\FileSystemProviders.UAT.config">
+      <DependentUpon>FileSystemProviders.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="Config\trees.config" />
+    <Content Include="Config\uSyncBackOffice.Config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\umbracoSettings.config" />
+    <Content Include="Config\uSyncCore.config" />
+    <Content Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Config\UrlRewriting.config" />
+    <Content Include="Config\tinyMceConfig.config" />
+    <Content Include="Config\scripting.config" />
+    <Content Include="Config\metablogConfig.config" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="theme\assets\css\bootstrap-dist.css" />
+    <Content Include="theme\assets\css\bootstrap-tagsinput.css" />
+    <Content Include="theme\assets\css\bootstrap-tagsinput.js" />
+    <Content Include="theme\assets\css\bootstrap-theme.css" />
+    <Content Include="theme\assets\css\bootstrap-theme.css.map" />
+    <Content Include="theme\assets\css\bootstrap-theme.min.css" />
+    <Content Include="theme\assets\css\bootstrap.css" />
+    <Content Include="theme\assets\css\bootstrap.css.map" />
+    <Content Include="theme\assets\css\bootstrap.min.css" />
+    <Content Include="theme\assets\css\charts.css" />
+    <Content Include="theme\assets\css\components\_listings.css" />
+    <Content Include="theme\assets\css\hfea-fonts.css" />
+    <Content Include="theme\assets\css\hfea-icons.css" />
+    <Content Include="theme\assets\css\hfea-results.css" />
+    <Content Include="theme\assets\css\main-legacy.css" />
+    <Content Include="theme\assets\css\main-legacy.css.map" />
+    <Content Include="theme\assets\css\main.css" />
+    <Content Include="theme\assets\css\main.css.map" />
+    <Content Include="theme\assets\css\px-to-em.css" />
+    <Content Include="theme\assets\css\scaffolding.css" />
+    <Content Include="theme\assets\css\theme.css" />
+    <Content Include="theme\assets\css\variables.css" />
+    <Content Include="theme\assets\fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="theme\assets\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="theme\assets\fonts\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="theme\assets\fonts\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="theme\assets\fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="theme\assets\fonts\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="theme\assets\fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="theme\assets\fonts\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="theme\assets\fonts\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="theme\assets\fonts\font-awesome\less\animated.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\bordered-pulled.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\core.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\fixed-width.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\font-awesome.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\icons.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\larger.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\list.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\mixins.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\path.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\rotated-flipped.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\stacked.less" />
+    <Content Include="theme\assets\fonts\font-awesome\less\variables.less" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\font-awesome.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_animated.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_core.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_icons.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_larger.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_list.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_mixins.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_path.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_stacked.scss" />
+    <Content Include="theme\assets\fonts\font-awesome\scss\_variables.scss" />
+    <Content Include="theme\assets\fonts\futura\3057F8_0_0.eot" />
+    <Content Include="theme\assets\fonts\futura\3057F8_0_0.ttf" />
+    <Content Include="theme\assets\fonts\futura\3057F8_0_0.woff" />
+    <Content Include="theme\assets\fonts\futura\3057F8_0_0.woff2" />
+    <Content Include="theme\assets\fonts\futura\3057F8_1_0.eot" />
+    <Content Include="theme\assets\fonts\futura\3057F8_1_0.ttf" />
+    <Content Include="theme\assets\fonts\futura\3057F8_1_0.woff" />
+    <Content Include="theme\assets\fonts\futura\3057F8_1_0.woff2" />
+    <Content Include="theme\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="theme\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="theme\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="theme\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="theme\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="theme\assets\fonts\icomoon-fonts\hfea-icomoon.eot" />
+    <Content Include="theme\assets\fonts\icomoon-fonts\hfea-icomoon.svg" />
+    <Content Include="theme\assets\fonts\icomoon-fonts\hfea-icomoon.ttf" />
+    <Content Include="theme\assets\fonts\icomoon-fonts\hfea-icomoon.woff" />
+    <Content Include="theme\assets\fonts\icomoon-fonts\selection.json" />
+    <Content Include="theme\assets\images\content\about-1 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\about-1.jpg" />
+    <Content Include="theme\assets\images\content\about-2 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\about-2.jpg" />
+    <Content Include="theme\assets\images\content\about-3 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\about-3.jpg" />
+    <Content Include="theme\assets\images\content\about-4 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\about-4.jpg" />
+    <Content Include="theme\assets\images\content\about-5 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\about-5.jpg" />
+    <Content Include="theme\assets\images\content\about6 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\about6.jpg" />
+    <Content Include="theme\assets\images\content\About_AccessData %282%29.jpg" />
+    <Content Include="theme\assets\images\content\About_AccessData.jpg" />
+    <Content Include="theme\assets\images\content\About_HowWeRegulate %282%29.jpg" />
+    <Content Include="theme\assets\images\content\About_HowWeRegulate.jpg" />
+    <Content Include="theme\assets\images\content\About_OurHistory %282%29.jpg" />
+    <Content Include="theme\assets\images\content\About_OurHistory.jpg" />
+    <Content Include="theme\assets\images\content\About_OurPeople %282%29.jpg" />
+    <Content Include="theme\assets\images\content\About_OurPeople.jpg" />
+    <Content Include="theme\assets\images\content\About_PolicyReview %282%29.jpg" />
+    <Content Include="theme\assets\images\content\About_PolicyReview.jpg" />
+    <Content Include="theme\assets\images\content\About_Publications %282%29.jpg" />
+    <Content Include="theme\assets\images\content\About_Publications.jpg" />
+    <Content Include="theme\assets\images\content\audience_landing_1.jpg" />
+    <Content Include="theme\assets\images\content\audience_landing_2.jpg" />
+    <Content Include="theme\assets\images\content\audience_landing_3.jpg" />
+    <Content Include="theme\assets\images\content\barts %282%29.jpeg" />
+    <Content Include="theme\assets\images\content\barts.jpeg" />
+    <Content Include="theme\assets\images\content\Conceiving_EmbryoTesting %282%29.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_EmbryoTesting.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_Female %282%29.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_Female.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_FertilityProblems %282%29.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_FertilityProblems.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_FertilityTreatments %282%29.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_FertilityTreatments.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_FindDonor %282%29.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_FindDonor.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_Male %282%29.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_Male.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_PreservingFertility %282%29.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_PreservingFertility.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_SpeakDoctor %282%29.jpg" />
+    <Content Include="theme\assets\images\content\Conceiving_SpeakDoctor.jpg" />
+    <Content Include="theme\assets\images\content\contacts_1 %282%29.png" />
+    <Content Include="theme\assets\images\content\contacts_1.png" />
+    <Content Include="theme\assets\images\content\contacts_2 %282%29.png" />
+    <Content Include="theme\assets\images\content\contacts_2.png" />
+    <Content Include="theme\assets\images\content\contacts_3 %282%29.png" />
+    <Content Include="theme\assets\images\content\contacts_3.png" />
+    <Content Include="theme\assets\images\content\contacts_4 %282%29.png" />
+    <Content Include="theme\assets\images\content\contacts_4.png" />
+    <Content Include="theme\assets\images\content\content_03 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_03.jpg" />
+    <Content Include="theme\assets\images\content\content_05 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_05.jpg" />
+    <Content Include="theme\assets\images\content\content_12 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_12.jpg" />
+    <Content Include="theme\assets\images\content\content_17 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_17.jpg" />
+    <Content Include="theme\assets\images\content\content_19 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_19.jpg" />
+    <Content Include="theme\assets\images\content\content_21 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_21.jpg" />
+    <Content Include="theme\assets\images\content\content_25 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_25.jpg" />
+    <Content Include="theme\assets\images\content\content_30 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_30.jpg" />
+    <Content Include="theme\assets\images\content\content_32 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_32.jpg" />
+    <Content Include="theme\assets\images\content\content_36 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_36.jpg" />
+    <Content Include="theme\assets\images\content\content_39 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_39.jpg" />
+    <Content Include="theme\assets\images\content\content_41 %282%29.jpg" />
+    <Content Include="theme\assets\images\content\content_41.jpg" />
+    <Content Include="theme\assets\images\content\gallery %282%29.jpg" />
+    <Content Include="theme\assets\images\content\gallery.jpg" />
+    <Content Include="theme\assets\images\content\HetrosexualCouple %282%29.jpeg" />
+    <Content Include="theme\assets\images\content\HetrosexualCouple.jpeg" />
+    <Content Include="theme\assets\images\content\homepage1.jpg" />
+    <Content Include="theme\assets\images\content\homepage2.jpg" />
+    <Content Include="theme\assets\images\content\homepage3.jpg" />
+    <Content Include="theme\assets\images\content\homerton %282%29.jpeg" />
+    <Content Include="theme\assets\images\content\homerton.jpeg" />
+    <Content Include="theme\assets\images\content\hp-book %282%29.png" />
+    <Content Include="theme\assets\images\content\hp-book.png" />
+    <Content Include="theme\assets\images\content\hp-donor %282%29.png" />
+    <Content Include="theme\assets\images\content\hp-donor.png" />
+    <Content Include="theme\assets\images\content\hp-donorchild %282%29.png" />
+    <Content Include="theme\assets\images\content\hp-donorchild.png" />
+    <Content Include="theme\assets\images\content\hp-ladies %282%29.png" />
+    <Content Include="theme\assets\images\content\hp-ladies.png" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_01.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_02.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_03.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_04.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_05.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_06.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_07.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_08.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_09.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_10.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_11.jpg" />
+    <Content Include="theme\assets\images\content\images\HFEAAudienceLanding_12.jpg" />
+    <Content Include="theme\assets\images\content\images\img-grid-desktop_01.png" />
+    <Content Include="theme\assets\images\content\images\img-grid-desktop_02.png" />
+    <Content Include="theme\assets\images\content\images\img-grid-desktop_04.png" />
+    <Content Include="theme\assets\images\content\images\img-grid-desktop_10.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop %282%29.jpg" />
+    <Content Include="theme\assets\images\content\img-grid-desktop.jpg" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_03 %282%29.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_03.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_05 %282%29.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_05.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_06 %282%29.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_06.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_07 %282%29.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_07.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_08 %282%29.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_08.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_09 %282%29.png" />
+    <Content Include="theme\assets\images\content\img-grid-desktop_09.png" />
+    <Content Include="theme\assets\images\content\img-grid-mobile %282%29.jpg" />
+    <Content Include="theme\assets\images\content\img-grid-mobile.jpg" />
+    <Content Include="theme\assets\images\content\middlesex %282%29.jpeg" />
+    <Content Include="theme\assets\images\content\middlesex.jpeg" />
+    <Content Include="theme\assets\images\content\mother-and-baby %282%29.jpg" />
+    <Content Include="theme\assets\images\content\mother-and-baby.jpg" />
+    <Content Include="theme\assets\images\content\photogrid %282%29.jpg" />
+    <Content Include="theme\assets\images\content\photogrid.jpg" />
+    <Content Include="theme\assets\images\content\reproductive-medicine %282%29.jpeg" />
+    <Content Include="theme\assets\images\content\reproductive-medicine.jpeg" />
+    <Content Include="theme\assets\images\content\standard_landing_1.jpg" />
+    <Content Include="theme\assets\images\content\standard_landing_2.jpg" />
+    <Content Include="theme\assets\images\content\standard_landing_3.jpg" />
+    <Content Include="theme\assets\images\content\SuePrice %282%29.jpg" />
+    <Content Include="theme\assets\images\content\SuePrice.jpg" />
+    <Content Include="theme\assets\images\content\TreatmentStraightCouples %282%29.jpg" />
+    <Content Include="theme\assets\images\content\TreatmentStraightCouples.jpg" />
+    <Content Include="theme\assets\images\content\whittington %282%29.jpeg" />
+    <Content Include="theme\assets\images\content\whittington.jpeg" />
+    <Content Include="theme\assets\images\content\WomanOver %282%29.jpg" />
+    <Content Include="theme\assets\images\content\WomanOver.jpg" />
+    <Content Include="theme\assets\images\design\banner %282%29.png" />
+    <Content Include="theme\assets\images\design\banner.png" />
+    <Content Include="theme\assets\images\design\checkbox %282%29.png" />
+    <Content Include="theme\assets\images\design\checkbox %282%29.svg" />
+    <Content Include="theme\assets\images\design\checkbox.png" />
+    <Content Include="theme\assets\images\design\checkbox.svg" />
+    <Content Include="theme\assets\images\design\chevron %282%29.png" />
+    <Content Include="theme\assets\images\design\chevron %282%29.svg" />
+    <Content Include="theme\assets\images\design\chevron.png" />
+    <Content Include="theme\assets\images\design\chevron.svg" />
+    <Content Include="theme\assets\images\design\dropdownArrow.jpg" />
+    <Content Include="theme\assets\images\design\dropdownArrowLarge.jpg" />
+    <Content Include="theme\assets\images\design\fa-chevron-right %282%29.png" />
+    <Content Include="theme\assets\images\design\fa-chevron-right.png" />
+    <Content Include="theme\assets\images\design\homepage-spots.png" />
+    <Content Include="theme\assets\images\design\hp-bg %282%29.png" />
+    <Content Include="theme\assets\images\design\hp-bg.png" />
+    <Content Include="theme\assets\images\design\icons\blue-star %282%29.png" />
+    <Content Include="theme\assets\images\design\icons\blue-star.png" />
+    <Content Include="theme\assets\images\design\icons\female %282%29.png" />
+    <Content Include="theme\assets\images\design\icons\female.png" />
+    <Content Include="theme\assets\images\design\icons\grey-star %282%29.png" />
+    <Content Include="theme\assets\images\design\icons\grey-star.png" />
+    <Content Include="theme\assets\images\design\icons\print-icon.png" />
+    <Content Include="theme\assets\images\design\icons\search.png" />
+    <Content Include="theme\assets\images\design\icons\search_white.png" />
+    <Content Include="theme\assets\images\design\icons\share-icon.png" />
+    <Content Include="theme\assets\images\design\icons\star-blue.sketch" />
+    <Content Include="theme\assets\images\design\icons\star-grey.sketch" />
+    <Content Include="theme\assets\images\design\icons\star-white.sketch" />
+    <Content Include="theme\assets\images\design\icons\treatment %282%29.png" />
+    <Content Include="theme\assets\images\design\icons\treatment.png" />
+    <Content Include="theme\assets\images\design\icons\white-star %282%29.png" />
+    <Content Include="theme\assets\images\design\icons\white-star.png" />
+    <Content Include="theme\assets\images\design\location %282%29.svg" />
+    <Content Include="theme\assets\images\design\location.svg" />
+    <Content Include="theme\assets\images\design\map %282%29.svg" />
+    <Content Include="theme\assets\images\design\map-green %282%29.svg" />
+    <Content Include="theme\assets\images\design\map-green.svg" />
+    <Content Include="theme\assets\images\design\map-marker-green %282%29.png" />
+    <Content Include="theme\assets\images\design\map-marker-green.png" />
+    <Content Include="theme\assets\images\design\map-marker-teal %282%29.png" />
+    <Content Include="theme\assets\images\design\map-marker-teal.png" />
+    <Content Include="theme\assets\images\design\map.svg" />
+    <Content Include="theme\assets\images\design\new-banner %282%29.png" />
+    <Content Include="theme\assets\images\design\new-banner.png" />
+    <Content Include="theme\assets\images\design\nhs %282%29.png" />
+    <Content Include="theme\assets\images\design\nhs.png" />
+    <Content Include="theme\assets\images\design\ovals %282%29.png" />
+    <Content Include="theme\assets\images\design\ovals.png" />
+    <Content Include="theme\assets\images\design\spotlight-bg %282%29.png" />
+    <Content Include="theme\assets\images\design\spotlight-bg.png" />
+    <Content Include="theme\assets\images\logos\Logo %282%29.png" />
+    <Content Include="theme\assets\images\logos\Logo.png" />
+    <Content Include="theme\assets\js\bootstrap-tagsinput.css" />
+    <Content Include="theme\assets\js\bootstrap-tagsinput.js" />
+    <Content Include="theme\assets\js\bootstrap-tagsinput.min.js.map" />
+    <Content Include="theme\assets\js\bootstrap.js" />
+    <Content Include="theme\assets\js\bootstrap.min.js" />
+    <Content Include="theme\assets\js\Chart.Doughnut.js" />
+    <Content Include="theme\assets\js\hfea.js" />
+    <Content Include="theme\assets\js\jquery-1.10.2.min.js" />
+    <Content Include="theme\assets\js\json\map_listing.json" />
+    <Content Include="theme\assets\js\npm.js" />
+    <Content Include="theme\assets\js\plugins.js" />
+    <Content Include="theme\assets\js\prototype-only.js" />
+    <Content Include="theme\assets\js\terms.js" />
+    <Content Include="theme\assets\js\terms.json" />
+    <Content Include="theme\assets\js\typeahead.js" />
+    <Content Include="theme\assets\less\.csscomb.json" />
+    <Content Include="theme\assets\less\.csslintrc" />
+    <Content Include="theme\assets\less\alerts.less" />
+    <Content Include="theme\assets\less\badges.less" />
+    <Content Include="theme\assets\less\bootstrap.less" />
+    <Content Include="theme\assets\less\breadcrumbs.less" />
+    <Content Include="theme\assets\less\button-groups.less" />
+    <Content Include="theme\assets\less\buttons.less" />
+    <Content Include="theme\assets\less\carousel.less" />
+    <Content Include="theme\assets\less\close.less" />
+    <Content Include="theme\assets\less\code.less" />
+    <Content Include="theme\assets\less\component-animations.less" />
+    <Content Include="theme\assets\less\dropdowns.less" />
+    <Content Include="theme\assets\less\forms.less" />
+    <Content Include="theme\assets\less\glyphicons.less" />
+    <Content Include="theme\assets\less\grid.less" />
+    <Content Include="theme\assets\less\hfea-clinic-profile.less" />
+    <Content Include="theme\assets\less\hfea-fonts.less" />
+    <Content Include="theme\assets\less\hfea-forms.less" />
+    <Content Include="theme\assets\less\hfea-homepage.less" />
+    <Content Include="theme\assets\less\hfea-icons.less" />
+    <Content Include="theme\assets\less\hfea-modules.less" />
+    <Content Include="theme\assets\less\hfea-results.less" />
+    <Content Include="theme\assets\less\hfea-variables.less" />
+    <Content Include="theme\assets\less\input-groups.less" />
+    <Content Include="theme\assets\less\jumbotron.less" />
+    <Content Include="theme\assets\less\labels.less" />
+    <Content Include="theme\assets\less\list-group.less" />
+    <Content Include="theme\assets\less\map.less" />
+    <Content Include="theme\assets\less\media.less" />
+    <Content Include="theme\assets\less\mixins.less" />
+    <Content Include="theme\assets\less\mixins\alerts.less" />
+    <Content Include="theme\assets\less\mixins\background-variant.less" />
+    <Content Include="theme\assets\less\mixins\border-radius.less" />
+    <Content Include="theme\assets\less\mixins\buttons.less" />
+    <Content Include="theme\assets\less\mixins\center-block.less" />
+    <Content Include="theme\assets\less\mixins\clearfix.less" />
+    <Content Include="theme\assets\less\mixins\forms.less" />
+    <Content Include="theme\assets\less\mixins\gradients.less" />
+    <Content Include="theme\assets\less\mixins\grid-framework.less" />
+    <Content Include="theme\assets\less\mixins\grid.less" />
+    <Content Include="theme\assets\less\mixins\hide-text.less" />
+    <Content Include="theme\assets\less\mixins\image.less" />
+    <Content Include="theme\assets\less\mixins\labels.less" />
+    <Content Include="theme\assets\less\mixins\list-group.less" />
+    <Content Include="theme\assets\less\mixins\nav-divider.less" />
+    <Content Include="theme\assets\less\mixins\nav-vertical-align.less" />
+    <Content Include="theme\assets\less\mixins\opacity.less" />
+    <Content Include="theme\assets\less\mixins\pagination.less" />
+    <Content Include="theme\assets\less\mixins\panels.less" />
+    <Content Include="theme\assets\less\mixins\progress-bar.less" />
+    <Content Include="theme\assets\less\mixins\reset-filter.less" />
+    <Content Include="theme\assets\less\mixins\reset-text.less" />
+    <Content Include="theme\assets\less\mixins\resize.less" />
+    <Content Include="theme\assets\less\mixins\responsive-visibility.less" />
+    <Content Include="theme\assets\less\mixins\size.less" />
+    <Content Include="theme\assets\less\mixins\tab-focus.less" />
+    <Content Include="theme\assets\less\mixins\table-row.less" />
+    <Content Include="theme\assets\less\mixins\text-emphasis.less" />
+    <Content Include="theme\assets\less\mixins\text-overflow.less" />
+    <Content Include="theme\assets\less\mixins\vendor-prefixes.less" />
+    <Content Include="theme\assets\less\modals.less" />
+    <Content Include="theme\assets\less\navbar.less" />
+    <Content Include="theme\assets\less\navs.less" />
+    <Content Include="theme\assets\less\normalize.less" />
+    <Content Include="theme\assets\less\pager.less" />
+    <Content Include="theme\assets\less\pagination.less" />
+    <Content Include="theme\assets\less\panels.less" />
+    <Content Include="theme\assets\less\plugins.less" />
+    <Content Include="theme\assets\less\popovers.less" />
+    <Content Include="theme\assets\less\print.less" />
+    <Content Include="theme\assets\less\progress-bars.less" />
+    <Content Include="theme\assets\less\px-to-em.less" />
+    <Content Include="theme\assets\less\responsive-embed.less" />
+    <Content Include="theme\assets\less\responsive-utilities.less" />
+    <Content Include="theme\assets\less\scaffolding.less" />
+    <Content Include="theme\assets\less\tables.less" />
+    <Content Include="theme\assets\less\theme.less" />
+    <Content Include="theme\assets\less\thumbnails.less" />
+    <Content Include="theme\assets\less\tooltip.less" />
+    <Content Include="theme\assets\less\type.less" />
+    <Content Include="theme\assets\less\utilities.less" />
+    <Content Include="theme\assets\less\variables.less" />
+    <Content Include="theme\assets\less\wells.less" />
+    <Content Include="theme\templates\html.php" />
+    <Content Include="theme\templates\nodes\form.php" />
+    <Content Include="theme\templates\nodes\listing.php" />
+    <Content Include="theme\templates\nodes\search.php" />
+    <Content Include="theme\templates\nodes\sitemap.php" />
+    <Content Include="theme\templates\nodes\standard\standard-nlc-.php" />
+    <Content Include="theme\templates\nodes\standard\standard-rc-.php" />
+    <Content Include="theme\templates\nodes\standard\standard.php" />
+    <Content Include="theme\templates\nodes\twig-template.php" />
+    <Content Include="theme\templates\pages\page-home2.php" />
+    <Content Include="theme\templates\pages\page.php" />
+    <Content Include="theme\templates\sidebars\my-funky-sidebar.php" />
+    <Content Include="theme\templates\twig_templates\about\index.html" />
+    <Content Include="theme\templates\twig_templates\about\who-we-are\index.html" />
+    <Content Include="theme\templates\twig_templates\audience_landing.html" />
+    <Content Include="theme\templates\twig_templates\bootstrap_examples.html" />
+    <Content Include="theme\templates\twig_templates\choose-a-fertility-clinic.html" />
+    <Content Include="theme\templates\twig_templates\clinic-listing.html" />
+    <Content Include="theme\templates\twig_templates\clinic-page.html" />
+    <Content Include="theme\templates\twig_templates\clinic-page\clinic-rating.html" />
+    <Content Include="theme\templates\twig_templates\clinic-page\patient-rating.html" />
+    <Content Include="theme\templates\twig_templates\clinic-search.html" />
+    <Content Include="theme\templates\twig_templates\content-page.html" />
+    <Content Include="theme\templates\twig_templates\full-width-text.html" />
+    <Content Include="theme\templates\twig_templates\homepage.html" />
+    <Content Include="theme\templates\twig_templates\old-listing.html" />
+    <Content Include="theme\templates\twig_templates\partials\accordion.html" />
+    <Content Include="theme\templates\twig_templates\partials\blockquote.html" />
+    <Content Include="theme\templates\twig_templates\partials\clinic-listing.html" />
+    <Content Include="theme\templates\twig_templates\partials\clinic-type-list.html" />
+    <Content Include="theme\templates\twig_templates\partials\donut.html" />
+    <Content Include="theme\templates\twig_templates\partials\footer.html" />
+    <Content Include="theme\templates\twig_templates\partials\full-width-text.html" />
+    <Content Include="theme\templates\twig_templates\partials\intro-block.html" />
+    <Content Include="theme\templates\twig_templates\partials\listing-block-center.html" />
+    <Content Include="theme\templates\twig_templates\partials\listing.html" />
+    <Content Include="theme\templates\twig_templates\partials\masthead.html" />
+    <Content Include="theme\templates\twig_templates\partials\myths-section.html" />
+    <Content Include="theme\templates\twig_templates\partials\nav-block.html" />
+    <Content Include="theme\templates\twig_templates\partials\page-header-bg.html" />
+    <Content Include="theme\templates\twig_templates\partials\page-header.html" />
+    <Content Include="theme\templates\twig_templates\partials\panels.html" />
+    <Content Include="theme\templates\twig_templates\partials\patient-rating.html" />
+    <Content Include="theme\templates\twig_templates\partials\range-chart.html" />
+    <Content Include="theme\templates\twig_templates\partials\recently-viewed.html" />
+    <Content Include="theme\templates\twig_templates\partials\review-bar.html" />
+    <Content Include="theme\templates\twig_templates\partials\section-heading.html" />
+    <Content Include="theme\templates\twig_templates\partials\small-heading.html" />
+    <Content Include="theme\templates\twig_templates\partials\spotlight-bg.html" />
+    <Content Include="theme\templates\twig_templates\partials\spotlight-group.html" />
+    <Content Include="theme\templates\twig_templates\partials\spotlight.html" />
+    <Content Include="theme\templates\twig_templates\partials\spotlights-grey-bg-large-heading.html" />
+    <Content Include="theme\templates\twig_templates\partials\spotlights-row.html" />
+    <Content Include="theme\templates\twig_templates\partials\statistic.html" />
+    <Content Include="theme\templates\twig_templates\partials\tags.html" />
+    <Content Include="theme\templates\twig_templates\partials\text-panels-bg.html" />
+    <Content Include="theme\templates\twig_templates\partials\text-panels.html" />
+    <Content Include="theme\templates\twig_templates\partials\timeline.html" />
+    <Content Include="theme\templates\twig_templates\patternLibrary.html" />
+    <Content Include="theme\templates\twig_templates\problems-conceiving-old\index.html" />
+    <Content Include="theme\templates\twig_templates\problems-conceiving\index.html" />
+    <Content Include="theme\templates\twig_templates\problems-conceiving\when-to-seek-medical-advice\index.html" />
+    <Content Include="theme\templates\twig_templates\standard_landing.html" />
+    <Content Include="theme\templates\twig_templates\treatment-for-straight-couples\index.html" />
+    <Content Include="theme\templates\twig_templates\treatment-page.html" />
+    <Content Include="theme\templates\twig_templates\treatmentOptionsOld.html" />
+    <Content Include="theme\templates\twig_templates\treatments\emotional-support\index.html" />
+    <Content Include="theme\templates\twig_templates\treatments\funding\index.html" />
+    <Content Include="theme\templates\twig_templates\treatments\index.html" />
+    <Content Include="theme\templates\twig_templates\treatments\overview\index.html" />
+    <Content Include="theme\templates\twig_templates\treatments\patient-case-study\index.html" />
+    <Content Include="theme\templates\twig_templates\treatments\treatment-options\in-vitro-fertilisation\index.html" />
+    <Content Include="theme\templates\twig_templates\treatments\treatment-options\index.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\EventsHandler.cs" />
+    <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UmbracoAuthTokenServerExtensions.cs" />
+    <Compile Include="App_Start\UmbracoCustomOwinStartup.cs" />
+    <Compile Include="App_Start\UmbracoStandardOwinStartup.cs" />
+    <Compile Include="Caching\ContentCacheService.cs" />
+    <Compile Include="Constants\CaFC.cs" />
+    <Compile Include="Constants\QueryString.cs" />
+    <Compile Include="Controllers\API\ClinicStatisticsController.cs" />
+    <Compile Include="Controllers\API\ClinicSearchController.cs" />
+    <Compile Include="Controllers\API\TreatmentSearchController.cs" />
+    <Compile Include="Controllers\API\UserCommentsDashboardController.cs" />
+    <Compile Include="Controllers\API\UserRatingDashboardController.cs" />
+    <Compile Include="Controllers\CaFCCartSurfaceController.cs" />
+    <Compile Include="Controllers\CaFCComparisonSurfaceController.cs" />
+    <Compile Include="Controllers\PgdListingSurfaceController.cs" />
+    <Compile Include="Controllers\CAFCClinicFeedbackSurfaceController.cs" />
+    <Compile Include="Controllers\CaFCStatisticsSurfaceController.cs" />
+    <Compile Include="Controllers\CaFCStatistics.cs" />
+    <Compile Include="Controllers\CaFCClinicProfileController.cs" />
+    <Compile Include="Controllers\AllClinicsController.cs" />
+    <Compile Include="Controllers\CaFCSearchResultsController.cs" />
+    <Compile Include="Controllers\CodeOfPracticeController.cs" />
+    <Compile Include="Controllers\CaFCSearchSurfaceController.cs" />
+    <Compile Include="Controllers\MasterSurfaceController.cs" />
+    <Compile Include="Controllers\SearchPageController.cs" />
+    <Compile Include="Controllers\TagsJsonController.cs" />
+    <Compile Include="Controllers\SubmitPageRatingController.cs" />
+    <Compile Include="Controllers\UmbExtendApiController.cs" />
+    <Compile Include="Controllers\UserFeedbackController.cs" />
+    <Compile Include="CustomModel\CMSUser.cs" />
+    <Compile Include="Extensions\HtmlHelperExtention.cs" />
+    <Compile Include="Extensions\UmbracoExtensions.cs" />
+    <Compile Include="Extensions\WebExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CafcQueryStringHelper.cs" />
+    <Compile Include="Helpers\CaFCProfileUrlHelper.cs" />
+    <Compile Include="Helpers\CmsHelper.cs" />
+    <Compile Include="Helpers\SecurityHelper.cs" />
+    <Compile Include="Helpers\TextHelpers.cs" />
+    <Compile Include="Helpers\UrlQueryHelper.cs" />
+    <Compile Include="Helpers\WebControlHelper.cs" />
+    <Compile Include="Models\UmbracoGrid\GridContent.cs" />
+    <Compile Include="Models\UmbracoGrid\SpotlightContentValue.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchProvider\UmbracoContentReader.cs" />
+    <Compile Include="UmbEventHandlers\RejectChangesHandler.cs" />
+    <Compile Include="Utilities\CopUrlResolver.cs" />
+    <Compile Include="Utilities\Logger.cs" />
+    <Compile Include="Utilities\CmsUrlResolver.cs" />
+    <Compile Include="Utilities\PgdConditionsCmsReader.cs" />
+    <Compile Include="Utilities\RenderModelAdapter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Config\Dashboard.config" />
+    <Content Include="Config\ClientDependency.config" />
+    <Content Include="Config\ConnectionStrings.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Config\ConnectionStrings.Debug.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\ConnectionStrings.Development.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\ConnectionStrings.Local_DEV.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\ConnectionStrings.Local_FrontEnder.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\ConnectionStrings.Release.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\ConnectionStrings.UAT.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="Config\uSyncContent.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\log4net.config" />
+    <Content Include="Config\FileSystemProviders.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\hfea.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Config\hfea.Debug.config">
+      <DependentUpon>hfea.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\hfea.Development.config">
+      <DependentUpon>hfea.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\hfea.Local_DEV.config">
+      <DependentUpon>hfea.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\hfea.Local_FrontEnder.config">
+      <DependentUpon>hfea.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\hfea.Release.config">
+      <DependentUpon>hfea.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config\hfea.UAT.config">
+      <DependentUpon>hfea.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Base.cshtml" />
+    <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
+    <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
+    <Content Include="Views\CaFCSearch.cshtml" />
+    <Content Include="Views\MacroPartials\HFEANavigation.cshtml" />
+    <Content Include="Views\CaFCSearch\SearchFilters.cshtml" />
+    <Content Include="Views\CaFCSearch\SearchResults.cshtml" />
+    <Content Include="Views\MacroPartials\Breadcrumb.cshtml" />
+    <Content Include="Views\MacroPartials\HFEAFooter.cshtml" />
+    <Content Include="Views\Partials\Pagination.cshtml" />
+    <Content Include="Views\CaFCClinicProfile.cshtml" />
+    <Content Include="Views\CaFCSearch\SearchByClinicName.cshtml" />
+    <Content Include="Views\CodeOfPractice.cshtml" />
+    <Content Include="Views\BaseBreadcrumbTitleAndSummary.cshtml" />
+    <Content Include="Views\Partials\ClinicSpecialitiesView.cshtml" />
+    <Content Include="Views\Partials\StarRatingView.cshtml" />
+    <Content Include="Views\Partials\DotRatingView.cshtml" />
+    <Content Include="Views\Partials\ClinicRatingsView.cshtml" />
+    <Content Include="Views\CaFCSearchResults.cshtml" />
+    <Content Include="Views\ContentPage.cshtml" />
+    <Content Include="Views\Partials\RelatedLinks.cshtml" />
+    <Content Include="Views\Partials\Grid\ContentPage.cshtml" />
+    <Content Include="Views\CaFCProfile\BirthStatistics.cshtml" />
+    <Content Include="Views\CaFCProfile\ClinicGeneralInfo.cshtml" />
+    <Content Include="Views\CaFCProfile\WaitingTimesInfo.cshtml" />
+    <Content Include="Views\CaFCProfile\InspectionRatingInfo.cshtml" />
+    <Content Include="Views\CaFCProfile\PatientRatingInfo.cshtml" />
+    <Content Include="Views\CaFCProfile\ClinicDetailsInfo.cshtml" />
+    <Content Include="Views\Homepage.cshtml" />
+    <Content Include="theme\assets\css\bootstrap-dist.css.map" />
+    <Content Include="theme\assets\images\design\icons\star-blue %282%29.sketch" />
+    <Content Include="theme\assets\images\design\icons\star-grey %282%29.sketch" />
+    <Content Include="theme\assets\images\design\icons\star-white %282%29.sketch" />
+    <Content Include="Views\AudienceLandingPage.cshtml" />
+    <Content Include="Views\Partials\StandardPageCta.cshtml" />
+    <Content Include="Views\StandardLandingPage.cshtml" />
+    <Content Include="Views\TreatmentLandingPage.cshtml" />
+    <Content Include="Views\Partials\Grid\FullWidthBootstrap3.cshtml" />
+    <Content Include="Views\COP\SideNav.cshtml" />
+    <Content Include="theme\assets\less\hfea-cop.less" />
+    <Content Include="Views\MacroPartials\PageMetaTitle.cshtml" />
+    <Content Include="Views\Partials\PageRating.cshtml" />
+    <Content Include="Views\Partials\PageComments.cshtml" />
+    <Content Include="Views\UserFeedback\CommentsForm.cshtml" />
+    <Content Include="Views\PageRatingDashboard.cshtml" />
+    <Content Include="Views\Plain.cshtml" />
+    <Content Include="Views\Partials\FeedbackStarRatingView.cshtml" />
+    <Content Include="Views\SearchPage.cshtml" />
+    <Content Include="Views\SearchPage\SearchForm.cshtml" />
+    <Content Include="Views\SearchPage\SearchResultListing.cshtml" />
+    <Content Include="Views\SearchPage\SimpleSearchForm.cshtml" />
+    <Content Include="Views\Partials\_CAFCFeedbackForm.cshtml" />
+    <Content Include="Views\Partials\Grid\FullWidthBootstrap3RR.cshtml" />
+    <Content Include="Views\CAFCClinicFeedback\FeedbackForm.cshtml" />
+    <Content Include="Views\CaFCSearch\SearchResultsFilters.cshtml" />
+    <Content Include="Views\Partials\_renderFeedbackBlock.cshtml" />
+    <Content Include="Views\AllClinics.cshtml" />
+    <Content Include="Views\Partials\_CaFCAlphabeticList.cshtml" />
+    <Content Include="Views\Partials\_BetaBanner.cshtml" />
+    <Content Include="Views\Partials\_CookieBanner.cshtml" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\CaFCStatistics.cshtml" />
+    <Content Include="Views\CaFCStatistics\GenericStatistics.cshtml" />
+    <Content Include="Views\CaFCStatistics\TreatmentStatistics.cshtml" />
+    <Content Include="Views\CaFCStatistics\ComparisonStatistics.cshtml" />
+    <Content Include="Views\CaFCStatistics\AgeGroupStatistics.cshtml" />
+    <Content Include="Views\CaFCStatistics\Filters.cshtml" />
+    <Content Include="Views\Partials\DotRatingViewClinic.cshtml" />
+    <Content Include="Views\Partials\UmbracoPageLinkById.cshtml" />
+    <Content Include="Views\SearchPage\SearchResultsPage.cshtml" />
+    <Content Include="Views\PGDDetailsPage.cshtml" />
+    <Content Include="Views\PGDListingPage.cshtml" />
+    <Content Include="Views\PGD\PgdListing.cshtml" />
+    <Content Include="Views\PGD\PgdSearchForm.cshtml" />
+    <Content Include="Views\MacroPartials\InsertUmbracoForm.cshtml" />
+    <Content Include="Views\MacroPartials\RenderUmbracoFormScripts.cshtml" />
+    <Content Include="Views\Partials\Forms\Export\csv.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.CheckBox.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.CheckBoxList.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.DatePicker.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.DropDownList.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.FileUpload.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.HiddenField.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.PasswordField.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.RadioButtonList.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\Fieldtype.Recaptcha.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.Text.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.Textarea.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.Textfield.cshtml" />
+    <Content Include="Views\Partials\Forms\Form.cshtml" />
+    <Content Include="Views\Partials\Forms\Script.cshtml" />
+    <Content Include="Views\CaFCComparisonPage.cshtml" />
+    <Content Include="Views\CaFCCompare\CompareClinics.cshtml" />
+    <Content Include="Views\CaFCCompare\CompareForm.cshtml" />
+    <Content Include="Views\CaFCShared\ClinicOpeningTimes.cshtml" />
+    <Content Include="Views\CaFCShared\CartView.cshtml" />
+    <Content Include="Views\CaFCShared\CartAdd.cshtml" />
+    <Content Include="Views\Partials\UserMessage.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Macro.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Embed.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Development.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Local_DEV.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Local_FrontEnder.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.UAT.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="uSync\" />
+    <Folder Include="Views\MasterSurface\" />
+    <Folder Include="Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HFEA.API.Connector\Source\HFEA.Connector.Global\HFEA.Connector.Global.csproj">
+      <Project>{8571d543-7523-4c13-995b-cdd9e84ddce9}</Project>
+      <Name>HFEA.Connector.Global</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.BL.Contracts\HFEA.BL.Contracts.csproj">
+      <Project>{2a93828b-532b-4746-ba12-5a69a00741ae}</Project>
+      <Name>HFEA.BL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.Core\HFEA.Core.csproj">
+      <Project>{03a16df2-4c8d-4367-8f55-4dcb7000553e}</Project>
+      <Name>HFEA.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.References\HFEA.References.csproj">
+      <Project>{2b8ace48-7d9d-46e3-ab47-7bbf2c24265a}</Project>
+      <Name>HFEA.References</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.Web.ViewModel\HFEA.Web.ViewModel.csproj">
+      <Project>{c100a333-a984-405c-b01b-a3298919703e}</Project>
+      <Name>HFEA.Web.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Local_Hang.Tian|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Local_DEV|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Development|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT|AnyCPU'">
+    <MvcBuildViews>false</MvcBuildViews>
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Local_FrontEnder|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>App_plugins\HfeaCommentsRatings\package.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" />-->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8304</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8306/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  -->
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <MyConfigFiles Include="Web.config" />
+      <MyConfigFiles Include="config\hfea.config" />
+      <MyConfigFiles Include="Config\ConnectionStrings.config" />
+      <MyConfigFiles Include="config\FileSystemProviders.config" />
+      <MyConfigFiles Include="ApplicationInsights.config" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MyConfigFiles)" DestinationFolder="$(IntermediateOutputPath)configBackup" />
+  </Target>
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="AfterBuild">
+    <TransformXml Source="$(IntermediateOutputPath)configBackup\Web.config" Destination="Web.config" Transform="Web.$(Configuration).config" />
+    <TransformXml Source="$(IntermediateOutputPath)configBackup\ConnectionStrings.config" Destination="Config\ConnectionStrings.config" Transform="Config\ConnectionStrings.$(Configuration).config" />
+    <TransformXml Source="$(IntermediateOutputPath)configBackup\hfea.config" Destination="config\hfea.config" Transform="config\hfea.$(Configuration).config" />
+    <TransformXml Source="$(IntermediateOutputPath)configBackup\FileSystemProviders.config" Destination="config\FileSystemProviders.config" Transform="config\FileSystemProviders.$(Configuration).config" />
+    <TransformXml Source="$(IntermediateOutputPath)configBackup\ApplicationInsights.config" Destination="ApplicationInsights.config" Transform="ApplicationInsights.$(Configuration).config" />
+    <ItemGroup>
+      <BackupsToDelete Include="$(IntermediateOutputPath)configBackup\*.*" />
+    </ItemGroup>
+    <!-- uncomment if you want to delete backed up config files  -->
+    <Delete Files="@(BackupsToDelete)" />
+    <Message Text="AfterBuild: Config transformations complete" Importance="high" />
+  </Target>
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <ItemGroup>
+      <ExtraWebConfigs Include="$(BaseIntermediateOutputPath)\**\web.config" />
+      <ExtraPackageTmp Include="$([System.IO.Directory]::GetDirectories(&quot;$(BaseIntermediateOutputPath)&quot;, &quot;PackageTmp&quot;, System.IO.SearchOption.AllDirectories))" />
+    </ItemGroup>
+    <Delete Files="@(ExtraWebConfigs)" />
+    <RemoveDir Directories="@(ExtraPackageTmp)" />
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <Import Project="..\..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\build\Microsoft.ApplicationInsights.Agent.Intercept.targets" Condition="Exists('..\..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\build\Microsoft.ApplicationInsights.Agent.Intercept.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\build\Microsoft.ApplicationInsights.Agent.Intercept.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\build\Microsoft.ApplicationInsights.Agent.Intercept.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\UmbracoCms.7.4.3\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\UmbracoCms.7.4.3\build\UmbracoCms.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets'))" />
+  </Target>
+  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\..\..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets" Condition="Exists('..\..\..\packages\UmbracoCms.7.4.3\build\UmbracoCms.targets')" />
+</Project>

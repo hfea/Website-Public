@@ -1,0 +1,11 @@
+﻿@model List<HFEA.Web.ViewModel.CaFC.Model.OpenTimeItem>
+
+@if (Model != null)
+{
+    foreach (var date in Model)
+    {
+        var text = date.IsOpened ? date.OpenTime + " - " + date.CloseTime : "contact the clinic";
+        var day = date.FromDay == date.ToDay ? date.FromDay.ToString() : date.FromDay.ToString() + " to " + date.ToDay.ToString();
+    <p>@day: <span class="green">@text</span></p>
+    }
+}

@@ -1,0 +1,8 @@
+﻿@model HFEA.Web.ViewModel.NotificationMessage
+
+@if (Model != null && !string.IsNullOrEmpty(Model.Text))
+{
+    <div class="notification @Model.MessageType.ToString().ToLower()">
+        <span>@Html.Raw(Model.Text)</span>
+    </div>
+}

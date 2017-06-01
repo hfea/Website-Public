@@ -1,0 +1,16 @@
+﻿@using HFEA;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "BaseBreadcrumbTitleAndSummary.cshtml";
+}
+@CurrentPage.GetGridHtml("topGrid", "ContentPage")
+@*<div style="margin:30px 0;width:90%;min-height:100px;border:1px dashed blue;padding-top:43px;"><span>This is a placeholder for interactive data block</span></div>*@
+@CurrentPage.GetGridHtml("bottomGrid", "ContentPage")
+
+<div class="container social-sharing-container">
+    @Html.Partial("StandardPageCta")
+</div>
+
+@Html.Partial("RelatedLinks")
+
+@Umbraco.If(CurrentPage.showPublicationDate, Umbraco.AssignedContentItem.UpdateDate.ToHFEADisplayShortDateString())

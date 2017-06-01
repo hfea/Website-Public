@@ -1,0 +1,64 @@
+﻿@using HFEA.BL;
+@using Newtonsoft.Json.Linq;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Newtonsoft.Json.Linq.JObject>
+@{
+    dynamic node = null;
+    dynamic media = null;
+
+    string header = Model.GetStringValueOrEmpty("value", "header");
+    string summary = Model.GetStringValueOrEmpty("value", "summary");
+    string background = Model.GetStringValueOrEmpty("value", "styleBgColor", "id");
+    string headerStyle = Model.GetStringValueOrEmpty("value", "styleHeader", "id");
+    string val = Model.GetStringValueOrEmpty("value", "node", "id");
+    string image = Model.GetStringValueOrEmpty("value", "image", "id");
+
+    int tmp;
+    if (val != null && int.TryParse(val.ToString(), out tmp))
+    {
+        node = Umbraco.Content(tmp);
+    }
+
+    if (image != null && int.TryParse(image.ToString(), out tmp))
+    {
+        media = Umbraco.Media(tmp);
+    }    
+}
+<article class="@background @headerStyle">
+@if (node != null)
+            {
+    
+    <div class="padding">
+        <h2 class="header">
+            @header
+        </h2>
+        <p class="main_text">@summary</p>
+        <a class="hfea-btn float-left thickline" href="@node.Url">Find out more</a>
+    </div>
+}
+else
+            {
+        <div class="padding">
+            <h2 class="header">
+                @header
+            </h2>
+            <p class="main_text">@summary</p>
+        </div>
+}
+    @*<div class="padding">
+            <h2 class="header">
+                @if (node != null)
+                {
+                    <a href="@node.Url">@header</a>
+                }
+                else
+                {
+                    @header
+                }
+            </h2>
+            <p class="main_text">@summary</p>
+        </div>*@
+    @if (media != null)
+            {
+        <img src="@media.umbracoFile">
+    }
+</article>

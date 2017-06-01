@@ -1,0 +1,201 @@
+﻿@using HFEA.Web.Controllers;
+@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<ClinicDetailsInfo>
+
+<div class="panel-hfea panel-default">
+    <div class="panel-heading" role="tab" id="heading4">
+        <h4 class="panel-title panel-title parent-panel-title">
+            <a class="collapsed clinic-details-toggle accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                @Umbraco.Field("clinicDetailsTitle")
+                <span class="chevron"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+        <div class="clinic-details">
+            <!-- new details design-->
+            <div class="row">
+                @foreach (var service in Model.ClinicServiceList)
+            {
+                    @renderClinicService(service)
+                }
+            </div>
+            <div class="row mb-50">
+                @if (Model.MapInfo != null)
+            {
+                    <div class="col-lg-6 col-md-6 map">
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <div id="clinic-map" class="embed-responsive-item" data-lat="@Model.MapInfo.Lat" data-lng="@Model.MapInfo.Long"></div>
+                        </div>
+                    </div>
+                }
+                <div class="col-lg-6  col-md-6 image">
+                    <img alt="Clinic image" src="@Model.ImageUrl" />
+                </div>
+            </div>
+            @*@if (!string.IsNullOrEmpty(Model.AdditionalClinicInfo))
+            {
+                <div class="">
+                    <p>@Model.AdditionalClinicInfo</p>
+                </div>
+            }*@
+            <div class="row">
+                @renderInfoListIfNotEmpty(Umbraco.Field("addressLabel").ToHtmlString(), Model.AddressLinesList)
+                <div class="col-lg-4 col-md-6 detail">
+                    <h2>@Umbraco.Field("contactsLabel")</h2>
+                    @if (!string.IsNullOrEmpty(Model.CentrePhone))
+                    {
+                        <p><span class="green">P: </span>@Model.CentrePhone</p>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.OtherCentrePhone))
+                    {
+                        <p><span class="green">P (other): </span>@Model.OtherCentrePhone</p>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Fax))
+                    {
+                        <p><span class="green">F: </span>@Model.Fax</p>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.CentreEmail))
+                    {
+                        <p><span class="green">E: </span><a href="mailto:@Model.CentreEmail">@Model.CentreEmail</a></p>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Website))
+                    {
+                        <p><span class="green">W: </span><a href="@Model.WebsiteUri" target="_blank" title="Visit clinic website">@Model.Website</a></p>
+                                <p><b>Licence holder</b></p>
+                                foreach (var licenseHolder in Model.LicensePRRolesModel.Where(c => c.roleType == "Licence holder"))
+                                {
+                                    <p><span class="green">@Umbraco.Field("licenseHolderLabel")</span>@licenseHolder.personName</p>
+                        }
+                        <p><b>Person responsible</b></p>
+                        foreach (var licenseHolder in Model.LicensePRRolesModel.Where(c => c.roleType == "Person responsible"))
+                        {
+                            <p><span class="green">@Umbraco.Field("responsiblePersonLabel")</span>@licenseHolder.personName</p>
+                        }
+
+                    }
+                </div>
+                <div class="col-lg-4 col-md-6 detail">
+                    <h2>@Umbraco.Field("openingHoursLabel")</h2>
+                    @Html.Partial("~/Views/CaFCShared/ClinicOpeningTimes.cshtml", Model.OpeningHoursList)
+                </div>
+            </div>
+
+            @if (Model.HasSatelliteClinics || Model.HasTransportClinics)
+            {
+                <div class="row">
+                    @renderSatelliteIfExist(Model.SatelliteClinicList, Umbraco.Field("satelliteClinicsLabel").ToHtmlString())
+                    @renderSatelliteIfExist(Model.TransportClinicList, Umbraco.Field("transportClinicsLabel").ToHtmlString())
+                </div>
+            }
+            @*<div class="row">
+                <div class="col-lg-6 col-md-6 detail">
+                    <h2>@Umbraco.Field("licenseHolderLabel")</h2>
+                    @foreach(var licenseHolder in Model.LicensePRRolesModel.Where(c => c.roleType == "Licence holder"))
+                    {
+                        <p>@licenseHolder.personName</p>
+                    }
+                </div>
+                <div class="col-lg-6 col-md-6 detail">
+                    <h2>@Umbraco.Field("responsiblePersonLabel")</h2>
+                    @foreach (var licenseHolder in Model.LicensePRRolesModel.Where(c => c.roleType == "Person responsible"))
+                    {
+                        <p>@licenseHolder.personName</p>
+                    }
+                </div>
+            </div>*@
+
+        </div>
+    </div>
+</div>
+
+    @helper renderClinicService(ClinicService service)
+    {
+if (service != null && service.ServiceList != null)
+{
+        @renderInfoListIfNotEmpty(Umbraco.Field(service.CmsFieldAlias).ToHtmlString(), service.ServiceList);
+}
+}
+
+@helper renderInfoListIfNotEmpty(string title, IEnumerable<ServiceList> list)
+{
+    if (list != null && list.Any())
+    {
+        <div class="detail col-lg-4 col-md-6">
+            <h2>@title</h2>
+            <ul class="list-unstyled">
+                @foreach (var line in list)
+                {
+                <li>@line.Name
+                    @*@if (!string.IsNullOrEmpty(line.Description))
+                    {
+                    <div>
+                        <a id="hidden-text-@(list.IndexOf(line))-button" class="helper-text reveal-link collapsed" role="button" data-toggle="collapse" href="#hidden-text-@(list.IndexOf(line))" aria-expanded="false" aria-controls="hidden-text-@(list.IndexOf(line))">
+                            <span class="glyphicon glyphicon-play"></span>
+                            What's this?
+
+                        </a>
+                        <div id="hidden-text-@(list.IndexOf(line))" aria-expanded="false" class="collapse helper-text-main">
+                            <p>
+                                @line.Description
+                            </p>
+                        </div>
+                    </div>
+                    }*@
+                </li>
+                }
+            </ul>
+        </div>
+    }
+}
+
+@helper renderInfoListIfNotEmpty(string title, IEnumerable<string> list)
+{
+if (list != null && list.Any())
+{
+        <div class="detail col-lg-4 col-md-6">
+            <h2>@title</h2>
+            <ul class="list-unstyled">
+                @foreach (var line in list)
+                {
+                    <li>@line</li>
+                }
+            </ul>
+        </div>
+}
+}
+
+    @helper renderSatelliteIfExist(List<SatelliteClinicInfo> data, string blockTitle)
+    {
+if (data != null && data.Any())
+{
+        <div class="detail col-lg-4 col-md-6">
+            <h2 class="">@blockTitle</h2>
+            @foreach (var clinic in data)
+            {
+                <ul class="list-unstyled">
+                    <li><h3 class="small-header">@clinic.CentreName</h3></li>
+                    @if (clinic.CentrePhoneList != null && clinic.CentrePhoneList.Any())
+                    {
+                        <li><div class="phone-numbers">
+                                @foreach (string number in clinic.CentrePhoneList)
+                                {
+                                    <span>P: @number</span>
+                                }
+                                </div>
+                        </li>
+                    }
+                    @if (clinic.AddressLinesList != null)
+                    {
+                        foreach (string line in clinic.AddressLinesList)
+                        {
+                            <li>@line</li>
+                        }
+                    }
+                    
+                </ul>
+            }
+        </div>
+}
+}

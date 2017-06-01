@@ -1,0 +1,40 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<int>
+@{
+    umbraco.NodeFactory.Node node = null;
+    bool isValid = false;
+
+    string title = this.ViewData.ContainsKey("CustomTitle") ? this.ViewData["CustomTitle"].ToString() : string.Empty;
+
+    if (Model > 0 && (node = new umbraco.NodeFactory.Node(Model)).Id > 0)
+    {
+        isValid = true;
+        if (string.IsNullOrEmpty(title))
+        {
+            title = node.GetProperty<string>("navigationTitle");
+            if (string.IsNullOrEmpty(title))
+            {
+                title = node.GetProperty<string>("pageTitle");
+                if (string.IsNullOrEmpty(title))
+                {
+                    title = node.Name;
+                }
+            }
+        }
+
+    }
+}
+
+@if (isValid)
+{
+    if (this.ViewData.ContainsKey("Css"))
+    {
+        <a class="@this.ViewData["css"]" title="@title" href="@node.Url">@title</a>
+    }
+    else
+    {
+        <a title="@title" href="@node.Url">@title</a>
+    }
+}
+
+
+

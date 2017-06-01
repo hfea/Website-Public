@@ -1,0 +1,129 @@
+﻿@using HFEA;
+@using HFEA.Web.ViewModel.CaFC;
+@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<ClinicStatsTreatmentViewModel>
+
+@if (Model != null)
+{
+
+    <div class="panel-hfea panel-default">
+        <div class="panel-heading" role="tab" id="collapse-stats-header">
+            <h4 class="panel-title parent-panel-title">
+                <a role="button" class="accordion-toggle open" data-parent="#accordion" href="#collapse-stats" aria-expanded="true" aria-controls="collapse-stats">
+                    @Umbraco.Field("accordion1Label") 
+                    <span class="chevron"></span>
+                </a>
+            </h4>
+        </div>
+
+        <div id="collapse-stats" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-stats-header">
+
+
+            <div class="panel-group accordion child-accordion" id="childaccordion" role="tablist">
+
+                @if (Model.CancellationBeforeCollectionData != null)
+                {
+
+                    <div class="panel-hfea panel-default">
+                        <div class="panel-heading" role="tab" id="subheadingThree">
+                            <h5 class="panel-title">
+                                <a role="button" class="accordion-toggle open" data-parent="#childaccordion" href="#subcollapseThree" aria-expanded="false" aria-controls="subcollapseThree">
+                                    <span class="title-text">
+                                        @Umbraco.Field("accordion1Sub1Label")
+                                    </span>
+                                    <span class="chevron"></span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="subcollapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="subheadingThree">
+                            <div class="panel-body waiting-times">
+                                @renderTable(Model.CancellationBeforeCollectionData)
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.CancellationBeforeTransferData != null)
+                {
+
+                    <div class="panel-hfea panel-default">
+                        <div class="panel-heading" role="tab" id="subheadingThree">
+                            <h5 class="panel-title">
+                                <a role="button" class="accordion-toggle" data-parent="#childaccordion" href="#subcollapseThree" aria-expanded="false" aria-controls="subcollapseThree">
+                                    <span class="title-text">
+                                        @Umbraco.Field("accordion1Sub2Label")
+                                    </span>
+                                    <span class="chevron"></span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="subcollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="subheadingThree">
+                            <div class="panel-body waiting-times">
+                                @renderTable(Model.CancellationBeforeTransferData)
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.EmbryosTransferredData != null)
+                {
+                    <div class="panel-hfea panel-default">
+                        <div class="panel-heading" role="tab" id="subheadingThree">
+                            <h5 class="panel-title">
+                                <a role="button" class="accordion-toggle" data-parent="#childaccordion" href="#subcollapseThree" aria-expanded="false" aria-controls="subcollapseThree">
+                                    <span class="title-text">
+                                        @Umbraco.Field("accordion1Sub3Label")
+                                    </span>
+                                    <span class="chevron"></span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="subcollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="subheadingThree">
+                            <div class="panel-body waiting-times">
+                                @renderTableWithOriginalValues(Model.EmbryosTransferredData)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+        
+
+        }
+
+@helper renderTable(List<GenericStatsItem> data)
+{
+    if (data != null && data.Count > 0)
+    {
+        <table class="waiting-times-table">
+            @foreach (var record in data)
+            {
+                <tr>
+                    <td>@record.Text</td>
+                    <td>@record.Number</td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+@helper renderTableWithOriginalValues(List<GenericStatsItem> data)
+{
+if (data != null && data.Count > 0)
+{
+        <table class="waiting-times-table">
+            @foreach (var record in data)
+            {
+                <tr>
+                    <td>@record.Text</td>
+                    <td>@record.ValueOriginal</td>
+                </tr>
+            }
+        </table>
+}
+}
+

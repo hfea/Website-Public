@@ -1,0 +1,79 @@
+﻿@using HFEA.Web.Constants;
+@using HFEA.Web.ViewModel.API;
+@using HFEA.Web.ViewModel.CaFC;
+@using HFEA.Web.ViewModel.CaFC.Model;
+@using HFEA.Web.Controllers;
+
+@inherits UmbracoViewPage<StatsSearchFilterValues>
+@{
+    string age = HFEA.Web.Constants.QueryString.QueryParams.age.GetQryParamValueOrNull();
+    string year = HFEA.Web.Constants.QueryString.QueryParams.year.GetQryParamValueOrNull();
+    string treatment = HFEA.Web.Constants.QueryString.QueryParams.treatment.GetQryParamValueOrNull();
+    string source = HFEA.Web.Constants.QueryString.QueryParams.source.GetQryParamValueOrNull();    
+}
+
+@if (Model != null)
+{
+    string submitButtonLabel = string.Empty;
+    string finalStepClass = string.Empty;
+    if (Model.CurrentStep == 4 && !string.IsNullOrWhiteSpace(source))
+    {
+        finalStepClass = "finalStep";
+        submitButtonLabel = Umbraco.AssignedContentItem.GetPropertyValue<string>("filtersButtonLabel");
+        if (string.IsNullOrEmpty(submitButtonLabel)) { submitButtonLabel = "Update"; }
+    } else if (Model.CurrentStep == 4)
+    {
+        submitButtonLabel = "Submit";
+    }
+    else
+    {
+        submitButtonLabel = string.Format("Step {0}", Model.CurrentStep + 1);
+    }
+
+    <div class="row mb-50">
+		<div class="col-md-12 col-lg-8 col-lg-offset-2">
+            <h2 class="h3 mb-50">@Umbraco.Field("filtersSelectionSubtitle")</h2>
+            @Umbraco.Field("filtersIntroductoryText")
+        </div>
+    </div>
+
+    <div class="row mb-50 detailedStats-filters @finalStepClass">
+		<div class="col-md-12 col-lg-8 col-lg-offset-2">
+            @using (Html.BeginUmbracoForm<CaFCStatisticsSurfaceController>("FiltersSubmit", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.ClinicId)
+                @Html.Hidden("type")
+                @renderDropDown("filterYearsLabel", Model.Years, "year", year, Model.ShowYearDropDown, 1)
+                @renderDropDown("filterTreatmentsLabel", Model.Treatments, "treatment", treatment, Model.ShowTreatmentDropDown, 2)
+                @renderDropDown("filterAgesLabel", Model.Ages, "age", age, Model.ShowAgeDropDown, 3)
+                @renderDropDown("filterSourcesLabel", Model.Sources, "source", source, Model.ShowSourceDropDown, 4)
+
+                <div class="submit-btn-wrapper mt-50">
+                    <input class="submit-btn btn btn-primary btn-lg" type="submit" name="submitFilter" value="@submitButtonLabel" />
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@helper renderDropDown(string titleField, List<IdValuePair> values, string id, string selectedValue, bool show, int currentStep)
+{
+if (values != null && values.Count > 0)
+{
+    string hide = show ? "" : " style=\"display:none\"";
+    <div class="filter-row bg-lightgrey"@Html.Raw(hide)>
+        <h2 class="h4 mb-20">@Umbraco.Field(titleField)</h2>
+        
+        <p class="h4 grey-text mb-20">Step @currentStep of 4</p>
+
+        <select id="@id" name="@id" class="hfea-select full-width-select">
+            @foreach (var rec in values)
+    {
+        string selected = !string.IsNullOrEmpty(selectedValue) && selectedValue == rec.Id ? "selected" : "";
+                <option value="@rec.Id" @selected>@rec.Value</option>
+            }
+        </select>
+        <input class="hide-js text-link mt-20" type="submit" name="submitFilter" value="Update this selection" />
+    </div>
+}
+}

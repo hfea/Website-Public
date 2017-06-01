@@ -1,0 +1,47 @@
+<div ng-controller="hfea.textAndImageSpotlight">
+    <div>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.value.header" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add header..."></textarea>
+    </div>
+    <p><strong>CTA link</strong></p>
+    <div style="min-height:70px; border:4px dashed #f8f8f8" ng-click="setContentPicker()" ng-if="!(control.value && control.value.node)">
+        <p>Click to select page</p>
+    </div>
+    <div style="min-height:70px" ng-click="setContentPicker()" ng-if="control.value && control.value.node">
+        <p>{{control.value.node.name}}</p>
+    </div>
+    <div>
+        <textarea class="textstring input-block-level" ng-model="control.value.summary" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add summary..."></textarea>
+    </div>      
+    <div>
+        <p>Display image:</p>
+        <ul class="unstyled list-icons" ng-if="control.value != null && control.value.image != null">
+            <li>
+                <i class="icon icon-delete red hover-show pull-right" ng-click="removePicture()"></i>
+
+                <i class="icon {{control.value.image.icon}} hover-hide"></i>
+                {{control.value.image.name}}
+            </li>
+        </ul>
+        <ul class="unstyled list-icons">
+            <li>
+                <i class="icon icon-add blue"></i>
+                <a href="#" ng-click="openMediaPicker()" prevent-default>
+                    Select
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p><strong>Styling options</strong></p>
+    <p>
+        Background color:<br />
+        <select ng-options="item as item.label for item in control.value.styleItems track by item.id" ng-model="control.value.styleBgColor"></select>
+    </p>
+    <p>
+        Header styling:<br />
+        <select ng-options="item as item.label for item in control.value.headerStyleItems track by item.id" ng-model="control.value.styleHeader"></select>
+    </p>
+    <p>
+        Border styling:<br />
+        <select ng-options="item as item.label for item in control.value.borderStyleItems track by item.id" ng-model="control.value.styleBorder"></select>
+    </p>
+</div>

@@ -1,0 +1,38 @@
+﻿@model HFEA.Web.ViewModel.UserFeedback.CommentFormModel
+@using Newtonsoft.Json;
+@{ 
+    var _helper = new UmbracoHelper(UmbracoContext.Current);
+    var CurrentPage = _helper.TypedContent(UmbracoContext.Current.PageId);
+    string jsonNode = _helper.TypedContentAtRoot().Where(root => root.DocumentTypeAlias == "SiteSettings").First().Children.Where(ch => ch.DocumentTypeAlias == "Dictionary").First().GetPropertyValue("titles").ToString();
+    dynamic labelsNode = JsonConvert.DeserializeObject(jsonNode);
+}
+@using (Html.BeginUmbracoForm<HFEA.Web.Controllers.UserFeedbackController>("SubmitComment", FormMethod.Post))
+{
+    if(TempData.ContainsKey("success"))
+    {
+        <p class="alert notification_success">@Html.Raw(TempData["success"].ToString())</p>
+    }
+    <div class="bg_light_buff form_area" id="leave_comment">
+        <fieldset>
+            <legend class="form_title">Leave your comment</legend>
+            @{
+                foreach (var title in labelsNode)
+                {
+                    if (title.id == "Text underneath patient feedback form")
+                    {
+                        <p>@Html.Raw(title.title)</p>
+                        break;
+                    }
+                }
+            }
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.ParentCommentId, new { id = "parentCommentId" })
+            @Html.EditorFor(x => Model)
+            <div class="pt-50 pb-50">
+                <div class="submit-btn-wrapper">
+                    <input type="submit" value="Submit" class="submit-btn btn btn-primary btn-lg">
+                </div>
+            </div>
+        </fieldset>
+</div>
+}

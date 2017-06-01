@@ -1,0 +1,34 @@
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+@{
+    dynamic media = null;
+    string background = Model.styleColor.id;
+
+    var image = Model.value.image.id;
+    int tmp = 0;
+    if (image != null && int.TryParse(image.ToString(), out tmp))
+    {
+        media = Umbraco.Media(tmp);
+    }
+
+}
+<div class="">
+    <h2>@Model.header</h2><h2 style="display: none;">@Model.header</h2>
+    <div>
+        <div class="toggle">
+            <h2 style="display: none;">@Model.header</h2>
+            @Html.Raw(Model.value.text)
+        </div>
+    </div>
+    <aside class="@background img_blockquote">
+        @if (tmp > 0)
+        {
+            <img alt="Quote" src="@media.umbracoFile" class="img-circle">
+        }
+        <blockquote>
+            @Html.Raw(Model.value.quoteText)
+            <footer>
+                @Model.quotefooter
+            </footer>
+        </blockquote>
+    </aside>
+</div>

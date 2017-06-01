@@ -1,0 +1,60 @@
+﻿@model double
+
+@{
+    List<string> labels = new List<string>();
+    foreach(var lbl in umbraco.library.GetDictionaryItem("Star Ratings").Split(','))
+    {
+        labels.Add(lbl);
+    }
+    @*{
+        //"Unhelpful",
+        //"Not very helpful",
+        //"Fairly helpful",
+        //"Helpful",
+        //"Very helpful"
+        ////"Not helpful at all",
+        ////"Not helpful",
+        ////"Relatively",
+        ////"Helpful",
+        ////"Exactly what i wanted"
+    };*@
+}
+<div class="stars">
+        @{
+            var remainder = Model % 1;
+            var percent = (remainder * 100).ToString() + "%";
+
+
+            int fullStartCount = (int)Math.Floor(Model);
+            for (int index = 1; index <= 5; index++)
+            {
+                <div class="star">
+
+                    @if (index <= fullStartCount)
+                    {
+                        // print full starts
+                    <span class="fill fill-full"></span>
+                    }
+                    else
+                    {
+                    <span  class="fill"></span>
+                    }
+                    
+                </div>
+
+            }
+        }
+</div>
+
+<span class="star_rating_tally"></span>
+
+
+
+<div class="star_labels mb-20">
+    @{
+        for (int index = 1; index <= 5; index++)
+        {
+            <span class="star_label">@labels[index - 1]</span>
+        }
+    }
+</div>

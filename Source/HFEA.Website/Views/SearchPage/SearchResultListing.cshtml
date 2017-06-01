@@ -1,0 +1,49 @@
+﻿@using HFEA;
+@using HFEA.Core;
+@using HFEA.Web.ViewModel.API;
+@using HFEA.Web.ViewModel.Search;
+
+@model PagedList<SearchResultItem>
+
+<div class="search-listing mt-50">
+    @if (Model.Any())
+    {
+        <ul class="search-listing__list">
+            @foreach (var item in Model)
+            {
+                string pubDate = item.PublishDate == DateTime.MinValue ? "N/A" : item.PublishDate.ToHFEADisplayShortDateString();
+                <li class="search-listing__item">
+                    <div>
+                        <a href="@item.Url"><h2 class="h3 mb-40">@item.Title.ToFirstUpper()</h2></a>
+                        <p>
+                            @item.Summary
+                        </p>                   
+                        <p class="small-text">Last updated: @pubDate</p>
+
+                        @if (item.ContentTagList != null && item.ContentTagList.Any())
+                        {
+                            <div class="search-listing__tags mt-50">
+                                @foreach (ContentTag tag in item.ContentTagList)
+                                {
+                                    <span class="search-listing__tag-item" data-id="@tag.Id">@tag.Value</span>
+                                }
+                            </div>
+                        }
+
+                        @if (item.ProductTagList != null && item.ProductTagList.Any())
+                        {
+                            <div class="search-listing__tags mt-50">
+                                @foreach (ContentTag tag in item.ProductTagList)
+                                {
+                                    <span class="search-listing__tag-item" data-id="@tag.Id">@tag.Value</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+
+    @Html.Partial("Pagination", Model)
+</div>

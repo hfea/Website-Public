@@ -1,0 +1,50 @@
+﻿<div class="umb-pane" ng-controller="HfeaPageRating.Controller">
+    <div ng-show="displayMessage && displayMessage != ''" class="umbraco-pane">
+        <div class="alert {{messageType}} text-center">
+            <small>{{displayMessage}}</small>
+        </div>
+    </div>
+    <div class="umb-pane feedback-dashboard ratings">
+        <h3>Page feedback</h3>
+        <p ng-show="!dt.Pages">There are no page feedbacks left yet</p>
+        <div class="grid-wrapper" ng-show="dt.Pages.length > 0">
+            <div class="control-group umb-control-group search-filter popularity-filter">
+                <div class="umb-el-wrap">
+                    <span>
+                        Sort by:
+                        <select ng-change="setScopeData(1)" ng-model="controls.popularityFilter.value" ng-options="item as item.label for item in controls.popularityFilter.options track by item.id"></select>
+                    </span>
+                </div>
+            </div>
+            <table class="table table-bordered table-condense dashboard-results">
+                <thead>
+                    <tr>
+                        <td>Page ID</td>
+                        <td>Page Name</td>
+                        <td>Page URL</td>
+                        <td>Avg. Score</td>
+                        <td>Total votes</td>
+                        <td>Last vote</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="page in dt.Pages">
+                        <td>{{page.Id}}</td>
+                        <td>{{page.Title}}</td>
+                        <td><a target="_blank" href="{{page.Url}}">{{page.Url}}</a></td>
+                        <td>{{page.Score}}</td>
+                        <td>{{page.Votes}}</td>
+                        <td>{{page.LastVoteDate}}</td>
+                        <td><button class="btn btn-small" ng-click="deletePageRatings({{page.Id}})">Reset ratings</button>     </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination" ng-show="dt.PaginationData.pageNumbers.length > 1">
+                <span class="data-page" ng-repeat="i in dt.PaginationData.pageNumbers">
+                    <span ng-class="{active: i == dt.currentPage}" ng-click="setScopeData({{i}})">{{i}}</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div ng-controller="hfea.headerAndTextSpotlight">
+<p><select class="input-block-level" ng-options="item as item.label for item in control.styleItems track by item.id" ng-model="control.styleColor"></select></p>
+
+<h3><textarea rows="1" umb-auto-resize="" umb-auto-focus="" class="textstring input-block-level" ng-model="control.header" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add header..."></textarea><h3>
+<textarea umb-auto-resize="" umb-auto-focus="" class="textstring input-block-level" ng-model="control.value" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add text here..."></textarea>
+</div>

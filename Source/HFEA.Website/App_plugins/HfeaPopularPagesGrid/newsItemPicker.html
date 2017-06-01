@@ -1,0 +1,12 @@
+<div ng-controller="hfea.newsItemPicker">
+    <div>
+        <textarea class="textstring input-block-level" ng-model="control.summary" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add summary..."></textarea>
+    </div>
+    <div class="usky-editor-placeholder" ng-click="setContentPicker()" ng-if="!(control.value && control.value.node)">
+        <i class="icon icon-umb-developer color-orange"></i>
+        <div class="help-text">Click to select page</div>
+    </div>
+     <div class="usky-editor-placeholder" ng-click="setContentPicker()" ng-if="control.value && control.value.node">
+        <p><i class="icon {{control.value.node.icon}}"></i>{{control.value.node.name}}</p>
+    </div>
+</div>

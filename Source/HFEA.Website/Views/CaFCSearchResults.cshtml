@@ -1,0 +1,11 @@
+﻿@using HFEA.Web.Helpers;
+@using HFEA.Web.Utilities;
+@using HFEA.Web.ViewModel.CaFC; 
+@using HFEA.Web.Constants;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "BaseBreadcrumbTitleAndSummary.cshtml";
+}
+
+@Html.Action("ShowSearchReasults", "CaFCSearchResults")
+

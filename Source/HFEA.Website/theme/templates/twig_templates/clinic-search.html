@@ -1,0 +1,398 @@
+
+	{{ include ('partials/page-header.html', {
+	    title: 'Advanced clinic search',
+	    tagline: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet neque vestibulum, commodo lacus ornare, tincidunt elit. Maecenas id lorem eget quam pretium blandit. Aenean urna lectus, fermentum eget suscipit a, condimentum a nisi. Nulla ultricies erat lectus, ac bibendum leo posuere nec.',
+	}) }}
+
+
+	 
+	<a id="change-search" class="btn btn-block btn-large btn-default mb-20" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+		Change search criteria
+	</a>
+	<div class="collapse search-criteria" id="collapseExample" aria-expanded="true" >
+		<div class="well">
+			<form>
+			<div class="form-inline mb-20 ">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+						    <label for="exampleInputName2">Search by postcode </label>
+						    <p>> Why is this important?</p>
+						</div>
+						<div class="form-group col-md-6">
+						    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Postcode / Region">
+					    
+						</div>
+					</div>
+				</div>
+				<div class="form-inline mb-20">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+						    <label for="exampleInputName2">Do you know the name of the clinic you're looking for? </label>
+						</div>
+						<div class="form-group col-md-6">
+						    <input type="text" class="form-control" id="exampleInputName2" placeholder="Clinic name">
+						</div>
+					</div>
+				</div>
+				<div class="form-inline mb-20">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+						    <label for="exampleInputName2">Distance from postcode</label>
+						</div>
+						<div class="form-group col-md-6">
+						     <div class="row">
+					    	<div class="col-md-4">
+					    		<p>0</p>
+					    	</div>
+					    	<div class="col-md-8">
+							    <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+							    	<div class="btn-group" role="group">
+								  		<button type="button" class="btn btn-default">-</button>
+									</div>
+							    	<div class="btn-group" role="group">
+								  		<button type="button" class="btn btn-default">+</button>
+									</div>
+								</div>
+					    	</div>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-20">
+					
+					<div class="form-group col-md-6">
+					    <h3>Clinic Type</h3>
+					    <div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" value="">
+						    	Clinic Type
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" value="">
+						    	IUI
+						 	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input checked type="checkbox" value="">
+						    	IVF
+						 	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" value="">
+						    	Donor Conception
+						 	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" value="">
+						    	Embryo testing
+						 	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" value="">
+						    	Satellite & transport
+						 	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" value="">
+						    	Research
+						 	</label>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+					    <h3>Facilities</h3>
+					    <div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" value="">
+						    	Parking
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" value="">
+						    	Disabled access
+						 	</label>
+						</div>
+					</div>
+				</div>
+				<a class="btn btn-primary" role="button" data-toggle="collapse" href="#searchTerms" aria-expanded="false" aria-controls="searchTerms">
+				  Search terms
+				</a>
+				<div class="collapse row" id="searchTerms">
+					<div class="form-group col-md-4">
+				    	<h3>Treatments</h3>
+				    	<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs1" value="option1" >
+						    	IVF
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs2" value="option2">
+						    	ICSI
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						   		<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs3" value="option3" >
+						    	Surgical sperm collection
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs4" value="option4" >
+						    	Ovarian tissue collection
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs5" value="option5">
+						    	In vitro maturation
+						  	</label>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+				    	<h3>Screening services</h3>
+				    	<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs6" value="option1" >
+						    	IVF
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs7" value="option2">
+						    	ICSI
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						   		<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs8" value="option3" >
+						    	Surgical sperm collection
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs9" value="option4" >
+						    	Ovarian tissue collection
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs10" value="option5">
+						    	In vitro maturation
+						  	</label>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+				    	<h3>Donor services</h3>
+				    	<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs11" value="option1" >
+						    	IVF
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs12" value="option2">
+						    	ICSI
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						   		<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs13" value="option3" >
+						    	Surgical sperm collection
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionscheckboxs14" value="option4" >
+						    	Ovarian tissue collection
+						  	</label>
+						</div>
+						<div class="checkbox">
+						  	<label>
+						    	<input type="checkbox" checked name="optionscheckboxs" id="optionsRadios15" value="option5">
+						    	In vitro maturation
+						  	</label>
+						</div>
+					</div>
+					<div class="form-inline mb-20">
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+							    <label for="exampleInputName2">Please enter additional treatments you require</label>
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" class="form-control typeahead" name="search" id="typeahead" placeholder="Treatment" >
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="text-center">
+					<a id="search-button" href="#results" role="button" class="btn btn-primary btn-lg">Search for clinic</a>
+				</div>
+				<a class='btn' href="#">Back to basic search</a>
+			</form>
+		</div>
+	</div>
+	<div class="results-section" id="results">
+		<div class="row">
+			<div class="col-md-6">
+				<p>Your search found 5 clinics</p>
+			</div>
+			<div class="col-md-6 ">
+				<p class="text-right distance-label">Distance</p>
+			</div>
+		</div>
+		<div>
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active"><a href="#grid" aria-controls="grid" role="tab" data-toggle="tab">Grid</a></li>
+			   	<li role="presentation"  class=""><a id="map-tab" href="#map" aria-controls="map" role="tab" data-toggle="tab">Map</a></li>
+			</ul>
+				<!-- Tab panes -->
+			<div class="tab-content">
+			  		<div role="tabpanel" class="tab-pane active" id="grid">
+					{{ include ('partials/clinic-listing.html',{
+							clinics: [
+								{
+									title: "Barts Health Centre for Reproduction Medicine",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "4",
+									reviewers: "159",
+									patient_rating : "green",
+									embryo_rating : "green",
+									it_rating : "amber",
+									experience_rating : "red",
+									success_rate : "30",
+									image: "barts.jpeg"	
+								},
+								{
+									title: "Homerton Fertility Centre",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "3",
+									reviewers: "84",
+									patient_rating : "green",
+									embryo_rating : "green",
+									it_rating : "amber",
+									experience_rating : "green",
+									success_rate : "23",
+									image: "homerton.jpeg"	
+								},
+								{
+									title: "The Whittington Hospital Fertility Unit",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "5",
+									reviewers: "20",
+									patient_rating : "green",
+									embryo_rating : "amber",
+									it_rating : "amber",
+									experience_rating : "red",
+									success_rate : "30",
+									image: "whittington.jpeg"	
+								},
+								{
+									title: "North Middlesex University Hospital (Reproductive Medicines Unit)",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "4",
+									reviewers: "25",
+									patient_rating : "green",
+									embryo_rating : "amber",
+									it_rating : "amber",
+									experience_rating : "red",
+									success_rate : "70",
+									image: "middlesex.jpeg"	
+								},
+								{
+									title: "Reproductive Medicine Unit",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "3",
+									reviewers: "63",
+									patient_rating : "green",
+									embryo_rating : "amber",
+									it_rating : "amber",
+									experience_rating : "red",
+									success_rate : "64",
+									image: "reproductive-medicine.jpeg"	
+								}
+							]
+
+						})
+					}}
+
+
+					</div>
+
+			  		<div role="tabpanel" class="embed-responsive embed-responsive-16by9 tab-pane " id="map">
+			  			Map View
+
+			  			<div id="map" class="embed-responsive-item"></div>
+			  		</div>
+			</div>
+		</div>
+	</div>
+</div>
+

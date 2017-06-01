@@ -1,0 +1,265 @@
+s test
+.typeahead.dropdown-menu{
+		max-height: 160px;
+    overflow-y: scroll;
+    min-width: 100%;
+}
+.label-info{
+	background-color: @teal;
+    font-size: 18px;
+    font-weight: normal;
+    font-family: arial;
+}
+.submit-btn{
+	background-color: @teal;
+	border:0;
+
+}
+.submit-btn-wrapper{
+    .submit-btn{
+       // padding-right:50px;
+       // background-image:url('../images/design/fa-chevron-right.png');
+       // background-repeat: no-repeat;
+        //background-position: right;
+        //background-size: 34px;
+        color: @black-text;
+        .futura;
+        border-radius: 0;
+        border:0;
+        background-color:@acid-green;
+        &:hover, &:focus{
+            background-color: lighten(@bright_green, 10%);
+        }
+    }
+}
+.hfea-form-label{
+	.em(30);
+	color: @black-text;
+	.futura;
+	//font-weight: bold;
+}
+
+.hint-text{
+    color: @grey-subtitle;
+}
+/*#postcode-distance{
+	-moz-appearance: textfield;
+	-webkit-appearance: none;
+	&:-webkit-outer-spin-button,
+	&:-webkit-inner-spin-button {
+	    margin: 0;
+	}
+}*/
+
+
+input[type="number"].postcode::-webkit-outer-spin-button,
+input[type="number"].postcode::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"].postcode {
+    -moz-appearance: textfield;
+}
+.form-control{
+    padding: 0 2em;
+    border: 1px solid black;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 1em 0 1.4em;
+    height: 74px;
+}
+ select.form-control{
+        width: auto;
+    }
+select.hfea-select {
+    height: 60px;
+    padding: 0 30px;
+    padding-right: 90px;
+    border: 1px solid @grey;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    background-image: url('../images/design/dropdownArrow.jpg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 60px;
+    cursor: pointer;
+    &.hfea-select-large {
+        background-image: url('../images/design/dropdownArrowLarge.jpg');
+        height: 75px;
+        background-size: 75px;
+        padding-right: 105px;
+        border: 1px solid black;
+    }
+    &.hfea-select-small {
+        height: 40px;
+        background-size: 40px;
+    }
+
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='', sizingMethod='scale');
+    &::-ms-expand {
+        display: none;
+    }
+}
+select.full-width-select {
+    width: 100%;
+}
+.postcode.form-control{
+    width: 70px;
+    padding: 0 1em;
+    text-align: center;
+}
+.distance-plus-minus.hfea-teal-btn{
+    padding: 0.7em 1.1em;
+    border-radius: 0;
+    font-size: 1.4em;
+    margin-top: 3px;
+}
+.collapse .conditional-input{
+}
+.conditional-input{
+	border-left: 10px @grey solid;
+	padding: 0 0 0px 35px;
+    margin-top: -25px;
+}
+.search-criteria{
+	margin-bottom: 30px;
+	margin-top: 0;
+}
+
+.well{
+	background: none;
+	border:0;
+	padding: 20px 0;
+}
+.hfea-form-inline{
+	input, button{
+		display: inline;
+		margin-right: 1em;
+	}
+}
+.hfea-teal-btn{
+	border: 0;
+    padding: 0.3em 1.3em 0.4em;
+    margin-right: 1em;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.info-tooltip{
+    margin-left: 10px;
+}
+
+.asc-desc{
+    input[type="checkbox"]:checked + label{
+        .glyphicon{
+            &:before{
+                 content: "\e094";
+            }
+        }
+        .text{
+            &:before{
+                content: "Desc";
+            }
+        }
+    }
+    label{
+        cursor: pointer;
+    }
+    .text{
+        &:before{
+            content:"Asc";
+        }
+    }
+    input, .scr{
+        position:absolute;
+        left:-9999px;
+    }
+}
+
+.pagination{
+    text-align: center;
+    width:100%;
+    a{
+        color: @teal;
+    }
+    ul{
+        display:inline;
+        margin: 0;
+        padding: 0;
+    }
+    .page{
+        display:inline;
+    }
+}
+.bg-panel{
+    padding: 2em 40px;
+}
+.bg-panel-grey{
+    background-color: @light-grey;
+}
+.search-criteria{
+    //.futura;
+    padding: 2em 40px;
+}
+.search-terms-label{
+    background-color:white;
+
+    margin:0 10px 10px 0;
+    padding: 0.4em 1em;
+    display:inline-block;
+}
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: black;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: black;
+}
+
+:-ms-input-placeholder {
+   color: black;
+}
+
+
+
+.hfea-checkbox-wrapper {
+    padding-left: 30px;
+    input[type="checkbox"] {
+        display: none;
+    }
+    label {
+        display: inline-block;
+        background-color: white;
+        border: 1px solid @black-text;
+        width: 18px;
+        height: 18px;
+        position: relative;
+        cursor: pointer;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin: 0;
+        left: -5px;
+        margin-left: -23px;
+    }
+
+    input[type="checkbox"]:checked + input + label {
+        &:before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: @teal;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+        }
+    }
+}

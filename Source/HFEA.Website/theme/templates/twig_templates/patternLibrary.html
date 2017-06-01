@@ -1,0 +1,835 @@
+<div class="container">
+{{ 
+	include ('partials/page-header-bg.html', {
+    	title: 'Pattern Library',
+	}) 
+}}
+
+	<section>
+	{{ include ('partials/intro-block.html', {
+	    text: 'Our 200-strong staff have a wealth of experience in a range of disciplines and are deeply committed to helping people get the best possible care from the fertility sector. Their work is overseen by our board and a number expert of committees and panels.'
+	}) }}
+		<h1 class="library-heading">
+			Full Width items
+		</h1>
+		<h2 class="library-heading">
+			Intro block variations
+		</h2>
+		{{ include ('partials/intro-block.html', {
+		    title: 'Intro Block with white background',
+		    text: 'Does the clinic offer the treatment that is best for you? What about other services you may want such as a support group or free counselling? Use the Choose a Fertility Clinic tool on our website to find clinics which offer the treatments and services you require'
+		}) }}
+		{{ include ('partials/intro-block.html', {
+			class: 'teal-bg',
+		    title: 'Intro Block with teal background',
+		    text: 'Does the clinic offer the treatment that is best for you? What about other services you may want such as a support group or free counselling? Use the Choose a Fertility Clinic tool on our website to find clinics which offer the treatments and services you require'
+		}) }}
+		<h2 class="library-heading">
+			Text section block with large header
+		</h2>
+		{{ include ('partials/full-width-text.html', {
+		    title: 'Full width text section with white background',
+
+		    text: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+		}) }}
+
+		{{ include ('partials/full-width-text.html', {
+			class: 'teal-bg',
+		    title: 'Full width text section with teal background',
+		    text: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliqu§am commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+		}) }}
+			<h2 class="library-heading">
+				Blockquote - teal background
+			</h2>
+		{{
+			include('partials/blockquote.html', {
+				width: '12',
+				class: 'teal-bg',
+				img: 'mother-and-baby.jpg',
+				bodytext: 'I had IVF treatment with my partner Paul after failing to conceive for 3 years. I was diagnosed with Polycystic Ovary Syndrome PCOS.  ',
+				linktext: 'Read Karen and Pauls story',
+			})
+		}}
+
+			<h2 class="library-heading">
+				Blockquote - grey background
+			</h2>
+		{{
+			include('partials/blockquote.html', {
+				width: '12',
+				class: 'grey-bg',
+				img: 'mother-and-baby.jpg',
+				bodytext: 'I had IVF treatment with my partner Paul after failing to conceive for 3 years. I was diagnosed with Polycystic Ovary Syndrome PCOS.  ',
+				linktext: 'Read Karen and Pauls story',
+			})
+		}}
+
+			<h2 class="library-heading">
+				Timeline
+			</h2>
+
+			{{ 
+				include('partials/timeline.html', {
+					blocks: [
+						{
+							title: 'Lorem Ipsum Page heading 1',
+							copy: '1 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+						},
+						{
+							title: 'Lorem Ipsum Page heading 2',
+							copy: '2 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+						},
+						{
+							title: 'Lorem Ipsum Page heading 3',
+							copy: '3 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+						},
+						{
+							title: 'Lorem Ipsum Page heading 4',
+							copy: '4 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+						}
+						,{
+							title: 'Lorem Ipsum Page heading 5',
+							copy: '5 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+						},{
+							title: 'Lorem Ipsum Page heading 6',
+							copy: '6 Luspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, 	quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas 	finibus interdum rutrum.'
+						}
+					]
+				})
+			}}
+			<h2 class="library-heading">
+				Tags
+			</h2>
+			{{ 
+			include('partials/section-heading.html', {
+				title: 'Related content',
+			})
+			}}
+			{{ include('partials/tags.html', {
+				tags: [
+					{
+						tagTitle: 'Lorem ipsum',
+					},
+					{
+						tagTitle: 'Lorem ipsum',
+					},
+					{
+						tagTitle: 'Lorem ipsum',
+					},
+					{
+						tagTitle: 'Lorem ipsum',
+					},
+					{
+						tagTitle: 'Lorem ipsum',
+					}
+				]
+				})
+			}}
+
+
+		{{ include('partials/nav-block.html', {
+			nav: [
+				{
+					link: "link-1"
+				},
+				{
+					link: "link-2"
+				},
+				{
+					link: "link-3"
+				},
+				{
+					link: "link-4"
+				},
+				{
+					link: "link-5"
+				},
+				{
+					link: "link-6"
+				}
+			]
+		})
+	}}
+
+		<h2 class="library-heading">
+			Accordion
+		</h2>
+		{{
+			include('partials/accordion.html', {
+				panels: [
+					{
+						title: 'Text Panel Example',
+						text: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+						link: 'link text',
+						linkclass: '',
+					},
+					{
+						title: 'Text Panel Example',
+						text: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+						link: 'link text',
+						linkclass: '',
+					},
+					{
+						title: 'Text Panel Example',
+						text: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+						link: 'link text',
+						linkclass: '',
+					},
+					{
+						title: 'Text Panel Example',
+						text: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+						link: 'link text',
+						linkclass: '',
+					}
+				]
+			})
+		}}
+		<h2 class="library-heading">
+			Myth section
+		</h2>
+			
+			{{ include('partials/myths-section.html', {
+					header: 'Myths',
+					body: 'Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id tortor gravida congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin at laoreet sapien, id scelerisque metus.',
+					myths: [
+						{
+							text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+						},
+						{
+							text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+						},
+						{
+							text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+						},
+						{
+							text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+						},
+						{
+							text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+						},
+						{
+							text: "MYTH - Suspendisse eros libero, pellentesque et leo ut, lobortis bibendum sapien. Sed ultrices massa id "
+						}
+					]
+				})
+			}}
+
+
+
+
+		<!-- 1/2 COMBINATIONS -->
+			
+			{{ 
+				include('partials/section-heading.html', {
+					title: 'Section Heading - can be added anywhere as a full width item',
+				})
+			}}
+			<h1 class="library-heading">
+				2 column spotlight variations
+			</h1>
+			<h2 class="library-heading">
+				Row of spotlights with grey background and large heading
+			</h2>
+
+			{{ 
+				include('partials/spotlights-row.html', {
+					cols: '6',
+					class: 'bg-grey',
+					heading: 'border',
+					spotlights: [
+						{
+							title: 'Section Heading - 1/2 item',
+							text: 'Standard Paragraph text -- part of the main body text. 
+								Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+						},
+						{
+							title: 'Section Heading - 1/2 item',
+							text: 'Standard Paragraph text -- part of the main body text. 
+								Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+						}
+					]
+				})
+			}}
+			<h2 class="library-heading">
+				Row of spotlights with grey background and small heading
+			</h2>
+
+		<!-- 1/2 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '6',
+				class: 'bg-grey',
+				heading: 'small',
+				spotlights: [
+					{
+						title: 'Section Heading - 1/2 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/2 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+		
+			<h2 class="library-heading">
+				Row of spotlights with teal background and small heading
+			</h2>
+
+		<!-- 1/2 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '6',
+				class: 'teal-bg',
+				heading: 'small',
+				spotlights: [
+					{
+						title: 'Section Heading - 1/2 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/2 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+
+			<h2 class="library-heading">
+				Row of spotlights with white heading and large heading
+			</h2>
+
+		<!-- 1/2 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '6',
+				class: 'white',
+				heading: 'border',
+				spotlights: [
+					{
+						title: 'Section Heading - 1/2 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/2 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+			<h2 class="library-heading">
+				Row of spotlights with white background and small heading
+			</h2>
+		
+		<!-- 1/2 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '6',
+				class: 'white',
+				heading: 'small',
+				spotlights: [
+					{
+						title: 'Section Heading - 1/2 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/2 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+			<h2 class="library-heading">
+				Featured Spotlight Row
+			</h2>
+
+		<!-- 1/3 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ include('partials/text-panels-bg.html', {
+			cols: '6',
+			panels: [
+				{
+					title: 'We show a clinic’s success rates in three different ways:',
+					body: '<ul><li>whether the success rate is above, below or consistent with the national average</li>
+							<li>the number of treatment cycles a clinic carried out and how many resulted in a birth</li>
+							<li>the predicted chance of a woman giving birth if she was treated at that clinic.</li></ul>
+
+							<p>The success of an IVF or intracytoplasmic sperm injection (ICSI) treatment can be measured by looking at how likely it is that a birth will result from a treatment cycle or from each embryo transferred. We show both in our figures.</p>'
+				},
+				{
+					title: 'Directly comparing the success rates of clinics is not useful because:',
+					body: '<ul><li>clinics treat patients with different diagnoses, which affects the average success rates</li> 
+							<li>most clinics carry out too few cycles each year to reliably predict a patient’s mfuture chance of success</li> 
+							<li>the live birth success rates relate to a period of treatment from about two years mago and may not be a good indication of success rates at the same clinic today.</li></ul>
+
+							<p>The majority of clinics’ success rates are around the national average.</p>'
+				}
+			]
+			})
+		}}
+		
+
+			<!-- COMBINATIONS -->
+			<h1 class="library-heading">
+				2 column layout combinations
+			</h1>
+			<p class="library-heading lead">
+				Any combination below can be used, i.e. image and statistic in one row. 
+			</p>
+			<h2 class="library-heading">
+				Text / Text
+			</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<h1 class="section-heading">
+						Lorem
+					</h1>
+					<p>
+						Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+					</p>
+				</div>
+				<div class="col-md-6">
+					<h1 class="section-heading">
+						Lorem
+					</h1>
+					<p>
+						Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+					</p>
+				</div>
+			</div>
+
+			<h2 class="library-heading">
+				Text / image - order can be reversed
+			</h2>
+
+			<div class="row">
+				<div class="col-md-6">
+					<h1 class="section-heading">
+						Lorem
+					</h1>
+					<p>
+						Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+					</p>
+				</div>
+				<div class="col-md-6">
+					<img class="img-responsive" src="http://placehold.it/400x240" alt="text">
+				</div>
+			</div>
+
+			<h2 class="library-heading">
+				Text / video - order can be reversed
+			</h2>
+
+			<div class="row">
+				<div class="col-md-6">
+					<h1 class="section-heading">
+						Lorem
+					</h1>
+					<p>
+						Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+					</p>
+				</div>
+				<div class="col-md-6">
+					<div class="embed-responsive embed-responsive-16by9">
+					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dvnoETuNZBA" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+
+
+			<h2 class="library-heading">
+				Text / § bg with image block - order can be reversed
+			</h2>
+
+
+			<div class="row">
+				<div class="col-md-6">
+					<h1 class="section-heading">
+						Lorem
+					</h1>
+					<p>
+						Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+					</p>
+				</div>
+				<div class="col-md-6">
+					{{ 
+					include('partials/spotlight-bg.html', {
+						title: 'CCG Eligibility',
+						class: 'spotlight-bg',
+						bgimage: '/theme/assets/images/design/spotlight-bg.png',
+						body: 'Eligibility for funding is based on specific criteria set by your CCG (Clinical Commission Group). The criteria often take into account issues such as your age, weight previous children as well as other criterion. It is important to remember that each CCG sets its own funding criteria and that it can vary widely from one to another. If you do not meet their requirements for funding, you will be unable to get NHS funding for fertility treatment.'
+					})
+				}}
+				</div>
+				
+			</div>
+
+			<h2 class="library-heading">
+				Text / grey bg block - order can be reversed
+			</h2>
+
+
+			<div class="row">
+				<div class="col-md-6">
+					<h1 class="section-heading">
+						Lorem
+					</h1>
+					<p>
+						Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+					</p>
+				</div>
+				<div class="col-md-6">
+					{{ 
+						include('partials/spotlight-bg.html', {
+							title: 'How can we help?',
+							background: '',
+							body: 'Standard Paragraph text -- part of the main body text. 
+									Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+						})
+					}}
+				</div>
+			</div>
+			<h2 class="library-heading">
+				Text / statistic - order can be reversed
+			</h2>
+
+			<div class="row">
+				<div class="col-md-6">
+					<h1 class="section-heading">
+						Lorem
+					</h1>
+					<p>
+						Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+					</p>
+				</div>
+				<div class="col-md-6">
+				  	{{ 
+						include('partials/statistic.html', {
+							title: 'Chances of pregnancy',
+							stat: '1 in 7',
+							text: 'Couples experience fertility problems',
+							other: '<a class="btn-block" href="#">Other Link</a><a class="btn-block" href="#">Other Link</a>'
+						})
+					}}
+				</div>
+			</div>
+			<h2 class="library-heading">
+				Text / intro text - order can be reversed (used at top of treatment page)
+			</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<h1 class="section-heading">
+						Lorem
+					</h1>
+					<p>
+						Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+					</p>
+				</div>
+				<div class="col-md-6">
+					<h1 class="">
+						Lorem
+					</h1>
+					<p>
+						<b>
+							Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+						</b>
+					</p>
+				</div>
+			</div>
+
+			
+
+
+
+			<!-- 1/3 width layouts -->
+			<h1 class="library-heading">
+				3 column layout combinations
+			</h1>
+			<h2 class="library-heading">
+				grey background with large heading
+			</h2>
+
+
+		<!-- 1/3 SPOTLIGHTS WITH GREY BACKGROUND -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'bg-grey',
+				heading: 'border',
+				spotlights: [
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+			<h2 class="library-heading">
+				Row of spotlights with grey background and small heading
+			</h2>
+
+		<!-- 1/3 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'bg-grey',
+				heading: 'small',
+				spotlights: [
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+
+			<h2 class="library-heading">
+				Row of spotlights with teal background and small heading
+			</h2>
+
+		<!-- 1/3 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'teal-bg',
+				heading: 'small',
+				spotlights: [
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - third width item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+			<h2 class="library-heading">
+				Row of spotlights with white background and large heading
+			</h2>
+		
+
+		<!-- 1/3 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'white',
+				heading: 'border',
+				spotlights: [
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+			<h2 class="library-heading">
+				Row of spotlights with white background - small heading
+			</h2>
+		
+
+		<!-- 1/3 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'white',
+				heading: 'small',
+				spotlights: [
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+			<h2 class="library-heading">
+				Row of spotlights with white background - small heading and border (only available for rows of 3)
+			</h2>
+
+		<!-- 1/3 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '4',
+				class: 'white border',
+				heading: 'small',
+				spotlights: [
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/3 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+
+	<!-- 1/3 width layouts -->
+	<h1 class="library-heading">
+		4 column layout combinations
+	</h1>
+	<h2 class="library-heading">
+		Related content section - generated dynamically
+	</h2>
+	<h3>Related content</h3>
+		{{ include('partials/recently-viewed.html', {
+			cols: '3',
+			panels: [
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 		pretium. Maecenas finibus interdum rutrum.',
+				},
+				{
+					title: 'Text Panel Example',
+					body: 'Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis pretium. Maecenas finibus interdum rutrum.',
+				}
+			]
+			})
+		}}
+		<h2 class="library-heading">
+			Row of spotlights with white background - small heading
+		</h2>
+		
+		
+
+		<!-- 1/3 SPOTLIGHTS WITH SMALL HEADING -->
+
+		{{ 
+			include('partials/spotlights-row.html', {
+				cols: '3',
+				class: 'white',
+				heading: 'v-small',
+				spotlights: [
+					{
+						title: 'Section Heading - 1/4 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/4 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/4 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					},
+					{
+						title: 'Section Heading - 1/4 item',
+						text: 'Standard Paragraph text -- part of the main body text. 
+							Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.'
+					}
+				]
+			})
+		}}
+
+
+	</section>
+</div>
+
+

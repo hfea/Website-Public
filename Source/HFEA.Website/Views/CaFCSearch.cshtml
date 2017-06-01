@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "BaseBreadcrumbTitleAndSummary.cshtml";
+}
+
+<a id="change-search" class="btn btn-block btn-large btn-default mb-20" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+        Change search criteria
+    </a>
+
+<div class="container">
+    @Html.Action("SearchFilters", "CaFCSearchSurface")
+    @Html.Action("~/Views/CaFCSearch/SearchByClinicName.cshtml")
+</div>

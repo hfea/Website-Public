@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F163633F-49FC-43D1-AD23-F982A3D9FDFE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HFEA.Connector.Contracts</RootNamespace>
+    <AssemblyName>HFEA.Connector.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RouteDebugger">
+      <HintPath>..\..\..\..\..\packages\routedebugger.2.1.4.0\lib\net40\RouteDebugger.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\ContentTag.cs" />
+    <Compile Include="BlobUpload\BlobFileInfo.cs" />
+    <Compile Include="CaFC\BaseClinicProfile.cs" />
+    <Compile Include="CaFC\CentreSuccessRateSummary.cs" />
+    <Compile Include="CaFC\ClinicFeedback.cs" />
+    <Compile Include="CaFC\ClinicFeedbackSubmissionQuestion.cs" />
+    <Compile Include="CaFC\Comparison\ComparisonClinicInfo.cs" />
+    <Compile Include="CaFC\LicensePRRoles.cs" />
+    <Compile Include="CaFC\ClinicProfile.cs" />
+    <Compile Include="CaFC\ClinicFeedbackQuestion.cs" />
+    <Compile Include="CaFC\Image.cs" />
+    <Compile Include="CaFC\InspectionRatings.cs" />
+    <Compile Include="CaFC\Link.cs" />
+    <Compile Include="CaFC\MainAddress.cs" />
+    <Compile Include="CaFC\CentreSearchResultItem.cs" />
+    <Compile Include="CaFC\Clinic.cs" />
+    <Compile Include="CaFC\Coordinates.cs" />
+    <Compile Include="CaFC\MapItem.cs" />
+    <Compile Include="CaFC\MapToolTip.cs" />
+    <Compile Include="CaFC\OpeningTime.cs" />
+    <Compile Include="CaFC\PatientExperiences.cs" />
+    <Compile Include="CaFC\PregnancyRateStats.cs" />
+    <Compile Include="CaFC\SatelliteLink.cs" />
+    <Compile Include="CaFC\SearchClinic.cs" />
+    <Compile Include="CaFC\SearchResults.cs" />
+    <Compile Include="CaFC\Stats\AgeStatsDataItem.cs" />
+    <Compile Include="CaFC\Stats\StatsDataItem.cs" />
+    <Compile Include="CaFC\Stats\ClinicStatsDataSet.cs" />
+    <Compile Include="CaFC\Stats\ClinicStatsFilterCombinations.cs" />
+    <Compile Include="CaFC\Stats\StatsDataItemShort.cs" />
+    <Compile Include="CaFC\Stats\SearchFilterSet.cs" />
+    <Compile Include="CaFC\Stats\FullStatsDataSet.cs" />
+    <Compile Include="CaFC\SubmittedSearchParameters.cs" />
+    <Compile Include="CaFC\UserRating.cs" />
+    <Compile Include="CaFC\WaitingTimes.cs" />
+    <Compile Include="CentreDashboard\Dashboard.cs" />
+    <Compile Include="CentreDashboard\Message.cs" />
+    <Compile Include="Centre\DeactivateCentreRolePersonContact.cs" />
+    <Compile Include="Centre\PermissionMatrix.cs" />
+    <Compile Include="Clients\CaFC\ICaFCComparisonClient.cs" />
+    <Compile Include="Clients\CaFC\ICaFCStatsClient.cs" />
+    <Compile Include="Clients\CaFC\IClinicFeedbackFormSubmitClient.cs" />
+    <Compile Include="Clients\CaFC\IClinicFeedbackReadClient.cs" />
+    <Compile Include="Clients\Centres\IBillingDetailsReaderClient.cs" />
+    <Compile Include="Clients\Centres\IHfeaMessageClient.cs" />
+    <Compile Include="Clients\Centres\ILicenceReader.cs" />
+    <Compile Include="Clients\Centres\IMonitoringDashboardReader.cs" />
+    <Compile Include="Clients\Centres\IPortalUserFeedbackWriter.cs" />
+    <Compile Include="Clients\InspectionClient\IInspectionClient.cs" />
+    <Compile Include="Clients\IPortalUserFeedbackClient.cs" />
+    <Compile Include="Clients\OnlineApps\IOnlineAppsReaderClientCached.cs" />
+    <Compile Include="Clients\OnlineApps\IOnlineAppsWriterClient.cs" />
+    <Compile Include="Clients\OnlineApps\IOnlineAppsReaderClient.cs" />
+    <Compile Include="Clients\RiskPerformanceClient\IRiskPerformanceClient.cs" />
+    <Compile Include="ClinicProfile\AbsBillingImage.cs" />
+    <Compile Include="ClinicProfile\AbsBillingSummary.cs" />
+    <Compile Include="ClinicProfile\BillingDetails.cs" />
+    <Compile Include="Constants\Charts.cs" />
+    <Compile Include="Constants\OnlineApps.cs" />
+    <Compile Include="COP\COPReferences.cs" />
+    <Compile Include="Inspection\InspectionRating.cs" />
+    <Compile Include="Inspection\InspectionReport.cs" />
+    <Compile Include="Inspection\InspectorDetails.cs" />
+    <Compile Include="Inspection\LCELPMinutes.cs" />
+    <Compile Include="OnlineApps\Application.cs" />
+    <Compile Include="OnlineApps\ApplicationDocumentControl.cs" />
+    <Compile Include="OnlineApps\ApplicationDocumentControlDependency.cs" />
+    <Compile Include="OnlineApps\ApplicationDocumentControlValidation.cs" />
+    <Compile Include="OnlineApps\ApplicationDocumentVersion.cs" />
+    <Compile Include="OnlineApps\UserApplication.cs" />
+    <Compile Include="OnlineApps\UserControl.cs" />
+    <Compile Include="OnlineApps\UserDocument.cs" />
+    <Compile Include="RiskPerformance\RiskPerformance.cs" />
+    <Compile Include="Serialization\TypeConverters\DateTimeConverterYYYYMM.cs" />
+    <Compile Include="Tasks\Monitoring.cs" />
+    <Compile Include="Tasks\TaskItem.cs" />
+    <Compile Include="CentreDashboard\PatientExperiences.cs" />
+    <Compile Include="CentreDashboard\Performance.cs" />
+    <Compile Include="Centre\Address.cs" />
+    <Compile Include="Centre\CentrePortal.cs" />
+    <Compile Include="Centre\Contact.cs" />
+    <Compile Include="Centre\EntityAdditionalInformation.cs" />
+    <Compile Include="Centre\ImageDetail.cs" />
+    <Compile Include="Centre\InsertCentreRolePersonContact.cs" />
+    <Compile Include="Centre\InsertUpdateDonorGameteWaitingTimes.cs" />
+    <Compile Include="Centre\Licence.cs" />
+    <Compile Include="Centre\LocationCoordinates.cs" />
+    <Compile Include="Centre\RoleDetail.cs" />
+    <Compile Include="ClientFactories\IPatchClientFactory.cs" />
+    <Compile Include="Clients\AccessControl\IClinicUserReader.cs" />
+    <Compile Include="Clients\AccessControl\IClinicUserWriter.cs" />
+    <Compile Include="Clients\ApiResult.cs" />
+    <Compile Include="Clients\Api\ITagsReader.cs" />
+    <Compile Include="Clients\CaFC\ICaFCProfileClient.cs" />
+    <Compile Include="Clients\Centres\ICentreImageUpdateClient.cs" />
+    <Compile Include="Clients\Centres\IClinicProfileReader.cs" />
+    <Compile Include="Clients\Centres\IClinicProfileWriter.cs" />
+    <Compile Include="Clients\Centres\IDashboardReaderClient.cs" />
+    <Compile Include="Clients\COP\ICOPReaderClient.cs" />
+    <Compile Include="Clients\IApiPatchClient.cs" />
+    <Compile Include="Clients\IClinicCompanyUpdater.cs" />
+    <Compile Include="Clients\ReferenceData\IReferenceDataReader.cs" />
+    <Compile Include="ClinicProfile\Coordinates.cs" />
+    <Compile Include="ClinicProfile\DonorGameteWaitingTimes.cs" />
+    <Compile Include="ClinicProfile\DonorWaitingTime.cs" />
+    <Compile Include="ClinicProfile\Image.cs" />
+    <Compile Include="ClinicProfile\Link.cs" />
+    <Compile Include="ClinicProfile\OpeningTime.cs" />
+    <Compile Include="ClinicProfile\PostUpdateModel\ClinicBasicContactDetails.cs" />
+    <Compile Include="ClinicProfile\PostUpdateModel\UpdateAddressEntity.cs" />
+    <Compile Include="ClinicProfile\PostUpdateModel\UpdateCentreInformationEntity.cs" />
+    <Compile Include="ClinicProfile\Role.cs" />
+    <Compile Include="Centre\UpdateCentreRolePersonContact.cs" />
+    <Compile Include="CommonObjects\DataDictionaryItem.cs" />
+    <Compile Include="CommonObjects\IdNameDescription.cs" />
+    <Compile Include="CommonObjects\IdNamePair.cs" />
+    <Compile Include="CaFC\SearchFilters.cs" />
+    <Compile Include="ClientFactories\IPostClientFactory.cs" />
+    <Compile Include="ClientFactories\IGetClientFactory.cs" />
+    <Compile Include="ClientFactories\IPostSecuredClientFactory.cs" />
+    <Compile Include="ClientFactories\IGetSecuredClientFactory.cs" />
+    <Compile Include="Clients\Centres\ICentreUpdater.cs" />
+    <Compile Include="Clients\IApiPostClient.cs" />
+    <Compile Include="Clients\Centres\IClinicProfileSearch.cs" />
+    <Compile Include="Clients\CaFC\ICaFCSearch.cs" />
+    <Compile Include="Clients\Users\IRoleReader.cs" />
+    <Compile Include="Clients\Users\IUserReader.cs" />
+    <Compile Include="ClinicProfile\CentreInformationEntity.cs" />
+    <Compile Include="ClinicProfile\Clinic.cs" />
+    <Compile Include="ClinicProfile\Contact.cs" />
+    <Compile Include="Clients\IApiGetClient.cs" />
+    <Compile Include="Constants\Centre.cs" />
+    <Compile Include="Constants\ReferenceData.cs" />
+    <Compile Include="Constants\Security.cs" />
+    <Compile Include="COP\COPContent.cs" />
+    <Compile Include="COP\COPFile.cs" />
+    <Compile Include="COP\COPGroup.cs" />
+    <Compile Include="COP\COPItem.cs" />
+    <Compile Include="COP\COPSection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClinicProfile\Address.cs" />
+    <Compile Include="ClinicProfile\Licence.cs" />
+    <Compile Include="Clients\Users\ISecurityReader.cs" />
+    <Compile Include="ReferenceData\Document.cs" />
+    <Compile Include="ReferenceData\DocumentLink.cs" />
+    <Compile Include="ReferenceData\LicenceConditionsData.cs" />
+    <Compile Include="ReferenceData\ListingDataItem.cs" />
+    <Compile Include="ReferenceData\ReferenceDataContainer.cs" />
+    <Compile Include="ReferenceData\ReferenceDataItem.cs" />
+    <Compile Include="ReferenceData\ReferenceDataYearItem.cs" />
+    <Compile Include="ReferenceData\RegulatoryPrincipleItem.cs" />
+    <Compile Include="UserFeedback\ExperienceSubmissionQuestion.cs" />
+    <Compile Include="UserFeedback\ExperienceSubmissionQuestionInsertModel.cs" />
+    <Compile Include="Users\Group.cs" />
+    <Compile Include="Users\SecurityRole.cs" />
+    <Compile Include="Users\User.cs" />
+    <Compile Include="Utilities\IUserObjectSaveUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

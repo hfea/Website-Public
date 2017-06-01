@@ -1,0 +1,19 @@
+﻿
+@using HFEA.Web.Controllers;
+@inherits UmbracoViewPage<IList<int>>
+
+@using (Html.BeginUmbracoForm<CaFCComparisonSurfaceController>("Submit", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    if (Model != null)
+    {
+        for (int i = 0; i < Model.Count(); i++)
+        {
+        @Html.HiddenFor(x => Model[i])
+        }
+    }
+
+    @Html.TextBox("newId");
+
+    <button type="submit" class="submit-btn btn btn-primary btn-lg">Add</button>
+}   

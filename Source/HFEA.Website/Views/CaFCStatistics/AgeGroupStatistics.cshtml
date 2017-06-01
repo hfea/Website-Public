@@ -1,0 +1,52 @@
+﻿@using HFEA;
+@using HFEA.Web.ViewModel.CaFC;
+@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<List<Tuple<string,string,string>>>
+
+@if (Model != null)
+{
+    <div class="panel-hfea panel-default">
+        <div class="panel-heading" role="tab" id="collapse-stats-header">
+            <h4 class="panel-title parent-panel-title">
+                <a role="button" class="accordion-toggle" data-parent="#accordion" href="#collapse-stats" aria-expanded="true" aria-controls="collapse-stats">
+                    @Umbraco.Field("Accordion3Label")
+                    <span class="chevron"></span>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-stats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-stats-header">
+            <div class="panel-body mb-50 waiting-times panel-collapse">
+                <div class="panel-collapse">
+
+                    <table class="waiting-times-table">
+                        <thead>
+                            <tr>
+                                <td>@Umbraco.Field("ageLabel")</td>
+                                <td>@Umbraco.Field("ageClinicLabel")</td>
+                                <td>@Umbraco.Field("ageNationalLabel")</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var record in Model)
+                            {
+                                <tr>
+                                    <td>@record.Item1</td>
+                                    <td>@record.Item2</td>
+                                    <td>@record.Item3</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+}
+else
+{
+<p>There is no data to display</p>
+}

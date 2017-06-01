@@ -1,0 +1,79 @@
+﻿@using HFEA;
+@using HFEA.Web.ViewModel.CaFC;
+@using HFEA.Web.ViewModel.CaFC.Model;
+
+@inherits UmbracoViewPage<ClinicStatsGenericViewModel>
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-12 col-lg-8 col-lg-offset-2">
+
+            <h2 class="h3 mb-50">@Umbraco.Field("circleChartAreaTitle")</h2>
+
+            @if (Model.TopRowDataList != null)
+            {
+                <div class="table-grid bordered-grid">
+                    <div class="table-grid-row">
+                        @foreach (var item in Model.TopRowDataList)
+                        {
+                        <div class="col-sm-12 col-md-4 col overview-stat">
+                            <strong>@item.Text</strong>
+                            <span class="stat-large">@item.Number</span>
+                        </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            @if (Model.ChartData != null)
+            {
+
+                <div class="table-grid">
+                    <div class="table-grid-row mt-20">
+
+                        <div class="col-md-6 col hide-no-js">
+                            <div class="pieChart-wrapper">
+                                <span class="pieChart-title">@Umbraco.Field("circleChartLabel")</span>
+                                <canvas class='pieChart' id='23' height='100%' width='100%'></canvas>
+                                <div class="pieChart-data hide">
+                                    @for (int i = 0; i < Model.ChartData.Count; i++)
+                                    {
+                                        <span class="circle-chart-data" data-index="@i" data-value="@Model.ChartData[i].Number"></span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        @if (Model.EmbryoTransferredAverage != null)
+                        {
+                            <div class="col-md-6 col vertical-center">
+                                <strong>@Model.EmbryoTransferredAverage.Text</strong>
+                                <span class="stat-large">@Model.EmbryoTransferredAverage.Number</span>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="mb-50 grey-border-bottom">
+                    <div class="row mb-20">
+                        @for (int i = 0; i < Model.ChartData.Count; i++)
+                    {
+                            <div class="col-md-6 col">
+                                <div class="pieChart-legend index-@i">
+                                    <span class="bullet"></span>
+                                    <span class="value highlight">@Model.ChartData[i].Number%</span>
+                                    @Model.ChartData[i].Text
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+}

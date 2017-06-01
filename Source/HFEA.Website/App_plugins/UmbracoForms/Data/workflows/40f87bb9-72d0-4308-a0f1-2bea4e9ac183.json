@@ -1,0 +1,16 @@
+{
+  "id": "40f87bb9-72d0-4308-a0f1-2bea4e9ac183",
+  "name": "Send email to Alex",
+  "form": "c72035aa-ca5c-4377-af12-5a2bd4b7bb3a",
+  "active": true,
+  "workflowTypeId": "e96badd7-05be-4978-b8d9-b3d733de70a5",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "aleksej.kotiasvili@readingroom.com",
+    "SenderEmail": "test@rr.com",
+    "Subject": "New test form submission",
+    "Message": "ohoho",
+    "Attachment": "True"
+  },
+  "sortOrder": 2
+}

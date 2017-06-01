@@ -1,0 +1,44 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3168248, 2016-02-09T06:35:26-0500
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: FuturaBT-Medium by Bitstream
+ * URL: http://www.myfonts.com/fonts/bitstream/futura/medium/
+ * 
+ * Webfont: FuturaBT-Bold by Bitstream
+ * URL: http://www.myfonts.com/fonts/bitstream/futura/bold/
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3168248
+ * Licensed pageviews: 150,000
+ * Webfonts copyright: Copyright 1990-2003 Bitstream Inc. All rights reserved.
+ * 
+ * � 2016 MyFonts Inc
+*/
+/* @import must be at top of file, otherwise CSS will not work */
+@font-face {
+  font-family: 'FuturaBT-Medium';
+  src: url('../fonts/futura/3057F8_0_0.eot');
+  src: url('webfonts/3057F8_0_0.eot?#iefix') format('embedded-opentype'), url('webfonts/3057F8_0_0.woff2') format('woff2'), url('webfonts/3057F8_0_0.woff') format('woff'), url('webfonts/3057F8_0_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'FuturaBT-Bold';
+  src: url('../fonts/futura/3057F8_1_0.eot');
+  src: url('webfonts/3057F8_1_0.eot?#iefix') format('embedded-opentype'), url('webfonts/3057F8_1_0.woff2') format('woff2'), url('webfonts/3057F8_1_0.woff') format('woff'), url('webfonts/3057F8_1_0.ttf') format('truetype');
+}
+.FuturaBT-Medium {
+  font-family: FuturaBT-Medium;
+  font-weight: normal;
+  font-style: normal;
+}
+.FuturaBT-Bold {
+  font-family: FuturaBT-Bold;
+  font-weight: normal;
+  font-style: normal;
+}

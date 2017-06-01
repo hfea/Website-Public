@@ -1,0 +1,23 @@
+<div ng-controller="hfea.twoColumnRichTextSpotlight">
+    <p>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.value.header" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add header..."></textarea>
+    </p>
+    <p>
+        <textarea class="textstring input-block-level" ng-model="control.value.summary" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add summary..."></textarea>
+    </p>
+    <div style="border:4px dashed #f8f8f8;">
+        <div unique-id="control.$uniqueId"
+             value="control.value.text"
+             grid-rte configuration="control.config.rte">
+        </div>
+    </div>  
+
+    <p><strong>Styling options</strong></p>
+    <p>Background color:<br />
+        <select ng-options="item as item.label for item in control.value.styleItems track by item.id" ng-model="control.value.styleBgColor"></select>
+    </p>        
+    <p>Header styling:<br />
+        <select ng-options="item as item.label for item in control.value.headerStyleItems track by item.id" ng-model="control.value.styleHeader"></select>
+    </p>    
+
+</div>

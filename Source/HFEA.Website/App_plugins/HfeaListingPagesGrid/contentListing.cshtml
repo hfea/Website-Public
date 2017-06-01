@@ -1,0 +1,115 @@
+﻿@using HFEA.BL;
+@using Newtonsoft.Json.Linq;
+@using Umbraco.Web.Templates;
+@using Umbraco.Core.Models;
+
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Newtonsoft.Json.Linq.JObject>
+@{
+    IPublishedContent node = null;
+
+    string header = Model.GetStringValueOrEmpty("value", "header");
+    string val = Model.GetStringValueOrEmpty("value", "node", "id");
+    string image = Model.GetStringValueOrEmpty("value", "image", "id");
+
+    int tmp;
+    if (val != null && int.TryParse(val.ToString(), out tmp))
+    {
+        node = Umbraco.TypedContent(tmp);
+    }
+    else if (image != null && int.TryParse(image.ToString(), out tmp))
+    {
+        node = Umbraco.TypedMedia(tmp);
+    }
+
+    string id = System.Guid.NewGuid().ToString();
+}
+
+<div class="spotlight-landing-page content-listing">
+    @if (!string.IsNullOrEmpty(header))
+    {
+        <h2 class="header">@header</h2>
+    }
+
+    @if (node != null)
+    {
+        <h3 class="root-folder">@renderNodeLink(node)</h3>
+        if (node.Children != null && node.Children.Any())
+        {
+        <ul class="level-1">
+        @{ 
+            int counter = 1;
+        }
+        @foreach (var child in node.Children)
+        {
+            <li>
+            @renderNodeLink(child, counter, id)
+            @if (child.Children != null && child.Children.Any())
+            {
+                <div id="hidden-text-@id-@counter" aria-expanded="false" class="helper-text-main level-2 collapse">
+                    <div class="helper-text-main-inner">
+                        @foreach (var subChild in child.Children)
+                        {
+                            <div>
+                                @renderNodeLink(subChild)
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            </li>
+            counter++;
+        }
+        </ul>
+        }
+    }
+</div>
+
+@helper renderNodeLink(IPublishedContent content, int counter = 0, string id = "")
+{
+if (content.ContentType.Alias == "File" || content.ContentType.Alias == "Image")
+{
+    int sizeKB = int.Parse(content.GetProperty("umbracoBytes").Value.ToString()) / 1024;
+    string ext = content.GetProperty("umbracoExtension").Value.ToString();
+
+    <a href="@content.Url" class="filetype filetype-@ext">@GetFileNameWithoutExtension(content.Name)</a> <span class="media-meta">@sizeKB.ToString("n0", System.Globalization.CultureInfo.CreateSpecificCulture("en-GB"))KB . @ext</span>
+}
+else if (content.ContentType.Alias == "Folder")
+{
+    if (counter > 0)
+    {
+        <a class="helper-text collapsed" role="button" data-toggle="collapse" href="#hidden-text-@id-@counter" aria-expanded="false" aria-controls="hidden-text-@id-@counter">
+            @content.Name
+            <span class="glyphicon glyphicon-play"></span>
+        </a>
+    }
+    else
+    {
+        @content.Name
+    }
+}
+else
+{
+    var prop = content.GetProperty("page");
+    string title = prop != null && prop.Value != null && !string.IsNullOrEmpty(prop.Value.ToString())
+        ? prop.Value.ToString()
+        : content.Name;
+
+    <a href="@content.Url">@title</a>
+}
+}
+
+@functions {
+    public string GetFileNameWithoutExtension(string name)
+    {
+        if (name != null)
+        {
+            int index = name.LastIndexOf(".");
+            if (index >= name.Length - 5)
+            {
+                name = name.Substring(0, index);
+            }
+        }
+
+        return name;
+    }
+}

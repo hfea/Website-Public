@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    if (CurrentPage.HasValue("commentingAndRating"))
+    {
+        var commentsRatings = Newtonsoft.Json.JsonConvert.DeserializeObject(CurrentPage.GetPropertyValue("commentingAndRating").ToString());
+        if (commentsRatings.pageRating != null && Boolean.Parse(commentsRatings.pageRating.ToString()))
+        {
+            @Html.Action("GetRatingData", "UserFeedback")
+        }
+        if (commentsRatings.showCommenting != null && Boolean.Parse(commentsRatings.showCommenting.ToString()))
+        {
+            @Html.Action("GetCommentsData", "UserFeedback")
+        }
+    }
+}
+

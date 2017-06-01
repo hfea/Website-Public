@@ -1,0 +1,68 @@
+
+		<!-- PATIENT RATING PANEL -->
+	  	<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading1">
+		      	<h4 class="panel-title">
+			        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+			        	How do existing patients rate the clinic? <span></span>
+			        </a>
+		      	</h4>
+		    </div>
+		    <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+		      	<div class="panel-body">
+					<p>
+						We ask current and former patients to rate the clinic based on their experience. This clinic’s patient rating is:		      
+					</p>
+					<div  class='stars'>
+						<p>
+						{% for i in 1..5 %}
+							{% if i <= stars %}
+								<span class="glyphicon glyphicon-star"></span>
+							{% else %}
+								<span class="glyphicon glyphicon-star-empty"></span>
+							{% endif %}
+						{% endfor %}
+						Based on {{reviews}} reviews</p>
+					</div>
+					<ul class="patient-review-tabs row">
+				  		{% for tab in tabs %}
+					    <li role="presentation" class="col-md-3" >
+					    	<a href="#{{tab.id}}" aria-controls="{{tab.id}}" role="button" data-toggle="collapse">
+					    		<span class="glyphicon glyphicon-play"></span> {{tab.title}}
+					    	</a>
+					    	<div class='stars'>
+								{% for i in 1..5 %}
+									{% if i <= tab.stars %}
+										<span class="glyphicon glyphicon-star"></span>
+									{% else %}
+										<span class="glyphicon glyphicon-star-empty"></span>
+									{% endif %}
+								{% endfor %}
+							</div>
+							<div class="collapse" id="{{tab.id}}">
+								<p>
+									Based on {{reviews}} reviews
+								</p>
+								{% for review in tab.reviews %}
+									<div >
+										<h5>
+											{{review.title}} 
+											<span class="pull-right">
+												{{review.total}}
+											</span>
+										</h5>
+										<div class="review-bar">
+											<div class="score" style="width: {{review.percentage}}%"></div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+					    </li>
+					    {% endfor %}
+				  	</ul>
+				  	<a href="#"><span class="glyphicon glyphicon-menu-down"></span>
+						See patient ratings in more detail or rate this clinic yourself
+					</a>
+				</div>
+		    </div>
+		</div>

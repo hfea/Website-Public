@@ -1,0 +1,31 @@
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+@{
+    dynamic media = null;
+    string background = Model.styleColor.id;
+
+    var image = Model.value.image.id;
+    int tmp = 0;
+    if (image != null && int.TryParse(image.ToString(), out tmp))
+    {
+        media = Umbraco.Media(tmp);
+    }
+
+}
+<div class="full-width-img_blockquote">
+    
+    <aside class="@background img_blockquote">
+        @if (tmp > 0)
+        {
+            <img alt="Quote" src="@media.umbracoFile" class="img-circle">
+        }
+        <blockquote>
+            <p>
+                @Model.value.text
+            </p>
+            <footer>
+                @Model.footer
+            </footer>
+        </blockquote>
+    </aside>
+</div>
+

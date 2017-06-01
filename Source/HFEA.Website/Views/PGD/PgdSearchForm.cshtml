@@ -1,0 +1,33 @@
+﻿@using HFEA.Web.ViewModel.Constants;
+@using HFEA.Web.ViewModel.PGD;
+@using HFEA.Web.Controllers;
+@inherits UmbracoViewPage<PgdSearchFilters>
+@{ 
+    var ddlOptions = new List<SelectListItem>()
+    {
+        new SelectListItem() { Text = "All", Value = ((int)PgdConstants.Status.Unknown).ToString(), Selected = Model.Status ==  PgdConstants.Status.Unknown },
+        new SelectListItem() { Text = "Approved", Value = ((int)PgdConstants.Status.Approved).ToString(), Selected = Model.Status == PgdConstants.Status.Approved },
+        new SelectListItem() { Text = "Awaiting approval", Value = ((int)PgdConstants.Status.AwaitingApproval).ToString(), Selected = Model.Status == PgdConstants.Status.AwaitingApproval }
+    };
+}
+
+@using (Html.BeginUmbracoForm<PgdListingSurfaceController>("SubmitSearch", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="pgd-filters">
+        <div class="filter-option name-filter">
+            @Html.LabelFor(x=>x.Condition)
+            @Html.TextBoxFor(x => x.Condition)
+        </div>
+        <div class="filter-option name-filter">
+            @Html.LabelFor(x => x.Status)
+            @Html.DropDownList("Status", ddlOptions)
+        </div>
+        <div class="filter-option omoimm-filter">
+            @Html.LabelFor(x => x.OMOIMM)
+            @Html.TextBoxFor(x => x.OMOIMM)
+        </div>
+        <div class="filter-submit"><button type="submit" class="hfea-btn btn btn-primary bg_bright_green">Submit</button></div>
+    </div>
+}

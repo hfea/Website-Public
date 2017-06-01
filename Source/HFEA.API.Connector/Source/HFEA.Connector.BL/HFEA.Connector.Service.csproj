@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D2C8B7E-444B-4524-81BA-64B7D4591F5A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HFEA.Connector.Service</RootNamespace>
+    <AssemblyName>HFEA.Connector.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\..\..\..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\..\..\..\..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HFEA.SDK">
+      <HintPath>..\..\..\..\..\packages\HFEA.IFQ.OpenSdk.1.0.0.2316\lib\net45\HFEA.SDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <HintPath>..\..\..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.13.7\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform">
+      <HintPath>..\..\..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.13.7\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\..\..\..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\..\..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RouteDebugger">
+      <HintPath>..\..\..\..\..\packages\routedebugger.2.1.4.0\lib\net40\RouteDebugger.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\..\..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\..\..\..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\..\..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\CallType.cs" />
+    <Compile Include="AutoMapperInit.cs" />
+    <Compile Include="BaseClient\BaseSdkClient.cs" />
+    <Compile Include="BaseClient\PatchClient.cs" />
+    <Compile Include="BaseClient\PostClient.cs" />
+    <Compile Include="BaseClient\GetClient.cs" />
+    <Compile Include="BaseClient\BaseApiClient.cs" />
+    <Compile Include="ClientFactories\ApiGetClientFactory.cs" />
+    <Compile Include="ClientFactories\ApiPostClientFactoryNonSecure.cs" />
+    <Compile Include="ClientFactories\ApiGetClientFactoryNonSecure.cs" />
+    <Compile Include="ClientFactories\ApiPatchClientFactory.cs" />
+    <Compile Include="ClientFactories\BaseClientFactory.cs" />
+    <Compile Include="ClientFactories\ApiPostClientFactory.cs" />
+    <Compile Include="Client\AccessControl\ClinicUserWriter.cs" />
+    <Compile Include="Client\AccessControl\ClinicUserReader.cs" />
+    <Compile Include="Client\Api\TagsReaderCachedAdaptor.cs" />
+    <Compile Include="Client\Api\TagsReader.cs" />
+    <Compile Include="Client\BasePatchClient.cs" />
+    <Compile Include="Client\BasePostClient.cs" />
+    <Compile Include="Client\BaseGetClient.cs" />
+    <Compile Include="Client\CaFC\CaFCComparisonClient.cs" />
+    <Compile Include="Client\CaFC\CaFCStatsClient.cs" />
+    <Compile Include="Client\CaFC\ClinicFeedbackFormSubmitClient.cs" />
+    <Compile Include="Client\CaFC\ClinicFeedbackReadClient.cs" />
+    <Compile Include="Client\CaFC\CaFCStatsClientCachedAdaptor.cs" />
+    <Compile Include="Client\CaFC\ClinicFeedbackReadClientCachedAdaptor.cs" />
+    <Compile Include="Client\CaFC\ProfileClientCachedAdaptor.cs" />
+    <Compile Include="Client\CaFC\ProfileClient.cs" />
+    <Compile Include="Client\CaFC\ClinicSearch.cs" />
+    <Compile Include="Client\Centres\BillingDetailsReaderClient.cs" />
+    <Compile Include="Client\Centres\LicenceReader.cs" />
+    <Compile Include="Client\Centres\HfeaMessageClientCachedAdaptor.cs" />
+    <Compile Include="Client\Centres\HfeaMessageClient.cs" />
+    <Compile Include="Client\Centres\CentreDashboardClient.cs" />
+    <Compile Include="Client\OnlineApps\OnlineAppsReaderClientCachedAdaptor.cs" />
+    <Compile Include="Client\Various\BlobUploadClient.cs" />
+    <Compile Include="Client\Centres\ClinicProfileReader.cs" />
+    <Compile Include="Client\Centres\ClinicProfileWriter.cs" />
+    <Compile Include="Client\Centres\MonitoringDashboardReader.cs" />
+    <Compile Include="Client\Centres\PortalUserFeedbackClient.cs" />
+    <Compile Include="Client\Centres\PortalUserFeedbackWriter.cs" />
+    <Compile Include="Client\Centres\UpdateClient.cs" />
+    <Compile Include="Client\Centres\ClinicProfileSearch.cs" />
+    <Compile Include="Client\Centres\UpdateClinicClient.cs" />
+    <Compile Include="Client\COP\COPReaderClientCachedAdaptor.cs" />
+    <Compile Include="Client\COP\COPReaderClient.cs" />
+    <Compile Include="Client\InspectionClient\InspectionClient.cs" />
+    <Compile Include="Client\OnlineApps\OnlineAppsWriterClient.cs" />
+    <Compile Include="Client\OnlineApps\OnlineAppsReaderClient.cs" />
+    <Compile Include="Client\ReferenceData\ReferenceDataReader.cs" />
+    <Compile Include="Client\ReferenceData\ReferenceDataReaderCachedAdaptor.cs" />
+    <Compile Include="Client\RiskPerformanceClient\RiskPerformanceClient.cs" />
+    <Compile Include="Client\Users\RoleClient.cs" />
+    <Compile Include="Client\Users\UserClient.cs" />
+    <Compile Include="Constants\ApiParams.cs" />
+    <Compile Include="Constants\ApiType.cs" />
+    <Compile Include="Constants\HttpMethod.cs" />
+    <Compile Include="Constants\UserManagement.cs" />
+    <Compile Include="Extensions\AttributeReaderExtension.cs" />
+    <Compile Include="Extensions\HttpClientExtension.cs" />
+    <Compile Include="Extensions\MappingExtensions.cs" />
+    <Compile Include="Helpers\UrlHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\UserObjectSaveUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HFEA.Connector.Contracts\HFEA.Connector.Contracts.csproj">
+      <Project>{f163633f-49fc-43d1-ad23-f982a3d9fdfe}</Project>
+      <Name>HFEA.Connector.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.Connector.Global\HFEA.Connector.Global.csproj">
+      <Project>{8571d543-7523-4c13-995b-cdd9e84ddce9}</Project>
+      <Name>HFEA.Connector.Global</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

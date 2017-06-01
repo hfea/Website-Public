@@ -1,0 +1,61 @@
+﻿@using HFEA.Web.Utilities;
+@using HFEA.Web.ViewModel.CaFC;
+@using HFEA.Web.ViewModel.CaFC.Model;
+@using HFEA.Web.ViewModel.Constants;
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Base.cshtml";
+
+    var viewModel = ((RenderModelAdapter<ClinicStatsViewModel>)Model).ViewModel;
+}
+
+<div class="background-page-header bg_light_buff">
+    <div class="container">
+        @if (viewModel != null && !string.IsNullOrEmpty(viewModel.ProfilePageUrl))
+        {
+            <div class="mt-20 clearfix">
+                <a class="back-btn" href="@viewModel.ProfilePageUrl"><span class="glyphicon glyphicon-triangle-left"></span><span class="thickline">BACK</span></a>
+            </div>
+        }
+        <h1>@Umbraco.Field("pageTitle") @viewModel.ClinicName</h1>
+        <div class="lead">
+            @Umbraco.Field("bodyText")
+        </div>
+    </div>
+</div>
+
+<div class="container" id="detailedStats" data-clinic-id="@viewModel.ClinicId">
+
+    @Html.Action("SearchFilters", "CaFCStatisticsSurface", new { clinicId = viewModel.ClinicId })
+
+    @if (viewModel.GenericStatsData != null)
+    {
+        @Html.Partial("~/Views/CaFCStatistics/GenericStatistics.cshtml", viewModel.GenericStatsData)
+    }
+
+    <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+        @if (viewModel.TreatmentStatsData != null)
+        {
+            @Html.Partial("~/Views/CaFCStatistics/TreatmentStatistics.cshtml", viewModel.TreatmentStatsData)
+        }
+
+        @if (viewModel.ClinicVsNationalComparisonData != null)
+            {
+            @Html.Partial("~/Views/CaFCStatistics/ComparisonStatistics.cshtml", viewModel.ClinicVsNationalComparisonData)
+        }
+
+        @if (viewModel.AgeStatsData != null)
+            {
+            @Html.Partial("~/Views/CaFCStatistics/AgeGroupStatistics.cshtml", viewModel.AgeStatsData)
+        }
+
+        
+
+    </div>
+
+</div>
+
+
+

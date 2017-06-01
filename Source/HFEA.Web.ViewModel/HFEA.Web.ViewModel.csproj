@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C100A333-A984-405C-B01B-A3298919703E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HFEA.Web.ViewModel</RootNamespace>
+    <AssemblyName>HFEA.Web.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\ContentTag.cs" />
+    <Compile Include="API\IdValueDescription.cs" />
+    <Compile Include="API\IdValuePairInt.cs" />
+    <Compile Include="API\IdValuePair.cs" />
+    <Compile Include="CaFC\CaFCNames.cs" />
+    <Compile Include="CaFC\ClinicFeedbackViewModel.cs" />
+    <Compile Include="CaFC\ClinicFeedbackQuestion.cs" />
+    <Compile Include="CaFC\ClinicStatsTreatmentViewModel.cs" />
+    <Compile Include="CaFC\ClinicStatsVsNationalViewModel.cs" />
+    <Compile Include="CaFC\ClinicStatsGenericViewModel.cs" />
+    <Compile Include="CaFC\ComparisonViewModel.cs" />
+    <Compile Include="CaFC\ICaFCComparisonModelCreator.cs" />
+    <Compile Include="CaFC\IClinicStatsModelCreator.cs" />
+    <Compile Include="CaFC\Model\Comparison\ClinicGameteAvailability.cs" />
+    <Compile Include="CaFC\Model\Comparison\ComparisonClinic.cs" />
+    <Compile Include="CaFC\Model\Comparison\ComparisonDataItem.cs" />
+    <Compile Include="CaFC\Model\Comparison\GameteAvailabilityItem.cs" />
+    <Compile Include="CaFC\Model\Comparison\GameteAvailabilityStats.cs" />
+    <Compile Include="CaFC\Model\Comparison\RatingData.cs" />
+    <Compile Include="CaFC\Model\GenericStatsItem.cs" />
+    <Compile Include="NotificationMessage.cs" />
+    <Compile Include="CaFC\Model\StatsApiSearchFilters.cs" />
+    <Compile Include="CaFC\Model\StatsFullFilters.cs" />
+    <Compile Include="CaFC\ClinicStatsViewModel.cs" />
+    <Compile Include="CaFC\ICaFCNameSearchModelCreator.cs" />
+    <Compile Include="CaFC\IClinicFeedbackWriter.cs" />
+    <Compile Include="CaFC\IClinicFeedbackReader.cs" />
+    <Compile Include="CaFC\Model\ClinicItemList.cs" />
+    <Compile Include="CaFC\Model\ClinicProfile.cs" />
+    <Compile Include="CaFC\Model\InspectionRatings.cs" />
+    <Compile Include="CaFC\Model\LicenseRoles.cs" />
+    <Compile Include="CaFC\Model\ServiceList.cs" />
+    <Compile Include="CaFC\Model\StatsDetailStatisticsItem.cs" />
+    <Compile Include="CaFC\Model\StatsSearchFilterValues.cs" />
+    <Compile Include="Constants\NotificationMessageType.cs" />
+    <Compile Include="Constants\PgdConstants.cs" />
+    <Compile Include="COP\COPReferences.cs" />
+    <Compile Include="ICmsUrlResolver.cs" />
+    <Compile Include="PGD\IPgdConditionsCmsReader.cs" />
+    <Compile Include="PGD\IPgdListingModelCreator.cs" />
+    <Compile Include="PGD\PgdItem.cs" />
+    <Compile Include="PGD\PgdListingViewModel.cs" />
+    <Compile Include="PGD\PgdSearchFilter.cs" />
+    <Compile Include="Search\ContentTagValue.cs" />
+    <Compile Include="API\IPageRatingUpdater.cs" />
+    <Compile Include="API\IPageCommentsUtility.cs" />
+    <Compile Include="API\IPageRatingUtility.cs" />
+    <Compile Include="API\ITagsApiModelCreator.cs" />
+    <Compile Include="API\PageCommentsApiViewModel.cs" />
+    <Compile Include="API\PageRatingApiViewModel.cs" />
+    <Compile Include="API\PageCommentsItem.cs" />
+    <Compile Include="API\PageRatingStatsItem.cs" />
+    <Compile Include="CaFC\CaFCProfileViewModel.cs" />
+    <Compile Include="CaFC\ICaFCProfileModelCreator.cs" />
+    <Compile Include="CaFC\ICaFCSearchFiltersModelCreator.cs" />
+    <Compile Include="CaFC\Model\BirthStatisticsInfo.cs" />
+    <Compile Include="CaFC\Model\ClinicDetailsInfo.cs" />
+    <Compile Include="CaFC\Model\ClinicGeneralInfo.cs" />
+    <Compile Include="CaFC\Model\ClinicService.cs" />
+    <Compile Include="CaFC\IClinicRatingsInfo.cs" />
+    <Compile Include="CaFC\Model\SatelliteClinicInfo.cs" />
+    <Compile Include="CaFC\Model\StatisticsDataSet.cs" />
+    <Compile Include="CaFC\Model\StatisticsItem.cs" />
+    <Compile Include="CaFC\Model\ClinicItem.cs" />
+    <Compile Include="CaFC\Model\FilterItem.cs" />
+    <Compile Include="CaFC\ICafcProfileUrlHelper.cs" />
+    <Compile Include="CaFC\ICafcQueryStringHelper.cs" />
+    <Compile Include="CaFC\Model\InspectionRatingInfo.cs" />
+    <Compile Include="CaFC\Model\MapPinLinkItem.cs" />
+    <Compile Include="CaFC\Model\LinkItem.cs" />
+    <Compile Include="CaFC\Model\MapInformation.cs" />
+    <Compile Include="CaFC\CaFCFiltersViewModel.cs" />
+    <Compile Include="CaFC\CaFCSearchViewModel.cs" />
+    <Compile Include="CaFC\Model\DynamicFilter.cs" />
+    <Compile Include="CaFC\ICaFCSearchResultsModelCreator.cs" />
+    <Compile Include="CaFC\Model\OpenTimeItem.cs" />
+    <Compile Include="CaFC\Model\PatientRatingInfo.cs" />
+    <Compile Include="CaFC\Model\TimeSeries.cs" />
+    <Compile Include="CaFC\Model\UserRating.cs" />
+    <Compile Include="CaFC\Model\WaitingTimes.cs" />
+    <Compile Include="CaFC\Model\WaitingTimesInfo.cs" />
+    <Compile Include="CaFC\SearchParameters.cs" />
+    <Compile Include="CaFC\Model\TreatmentItem.cs" />
+    <Compile Include="Constants\ApiConstants.cs" />
+    <Compile Include="Constants\CaFCConstants.cs" />
+    <Compile Include="Constants\ReferenceData.cs" />
+    <Compile Include="COP\COPFile.cs" />
+    <Compile Include="COP\COPNavigation.cs" />
+    <Compile Include="COP\COPNavigationViewModel.cs" />
+    <Compile Include="COP\COPSectionItem.cs" />
+    <Compile Include="COP\COPContentItem.cs" />
+    <Compile Include="COP\COPGroup.cs" />
+    <Compile Include="COP\COPViewModel.cs" />
+    <Compile Include="COP\ICOPUrlResolver.cs" />
+    <Compile Include="COP\ICOPModelCreator.cs" />
+    <Compile Include="Search\ISearchViewModelReader.cs" />
+    <Compile Include="Search\SearchBoxViewModel.cs" />
+    <Compile Include="Search\SearchFilterGroup.cs" />
+    <Compile Include="Search\SearchFilterItem.cs" />
+    <Compile Include="Search\SearchParameters.cs" />
+    <Compile Include="Search\SearchResultItem.cs" />
+    <Compile Include="Search\SearchViewModel.cs" />
+    <Compile Include="Treatments\TreatmentsList.cs" />
+    <Compile Include="UserFeedback\CommentFormModel.cs" />
+    <Compile Include="UserFeedback\CommentsViewModel.cs" />
+    <Compile Include="UserFeedback\IPageCommentsSubmitter.cs" />
+    <Compile Include="UserFeedback\PageRatingModel.cs" />
+    <Compile Include="PaginationModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserFeedback\IUserFeedbackModelCreator.cs" />
+    <Compile Include="UserFeedback\UserComment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HFEA.API.Connector\Source\HFEA.Connector.Contracts\HFEA.Connector.Contracts.csproj">
+      <Project>{f163633f-49fc-43d1-ad23-f982a3d9fdfe}</Project>
+      <Name>HFEA.Connector.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.BL.Contracts\HFEA.BL.Contracts.csproj">
+      <Project>{2a93828b-532b-4746-ba12-5a69a00741ae}</Project>
+      <Name>HFEA.BL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFEA.Core\HFEA.Core.csproj">
+      <Project>{03a16df2-4c8d-4367-8f55-4dcb7000553e}</Project>
+      <Name>HFEA.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

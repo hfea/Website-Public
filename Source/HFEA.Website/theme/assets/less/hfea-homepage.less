@@ -1,0 +1,224 @@
+.homepage-header-background{
+	@media ( min-width: @screen-md) {
+		background-color: @teal;
+		min-height: 700px;
+		width: 100%;
+		position: absolute;
+		//top:218px;
+		left: 0;
+		@media ( min-width: @screen-md) and (max-width: @screen-md-max) {
+		//	top: 120px;
+		}
+		.container{
+			min-height: 700px;
+	        width: 100%;
+			background-size: 100%;
+			background-image: url('../images/design/homepage-spots.png');
+		}
+
+		.body-no-js & {
+			min-height: 600px;
+			.container {
+				min-height: 600px;
+			}
+		}
+	}
+}
+.homepage-grid{
+	@media ( max-width: @screen-md) {
+		padding: 2em 0;
+	}
+}
+.homepage-header{
+	position: relative;
+	@media ( max-width: @screen-md) {
+		background-color: @teal;
+	}
+	@media ( min-width: @screen-md) {
+		padding-bottom: 2em;
+		padding-top: 2em;
+	}
+	@media ( min-width: @screen-md-max) {
+		padding-top: 2em;
+	}
+	.header{
+		.extra-extra-large-heading;
+	}
+	p{
+		.medium-heading;
+		.futura;
+		@media ( min-width: @screen-md-max) {
+			padding: 1.6em 0;
+			margin: 0;
+		}
+	}
+	.header, p{
+		color: white;
+	}
+}
+.lime-ctas{
+	background-color: @bright-lime;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	ul{
+		overflow: hidden;
+		margin: 0;
+	}
+	li{
+		margin-bottom: 20px;
+    //padding: 0;
+		@media ( max-width: @screen-md) {
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+		@media ( min-width: @screen-md-max) {
+	        &:nth-child(odd) a {
+						.em(10px, 17px, padding-left);
+	        }
+	        &:nth-child(even) a{
+						.em(18px, 17px, padding-left);
+	        }
+	    }
+	}
+	a{
+		color: black;
+		.futura;
+		//.em(32px, 19px);
+		.medium-heading;
+        display: block;
+        padding-right: 2.5em;
+        position: relative;
+        line-height: 1.2em;
+		span{
+			border: white 2px solid;
+			border-radius: 30px;
+			height: 45px;
+			width: 45px;
+			position: absolute;
+            right:10px;
+			background-color: @mid_green;
+			margin-bottom: -4px;
+			@media ( min-width: @screen-md) {
+				margin-right: 10px;
+			}
+			@media ( max-width: @screen-md) {
+				height: 30px;
+				width: 30px;
+			}
+           // top:6px;
+			&:before{
+				position: absolute;
+				color: white;
+				top: 10px;
+				left: 11px;
+				font-size: 20px;
+				@media ( max-width: @screen-md) {
+					top: 6px;
+					left: 6px;
+				    font-size: 16px;
+				}
+			}
+		}
+	}
+}
+.homepage-search input[type='text'].treatment-search{
+	padding: 0.3em 1em;
+    font-size: 1.3em;
+	@media ( max-width: @screen-md) {
+    		padding: 21px 1em;
+		}
+}
+.homepage-search input[type='text'].treatment-search::-ms-clear {
+    display: none;
+}
+.large-search{
+	label{
+		display: block;
+		color: white;
+		.em(19px, 18px);
+	}
+	input[type='text']{
+		width: 81%;
+    	margin: 5px;
+    	border: 0;
+        .medium-heading;
+		@media ( max-width: @screen-md) {
+			font-size: 14px;
+		}
+		@media ( min-width: @screen-md) {
+    		padding: 13px 1em;
+		}
+		@media ( max-width: @screen-md) {
+    		padding: 21px 1em;
+		}
+	}
+	input[type='submit']{
+		background-color: @light_blue;
+		background-image: url('../images/design/icons/search.png');
+		text-indent: -9999px;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    float: right;
+		@media ( min-width: @screen-md) {
+			height: 54px;
+	    	width: 54px;
+	    }
+		@media ( max-width: @screen-md) {
+			height: 74px;
+			width: 15%;
+		}
+	}
+}
+.inputs{
+	background: white;
+    overflow: hidden;
+}
+.homepage-dd{
+	.homepage-link{
+		margin-top: 31px;
+	    text-align: left;
+	    padding: 0.6em 1.2em 0.4em;
+	    span{
+	        top: 0.7em;
+	    }
+	}
+    .dropdown-menu{
+    	width: 100%;
+        border-radius: 0;
+    	padding: 0 0;
+    	li{
+    		&:last-child{
+    			a{
+
+    				padding: 1em 2em;
+    				&:after{
+    					content: none;
+    				}
+    			}
+    		}
+    		a{
+    			padding: 1em 2em 0;
+    			.keyline;
+    			&:after{
+    				margin-bottom: 0;
+    				margin-top: 1em;
+    				//left: 1em;
+    				background-color: @bright_green;
+    			}
+    		}
+    	}
+    }
+}
+
+.user-journey-cta{
+	.body-no-js & {
+		display: none;
+	}
+    .col{
+      //  padding: 0 40px 0 10px;
+        &:first-child{
+        //    padding: 0 10px 0 40px;
+        }
+    }
+}

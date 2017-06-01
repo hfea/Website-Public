@@ -1,0 +1,302 @@
+﻿@using HFEA.Web.Utilities;
+@using HFEA.Web.ViewModel.COP;
+@using HFEA.Web.ViewModel.Constants;
+@inherits UmbracoTemplatePage
+@using System.Text;
+@{
+    Layout = "BaseBreadcrumbTitleAndSummary.cshtml";
+    var viewModel = ((RenderModelAdapter<COPViewModel>)Model).ViewModel;
+}
+
+@if (viewModel != null && viewModel.ActiveSection != null)
+{
+    var sectionData = viewModel.ActiveSection;
+
+    <div class="container hfea-cop">
+        @if (sectionData != null)
+        {
+            <div class="row clear main-section">
+                <div class="col-lg-3 col lhs sidenav"></div>
+                <div class="rhs col-lg-9">
+                    <div class="central-col col mandatory-requirements">
+                        <h2 id="section-header" class="Section-header extra-large-heading">
+                            @sectionData.SectionName
+                            @if (!string.IsNullOrWhiteSpace(sectionData.VersionNo))
+                            {
+                                <span class="extra-small-heading">(version @sectionData.VersionNo)</span>
+                            }
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row clear main-section">
+            <div class="col-lg-3 col lhs sidenav">
+                @Html.Partial("~/Views/COP/SideNav.cshtml", viewModel.Navigation)
+
+                @if (viewModel.HasFilesList)
+                {
+                    <aside class="downloads">
+                        @foreach (var file in sectionData.FileList)
+                        {
+                            <p>
+                                <a href="@file.Url" target="_blank" class="thickline">@file.Title</a>
+                                <span>@string.Format("{0}kb PDF", file.FileSize)</span>
+                            </p>
+                        }
+                    </aside>
+                }
+            </div>
+
+            <div class="rhs col-lg-9">
+                <div class="central-col col mandatory-requirements">
+                    <div id="accordion" class="panel-group accordion" aria-multiselectable="true" role="tablist">
+                        <section>
+                            <div class="panel-hfea panel-default">
+                                <div id="mand-req-header" class="panel-heading" role="tab">
+                                    <h1 class="panel-title parent-panel-title">
+                                        <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#mand-req" aria-expanded="true" aria-controls="mand-req">
+                                            <span class="exclamation">!</span>
+                                            @CurrentPage.requirementsLabel
+                                            <span class="chevron"></span>
+                                        </a>
+                                    </h1>
+                                </div>
+                                <div id="mand-req" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="mand-req-header">
+                                    <div class="panel-body">
+                                        @if (sectionData.ActList != null)
+                                        {
+                                            foreach (var act in sectionData.ActList)
+                                            {
+                                                <h2 class="cop_acts_description medium-heading">
+                                                    @Html.Raw(act.Description)
+                                                </h2>
+                                                if (act.ItemList != null && act.ItemList.Any())
+                                                {
+                                                    foreach (var item in act.ItemList)
+                                                    {
+                                                        <h3 class="cop_reference_heading extra-small-heading">
+                                                            <b>@Html.Raw(string.Format("{0} {1}", item.SectionNumber, item.Description).Trim())</b>
+                                                        </h3>
+                                                        @RenderListRecursively(item.ItemList, 1)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        @if (sectionData.DirectonsList != null && sectionData.DirectonsList.Any())
+                                        {
+                                            <h2 class="license-conditions-header medium-heading">Directions</h2>
+                                            @RenderListRecursively(sectionData.DirectonsList, 1)
+
+                                        }
+                                        @if (sectionData.LicenceConditionList != null && sectionData.LicenceConditionList.Any())
+                                        {
+                                            <h2 class="license-conditions-header medium-heading">Licence conditions</h2>
+                                            @RenderListRecursively(sectionData.LicenceConditionList, 1, false)
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                @if (viewModel.HasGuidanceData)
+                {
+                    <div class="cop-guidance">
+                        <div class="central-col col">
+                            <div class="panel-group accordion" id="accordion-2" role="tablist" aria-multiselectable="true">
+                                <section>
+                                    <div class="panel-hfea panel-default">
+                                        <div class="panel-heading" role="tab" id="guidance-heading">
+                                            <div class="guidance-row">
+                                                <div class="col-lg-6 ">
+                                                    <h1 class="panel-title parent-panel-title">
+                                                        <a class="accordion-toggle open" role="button" data-toggle="collapse" data-parent="#accordion" href="#guidance" aria-expanded="true" aria-controls="guidance">
+                                                            @CurrentPage.guidanceLabel
+                                                            <span class="chevron"></span>
+                                                        </a>
+                                                    </h1>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="guidance" class="panel-collapse" role="tabpanel" aria-labelledby="guidance-heading">
+                                            <div class="panel-body">
+                                                @foreach (var data in sectionData.GuidanceList)
+                                                {
+                                                    @RenderGuidanceSection(data)
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+        @if (viewModel.HasOtherReferences)
+        {
+            <div class="row">
+                <!--start cop footer links-->
+                <div class="cop-footer-links col-lg-6 col-lg-offset-3 mb-100">
+                    <h2 class="medium-header header">@Umbraco.Field("otherInformationLabel")</h2>
+                    <ul class="list-unstyled">
+                        @foreach (var item in sectionData.COPReferences)
+                        {
+                            string itemUrl = string.IsNullOrEmpty(item.Url) ? "#" : item.Url;
+                            <li>
+                                <a href="@itemUrl" class="thickline" target="_blank">
+                                    @Html.Raw(item.Description)
+                                    <span class="hfea-icon-link-external"></span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div><!--end cop footer links-->
+        }
+
+    </div>
+}
+
+@helper RenderGuidanceSection(COPContentItem data)
+{
+if (data != null)
+{
+        <div class="cop-version-data-group-toggle main-body-section">
+            <div class="guidance-row">
+                <div class="col-lg-6">
+                    <h2 class="extra-small-heading GroupHeader">
+                        <b>@Html.Raw(data.Description)</b>
+                    </h2>
+                </div>
+                <div class="col-lg-3">
+                    @RenderNoteList(data.NotesList)
+                </div>
+            </div>
+            
+            @RenderGuidanceDataRecursively(data.ItemList, 1)
+
+            <div class="toggle-section">
+                <a href="#" class="open">
+                    <span class="symbol"></span>
+                    <span class="text"></span>
+                </a>
+            </div>
+        </div>
+                }
+}
+
+@helper RenderGuidanceDataRecursively(List<COPContentItem> list, int level)
+    {
+    if (list != null && list.Any())
+    {
+            <ol class="list-unstyled toggle level-@level" style="display: block;">
+                @foreach (var item in list)
+                {
+                    string style = GetFormatTypeCss(item.FormatType);
+                    <li class="guidance-list-item @style">
+                        
+                        <div class="guidance-row">
+                            <div class="col-lg-6">
+                                <p>
+                                    @if (!string.IsNullOrWhiteSpace(item.SectionNumber))
+                                    {
+                                        <span class="text_teal">@item.SectionNumber</span>
+                                    }
+                                    @Html.Raw(item.Description)
+                                    @if (item.NotesList != null && item.NotesList.Any())
+                                    {
+                                        <a href="#" class="see-also-toggle">See also ></a>
+                                    }
+                                </p>
+                            </div>
+                            <div class="col-lg-3 test">
+                                <div class="see-also-wrapper">
+                                    @RenderNoteList(item.NotesList)
+                                </div>
+                            </div>
+                        </div>
+                        @RenderGuidanceDataRecursively(item.ItemList, level + 1)
+                        @Umbraco.If(level == 1 && (style == "interpretation" || style == "mandatorygroup"), "<div class='guidance-row closing-border'><div class='col-lg-6'><p></p></div></div>")
+                    </li>
+                }
+            </ol>
+    }
+    }
+
+@helper RenderListRecursively(List<COPContentItem> list, int level, bool renderDownload = true)
+{
+if (list != null && list.Any())
+{
+    <ol class="cop-references level-@level">
+        @foreach (var item in list)
+        {
+            string style = GetFormatTypeCss(item.FormatType);
+            string id = !string.IsNullOrEmpty(item.SectionNumber) ? string.Format("id=\"{0}\"", item.SectionNumber) : "";
+            <li class="@style" @Html.Raw(id)>
+                <span class="text_teal">
+                    @if (!string.IsNullOrEmpty(item.SectionNumber))
+                    {
+                        @item.SectionNumber
+                    }
+                </span>
+                @Html.Raw(item.Description)
+                @RenderListRecursively(item.ItemList, level + 1, renderDownload)
+                @if (!string.IsNullOrEmpty(item.Url) && renderDownload)
+                {
+                    <a href="@item.Url" target="_blank">Download</a>
+                }
+            </li>
+        }
+    </ol>
+}
+}
+
+@helper RenderNoteList(List<COPContentItem> list)
+{
+if (list != null)
+{
+    foreach (var note in list)
+    {
+    <aside class="see-also">
+        @if (!string.IsNullOrEmpty(note.Url))
+        {
+            string target = IsExternalLink(note.Url) ? "target=\"_blank\"" : "";
+
+	        <p class="extra-small-heading keyline keyline_white">See also</p>
+	        <a class="thickline" href="@note.Url" @target>@note.Description</a>
+	    }
+	    else
+	    {
+	        <p>@note.Description</p>
+	    }
+	</aside>
+    }
+}
+}
+
+@functions
+{
+    public string GetFormatTypeCss(ReferenceData.CopFormatType type)
+    {
+        return type != ReferenceData.CopFormatType.Unknown
+                        ? type.ToString().ToLower()
+                        : "";
+    }
+
+    public bool IsExternalLink(string link)
+    {
+        bool result = !string.IsNullOrEmpty(link)
+            && link.ToLower().StartsWith("http")
+            && !link.ToLower().Contains(Request.Url.Host.ToLower());
+        
+        return result;
+    }
+}

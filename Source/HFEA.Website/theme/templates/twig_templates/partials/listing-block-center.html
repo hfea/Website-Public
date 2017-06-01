@@ -1,0 +1,28 @@
+<div class="center-2">
+    <ul class="ul-reset listing-results">
+        {% for contact in contacts %}
+            <li>
+            	<div class="img span-3\@mobile">
+            		<a href="#">
+    		        	<img src="/theme/assets/images/content/{{contact.img}}" alt="alt text" />
+    		        	<div class="gradient orange-magenta"></div>
+    		        </a>
+    	        </div>
+            	<div class="inner span-3@mobile">
+            		<h2 class="light">{{contact.name}}</h2>
+            		<h3 class="delta medium">{{contact.description}}</h3>
+            		<p class="delta">{{contact.summary}}</p>
+            		<ul class="links ul-reset">
+            			{% for button in contact.buttons %}
+            				<li>
+            					<a href="#" class="button border-{{button.color}}">
+            						{{button.title}}
+            					</a>
+            				</li>
+            			{% endfor %}
+            		</ul>
+            	</div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

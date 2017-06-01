@@ -1,0 +1,35 @@
+﻿@model double
+
+<div class="stars">
+        @{
+            var remainder = Model % 1;
+            var percent = (remainder * 100).ToString() + "%";
+
+
+            int fullStartCount = (int)Math.Floor(Model);
+            for (int index = 1; index <= 5; index++)
+            {
+                <div class="star">
+
+                    @if (index <= fullStartCount)
+                    {
+                    // print full starts
+                    <span class="fill fill-full"></span>
+                    }
+                    else if (index == (fullStartCount + 1) && fullStartCount != 0)
+                    {
+                        if (remainder != 0)
+                        {
+                        int partialStarIndex = fullStartCount + 1;
+                        <span style="width: @Html.Raw(percent.ToString())" class="fill fill-part"></span>
+                        }
+                        
+                    }
+                    else
+                    {
+                    <span  class="fill"></span>
+                    }
+                </div>
+            }
+        }
+</div>

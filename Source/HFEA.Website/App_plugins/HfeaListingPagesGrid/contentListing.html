@@ -1,0 +1,30 @@
+<div ng-controller="hfea.contentListing">
+    <p>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.value.header" localize="placeholder" placeholder="add header..."></textarea>
+    </p>
+    <div style="padding:0 5px;">
+        <p ng-if="!control.value || (!control.value.node && !control.value.image)">
+            Select root
+            <span ng-click="setContentPicker()">
+                <span style="text-decoration:underline;">page</span>
+            </span>
+            or
+            <span ng-click="openMediaPicker()">
+                <span style="text-decoration:underline;">media folder</span>
+            </span>
+        </p>
+
+        <div ng-if="control.value && control.value.node">
+            <p><i class="icon {{control.value.node.icon}} hover-hide"></i> {{control.value.node.name}}</p>
+        </div>
+        <div class="unstyled list-icons" ng-if="control.value && control.value.image">
+            <p>
+                <i class="icon {{control.value.image.icon}} hover-hide"></i> {{control.value.image.name}}
+            </p>
+        </div>
+        <div>
+            <a class="icon icon-delete red" ng-if="control.value && control.value.node" ng-click="removeContent()" prevent-default>Remove</a>
+            <a class="icon icon-delete red" ng-if="control.value && control.value.image" ng-click="removePicture()" prevent-default>Remove</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+﻿@inherits UmbracoViewPage<HFEA.Web.ViewModel.CaFC.IClinicRatingsInfo>
+@{
+    string ratingLabel = Model.UserRating > 0f
+    ? string.Format("{0} / 5 based on {1} ratings", Model.UserRating, Model.NumberOfUserReviews)
+    : Umbraco.AssignedContentItem.GetPropertyValue<string>("noPatientDataLabel");
+
+    bool isCafcProfilePage = Umbraco.AssignedContentItem.DocumentTypeAlias == "CafcClinicProfile";
+
+    bool showInspectionRatingLink = ViewData.ContainsKey("ShowInspectionRatingLink") && ViewData["ShowInspectionRatingLink"].ToString() == bool.TrueString;
+    bool showPatientRatingLink = ViewData.ContainsKey("ShowPatientRatingLink") && ViewData["ShowPatientRatingLink"].ToString() == bool.TrueString;
+    bool showBirthRateLink = ViewData.ContainsKey("ShowBirthRateLink") && ViewData["ShowBirthRateLink"].ToString() == bool.TrueString;
+}
+
+@if (!Model.IsSatelliteOrTransportClinic)
+{
+    <div class="col-lg-4 inspection-rating">
+        <h2>
+            @if (isCafcProfilePage)
+            {
+                <a href="#inspection">Inspection rating</a>
+            }
+            else
+            {
+                @: Inspection rating
+            }
+        </h2>
+        @Html.Partial("DotRatingViewClinic", Model.InspectionRating)
+        @if (showInspectionRatingLink)
+        {
+        <a class="scroll-to" href="#inspection-rating">@Umbraco.Field("inspectionRatingButtonLabel")</a>
+        }
+    </div>
+}
+
+<div class="col-lg-4 user-rating">
+    <h2>
+        @if (Umbraco.TypedContent(UmbracoContext.Current.PageId).DocumentTypeAlias == "CafcClinicProfile")
+            {
+            <a href="#rating">Patient rating</a>
+        }
+        else
+        {
+            @: Patient rating
+            }
+    </h2>
+    <div class="star-container star-container-grey">
+        @Html.Partial("StarRatingView", Model.UserRating)
+    </div>
+    <p>
+        @ratingLabel
+    </p>
+    @if (!string.IsNullOrEmpty(Model.FeedBackLink))
+    {
+        <a href="@Model.FeedBackLink">Rate this clinic</a>
+    }    
+@if (showPatientRatingLink)
+{
+    <a class="scroll-to" href="#patient-ratings">@Umbraco.Field("patientRatingButtonLabel")</a>
+}
+</div>
+
+@if (Model.HasSuccessRateInfo)
+{
+    string titleSuffix = string.IsNullOrEmpty(Model.RatingType) ? string.Empty : string.Format("({0})", Model.RatingType.ToUpper());
+    <div class="col-lg-4">
+        <h2>
+            @if (Umbraco.TypedContent(UmbracoContext.Current.PageId).DocumentTypeAlias == "CafcClinicProfile")
+            {
+                <a href="#statistics">@Model.GenericTreatmentTitle</a>
+            }
+            else
+            {
+                @Model.GenericTreatmentTitle
+            }
+        </h2>
+        <p class="sr-only">
+            Average birth rate: @Model.NationalSuccessRate,
+            Clinic birth rate: @Model.IndicativeSuccessRate,
+            @if (!string.IsNullOrEmpty(Model.IndicativeSuccessRateCaveat))
+            {
+                @Html.Raw("Success rate caveat:") @Model.IndicativeSuccessRateCaveat
+            }
+        </p>
+        <div class="success-rate-overview">
+            @if (Model.ClinicSuccessRateValue == null)
+            {
+                <div class="rate clinic" style="width: 1px">
+                    <span class="bar"></span>
+                    <span class="number" style="left: 1px">No data</span>
+                </div>
+            }
+            else
+            {
+                <div class="rate clinic" style="width: @Html.Raw(Model.IndicativeSuccessRate)">
+                    <span class="bar"></span>
+                    <span class="number" style="left: @Html.Raw(Model.IndicativeSuccessRate)">@Html.Raw(Model.IndicativeSuccessRate)</span>
+                </div>
+            }
+            <div class="rate nat" style="width: @Html.Raw(Model.NationalSuccessRate)">
+                <span class="bar"></span>
+                <span class="number" style="left: @Html.Raw(Model.NationalSuccessRate)">@Html.Raw(Model.NationalSuccessRate)</span>
+            </div>
+
+            <p class="rating-dot">
+                <span class="rating teal-bg"></span> Clinic rate
+            </p>
+            <p class="rating-dot">
+                <span class="rating white-bg"></span> National rate
+            </p>
+        </div>
+@if (showBirthRateLink)
+{
+        <a class="search-page-link scroll-to" href="#birth-statistics">@Umbraco.Field("birthRateButtonLabel")</a>
+}
+      </div>
+}

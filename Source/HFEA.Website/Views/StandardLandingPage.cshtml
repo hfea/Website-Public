@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "BaseBreadcrumbTitleAndSummary.cshtml";
+}
+<div class="container topgrid">
+	@CurrentPage.GetGridHtml("topGrid")
+</div>
+
+
+<div class="bg_light_buff full-width-aside mb-100 middlegrid">
+    <div class="container">
+        <section class="row spotlight-grid">
+            @CurrentPage.GetGridHtml("fullWidthGrid", "FullWidthBootstrap3")
+        </section>
+    </div>
+</div>
+
+<div class="container bottom-grid bottomgrid">
+@CurrentPage.GetGridHtml("bottomGrid")
+</div>
+<div class="container social-sharing-container">
+    @Html.Partial("StandardPageCta")
+</div>
+@Html.Partial("RelatedLinks")

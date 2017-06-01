@@ -1,0 +1,18 @@
+﻿@using HFEA.BL;
+@using Newtonsoft.Json.Linq;
+@using Umbraco.Web.Templates;
+
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<JObject>
+@{
+    JToken values = Model["value"];
+
+    var header = values.GetStringValueOrEmpty("header");
+    var summary = values.GetStringValueOrEmpty("summary");
+    var headerStyle = values.GetStringValueOrEmpty("styleHeader", "id");
+    var background = values.GetStringValueOrEmpty("styleBgColor", "id");
+}
+
+<aside class="border border-spotlight text-center @background @headerStyle mb-100 mt-50">
+    <h2 class="header">@header</h2>
+    @Html.Raw(TemplateUtilities.ParseInternalLinks(@summary))
+</aside>

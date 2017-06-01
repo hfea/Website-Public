@@ -1,0 +1,39 @@
+<div ng-controller="hfea.genericImageItemPicker">
+    <div>
+        <p>Header label:</p>
+        <textarea rows="1" class="textstring input-block-level" ng-model="control.header" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add header..."></textarea>
+    </div>
+    <div>
+        <p>Summary:</p>
+        <textarea class="textstring input-block-level" ng-model="control.summary" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add summary..."></textarea>
+    </div>
+    <div class="usky-editor-placeholder" ng-click="setContentPicker()" ng-if="!(control.value && control.value.node)">
+        <i class="icon icon-umb-developer color-orange"></i>
+        <div class="help-text">Click to select page</div>
+    </div>
+    <div class="usky-editor-placeholder" ng-click="setContentPicker()" ng-if="control.value && control.value.node">
+        <p><i class="icon {{control.value.node.icon}}"></i>{{control.value.node.name}}</p>
+    </div>    
+    <div>
+        <p>Display image:</p>
+        <ul class="unstyled list-icons" ng-if="control.value != null && control.value.image != null">
+            <li>
+                <i class="icon icon-delete red hover-show pull-right" ng-click="removePicture()"></i>
+
+                <i class="icon {{control.value.image.icon}} hover-hide"></i>
+                {{control.value.image.name}}
+            </li>
+        </ul>
+        <ul class="unstyled list-icons">
+            <li>
+                <i class="icon icon-add blue"></i>
+                <a href="#" ng-click="openMediaPicker()" prevent-default>
+                    Select
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <p>Background color:<br /><select class="input-block-level" ng-options="item as item.label for item in control.value.styleItems track by item.id" ng-model="control.value.styleBgColor"></select></p>
+    </div>
+</div>

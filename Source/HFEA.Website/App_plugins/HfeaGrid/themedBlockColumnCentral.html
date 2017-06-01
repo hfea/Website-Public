@@ -1,0 +1,40 @@
+<div ng-controller="hfea.themedBlockColumn">
+    <div>
+        <p><strong>Header</strong></p>
+        <textarea umb-auto-resize="" umb-auto-focus="" class="textstring input-block-level" ng-model="control.header" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add text here..."></textarea>
+
+        <p><strong>Text</strong></p>
+        <div style="border:4px dashed #f8f8f8;">
+            <div unique-id="control.$uniqueId" value="control.value.text" grid-rte configuration="control.config.rte">
+            </div>
+        </div>
+
+        <div>
+            <p><strong>Display central image</strong></p>
+            <ul class="unstyled list-icons" ng-if="control.value != null && control.value.image != null">
+                <li>
+                    <i class="icon icon-delete red hover-show pull-right" ng-click="removePicture()"></i>
+                    <i class="icon {{control.value.image.icon}} hover-hide"></i>
+                    {{control.value.image.name}}
+                </li>
+            </ul>
+            <ul class="unstyled list-icons">
+                <li>
+                    <i class="icon icon-add blue"></i>
+                    <a href="#" ng-click="openMediaPicker()" prevent-default>
+                        Select
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <p><strong>Select Quote Background</strong></p>
+        <p><select class="input-block-level" ng-options="item as item.label for item in control.styleItems track by item.id" ng-model="control.styleColor"></select></p>
+        <p><strong>Quote</strong></p>
+        <div style="border:4px dashed #f8f8f8;">
+            <div unique-id="control.$uniqueId + 1" value="control.value.quoteText" grid-rte configuration="control.config.rte">
+            </div>
+        </div>
+        <p><strong>Footer</strong></p>
+        <textarea umb-auto-resize="" umb-auto-focus="" class="textstring input-block-level" ng-model="control.quotefooter" ng-attr-style="{{control.editor.config.style}}" localize="placeholder" placeholder="add text here..."></textarea>
+    </div>
+</div>

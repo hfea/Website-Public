@@ -1,0 +1,19 @@
+<h1 class="black-text">
+	{{header}}
+</h1>
+
+<div class="row text-panel mb-20">
+	{% for panel in panels %}
+		<div class="col-md-{{cols}} mb-20">
+			<h2 class="black-text">{{panel.title}}</h2>
+			<p>
+				{{panel.body}}
+			</p>
+			<div class="{{panel.linkclass}}">
+				<a href="{{panel.href}}" class="standard-link">
+					{{panel.link}}
+				</a>
+			</div>
+		</div>
+	{% endfor %}
+</div>

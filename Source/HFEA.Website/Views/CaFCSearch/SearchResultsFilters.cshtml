@@ -1,0 +1,84 @@
+﻿@using HFEA.Web.Controllers;
+@model HFEA.Web.ViewModel.CaFC.CaFCFiltersViewModel
+
+<div class="search-criteria clinic-search" id="collapseExample" aria-expanded="true">
+    @if (Model != null)
+    {
+        using (Html.BeginUmbracoForm<CaFCSearchSurfaceController>("SearchResultsFiltersSubmit", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="form-inline mb-50 col-lg-6">
+                    <div class="form-group">
+                        <label class="hfea-form-label" for="exampleInputName2">Please enter your location (optional)</label>
+                        <p class="hint-text">
+                            Enter your postcode or region
+                        </p>
+                        @Html.TextBoxFor(x => x.Location, new { placeholder = "Postcode / Region", @class = "form-control", id = "postcode" })
+                        <div>
+                            <a id="hidden-text-1-button" class="helper-text reveal-link collapsed" role="button" data-toggle="collapse" href="#hidden-text-1" aria-expanded="false" aria-controls="hidden-text-1">
+                                <span class="glyphicon glyphicon-play"></span>
+                                Why should I search by location?
+
+                            </a>
+                            <div id="hidden-text-1" aria-expanded="false" class="collapse helper-text-main">
+                                <p>
+                                    Choosing a fertility clinic that is nearby can be crucial due to the number a visits that may be required through a course of treatment.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-50 col-lg-6" id="postcode-distance">
+                    <div class="form-group">
+                        <label class="hfea-form-label" for="postcode-distance-input">Distance from postcode</label>
+                        <p class="hint-text">
+                            Select a distance from your location that you would be willing to travel
+                        </p>
+                    </div>
+                    <div class="hfea-form-inline form-group">
+                        @Html.DropDownListFor(x => x.Distance, Model.DistanceOptionsList, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-20">
+                <h2>Fine tune your search</h2>
+                @for (int i = 0; i < Model.DynamicFilters.Count; i++)
+                {
+                    <div class="form-group col-md-6">
+                        <h3 class="hfea-form-label">@Model.DynamicFilters[i].Title</h3>
+                        @for (int j = 0; j < Model.DynamicFilters[i].ItemList.Count; j++)
+                    {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.HiddenFor(x => x.DynamicFilters[i].ItemList[j].Id)
+                                    @Html.CheckBoxFor(x => x.DynamicFilters[i].ItemList[j].Value)
+                                    @Html.DisplayFor(x => x.DynamicFilters[i].ItemList[j].Label)
+                                </label>
+                                @if (!string.IsNullOrEmpty(@Model.DynamicFilters[i].ItemList[j].Description))
+                                {
+                                    <a id="hidden-text-1-button" class="helper-text helper-text-inset reveal-link collapsed" role="button" data-toggle="collapse" href="#@Html.Raw("expl-" + Model.DynamicFilters[i].ItemList[j].Id)" aria-expanded="false" aria-controls="#@Html.Raw("expl-" + Model.DynamicFilters[i].ItemList[j].Id)">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                        About @Html.DisplayFor(x => x.DynamicFilters[i].ItemList[j].Label)
+
+                                    </a>
+                                    <div id="@Html.Raw("expl-" + Model.DynamicFilters[i].ItemList[j].Id)" aria-expanded="false" class="collapse helper-text-main">
+                                        <p>
+                                            @Model.DynamicFilters[i].ItemList[j].Description
+                                        </p>
+                                    </div>
+                                }
+                            </div>
+                                
+                        }
+                    </div>
+                }
+            </div>
+            <div class="grey-border-bottom pb-50">
+                <div class="submit-btn-wrapper">
+                    <input type="submit" value="Search" class="submit-btn btn btn-primary btn-lg" />
+                </div>
+            </div>
+        }
+    }
+</div>

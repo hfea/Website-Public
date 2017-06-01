@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Newtonsoft.Json.Linq.JObject>
+@{
+    dynamic node = null;
+
+    var header = Model["header"];
+    var summary = Model["summary"];
+    var background = Model["value"]["styleBgColor"]["id"];
+    var val = Model["value"]["node"]["id"];
+    int id;
+
+    if (val != null && int.TryParse(val.ToString(), out id))
+    {
+        node = Umbraco.Content(id);
+    }
+}
+
+@if (node != null && node.HasProperty("pageTitle"))
+{
+    <article class="@background">
+        <div class="padding">
+            <p class="cat">@header</p>
+            <h3 class="header">
+                <a href="@node.Url">@summary</a>
+            </h3>
+        </div>
+    </article>
+}

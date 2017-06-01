@@ -1,0 +1,320 @@
+
+	{{ include ('partials/page-header.html', {
+	    title: 'Advanced clinic search',
+	    tagline: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet neque vestibulum, commodo lacus ornare, tincidunt elit. Maecenas id lorem eget quam pretium blandit. Aenean urna lectus, fermentum eget suscipit a, condimentum a nisi. Nulla ultricies erat lectus, ac bibendum leo posuere nec.',
+	}) }}
+
+
+	 
+	<a id="change-search" class="btn btn-block btn-large btn-default mb-20" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+		Change search criteria
+	</a>
+	<div class="search-criteria clinic-search" id="collapseExample" aria-expanded="true" >
+		<div class="well">
+			<form>
+			<div class="form-inline mb-20 ">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+						    <label  class="hfea-form-label" for="exampleInputName2">Enter postcode (optional)</label>
+						    <div>
+							    <a id="hidden-text-1-button" class="helper-text" role="button" data-toggle="collapse" href="#hidden-text-1" aria-expanded="false" aria-controls="hidden-text-1">
+							    	Why should I search by postcode?
+									<span class="glyphicon glyphicon-chevron-down"></span>
+								</a>
+								<div id="hidden-text-1" aria-expanded="false" class="collapse">
+									<p>
+						    			Choosing a fertility clinic that is nearby can be crucial due to the number a visits that may be required through a course of treatment.
+						    		</p>
+							    </div>
+						    </div>
+						</div>
+						<div class="form-group col-md-6">
+						    <input type="email" class="form-control" id="postcode">
+					    
+						</div>
+					</div>
+				</div>
+				<div class="form-inline mb-20" id="postcode-distance">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+						    <label  class="hfea-form-label" for="exampleInputName2">Distance from postcode</label>
+						</div>
+						<div class="form-group col-md-6">
+						     <div class="row">
+					    	<div class="col-md-4">
+					    		<input class="postcode form-control" max="5000" type="number" step="1" value="5" maxlength="1" size="5" id="postcode-distance-input">
+					    	</div>
+					    	<div class="col-md-8">
+							    <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+							    	<div class="btn-group" role="group">
+								  		<button type="button" id="pcd-minus" class="btn btn-default">-</button>
+									</div>
+							    	<div class="btn-group" role="group">
+								  		<button type="button" id="pcd-plus" class="btn btn-default">+</button>
+									</div>
+								</div>
+					    	</div>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-20">
+						{{include('partials/checkboxes.html', {
+							header: 'Treatments',
+							checkboxes:[
+								{
+									item: 'IVF/ICSI'
+								},
+								{
+									item: 'IUI'
+								},
+								{
+									item: 'Surgical sperm collection'
+								},
+								{
+									item: 'Ovarian tissue collection'
+								},
+								{
+									item: 'Fertility Preservation'
+								},
+								{
+									item: 'In-vitro maturation (to be determined)'
+								},
+								{
+									item: 'IVF for patients with communicable viral infections'
+								}
+							]
+						})}}
+						{{include('partials/checkboxes.html', {
+							header: 'Donor recruitment',
+							checkboxes:[
+								{
+									item: 'Recruits egg donors'
+								},
+								{
+									item: 'Recruits sperm donors'
+								},
+								{
+									item: 'Recruits donors for research projects (to be determined)'
+								},
+							]
+						})}}
+						{{include('partials/checkboxes.html', {
+							header: 'Screening services',
+							checkboxes:[
+								{
+									item: 'Pre implantation genetic diagnosis'
+								},
+								{
+									item: 'Pre implantation genetic screening (to be determined)'
+								}
+							]
+						})}}
+						{{include('partials/checkboxes.html', {
+							header: 'Counselling and support',
+							checkboxes:[
+								{
+									item: 'Compulsory counselling for donors'
+								},
+								{
+									item: 'Counselling services at the clinic'
+								},
+								{
+									item: 'Dedicated counsellor'
+								},
+								{
+									item: 'Number of counselling sessions '
+								}
+							]
+						})}}
+				</div>
+				
+				<div class="">
+					<a id="search-button" href="#results" role="button" class="submit-btn btn btn-primary btn-lg">		Search for clinic 
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					</a>
+				</div>
+				
+
+				<div class="form-inline mt-50">
+					<div class="clearfix">
+						<a id="change-search" class="accordion-button mb-20" role="button" data-toggle="collapse" href="#clinic-name" aria-expanded="false" aria-controls="clinic-name">
+							Do you know the name of the clinic you are searching for?
+							<span class="glyphicon glyphicon-chevron-down"></span>
+						</a>
+						<div class="search-criteria clinic-search collapse" id="clinic-name" aria-expanded="false" >
+							<div class="row mb-20">
+							  	<div class="form-group col-md-6">
+							  	 	<label>
+							  	 		Clinic name
+							  	 	</label>
+								</div> 
+							  	 <div class="form-group col-md-6">
+									<input type="text" class="form-control typeahead" name="search" id="typeahead">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<a id="search-button" href="#results" role="button" class="submit-btn btn btn-primary btn-lg">
+									Go to clinic
+									<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="results-section" id="results">
+		<div class="row">
+			<div class="col-md-6">
+				<p>Your search found 5 clinics</p>
+			</div>
+			<div class="col-md-6 ">
+				<p class="text-right distance-label">Distance</p>
+			</div>
+		</div>
+		<div>
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active"><a href="#grid" aria-controls="grid" role="tab" data-toggle="tab">Grid</a></li>
+			   	<li role="presentation"  class=""><a id="map-tab" href="#map" aria-controls="map" role="tab" data-toggle="tab">Map</a></li>
+			</ul>
+				<!-- Tab panes -->
+			<div class="tab-content">
+			  		<div role="tabpanel" class="tab-pane active" id="grid">
+					{{ include ('partials/clinic-listing.html',{
+							clinics: [
+								{
+									title: "Barts Health Centre for Reproduction Medicine",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "4",
+									reviewers: "159",
+									patient_rating : "green",
+									embryo_rating : "green",
+									it_rating : "amber",
+									experience_rating : "red",
+									success_rate : "30",
+									image: "barts.jpeg"	
+								},
+								{
+									title: "Homerton Fertility Centre",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "3",
+									reviewers: "84",
+									patient_rating : "green",
+									embryo_rating : "green",
+									it_rating : "amber",
+									experience_rating : "green",
+									success_rate : "23",
+									image: "homerton.jpeg"	
+								},
+								{
+									title: "The Whittington Hospital Fertility Unit",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "5",
+									reviewers: "20",
+									patient_rating : "green",
+									embryo_rating : "amber",
+									it_rating : "amber",
+									experience_rating : "red",
+									success_rate : "30",
+									image: "whittington.jpeg"	
+								},
+								{
+									title: "North Middlesex University Hospital (Reproductive Medicines Unit)",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "4",
+									reviewers: "25",
+									patient_rating : "green",
+									embryo_rating : "amber",
+									it_rating : "amber",
+									experience_rating : "red",
+									success_rate : "70",
+									image: "middlesex.jpeg"	
+								},
+								{
+									title: "Reproductive Medicine Unit",
+									type: "Treatment Centre",
+									treatments: [
+										{
+											tag: "IVF"
+										},
+										{
+											tag: "ICSI"
+										},
+										{
+											tag: "IUI"
+										}
+									],
+									review_rating: "3",
+									reviewers: "63",
+									patient_rating : "green",
+									embryo_rating : "amber",
+									it_rating : "amber",
+									experience_rating : "red",
+									success_rate : "64",
+									image: "reproductive-medicine.jpeg"	
+								}
+							]
+
+						})
+					}}
+
+
+					</div>
+
+			  		<div role="tabpanel" class="embed-responsive embed-responsive-16by9 tab-pane " id="map">
+			  			Map View
+
+			  			<div id="map" class="embed-responsive-item"></div>
+			  		</div>
+			</div>
+		</div>
+	</div>
+</div>
+

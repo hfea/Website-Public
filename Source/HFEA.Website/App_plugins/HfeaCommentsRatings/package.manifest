@@ -1,0 +1,14 @@
+{
+    "propertyEditors": [
+        {
+            "alias": "HFEACommentingAndRating",
+            "name": "HFEA Commenting",
+            "editor": {
+                "view": "~/App_Plugins/HfeaCommentsRatings/editor.html"
+		    }
+        }
+    ],
+    javascript: [
+        '~/App_Plugins/HfeaCommentsRatings/editorcontroller.js'
+    ]
+}

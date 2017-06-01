@@ -1,0 +1,85 @@
+﻿@model HFEA.Web.ViewModel.CaFC.ClinicFeedbackViewModel
+@{
+    bool isSuccessfullSubmission = TempData.ContainsKey("response");
+}   
+
+
+@if (isSuccessfullSubmission)
+{
+    <div id="alert" class="alert notification_success">        
+        @Html.Raw(TempData["response"])
+    </div>
+}
+
+@if (TempData.ContainsKey("error"))
+{
+    <div id="alert" class="alert alert-danger">
+        @TempData["error"].ToString()
+    </div>
+}
+
+@if (!isSuccessfullSubmission && Model != null && Model.QuestionList != null)
+{
+using (Html.BeginUmbracoForm<HFEA.Web.Controllers.CAFCClinicFeedbackSurfaceController>("SubmitForm",  FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.CentreId);
+
+    for (int i = 0; i < Model.QuestionList.Count; i++)
+    {
+        @Html.HiddenFor(x => Model.QuestionList[i].QuestionId)
+
+        if (Model.QuestionList[i].QuestionType == "rating" && Model.QuestionList[i].QuestionOptions != null && Model.QuestionList[i].QuestionOptions.Count > 0)
+        {
+            <div class="form_item patient_feedback">
+                    <span class="numberCircle">
+                        <span>
+                            @Model.QuestionList[i].QuestionId
+                        </span>
+                    </span>
+                    <div class="question">
+                        @Model.QuestionList[i].Question
+                    </div>
+                <div class="radio_group radio">
+                    @for (int j = 0; j < Model.QuestionList[i].QuestionOptions.Count; j++)
+                    {
+                        int cnt = j + 1;
+                        //string attr = cnt == 1 ? "required=\"required\" " : "";
+                        <label>
+                            <input type="radio" name="@Html.NameFor(x => Model.QuestionList[i].Score)" id="@Html.IdFor(x => Model.QuestionList[i].QuestionOptions[j].Key)" value="@Model.QuestionList[i].QuestionOptions[j].Key" @*@Html.Raw(attr)*@ />
+                            @Model.QuestionList[i].QuestionOptions[j].Value
+                        </label>
+                    }
+                </div>
+                @if (Model.QuestionList[i].HasAdditionalTextField)
+                {
+                <div class="radio_group additonal-comments">
+                    <p>@Model.QuestionList[i].AdditionalTextLabel</p>
+                    @Html.TextAreaFor(x => Model.QuestionList[i].AdditionalText)
+                </div>
+                }
+            </div>
+            }
+            else if (Model.QuestionList[i].QuestionType == "text")
+            {
+            <div class="form_item patient_feeback">
+                <div class="bg_light_buff addtional_info  form_area">
+                    <label for="form_item_3">
+                        <span class="question">
+                            @Model.QuestionList[i].Question
+                        </span>
+                    </label>
+                    @Html.TextAreaFor(x => Model.QuestionList[i].AdditionalText)
+                </div>
+            </div>
+        }
+
+    }
+
+    <div class="form_item pb-100">
+        <div class="submit-btn-wrapper">
+            <input type="submit" value="Submit" class="submit-btn btn btn-primary btn-lg">
+        </div>
+    </div>
+}
+}

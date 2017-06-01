@@ -1,0 +1,110 @@
+﻿@using HFEA.Core.Extensions;
+@using HFEA.Web.Helpers;
+@using HFEA.Web.ViewModel.API;
+@using HFEA.Web.ViewModel.Search;
+@using HFEA.Web.Controllers;
+
+@inherits UmbracoViewPage<SearchViewModel>
+
+@if (Model != null)
+{
+if (Model.SearchParameters != null && !Model.SearchParameters.IsEmpty)
+{
+<div class="results-section bg-light-grey-panel background-page-header" id="results">
+    <div class="container">
+        <div class="lead">
+            <p>You searched for:</p>
+        </div>
+        <div class="lead">
+            <span class="search-terms-label">                
+                    @if (!string.IsNullOrEmpty(Model.SearchParameters.SearchParams.SearchKeywords))
+                    {
+                        <span class="keywords">by keywords "@Model.SearchParameters.SearchParams.SearchKeywords"</span>
+                    }
+                    else
+                    {
+                        <span class="keywords">all content</span>
+                    }
+                    @if (!Model.SearchParameters.SearchParams.ContentTags.IsNullOrEmpty())
+                    {
+                        <span class="tags-list">tagged as @renderCommaSeparatedTagValues(Model.SearchParameters.SearchParams.ContentTags)</span>
+                    }
+                    @if (Model.SearchParameters.SearchParams.ProductFilters != null
+        && Model.SearchParameters.SearchParams.ProductFilters.Any(x => x.IsChecked))
+                    {
+                        <span class="tags-list">
+                            in the following areas: @renderCommaSeparatedTagValues(Model.SearchParameters.SearchParams.ProductFilters
+                                                            .Where(x => x.IsChecked))
+                        </span>
+                    }
+                </span>
+        </div>
+    </div>
+</div>
+}
+<div class="search container">
+    @if (Model.ResultList != null)
+    {
+    <div class="row mb-50">
+        @if (Model.SearchParameters != null && !Model.SearchParameters.IsEmpty)
+        {
+        <div class="col-md-6">
+            <h2 class="h4">@TextHelpers.GetSingularOrPluralLabel(
+                        Model.ResultList.TotalRecords,
+                        "Search didn't return any results",
+                        "Your search has {0} result",
+                        "Your search has {0} results")</h2>
+        </div>
+        }
+        @if (Model.ResultList.TotalRecords > 0)
+        {
+            string selectedDate = HFEA.Web.Constants.QueryString.QueryParams.date.GetQryParamValueOrNull();
+            var data = WebControlHelper.GetSearchDateFilterData(Model.DateFilters, selectedDate);
+
+        <div class="col-md-6 align-right">            
+            @if (data != null)
+            {                
+            using (Html.BeginUmbracoForm<SearchPageController>
+                ("DateFilterSubmit", FormMethod.Post))
+                {
+                @Html.AntiForgeryToken()
+                <div class="search-select">
+                    @Html.DropDownList("date", data, new { @onchange = "this.form.submit();", @class = "hfea-select hfea-select-small" })
+                </div>
+                }
+                }
+</div>
+        }
+    </div>
+    }
+    <section class="dashboard">
+        @Html.Action("GetSearchView", "SearchPage", new { title = "Refine your search" })
+    </section>
+</div>
+<div class="search container">
+    @Html.Partial("~/Views/SearchPage/SearchResultListing.cshtml", Model.ResultList)
+</div>
+}
+else
+{
+    <section class="dashboard">
+        @Html.Action("GetSearchView", "SearchPage", new { title = "Your search" })
+    </section>
+}
+
+@helper renderCommaSeparatedTagValues(IEnumerable<ContentTag> values)
+{
+if (!values.IsNullOrEmpty())
+{
+    string result = values.Last().Value;
+    int total = values.Count();
+    if (total > 1)
+    {
+        result =
+            string.Join(", ", values.Take(total - 1).Select(x => x.Value))
+            + " and " + result;
+    }
+
+    @result
+}
+}

@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@if(Model != null && bool.Parse(Model.Content.GetPropertyValue("displayBetaBanner").ToString())) {
+    <div class="phase-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <strong class="phase-tag">Beta</strong>
+                    @Html.Raw(Model.Content.GetPropertyValue("betaBannerContents"))
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,26 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    Layout = "~/Views/Base.cshtml";
+    var _helper = new UmbracoHelper(UmbracoContext.Current);
+    var CurrentPage = _helper.Content(UmbracoContext.Current.PageId);
+
+
+    string pageTitle = Umbraco.AssignedContentItem.GetPropertyValue<string>("pageTitle");
+    if (string.IsNullOrWhiteSpace(pageTitle))
+    {
+        pageTitle = CurrentPage.Name;
+    }
+}
+<div class="background-page-header">
+    <div class="container">
+        <div class="row">
+            <h1>@pageTitle for @Html.Action("GetClinicName", "CAFCClinicFeedbackSurface")</h1>
+            <div class="lead">@Umbraco.Field("bodyText")</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        @Html.Action("RenderFeedbackForm", "CAFCClinicFeedbackSurface")
+    </div>
+</div>

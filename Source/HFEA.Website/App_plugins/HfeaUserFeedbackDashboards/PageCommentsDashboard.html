@@ -1,0 +1,88 @@
+﻿<div class="umb-pane" ng-controller="HfeaPageComments.Controller">
+    <div ng-show="displayMessage && displayMessage != ''" class="umbraco-pane">
+        <div class="alert {{messageType}} text-center">
+            <small>{{displayMessage}}</small>
+        </div>
+    </div>
+    <div class="umb-pane feedback-dashboard comments">
+        <h3>Page comments</h3>
+        <form name="filters" class="control-group umb-control-group search-filter">
+            <h4>Filter by</h4>
+            <div class="control-group filter approval-status">
+                <div class="umb-el-wrap">
+                    <span>
+                        Approval status:
+                        <select ng-model="controls.approvalFilter.value" ng-options="item as item.label for item in controls.approvalFilter.options track by item.id"></select>
+                    </span>
+                    <span>
+                        Page id:
+                        <input name="pageId" type="text" ng-pattern="/^\d+$/" ng-model="controls.pageFilterValue" />
+                        <span ng-show="!filters.pageId.$valid" class="inline-error error">ID must be a number</span>
+                    </span>
+                    <span>
+                        <button class="btn btn-primary filter-control" ng-disabled="!filters.pageId.$valid" ng-click="setScopeData(1)">Submit</button>
+                    </span>
+                </div>
+            </div>
+            <!--<div class="controls controls-row">
+                <span class="help-inline">help text demo</span>
+            </div>-->
+        </form>
+        <p ng-show="!dt.Comments">There are no page comments matching your search criteria</p>
+
+        <div class="grid-wrapper" ng-show="dt.Comments.length > 0">
+            <table class="table table-bordered table-condense dashboard-results">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll" /></th>
+                        <th>Author</th>
+                        <th>Comment</th>
+                        <th>In Response To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-class="{notApproved: !comment.IsApproved}" ng-repeat="comment in dt.Comments">
+                        <td><input type="checkbox" ng-checked="{{comment.IsApproved}}" ng-model="comment.IsApproved" /></td>
+                        <td>{{comment.UserFullName}} <br />{{comment.UserEmail}}</td>
+                        <td>
+                            <table style="width: 100%;">
+                                <tr><td style="border: 0;">Submitted on {{comment.DateCreated}}</td><td style="border: 0;">Modified {{comment.DateModified}}</td></tr>
+                                <tr><td style="border: 0; width: 100%;" colspan="2"><textarea ng-model="comment.Text" class="comments" style="width: 100%; border: 1px solid #DDD;" /></td></tr>
+                                <tr>
+                                    <td style="border: 0;"><button class="btn btn-small" ng-click="updateComment(comment)" type="button">Save</button><button class="btn btn-small" ng-click="deleteComment(comment.Id)" type="button">Delete</button></td>
+                                <td style="border: 0;">Modified by {{comment.ModifiedBy}}</td></tr>
+                            </table>
+
+                        </td>
+                        <td><a target="_blank" href="{{comment.PageUrl}}">{{comment.PageTitle}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination" ng-show="dt.PaginationData.pageNumbers.length > 1">
+                <span class="data-page" ng-repeat="i in dt.PaginationData.pageNumbers">
+                    <span ng-class="{active: i == dt.currentPage}" ng-click="setScopeData({{i}})">{{i}}</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // IR Custom code
+    $("#selectAll").change(function () {
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });
+    //$("textarea").change(function () {
+        //alert($(this).Value); //$("input:checkbox").prop('checked', $(this).prop("checked"));
+    //});
+    //$(document).ready(function () {
+    //    alert($('textarea.comments').text);
+    //});
+    //document.addEventListener('DOMContentLoaded', function () {
+    //    $('textarea.comments').each(function () {
+    //        alert($(this).value);
+    //    });
+    //}, false);
+
+</script>

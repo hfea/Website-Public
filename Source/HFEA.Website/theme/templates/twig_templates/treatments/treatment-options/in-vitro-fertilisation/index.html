@@ -1,0 +1,188 @@
+
+	
+{{ 
+	include ('partials/page-header-bg.html', {
+    	title: 'IVF'
+	}) 
+}}
+{{ include ('partials/intro-block.html', {
+    text: 'IVF stands for in vitro fertilisation. It’s a type of fertility treatment which involves fertilising a woman’s eggs with a man’s sperm outside the body. The hope is to create an embryo which can be transferred to a woman’s womb and then develop into a baby.'
+}) }}
+
+{{ 
+	include('partials/section-heading.html', {
+		title: 'Is IVF for me?',
+	})
+}}
+<p>
+	
+IVF may be recommended for:
+</p>
+<ul class="mb-50">
+	<li>
+		People with unexplained fertility problems, or who have tried other treatments that were unsuccessful
+	</li>
+	<li>
+		Men with fertility problems, such as those who produce less sperm or who have sperm with an unusual shape or movement
+	</li>
+	<li>
+		Women with blocked fallopian tubes 
+	</li>
+	<li>
+		People using donated or frozen eggs in their treatment 
+	</li>
+	<li>
+		People using frozen sperm in their treatment
+	</li>
+	<li>
+		Women up to the age of 42
+	</li>
+</ul>
+{{ 
+	include('partials/section-heading.html', {
+		title: 'How it works',
+	})
+}}
+{{ 
+	include('partials/timeline.html', {
+		half: 'true',
+		class: 'half',
+		blocks: [
+			{
+				title: 'Medication taken to suppress your natural menstrual cycle',
+			},
+			{
+				title: 'Fertility hormone called gonadotrophin taken to boost egg supply',
+			},
+			{
+				title: 'Clinic checks on progress with ultrasound scans and maybe blood tests',
+			},
+			{
+				title: 'Hormone injection (probably human chorionic gonadotrophin) taken to help eggs mature. ',
+			},
+			{
+				title: 'Eggs collected whilst you are sedated. You may experience cramps or a little bleeding from your vagina.',
+			},
+			{
+				title: 'Medication taken to prepare the lining of your womb',
+			},
+			{
+				title: 'Eggs mixed with partner’s or donor sperm to create embryos',
+			},
+			{
+				title: 'Embryos left to develop in the lab until they’re ready to be moved to your womb. This may be:<ul>
+					<li>
+						After 2-3 days (called the Cleavage stage)
+					</li>
+					<li>
+						After 5-6 day (called the Blastocyst stage*) 
+					</li>
+				</ul>',
+			},
+			{
+				title: 'Embryos transferred to your womb using a similar process to when you have a cervical smear. No sedation required.',
+			},
+			{
+				title: 'Remaining embryos can be frozen or donated',
+			},
+			{
+				title: 'Take a pregnancy test ',
+			},
+			{
+				title: 'What to do if treatment is unsuccessful',
+			},
+		]
+	})
+}}
+<p class="mb-50">
+	* If you’re under 35 using a ‘blastocyst’ stage embryo can increase your chances of success, but embryos can also stop developing at day two so it might be safer to move them to your womb at an earlier stage – your doctor can advise on the best option for you.
+</p>
+
+{{ 
+	include('partials/section-heading.html', {
+		title: 'What are my chances of having a baby?',
+	})
+}}
+
+<div class="row">
+	<div class="col-md-6">
+		<h1 class="section-heading">
+			Conceiving
+		</h1>
+		<p>
+			Standard Paragraph text -- part of the main body text. 
+				Suspendisse faucibus odio dictum tellus mollis laoreet. Morbi efficitur elit 	turpis, quis sollicitudin quam gravida et. Aliquam commodo libero ac mattis 	pretium. Maecenas finibus interdum rutrum.
+		</p>
+	</div>
+	<div class="col-md-6">
+	  	{{ 
+			include('partials/statistic.html', {
+				title: 'Chances of pregnancy',
+				stat: '32%',
+				text: 'Of women under 38 have success with IVF',
+			})
+		}}
+	</div>
+</div> 
+{{ 
+	include('partials/section-heading.html', {
+		title: 'IVF treatment options',
+	})
+}}
+<p>
+If you’re having IVF there are a number of different options you might like to consider and discuss with your doctor.  
+</p>
+<h3 class="black-text">
+ICSI
+</h3> 
+<p>
+This option may be suitable for men with fertility problems, such as those who produce less sperm, don’t ejaculate or whose sperm is of an unusual shape or movement.
+</p>
+<h3 class="black-text">
+Natural cycle IVF
+</h3>
+<p> This type of treatment involves no fertility drugs so it may be suitable for women who are unable to take them (due to health reasons for example) or who choose not to.
+</p>
+<h3 class="black-text">
+Mild stimulation IVF
+</h3>
+<p> This type of treatment involves taking fewer fertility drugs than normal, so may be suitable for women who are particularly at risk from having a bad reaction to fertility drugs. Talk to your doctor about whether this applies to you.
+</p>
+<h3 class="black-text">
+Blastocyst transfer
+</h3>
+<p> This is suitable for younger women with a good chance of getting pregnant through IVF and for women who have produced good quality embryos in a previous cycle, which didn’t implant in the womb. 
+</p>
+<h3 class="black-text">
+Assisted hatching
+</h3>
+<p>
+This may be suitable for older women undergoing IVF however the lack of evidence means it is not currently a recommended treatment. 
+</p>
+<h3 class="black-text">
+Risks of IVF treatment
+</h3>
+<p>
+The main risks from IVF treatment are multiple pregnancies (having twins, triplets or more); having a bad reaction to fertility drugs and having an ectopic pregnancy (where the baby develops outside of the womb). Some of these can be fatal to you, the baby or both so make sure you understand all the risks and when to seek medical help.
+</p>
+<a href="#" class="btn-block standard-link">
+Read Anna and Mark’s story about having IVF
+</a>
+<a href="#" class="btn-block standard-link">
+Search and compare clinics that offer IVF
+</a>
+<a href="#" class="mb-50 btn-block standard-link">
+Explore other fertility treatments
+</a>
+{{
+		include('partials/blockquote.html', {
+			width: '12',
+			class: 'teal-bg',
+			img: 'mother-and-baby.jpg',
+			bodytext: 'My advice to other women getting fertility treatment is to not underestimate the amount of time it takes.In the end we had to have three cycles of IVF and happily gave birth to our wonderful boy last year but in total it took over four years from when we were ready to have children to having our son.',
+			linktext: 'Read Maria\’s story',
+			href: '/treatments/patient-case-study'
+		})
+	}}
+
+</div>

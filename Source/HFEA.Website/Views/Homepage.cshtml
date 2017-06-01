@@ -1,0 +1,110 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Base.cshtml";
+}
+      
+<!-- homepage header -->		
+	<div class="homepage-header-background">
+		<div class="container"></div>
+	</div>
+	<div class="container homepage-header">
+		<div class="row text-center">
+            <div class="col-lg-12">
+			    <h1 class="header">@CurrentPage.pageTitle</h1>
+                <p class="lead">
+                    @CurrentPage.intro
+                </p>
+            </div>
+		</div>
+		<!-- input and yellow cta -->
+        <div class="row mb-50 user-journey-cta">
+            @if (CurrentPage.HasValue("headerCtaLink"))
+            {
+                <div class="col-lg-6 homepage-dd">
+                    <div class="dropdown">
+                        <button class="homepage-link hfea-btn bg_yellow" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            I am seeking information for..
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li>
+                                <a href="/i-am/heterosexual-couples/">Heterosexual couples</a>
+                            </li>
+                            <li>
+                                <a href="/i-am/same-sex-couples/">Same sex couples</a>
+                            </li>
+                            <li>
+                                <a href="/i-am/single-women/">Single women</a>
+                            </li>
+                            <li>
+                                <a href="/i-am/women-over-38/">Women over 38</a>
+                            </li>
+                            <li>
+                                <a href="/i-am/donors/">Donors</a>
+                            </li>
+                            <li>
+                                <a href="/i-am/donor-conceived-people-and-their-parents/">Donor conceived people and their parents</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+            <div class="col-lg-6">
+                <div class="homepage-search large-search">
+                    <label>@CurrentPage.searchLabel</label>
+                    <div class="inputs">
+                        <input type="text"  class="treatment-search"  placeholder="TREATMENT SEARCH">
+                        <input class="search-button" type="submit">
+                    </div>
+                </div>
+            </div>
+        </div>		
+		<!-- green box -->
+        @if (CurrentPage.HasValue("topLinks") && CurrentPage.topLinks.ToString().Length > 2)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="lime-ctas mb-50 list-unstyled clearfix">
+                        @foreach (var item in CurrentPage.topLinks)
+                        {
+                            var linkUrl = (bool)item.isInternal ? Umbraco.NiceUrl(item.Value<int>("internal")) : item.link;
+                            var linkTarget = (bool)item.newWindow ? "_blank" : null;
+                            <li class="col-lg-6"><a href="@linkUrl" target="@linkTarget">@item.caption <span class="glyphicon glyphicon-menu-right"></span></a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+	</div>
+	
+<!-- / homepage header -->
+	<div class="bg_light_buff pb-50 homepage-grid">
+		<div class="container">
+			<section class="row spotlight-grid">
+                <div class="col-lg-12 mt-70">
+				    <h1 class="text-center section-header">@CurrentPage.popularPagesLabel</h1>
+                </div>
+            </section>
+        </div>
+        <div class="spotlight-grid">
+	        @CurrentPage.GetGridHtml("popularPages")
+        </div>
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-4 col-lg-offset-4 mt-50 load-more-label">
+					<button class="hfea-btn bg_teal">@CurrentPage.loadMoreLabel</button>
+				</div>
+			</div> 
+        </div>
+	</div>
+	<div class="container mt-70">
+        <div class="row">
+            <div class="col-lg-12">
+		        <h1 class="text-center section-header">@CurrentPage.bottomLinksLabel</h1>
+            </div>
+        </div>
+    </div>
+    <div class="grey_bordered_links">
+        @CurrentPage.GetGridHtml("informationLinks")
+    </div>
+

@@ -1,0 +1,14 @@
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+
+
+<div class="col-md-3 footer-link-section">
+    @if (Model.headerLink == null || Model.headerLink.ToString() == "")
+    {
+        <h2>@Model.header</h2>
+    }
+    else
+    {
+        <h2><a href="@Model.headerLink">@Model.header</a></h2>
+    }
+    <div class="footer-links-listing">@Html.Raw(Model.value)</div>
+</div>

@@ -1,0 +1,29 @@
+﻿@using Newtonsoft.Json.Linq;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<JObject>
+@{
+    dynamic node = null;
+
+    JToken val = Model["value"]["node"];
+    val = val != null ? val["id"] : val;
+
+    var summary = Model["summary"];
+    int id;
+
+    if (val != null && int.TryParse(val.ToString(), out id))
+    {
+        node = Umbraco.Content(id);
+    }
+}
+
+@if (node != null && node.HasProperty("pageTitle"))
+{
+    <article class="bg_white">
+        <div class="padding">
+            <p class="cat">News</p>
+            <h3 class="header">
+                <a href="@node.Url">@summary</a>
+            </h3>
+            <p class="date">@node.UpdateDate.ToString("d MMMM yyyy")</p>
+        </div>
+    </article>
+}

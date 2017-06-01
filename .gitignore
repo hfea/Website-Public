@@ -1,0 +1,41 @@
+*.suo
+#*.dll
+[rR]elease
+[dD]ebug
+Logs
+App_Data
+App_Data/
+PublishProfiles
+ClientDependency
+Index
+[bB]in/
+[oO]bj/
+HFEA.CP.Web.dll.config
+HFEA.CP.WEB.csproj-sc.App.config
+HFEA.CP.Web.csproj.App.config
+UmbracoTraceLog.txt
+umbraco-plugins.TRAITORBC.hash
+umbraco-plugins.TRAITORBC.list
+bin/
+
+bin
+**/obj/*
+
+/Website/Source/HFEA.Website/theme/assets/prepros.cfg
+applicationhost.config
+**/.vs/*
+
+# Ignore NuGet Packages
+*.nupkg
+# Ignore the packages folder
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+obj
+packages
+!**/HFEA.Website/App_plugins/**/*.*
+*.user
+/Website/Source/HFEA.Website/theme/assets/images/design/._map-green.svg
+**/node_modules

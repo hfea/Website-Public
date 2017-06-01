@@ -1,0 +1,16 @@
+<div class="row">
+  	{% for panel in panels %}
+  	<div class="col-md-6 ">
+	  	<div class="panel panel-default">
+		    <div class="panel-heading">
+		      	<h3 class="panel-title">
+		        	{{panel.title}}
+		     	</h3>
+		    </div>
+		    <div class="panel-body">
+		        {{panel.text}}
+		    </div>
+		</div>
+	</div>
+    {% endfor %} 
+</div>
